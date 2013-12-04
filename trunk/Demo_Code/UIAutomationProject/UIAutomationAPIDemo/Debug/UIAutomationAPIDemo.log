@@ -1,0 +1,20 @@
+﻿Build started 12/1/2013 6:45:56 PM.
+     1>Project "F:\UIAutomation\UIAutomationProject\UIAutomationAPIDemo\UIAutomationAPIDemo.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Touching "Debug\UIAutomationAPIDemo.unsuccessfulbuild".
+       ClCompile:
+         All outputs are up-to-date.
+         All outputs are up-to-date.
+       ManifestResourceCompile:
+         All outputs are up-to-date.
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\UIAutomation\UIAutomationProject\bin\Win32\Debug\UIAutomationAPIDemo.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\UIAutomationAPIDemo.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"F:\UIAutomation\UIAutomationProject\bin\Win32\Debug\UIAutomationAPIDemo.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\UIAutomation\UIAutomationProject\bin\Win32\Debug\UIAutomationAPIDemo.lib" /MACHINE:X86 Debug\UIAutomationAPIDemo.exe.embed.manifest.res
+         Debug\stdafx.obj
+         Debug\UIAutomationAPIDemo.obj
+     1>UIAutomationAPIDemo.obj : error LNK2001: unresolved external symbol "public: static class UIAPlugin * UIAPlugin::m_UIAPlugin" (?m_UIAPlugin@UIAPlugin@@2PAV1@A)
+     1>F:\UIAutomation\UIAutomationProject\bin\Win32\Debug\UIAutomationAPIDemo.exe : fatal error LNK1120: 1 unresolved externals
+     1>Done Building Project "F:\UIAutomation\UIAutomationProject\UIAutomationAPIDemo\UIAutomationAPIDemo.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.30

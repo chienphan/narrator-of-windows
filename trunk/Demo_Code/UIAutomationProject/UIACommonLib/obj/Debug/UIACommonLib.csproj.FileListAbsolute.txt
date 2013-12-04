@@ -1,0 +1,4 @@
+F:\UIAutomation\UIAutomationProject\UIACommonLib\bin\Debug\UIACommonLib.dll
+F:\UIAutomation\UIAutomationProject\UIACommonLib\bin\Debug\UIACommonLib.pdb
+F:\UIAutomation\UIAutomationProject\UIACommonLib\%UIA_DEBUG_DIRECTORY%\UIACommonLib.dll
+F:\UIAutomation\UIAutomationProject\UIACommonLib\%UIA_DEBUG_DIRECTORY%\UIACommonLib.pdb
