@@ -2,6 +2,7 @@
 #define _NOW_DEFINE_H_
 
 #include <stdio.h>
+#include <string.h>
 #include <Windows.h>
 #include "INowPlugin.h"
 

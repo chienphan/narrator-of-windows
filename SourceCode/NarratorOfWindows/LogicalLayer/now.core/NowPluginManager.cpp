@@ -33,6 +33,11 @@ INowPlugin* NowPluginManager::LoadPlugins()
 		{
 			fRunTimeLinkSuccess = TRUE;
 			INowPlugin* plugin = (ProcAdd) (L"Message sent to the DLL function\n"); 
+			
+			if (plugin != 0)
+			{
+				return plugin;
+			}
 		}
 		// Free the DLL module.
 
