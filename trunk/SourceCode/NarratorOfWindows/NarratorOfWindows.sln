@@ -10,6 +10,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "now.core", "LogicalLayer\now.core\now.core.vcxproj", "{30AFA32B-10F5-4369-8DD3-5690A247C616}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "now.plugin.uiautomation", "PhysicalLayer\plugin\now.plugin.uiautomation\now.plugin.uiautomation.vcxproj", "{978F395A-22AE-44DB-B240-27627E19BDC3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F7726E19-B68C-49A6-B5F9-CFC3C26D862D} = {F7726E19-B68C-49A6-B5F9-CFC3C26D862D}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "now.agent.uiautomation.common", "PhysicalLayer\agent\now.agent.uiautomation.common\now.agent.uiautomation.common.vcxproj", "{370FFD16-BD21-42E1-BB8B-3C9788717159}"
 EndProject
@@ -79,6 +82,7 @@ Global
 		{F7726E19-B68C-49A6-B5F9-CFC3C26D862D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{F7726E19-B68C-49A6-B5F9-CFC3C26D862D}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{F7726E19-B68C-49A6-B5F9-CFC3C26D862D}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{F7726E19-B68C-49A6-B5F9-CFC3C26D862D}.Debug|Win32.Build.0 = Debug|Any CPU
 		{F7726E19-B68C-49A6-B5F9-CFC3C26D862D}.Debug|x64.ActiveCfg = Debug|Any CPU
 		{F7726E19-B68C-49A6-B5F9-CFC3C26D862D}.Debug|x64.Build.0 = Debug|Any CPU
 		{F7726E19-B68C-49A6-B5F9-CFC3C26D862D}.Release|Any CPU.ActiveCfg = Release|Any CPU

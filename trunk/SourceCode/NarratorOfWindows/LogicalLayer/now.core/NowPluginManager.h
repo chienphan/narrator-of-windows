@@ -7,7 +7,7 @@
 * This class load and manage plug-ins 
 */
 
-class NowPluginManager
+class NowPluginManager 
 {
 public:
 	NowPluginManager(void);
