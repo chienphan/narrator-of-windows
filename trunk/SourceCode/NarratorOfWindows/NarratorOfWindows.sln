@@ -14,8 +14,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "now.plugin.uiautomation", "
 		{F7726E19-B68C-49A6-B5F9-CFC3C26D862D} = {F7726E19-B68C-49A6-B5F9-CFC3C26D862D}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "now.agent.uiautomation.common", "PhysicalLayer\agent\now.agent.uiautomation.common\now.agent.uiautomation.common.vcxproj", "{370FFD16-BD21-42E1-BB8B-3C9788717159}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "now.agent.uiautomation.client", "PhysicalLayer\agent\now.agent.uiautomation.client\now.agent.uiautomation.client.csproj", "{F7726E19-B68C-49A6-B5F9-CFC3C26D862D}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "now.lib.device", "PhysicalLayer\lib\now.lib.device\now.lib.device.vcxproj", "{0067848E-1D4D-4E01-8B87-BF9AE92351E4}"
@@ -64,19 +62,6 @@ Global
 		{978F395A-22AE-44DB-B240-27627E19BDC3}.Release|Win32.Build.0 = Release|Win32
 		{978F395A-22AE-44DB-B240-27627E19BDC3}.Release|x64.ActiveCfg = Release|x64
 		{978F395A-22AE-44DB-B240-27627E19BDC3}.Release|x64.Build.0 = Release|x64
-		{370FFD16-BD21-42E1-BB8B-3C9788717159}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{370FFD16-BD21-42E1-BB8B-3C9788717159}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
-		{370FFD16-BD21-42E1-BB8B-3C9788717159}.Debug|Mixed Platforms.Build.0 = Debug|Win32
-		{370FFD16-BD21-42E1-BB8B-3C9788717159}.Debug|Win32.ActiveCfg = Debug|Win32
-		{370FFD16-BD21-42E1-BB8B-3C9788717159}.Debug|x64.ActiveCfg = Debug|x64
-		{370FFD16-BD21-42E1-BB8B-3C9788717159}.Debug|x64.Build.0 = Debug|x64
-		{370FFD16-BD21-42E1-BB8B-3C9788717159}.Release|Any CPU.ActiveCfg = Release|Win32
-		{370FFD16-BD21-42E1-BB8B-3C9788717159}.Release|Mixed Platforms.ActiveCfg = Release|Win32
-		{370FFD16-BD21-42E1-BB8B-3C9788717159}.Release|Mixed Platforms.Build.0 = Release|Win32
-		{370FFD16-BD21-42E1-BB8B-3C9788717159}.Release|Win32.ActiveCfg = Release|Win32
-		{370FFD16-BD21-42E1-BB8B-3C9788717159}.Release|Win32.Build.0 = Release|Win32
-		{370FFD16-BD21-42E1-BB8B-3C9788717159}.Release|x64.ActiveCfg = Release|x64
-		{370FFD16-BD21-42E1-BB8B-3C9788717159}.Release|x64.Build.0 = Release|x64
 		{F7726E19-B68C-49A6-B5F9-CFC3C26D862D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F7726E19-B68C-49A6-B5F9-CFC3C26D862D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7726E19-B68C-49A6-B5F9-CFC3C26D862D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -140,7 +125,6 @@ Global
 		{0067848E-1D4D-4E01-8B87-BF9AE92351E4} = {2C5AD1BB-CB78-4899-886A-8C4B2DCC528D}
 		{25748045-C11A-4B65-A2FD-8296E2ABD11D} = {2C5AD1BB-CB78-4899-886A-8C4B2DCC528D}
 		{4C9CA955-FC68-4DB9-BF53-733E79E3B6BE} = {2C5AD1BB-CB78-4899-886A-8C4B2DCC528D}
-		{370FFD16-BD21-42E1-BB8B-3C9788717159} = {9FF8F9C8-BED1-46D2-8625-B2A3ED57887F}
 		{F7726E19-B68C-49A6-B5F9-CFC3C26D862D} = {9FF8F9C8-BED1-46D2-8625-B2A3ED57887F}
 	EndGlobalSection
 EndGlobal
