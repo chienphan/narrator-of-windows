@@ -12,6 +12,7 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "now.plugin.uiautomation", "PhysicalLayer\plugin\now.plugin.uiautomation\now.plugin.uiautomation.vcxproj", "{978F395A-22AE-44DB-B240-27627E19BDC3}"
 	ProjectSection(ProjectDependencies) = postProject
 		{F7726E19-B68C-49A6-B5F9-CFC3C26D862D} = {F7726E19-B68C-49A6-B5F9-CFC3C26D862D}
+		{EF2C067D-22D7-442C-B216-E5FFBBAE4D85} = {EF2C067D-22D7-442C-B216-E5FFBBAE4D85}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "now.agent.uiautomation.client", "PhysicalLayer\agent\now.agent.uiautomation.client\now.agent.uiautomation.client.csproj", "{F7726E19-B68C-49A6-B5F9-CFC3C26D862D}"
@@ -23,6 +24,11 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "now.lib.jniwrapper", "PhysicalLayer\lib\now.lib.jniwrapper\now.lib.jniwrapper.vcxproj", "{4C9CA955-FC68-4DB9-BF53-733E79E3B6BE}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "now.rundebug", "LogicalLayer\now.rundebug\now.rundebug.vcxproj", "{E052FBDD-136B-40CA-8297-15469F839E18}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EF2C067D-22D7-442C-B216-E5FFBBAE4D85} = {EF2C067D-22D7-442C-B216-E5FFBBAE4D85}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "now.core.static", "LogicalLayer\now.core\now.core.static.vcxproj", "{EF2C067D-22D7-442C-B216-E5FFBBAE4D85}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -132,6 +138,20 @@ Global
 		{E052FBDD-136B-40CA-8297-15469F839E18}.Release|Win32.ActiveCfg = Release|Win32
 		{E052FBDD-136B-40CA-8297-15469F839E18}.Release|Win32.Build.0 = Release|Win32
 		{E052FBDD-136B-40CA-8297-15469F839E18}.Release|x64.ActiveCfg = Release|Win32
+		{EF2C067D-22D7-442C-B216-E5FFBBAE4D85}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{EF2C067D-22D7-442C-B216-E5FFBBAE4D85}.Debug|Mixed Platforms.ActiveCfg = Debug|x64
+		{EF2C067D-22D7-442C-B216-E5FFBBAE4D85}.Debug|Mixed Platforms.Build.0 = Debug|x64
+		{EF2C067D-22D7-442C-B216-E5FFBBAE4D85}.Debug|Win32.ActiveCfg = Debug|Win32
+		{EF2C067D-22D7-442C-B216-E5FFBBAE4D85}.Debug|Win32.Build.0 = Debug|Win32
+		{EF2C067D-22D7-442C-B216-E5FFBBAE4D85}.Debug|x64.ActiveCfg = Debug|x64
+		{EF2C067D-22D7-442C-B216-E5FFBBAE4D85}.Debug|x64.Build.0 = Debug|x64
+		{EF2C067D-22D7-442C-B216-E5FFBBAE4D85}.Release|Any CPU.ActiveCfg = Release|x64
+		{EF2C067D-22D7-442C-B216-E5FFBBAE4D85}.Release|Mixed Platforms.ActiveCfg = Release|x64
+		{EF2C067D-22D7-442C-B216-E5FFBBAE4D85}.Release|Mixed Platforms.Build.0 = Release|x64
+		{EF2C067D-22D7-442C-B216-E5FFBBAE4D85}.Release|Win32.ActiveCfg = Release|Win32
+		{EF2C067D-22D7-442C-B216-E5FFBBAE4D85}.Release|Win32.Build.0 = Release|Win32
+		{EF2C067D-22D7-442C-B216-E5FFBBAE4D85}.Release|x64.ActiveCfg = Release|x64
+		{EF2C067D-22D7-442C-B216-E5FFBBAE4D85}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -46,12 +46,20 @@ NOW_RESULT NowPlugin_UIA::getElementAtPoint( POINT point, NowControl*& pControl 
 	newPoint.Y = point.y;
 
 	AutomationElement^ runtimeElement = NowAutomationService::GetInstance()->GetElementAtPoint(newPoint);
+	Sleep(100);
 	if (runtimeElement != nullptr)
 	{
 		if (isChangedControl(runtimeElement))
 		{
-			wstring wstrHelpText = NowStringProcessor::StringToStlWString(runtimeElement->Current.HelpText);
-			//Debug::WriteLine(gcnew String(wstrHelpText.c_str()));
+			wstring wstrHelpText = L"";
+			try{
+				wstrHelpText = NowStringProcessor::StringToStlWString(runtimeElement->Current.HelpText);
+			}
+			catch(Exception^ ex)
+			{
+				//TODO: need to implement
+				NowLogger::getInstance()->LogWString(NowStringProcessor::StringToStlWString(String::Format("[Exception][{0}]",ex->Message)));
+			}
 			NowLogger::getInstance()->LogWString(wstrHelpText);
 
 			pControl = safe_cast<NowControl*>(new NowButton());
