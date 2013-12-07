@@ -1,4 +1,4 @@
-#include "NowDefine_UIA.h"
+#include "NowDefine.h"
 #include "INowPlugin.h"
 #include "NowPlugin_UIA.h"
 
@@ -8,13 +8,10 @@
 extern "C" {          // we need to export the C interface
 #endif
 
-	__declspec(dllexport) INowPlugin* __cdecl myPuts(LPWSTR lpszMsg)
-	{
-		printf("__declspec(dllexport) int __cdecl myPuts()\n");
-		
-		NowPlugin* plugin = new NowPlugin();
-
-		return (INowPlugin*) plugin;
+	__declspec(dllexport) INowPlugin* __cdecl initialize()
+	{		
+		//NowPlugin_UIA* plugin = ;
+		return (INowPlugin*) NowPlugin_UIA::getInstance();
 	}
 
 #ifdef __cplusplus

@@ -21,12 +21,21 @@
     <ClCompile Include="NowPlugin_UIA.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="NowStringProcessor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="controls\NowButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NowPlugin_UIA.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="define\NowDefine_UIA.h">
+    <ClInclude Include="NowStringProcessor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="controls\NowButton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
