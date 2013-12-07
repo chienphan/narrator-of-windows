@@ -25,8 +25,8 @@ int main( void )
 			{
 				if (pControl != NULL)
 				{
-					NowLogger::getInstance()->LogWString(L"Cộng hòa xã hội chũ nghĩa!");
-					NowLogger::getInstance()->LogAString(pControl->getControlType().c_str());
+					//NowLogger::getInstance()->LogWString(L"Cộng hòa xã hội chũ nghĩa!");
+					//NowLogger::getInstance()->LogAString(pControl->getControlType().c_str());
 				}
 				else
 				{
@@ -37,7 +37,6 @@ int main( void )
 				//wcout<<L"================================================="<<endl;
 			}
 		}
-		Sleep(100);
 	}
 
 	system("pause");
