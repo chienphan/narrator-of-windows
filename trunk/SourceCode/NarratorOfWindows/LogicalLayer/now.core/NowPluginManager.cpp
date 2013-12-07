@@ -6,7 +6,6 @@ NowPluginManager::NowPluginManager(void)
 {
 }
 
-
 NowPluginManager::~NowPluginManager(void)
 {
 }
@@ -14,7 +13,7 @@ NowPluginManager::~NowPluginManager(void)
 INowPlugin* NowPluginManager::LoadPlugins()
 {
 	HINSTANCE hinstLib; 
-	MYPROC ProcAdd; 
+	NOW_PROC ProcAdd; 
 	BOOL fFreeResult, fRunTimeLinkSuccess = FALSE; 
 
 	// Get a handle to the DLL module.
@@ -25,14 +24,14 @@ INowPlugin* NowPluginManager::LoadPlugins()
 
 	if (hinstLib != NULL) 
 	{ 
-		ProcAdd = (MYPROC) GetProcAddress(hinstLib, "myPuts"); 
+		ProcAdd = (NOW_PROC) GetProcAddress(hinstLib, "initialize"); 
 
 		// If the function address is valid, call the function.
 
 		if (NULL != ProcAdd) 
 		{
 			fRunTimeLinkSuccess = TRUE;
-			INowPlugin* plugin = (ProcAdd) (L"Message sent to the DLL function\n"); 
+			INowPlugin* plugin = (ProcAdd) (); 
 			
 			if (plugin != 0)
 			{
