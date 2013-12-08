@@ -1,4 +1,6 @@
 #include "NowLogger.h"
+#include "NowLoggerConfig.h"
+#include "NowLoggerWriter.h"
 
 NowLogger* NowLogger::m_instance = NULL;
 
@@ -16,7 +18,7 @@ NowLogger* NowLogger::getInstance()
 	if (!m_instance)
 	{
 		m_instance = new NowLogger();
-		m_instance->m_debugMode = 1;
+		m_instance->m_debugMode = NowLoggerConfig::getInstance()->getLoggerMode();
 	}
 	return m_instance;
 }
@@ -25,16 +27,24 @@ NowLogger* NowLogger::getInstance()
 
 void NowLogger::LogWString( const wstring wstrLog )
 {
-	if (m_debugMode == 1)
+	if (m_debugMode == NOW_LOGGER_DEBUGVIEW_MODE)
 	{
 		OutputDebugStringW(wstrLog.c_str());
+	}
+	if (m_debugMode == NOW_LOGGER_FILE_MODE)
+	{
+		NowLoggerWriter::getInstance()->writeWString(wstrLog);
 	}
 }
 
 void NowLogger::LogAString( const string strLog )
 {
-	if (m_debugMode == 1)
+	if (m_debugMode == NOW_LOGGER_DEBUGVIEW_MODE)
 	{
 		OutputDebugStringA(strLog.c_str());
+	}
+	if (m_debugMode == NOW_LOGGER_FILE_MODE)
+	{
+		NowLoggerWriter::getInstance()->writeAString(strLog);
 	}
 }

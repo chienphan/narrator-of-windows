@@ -18,10 +18,25 @@
     <ClInclude Include="NowLogger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="NowLoggerConfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NowLoggerWriter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NowLogger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="NowLoggerConfig.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NowLoggerWriter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="logconfig.txt" />
   </ItemGroup>
 </Project>

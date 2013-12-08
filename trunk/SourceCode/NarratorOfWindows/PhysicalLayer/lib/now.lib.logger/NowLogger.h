@@ -8,8 +8,6 @@
 class DllExport NowLogger {
 private:
 	static NowLogger* m_instance;
-	// 0 = don't out put
-	// 1 = debug viewer
 	int m_debugMode;
 	NowLogger();
 

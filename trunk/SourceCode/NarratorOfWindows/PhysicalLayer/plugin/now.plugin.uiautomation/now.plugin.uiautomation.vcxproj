@@ -80,14 +80,14 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <CompileAs>CompileAsCpp</CompileAs>
-      <AdditionalIncludeDirectories>$(SolutionDir)LogicalLayer\now.core\;$(SolutionDir)LogicalLayer\now.core\interface\;$(SolutionDir)LogicalLayer\now.core\define\;$(SolutionDir)PhysicalLayer\lib\now.lib.logger\;$(ProjectDir)controls\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)LogicalLayer\now.core\;$(SolutionDir)LogicalLayer\now.core\interface\;$(SolutionDir)LogicalLayer\now.core\define\;$(SolutionDir)PhysicalLayer\lib\now.lib.logger\;$(ProjectDir)controls\;$(SolutionDir)PhysicalLayer\lib\now.lib.device\</AdditionalIncludeDirectories>
       <AdditionalUsingDirectories>$(SolutionDir)bin\$(ConfigurationName)_$(PlatformArchitecture)\</AdditionalUsingDirectories>
       <CallingConvention>
       </CallingConvention>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.lib.logger.lib;$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.core.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.lib.logger.lib;$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.core.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -95,14 +95,14 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <CompileAs>CompileAsCpp</CompileAs>
-      <AdditionalIncludeDirectories>$(SolutionDir)LogicalLayer\now.core\;$(SolutionDir)LogicalLayer\now.core\interface\;$(SolutionDir)LogicalLayer\now.core\define\;$(SolutionDir)PhysicalLayer\lib\now.lib.logger\;$(ProjectDir)controls\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)LogicalLayer\now.core\;$(SolutionDir)LogicalLayer\now.core\interface\;$(SolutionDir)LogicalLayer\now.core\define\;$(SolutionDir)PhysicalLayer\lib\now.lib.logger\;$(ProjectDir)controls\;$(SolutionDir)PhysicalLayer\lib\now.lib.device\</AdditionalIncludeDirectories>
       <AdditionalUsingDirectories>$(SolutionDir)bin\$(ConfigurationName)_$(PlatformArchitecture)\</AdditionalUsingDirectories>
       <CallingConvention>
       </CallingConvention>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.lib.logger.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.lib.logger.lib;$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.core.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -137,12 +137,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main_UIA.cpp" />
-    <ClCompile Include="controls\NowButton.cpp" />
+    <ClCompile Include="controls\NowButton_UIA.cpp" />
+    <ClCompile Include="controls\NowControl_UIA.cpp" />
     <ClCompile Include="NowPlugin_UIA.cpp" />
     <ClCompile Include="NowStringProcessor.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="controls\NowButton.h" />
+    <ClInclude Include="controls\NowButton_UIA.h" />
+    <ClInclude Include="controls\NowControl_UIA.h" />
     <ClInclude Include="NowPlugin_UIA.h" />
     <ClInclude Include="NowStringProcessor.h" />
   </ItemGroup>

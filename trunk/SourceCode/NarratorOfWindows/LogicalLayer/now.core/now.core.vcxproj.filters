@@ -24,15 +24,15 @@
     <ClInclude Include="interface\INowPlugin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="NowControl.h">
+    <ClInclude Include="interface\INowControl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="define\NowConstant.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NowPluginManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="NowControl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
