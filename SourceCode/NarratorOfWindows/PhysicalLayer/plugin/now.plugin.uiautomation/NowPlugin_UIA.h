@@ -1,8 +1,8 @@
 #ifndef _NOW_PLUGIN_UIA_H_
 #define _NOW_PLUGIN_UIA_H_
 
-#include "INowPlugin.h"
 #include "NowDefine.h"
+#include "INowPlugin.h"
 
 using namespace System::Windows::Automation;
 
@@ -45,7 +45,7 @@ public:
 	#pragma region Implement INowPlugin interface
 	
 	virtual string getPluginName();
-	virtual NOW_RESULT getElementAtPoint( POINT point, NowControl*& pControl );
+	virtual NOW_RESULT getElementAtPoint( POINT point, INowControl*& pControl );
 	
 	#pragma endregion Implement INowPlugin interface
 };

@@ -24,7 +24,10 @@
     <ClCompile Include="NowStringProcessor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="controls\NowButton.cpp">
+    <ClCompile Include="controls\NowButton_UIA.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="controls\NowControl_UIA.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,7 +38,10 @@
     <ClInclude Include="NowStringProcessor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="controls\NowButton.h">
+    <ClInclude Include="controls\NowControl_UIA.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="controls\NowButton_UIA.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

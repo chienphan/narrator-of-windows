@@ -1,5 +1,4 @@
 #include "NowDefine.h"
-#include "INowPlugin.h"
 #include "NowPlugin_UIA.h"
 
 //#define EOF (-1)

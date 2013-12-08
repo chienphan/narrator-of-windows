@@ -19,7 +19,7 @@ public:
 	* @param pControl : NowControl element
 	* @return : NOW_OK if succeed, NOW_FALSE if not
 	*/
-	virtual NOW_RESULT getElementAtPoint(POINT point, NowControl*& pControl) = 0;
+	virtual NOW_RESULT getElementAtPoint(POINT point, INowControl*& pControl) = 0;
 
 };
 

@@ -1,0 +1,3 @@
+mode=debugview
+logdir=C:\\log
+//file or debugview

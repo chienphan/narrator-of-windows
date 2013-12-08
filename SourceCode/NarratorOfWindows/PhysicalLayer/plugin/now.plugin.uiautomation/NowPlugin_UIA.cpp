@@ -2,8 +2,6 @@
 #include "NowPlugin_UIA.h"
 #include "NowStringProcessor.h"
 #include "NowLogger.h"
-#include "NowButton.h"
-#include "NowControl.h"
 
 #using "now.agent.uiautomation.client.dll"
 
@@ -37,7 +35,7 @@ string NowPlugin_UIA::getPluginName()
 	return m_strPluginName;
 }
 
-NOW_RESULT NowPlugin_UIA::getElementAtPoint( POINT point, NowControl*& pControl )
+NOW_RESULT NowPlugin_UIA::getElementAtPoint( POINT point, INowControl*& pControl )
 {
 	NOW_RESULT nResult = NOW_FALSE;
 
@@ -58,11 +56,11 @@ NOW_RESULT NowPlugin_UIA::getElementAtPoint( POINT point, NowControl*& pControl 
 			catch(Exception^ ex)
 			{
 				//TODO: need to implement
-				NowLogger::getInstance()->LogWString(NowStringProcessor::StringToStlWString(String::Format("[Exception][{0}]",ex->Message)));
+				//NowLogger::getInstance()->LogWString(NowStringProcessor::StringToStlWString(String::Format("[Exception][{0}]",ex->Message)));
 			}
 			NowLogger::getInstance()->LogWString(wstrHelpText);
 
-			pControl = safe_cast<NowControl*>(new NowButton());
+			//pControl = safe_cast<NowControl*>(new NowButton());
 
 			nResult = NOW_OK;
 		}

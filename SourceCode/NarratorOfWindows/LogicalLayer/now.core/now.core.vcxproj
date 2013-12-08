@@ -78,10 +78,11 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <CompileAs>CompileAsCpp</CompileAs>
-      <AdditionalIncludeDirectories>$(ProjectDir)interface\;$(ProjectDir)define\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)interface\;$(ProjectDir)define\;$(SolutionDir)PhysicalLayer\lib\now.lib.device\;$(SolutionDir)PhysicalLayer\lib\now.lib.logger\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.lib.device.lib;$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.lib.logger.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -89,10 +90,11 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <CompileAs>CompileAsCpp</CompileAs>
-      <AdditionalIncludeDirectories>$(ProjectDir)interface\;$(ProjectDir)define\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)interface\;$(ProjectDir)define\;$(SolutionDir)PhysicalLayer\lib\now.lib.device\;$(SolutionDir)PhysicalLayer\lib\now.lib.logger\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.lib.device.lib;$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.lib.logger.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -122,13 +124,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="define\NowConstant.h" />
     <ClInclude Include="define\NowDefine.h" />
+    <ClInclude Include="interface\INowControl.h" />
     <ClInclude Include="interface\INowPlugin.h" />
-    <ClInclude Include="NowControl.h" />
     <ClInclude Include="NowPluginManager.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="NowControl.cpp" />
     <ClCompile Include="NowPluginManager.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

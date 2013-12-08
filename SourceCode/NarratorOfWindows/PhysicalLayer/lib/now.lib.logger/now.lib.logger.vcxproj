@@ -73,20 +73,22 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(SolutionDir)LogicalLayer\now.core\define\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)LogicalLayer\now.core\define\;$(SolutionDir)PhysicalLayer\lib\now.lib.device\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.lib.device.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(SolutionDir)LogicalLayer\now.core\define\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)LogicalLayer\now.core\define\;$(SolutionDir)PhysicalLayer\lib\now.lib.device\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.lib.device.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -117,12 +119,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="NowLogger.h" />
+    <ClInclude Include="NowLoggerConfig.h" />
+    <ClInclude Include="NowLoggerWriter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NowLogger.cpp" />
+    <ClCompile Include="NowLoggerConfig.cpp" />
+    <ClCompile Include="NowLoggerWriter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="logconfig.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -6,8 +6,9 @@
 /*
 * This class load and manage plug-ins 
 */
+#define DllExport   __declspec( dllexport )
 
-class NowPluginManager 
+class DllExport NowPluginManager 
 {
 public:
 	NowPluginManager(void);
