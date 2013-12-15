@@ -14,13 +14,18 @@ public:
 	virtual string getPluginName() = 0;
 
 	/*
-	* Get element at point
+	* Get element at point and then create cache at agent
 	* @param point : position of mouse pointer
 	* @param pControl : NowControl element
 	* @return : NOW_OK if succeed, NOW_FALSE if not
 	*/
 	virtual NOW_RESULT getElementAtPoint(POINT point, INowControl*& pControl) = 0;
 
+	/*
+	* Clear cache 
+	* @return : NOW_OK if succeed, NOW_FALSE if not
+	*/
+	virtual NOW_RESULT clearCache() = 0;
 };
 
 #endif

@@ -2,18 +2,13 @@
 #include "NowPlugin_UIA.h"
 #include "NowStringProcessor.h"
 #include "NowLogger.h"
-
-#using "now.agent.uiautomation.client.dll"
-
-using namespace now::agent::uiautomation::client;
-using namespace System::Diagnostics;
-using namespace System;
+#include "NowControlBuilder.h"
+#include "NowCommunication.h"
 
 NowPlugin_UIA* NowPlugin_UIA::m_pInstance = NULL;
 
 NowPlugin_UIA::NowPlugin_UIA()
 {
-	m_strPluginName = "uiautomation";
 	m_strControlSignature = "";
 }
 
@@ -32,59 +27,51 @@ NowPlugin_UIA* NowPlugin_UIA::getInstance()
 
 string NowPlugin_UIA::getPluginName()
 {
-	return m_strPluginName;
+	return NOW_PLUGIN_NAME_UIA;
 }
 
 NOW_RESULT NowPlugin_UIA::getElementAtPoint( POINT point, INowControl*& pControl )
 {
 	NOW_RESULT nResult = NOW_FALSE;
 
-	System::Windows::Point newPoint;
-	newPoint.X = point.x;
-	newPoint.Y = point.y;
+	string strControlType = "";
+	string strSignatureControl = "";
 
-	AutomationElement^ runtimeElement = NowAutomationService::GetInstance()->GetElementAtPoint(newPoint);
+	nResult = NowCommunication::getInstance()->GetElementAtPoint(point, strSignatureControl, strControlType);
+	
+	//TODO: check to place this Sleep method here???
 	Sleep(100);
-	if (runtimeElement != nullptr)
+
+	if (NOW_SUCCEED(nResult))
 	{
-		if (isChangedControl(runtimeElement))
+		//Check for change another control
+		if (isChangedControl(strSignatureControl))
 		{
-			wstring wstrHelpText = L"";
-			try{
-				wstrHelpText = NowStringProcessor::StringToStlWString(runtimeElement->Current.HelpText);
-			}
-			catch(Exception^ ex)
-			{
-				//TODO: need to implement
-				//NowLogger::getInstance()->LogWString(NowStringProcessor::StringToStlWString(String::Format("[Exception][{0}]",ex->Message)));
-			}
-			NowLogger::getInstance()->LogWString(wstrHelpText);
-
-			//pControl = safe_cast<NowControl*>(new NowButton());
-
-			nResult = NOW_OK;
+			//Create control wrapper
+			pControl = NowControlBuilder::getInstance()->createControlWrapper(strSignatureControl, strControlType);
 		}
 	}
 
 	return nResult;
 }
 
-bool NowPlugin_UIA::isChangedControl( AutomationElement^ runtimeElement )
+bool NowPlugin_UIA::isChangedControl(const string& strNewSignature )
 {
-	bool blnResult = false;
-	string strNewSignature = getSignatureControl(runtimeElement);
+	/*bool blnResult = false;
+
 	if (m_strControlSignature.compare(strNewSignature) != 0)
 	{
 		m_strControlSignature = strNewSignature;
 		blnResult = true;
 	}
-	return blnResult;
+	return blnResult;*/
+
+	return NowCommunication::getInstance()->isChangedControl(strNewSignature);
 }
 
-string NowPlugin_UIA::getSignatureControl( AutomationElement^ runtimeElement )
+NOW_RESULT NowPlugin_UIA::clearCache()
 {
-	char buffer[NOW_MAXLENGTH];
-	itoa(runtimeElement->GetHashCode(), buffer, 10);
-	return string(buffer);
+	m_strControlSignature = "";
+	return NOW_FALSE;
 }
 

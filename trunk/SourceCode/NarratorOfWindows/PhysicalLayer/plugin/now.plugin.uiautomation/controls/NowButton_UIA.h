@@ -8,7 +8,7 @@
 class NowButton_UIA : public NowControl_UIA
 {
 public:
-	NowButton_UIA(void);
+	NowButton_UIA(string strSignature, string strControlType);
 
 	~NowButton_UIA(void);
 
@@ -22,7 +22,11 @@ public:
 
 	virtual NOW_RESULT getChildren( list<INowControl*>& lstChildren );
 
-	//virtual NOW_RESULT getState( int& nState );
+	virtual NOW_RESULT getState( int& nState );
+
+	virtual NOW_RESULT getSignature( string& strSignature );
+
+	virtual NOW_RESULT getNowClass( string& strNowClass );
 
 };
 

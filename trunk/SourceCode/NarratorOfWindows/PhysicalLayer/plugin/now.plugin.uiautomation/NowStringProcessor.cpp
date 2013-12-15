@@ -42,6 +42,35 @@ String^ NowStringProcessor::WPtrToString( wchar_t const* pData, int length )
 	return ret;
 }
 
+bool NowStringProcessor::compareIgnoreCase( const string& strFirst, const string& strSecond )
+{
+	bool blnResult = false;
+	if (toLowerCase(strFirst).compare(toLowerCase(strSecond)) == 0)
+	{
+		blnResult = true;
+	}
+	return blnResult;
+}
+
+std::string NowStringProcessor::toLowerCase( const string& strNormal )
+{
+	string strReturn = strNormal;
+	std::transform(strReturn.begin(), strReturn.end(), strReturn.begin(), ::tolower);
+	return strReturn;
+}
+
+string NowStringProcessor::StringToStlString ( String ^ s ) 
+{
+	string os = "";
+	using namespace Runtime::InteropServices;
+	const char* chars = 
+		(const char*)(Marshal::StringToHGlobalAnsi(s)).ToPointer();
+	os = chars;
+	Marshal::FreeHGlobal(IntPtr((void*)chars));
+	return os;
+}
+
+
 //wstring NowStringProcessor::Utf8ToStlWString( char const* pUtfString)
 //{
 //	wstring stlString;
