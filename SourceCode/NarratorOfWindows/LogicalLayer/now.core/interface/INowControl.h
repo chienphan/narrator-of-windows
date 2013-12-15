@@ -35,6 +35,16 @@ public:
 	* Get state of control
 	*/
 	virtual NOW_RESULT getState(int& nState) = 0;
+
+	/*
+	* Get signature of control
+	*/
+	virtual NOW_RESULT getSignature(string& strSignature) = 0;
+
+	/*
+	*
+	*/
+	virtual NOW_RESULT getNowClass(string& strNowClass) = 0;
 };
 
 #endif

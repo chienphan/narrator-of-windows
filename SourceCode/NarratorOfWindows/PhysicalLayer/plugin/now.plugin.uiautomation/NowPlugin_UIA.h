@@ -12,9 +12,11 @@ private:
 
 	#pragma region Private properties and constructor
 
+	//Signature of control
 	string m_strControlSignature;
-	string m_strPluginName;
+
 	static NowPlugin_UIA* m_pInstance;
+
 	NowPlugin_UIA();
 
 	#pragma endregion Private properties and constructor
@@ -24,12 +26,7 @@ private:
 	/*
 	* Check for changed control
 	*/
-	bool isChangedControl(AutomationElement^ runtimeElement);
-
-	/*
-	* Get signature of control
-	*/
-	string getSignatureControl(AutomationElement^ runtimeElement);
+	bool isChangedControl(const string& strNewSignature);
 
 	#pragma endregion Private methods
 
@@ -45,8 +42,11 @@ public:
 	#pragma region Implement INowPlugin interface
 	
 	virtual string getPluginName();
+
 	virtual NOW_RESULT getElementAtPoint( POINT point, INowControl*& pControl );
-	
+
+	virtual NOW_RESULT clearCache();
+
 	#pragma endregion Implement INowPlugin interface
 };
 

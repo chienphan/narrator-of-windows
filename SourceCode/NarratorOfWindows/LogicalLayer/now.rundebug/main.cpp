@@ -4,6 +4,9 @@
 #include "NowLogger.h"
 #include "NowDevice.h"
 
+#include "NowControl_UIA.h"
+#include "NowButton_UIA.h"
+
 int main( void ) 
 { 
 	
@@ -11,8 +14,6 @@ int main( void )
 	INowPlugin* plugin =  pluginManager->LoadPlugins();
 
 	POINT currentPoint;
-
-	wstring strTemp = L"";
 
 	INowControl* pControl = NULL;
 
@@ -25,19 +26,14 @@ int main( void )
 			{
 				if (pControl != NULL)
 				{
-					//NowLogger::getInstance()->LogAString("<>null");
-					//NowLogger::getInstance()->LogWString(L"Cộng hòa xã hội chũ nghĩa!");
-					//NowLogger::getInstance()->LogAString(pControl->getControlType().c_str());
+					wstring wstrHelpText = L"";
+					pControl->getHelpText(wstrHelpText);
+					NowLogger::getInstance()->LogWString(wstrHelpText);
 				}
 				else
 				{
-					//wstring wstrTemp = L"Cộng hòa xã hội chũ nghĩa!";
-					//NowLogger::getInstance()->LogWString(wstrTemp);
-					//NowLogger::getInstance()->LogAString("null");
+					NowLogger::getInstance()->LogAString("Fail to get control");
 				}
-				//string strTemp = pControl->getControlType();
-				//wcout<<strTemp.c_str()<<endl;
-				//wcout<<L"================================================="<<endl;
 			}
 		}
 	}

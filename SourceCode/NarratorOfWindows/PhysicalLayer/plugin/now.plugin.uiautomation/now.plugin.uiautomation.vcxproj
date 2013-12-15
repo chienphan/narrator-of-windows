@@ -139,12 +139,16 @@
     <ClCompile Include="main_UIA.cpp" />
     <ClCompile Include="controls\NowButton_UIA.cpp" />
     <ClCompile Include="controls\NowControl_UIA.cpp" />
+    <ClCompile Include="NowCommunication.cpp" />
+    <ClCompile Include="NowControlBuilder.cpp" />
     <ClCompile Include="NowPlugin_UIA.cpp" />
     <ClCompile Include="NowStringProcessor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controls\NowButton_UIA.h" />
     <ClInclude Include="controls\NowControl_UIA.h" />
+    <ClInclude Include="NowCommunication.h" />
+    <ClInclude Include="NowControlBuilder.h" />
     <ClInclude Include="NowPlugin_UIA.h" />
     <ClInclude Include="NowStringProcessor.h" />
   </ItemGroup>

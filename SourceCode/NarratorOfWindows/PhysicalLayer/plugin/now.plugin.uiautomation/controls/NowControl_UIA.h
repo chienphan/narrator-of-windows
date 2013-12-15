@@ -7,8 +7,14 @@
 class NowControl_UIA :
 	public INowControl
 {
+private:
+
+protected:
+	string m_strSignature;
+	string m_strControlType;
+
 public:
-	NowControl_UIA(void);
+	NowControl_UIA(string strSignature, string strControlType);
 
 	~NowControl_UIA(void);
 
@@ -23,6 +29,10 @@ public:
 	virtual NOW_RESULT getChildren( list<INowControl*>& lstChildren );
 
 	virtual NOW_RESULT getState( int& nState );
+
+	virtual NOW_RESULT getSignature( string& strSignature );
+
+	virtual NOW_RESULT getNowClass( string& strNowClass );
 
 };
 
