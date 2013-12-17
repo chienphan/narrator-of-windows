@@ -8,6 +8,7 @@
 #include <string>
 #include <stdio.h>
 #include <direct.h>
+#include <WinBase.h>
 
 #include <list>
 #include <string>
@@ -31,6 +32,7 @@ public:
 	static string getCurrentDateTime();
 	static string getCurrentDirectory();
 	static list<string>* getAllFilesInDirectory(const string& strDirectory, const string& strExtension);
+	static void sleep(int milisecond);
 };
 
 #endif

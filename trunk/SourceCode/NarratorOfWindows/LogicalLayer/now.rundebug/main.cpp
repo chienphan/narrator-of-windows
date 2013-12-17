@@ -16,7 +16,7 @@ int main( void )
 	POINT currentPoint;
 
 	INowControl* pControl = NULL;
-
+	string strSignature = "";
 	while (true)
 	{
 		if (GetCursorPos(&currentPoint))
@@ -26,9 +26,24 @@ int main( void )
 			{
 				if (pControl != NULL)
 				{
-					wstring wstrHelpText = L"";
-					pControl->getHelpText(wstrHelpText);
-					NowLogger::getInstance()->LogWString(wstrHelpText);
+					pControl->getSignature(strSignature);
+					if (pluginManager->isChangedControl(strSignature))
+					{
+						wstring wstrHelpText = L"";
+						int nOK = pControl->getHelpText(wstrHelpText);
+						
+						if (NOW_SUCCEED(nOK))
+						{
+							if (!wstrHelpText.empty())
+							{
+								NowLogger::getInstance()->LogWString(wstrHelpText);
+							}
+						}
+						else
+						{
+							NowLogger::getInstance()->LogAString("FALSE!");
+						}
+					}
 				}
 				else
 				{
@@ -36,6 +51,9 @@ int main( void )
 				}
 			}
 		}
+
+		//TODO: check to place this Sleep method here???
+		//NowDevice::sleep(100);
 	}
 
 	system("pause");

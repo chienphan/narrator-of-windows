@@ -134,3 +134,8 @@ list<string>* NowDevice::getAllFilesInDirectory(const string& strDirectory, cons
 	FindClose(hFind);
 	return lstReturn;
 }
+
+void NowDevice::sleep( int milisecond )
+{
+	sleep(milisecond);
+}

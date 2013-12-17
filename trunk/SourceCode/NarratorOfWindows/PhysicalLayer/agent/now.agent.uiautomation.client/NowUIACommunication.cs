@@ -61,9 +61,18 @@ namespace now.agent.uiautomation.client
             return nResult;
         }
 
-        //public bool isChangedControl(String strSignatureControl)
-        //{
-        //    return false;
-        //}    
+        public int GetHelpTextProperty(String strSignatureControl, ref String strHelpText)
+        {
+            int nResult = NowUIADefine.NOW_FALSE;
+            
+            AutomationElement runtimeElement = NowUIAStorage.GetInstance().GetUIObjectFormCache(strSignatureControl);
+            if (runtimeElement != null)
+            {
+                strHelpText = runtimeElement.Current.HelpText;
+                nResult = NowUIADefine.NOW_OK;
+            }
+
+            return nResult;
+        }
     }
 }
