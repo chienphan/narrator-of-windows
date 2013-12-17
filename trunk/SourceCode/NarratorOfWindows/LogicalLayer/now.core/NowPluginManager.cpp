@@ -6,6 +6,7 @@
 
 NowPluginManager::NowPluginManager(void)
 {
+	m_strSignature = "";
 }
 
 NowPluginManager::~NowPluginManager(void)
@@ -72,4 +73,15 @@ INowPlugin* NowPluginManager::LoadPlugins()
 
 	system("pause");
 	return 0;
+}
+
+bool NowPluginManager::isChangedControl( const string& strSignature )
+{
+	if (!strSignature.empty() && (strSignature.compare(m_strSignature) != 0))
+	{
+		//control is changed
+		m_strSignature = strSignature;
+		return true;
+	}
+	return false;
 }

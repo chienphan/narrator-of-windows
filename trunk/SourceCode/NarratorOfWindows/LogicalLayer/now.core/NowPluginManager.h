@@ -10,10 +10,16 @@
 
 class DllExport NowPluginManager 
 {
+private:
+	string m_strSignature;
+
 public:
 	NowPluginManager(void);
 	~NowPluginManager(void);
+	
 	INowPlugin* LoadPlugins();
+
+	bool isChangedControl(const string& strSignature);
 };
 
 #endif//_NOW_PLUGIN_MANAGER_H_

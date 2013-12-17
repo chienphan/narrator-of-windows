@@ -46,7 +46,7 @@ NOW_RESULT NowCommunication::GetElementAtPoint( POINT point, string& strSignatur
 	return nResult;
 }
 
-bool NowCommunication::isChangedControl( const string& strSignatureControl )
-{
-	return NowUIACommunication::GetInstance()->isChangedControl(gcnew String(strSignatureControl.c_str()));
-}
+//bool NowCommunication::isChangedControl( const string& strSignatureControl )
+//{
+//	return NowUIACommunication::GetInstance()->isChangedControl(gcnew String(strSignatureControl.c_str()));
+//}

@@ -61,9 +61,9 @@ namespace now.agent.uiautomation.client
             return nResult;
         }
 
-        public bool isChangedControl(String strSignatureControl)
-        {
-            return false;
-        }    
+        //public bool isChangedControl(String strSignatureControl)
+        //{
+        //    return false;
+        //}    
     }
 }
