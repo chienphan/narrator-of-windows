@@ -14,7 +14,7 @@ public:
 
 	NOW_RESULT GetElementAtPoint(POINT point, string& strSignatureControl, string& strControlType);
 
-	bool isChangedControl(const string& strSignatureControl);
+	//bool isChangedControl(const string& strSignatureControl);
 };
 
 #endif

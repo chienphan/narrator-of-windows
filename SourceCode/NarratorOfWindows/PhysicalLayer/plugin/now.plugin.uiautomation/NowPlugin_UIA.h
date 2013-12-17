@@ -26,7 +26,7 @@ private:
 	/*
 	* Check for changed control
 	*/
-	bool isChangedControl(const string& strNewSignature);
+	//bool isChangedControl(const string& strNewSignature);
 
 	#pragma endregion Private methods
 
