@@ -1,5 +1,6 @@
 #include "NowCommunication.h"
 #include "NowStringProcessor.h"
+#include "NowLogger.h"
 
 #using "now.agent.uiautomation.client.dll"
 
@@ -26,8 +27,9 @@ NowCommunication* NowCommunication::getInstance()
 	return m_instance;
 }
 
-NOW_RESULT NowCommunication::GetElementAtPoint( POINT point, string& strSignatureControl, string& strControlType )
+NOW_RESULT NowCommunication::getElementAtPoint( POINT point, string& strSignatureControl, string& strControlType )
 {
+	//NowLogger::getInstance()->LogAString("[NowCommunication::getElementAtPoint] BEGIN");
 	NOW_RESULT nResult = NOW_FALSE;
 	//Converter to System::Windows::Point
 	System::Windows::Point newPoint;
@@ -43,10 +45,29 @@ NOW_RESULT NowCommunication::GetElementAtPoint( POINT point, string& strSignatur
 		strSignatureControl = NowStringProcessor::StringToStlString(mstrSignatureControl);
 		strControlType = NowStringProcessor::StringToStlString(mstrControlType);
 	}
+
+	//NowLogger::getInstance()->LogAString(strSignatureControl);
+	//NowLogger::getInstance()->LogAString(strControlType);
+
+	//NowLogger::getInstance()->LogAString("[NowCommunication::getElementAtPoint] END");
 	return nResult;
 }
 
-//bool NowCommunication::isChangedControl( const string& strSignatureControl )
-//{
-//	return NowUIACommunication::GetInstance()->isChangedControl(gcnew String(strSignatureControl.c_str()));
-//}
+NOW_RESULT NowCommunication::getHelpText( const string& strSignature, wstring& wstrHelpText )
+{
+	//NowLogger::getInstance()->LogAString("[NowCommunication::getHelpText] - BEGIN");
+	int nResult = NOW_FALSE;
+	String^ mstrSignature = NowStringProcessor::StlStringToString(strSignature);
+	String^ mstrHelpText = "";
+
+	nResult = NowUIACommunication::GetInstance()->GetHelpTextProperty(mstrSignature, mstrHelpText);
+	//NowLogger::getInstance()->LogAString(strSignature);
+	if (NOW_SUCCEED(nResult))
+	{
+		//NowLogger::getInstance()->LogAString("[NowCommunication::getHelpText] OK!");
+		wstrHelpText = NowStringProcessor::StringToStlWString(mstrHelpText);
+		//NowLogger::getInstance()->LogWString(wstrHelpText);
+	}
+	//NowLogger::getInstance()->LogAString("[NowCommunication::getHelpText] - END");
+	return nResult;
+}

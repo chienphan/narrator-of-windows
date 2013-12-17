@@ -68,9 +68,11 @@ INowPlugin* NowPluginManager::LoadPlugins()
 
 	// If unable to call the DLL function, use an alternative.
 	if (! fRunTimeLinkSuccess) 
+	{
 		//NowLogger::getInstance()->LogAString("[NowPluginManager::LoadPlugin]Message printed from executable\n");
 		//printf("Message printed from executable\n"); 
-
+		OutputDebugStringA("Message printed from executable");
+	}
 	system("pause");
 	return 0;
 }

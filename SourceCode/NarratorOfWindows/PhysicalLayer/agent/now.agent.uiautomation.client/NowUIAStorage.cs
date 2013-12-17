@@ -32,7 +32,7 @@ namespace now.agent.uiautomation.client
 
         public void AddToCache(String strSignature, AutomationElement currentElement)
         {
-            int nResult = NowUIADefine.NOW_FALSE;
+            //int nResult = NowUIADefine.NOW_FALSE;
             if (m_dictionary == null)
             {
                 m_dictionary = new Dictionary<String, AutomationElement>();

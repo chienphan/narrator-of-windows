@@ -12,9 +12,8 @@ public:
 	static NowCommunication* getInstance();
 	~NowCommunication(void);
 
-	NOW_RESULT GetElementAtPoint(POINT point, string& strSignatureControl, string& strControlType);
-
-	//bool isChangedControl(const string& strSignatureControl);
+	NOW_RESULT getElementAtPoint(POINT point, string& strSignatureControl, string& strControlType);
+	NOW_RESULT getHelpText(const string& strSignature, wstring& wstrHelpText);
 };
 
 #endif

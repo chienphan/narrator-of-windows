@@ -70,6 +70,16 @@ string NowStringProcessor::StringToStlString ( String ^ s )
 	return os;
 }
 
+String^ NowStringProcessor::StlStringToString( string const& s )
+{
+	return gcnew String(s.c_str());
+}
+
+//std::string NowStringProcessor::IntToStlString( const int& number )
+//{
+//	return to_string((long)number);
+//}
+
 
 //wstring NowStringProcessor::Utf8ToStlWString( char const* pUtfString)
 //{

@@ -17,10 +17,13 @@ private:
 public:
 	static wstring StringToStlWString (String const^ s);
 	static string StringToStlString ( String ^ s );
+	static String^ StlStringToString(string const& s);
 	static String^ StlWStringToString (wstring const& os);
 	static String^ WPtrToString(wchar_t const* pData, int length);
 	static bool compareIgnoreCase(const string& strFirst, const string& strSecond);
 	static string toLowerCase(const string& strNormal);
+
+	//static string IntToStlString(const int& number);
 	/*static wstring Utf8ToStlWString(char const* pUtfString);
 	static wstring Utf8ToStlWStringN(char const* pUtfString, ULONG length);*/
 };

@@ -37,39 +37,17 @@ NOW_RESULT NowPlugin_UIA::getElementAtPoint( POINT point, INowControl*& pControl
 	string strControlType = "";
 	string strSignatureControl = "";
 
-	nResult = NowCommunication::getInstance()->GetElementAtPoint(point, strSignatureControl, strControlType);
+	nResult = NowCommunication::getInstance()->getElementAtPoint(point, strSignatureControl, strControlType);
 	
-	//TODO: check to place this Sleep method here???
-	//Sleep(100);
-
 	if (NOW_SUCCEED(nResult))
 	{
 		//Check for change another control
-		// We will check 
-
-		/*if (isChangedControl(strSignatureControl))
-		{*/
-			//Create control wrapper
-			pControl = NowControlBuilder::getInstance()->createControlWrapper(strSignatureControl, strControlType);
-		//}
+		// We will check Logical Layer
+		pControl = NowControlBuilder::getInstance()->createControlWrapper(strSignatureControl, strControlType);
 	}
 
 	return nResult;
 }
-
-//bool NowPlugin_UIA::isChangedControl(const string& strNewSignature )
-//{
-	/*bool blnResult = false;
-
-	if (m_strControlSignature.compare(strNewSignature) != 0)
-	{
-		m_strControlSignature = strNewSignature;
-		blnResult = true;
-	}
-	return blnResult;*/
-
-//	return NowCommunication::getInstance()->isChangedControl(strNewSignature);
-//}
 
 NOW_RESULT NowPlugin_UIA::clearCache()
 {
