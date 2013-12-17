@@ -13,68 +13,71 @@ NowPluginManager::~NowPluginManager(void)
 {
 }
 
-INowPlugin* NowPluginManager::LoadPlugins()
+vector<INowPlugin*>* NowPluginManager::LoadPlugins()
 {
-	//TODO:need to implement to load many plugins
-	list<string>* lstPluginFileName = NowDevice::getAllFilesInDirectory(NowDevice::getCurrentDirectory() + "\\plugin", "dll");
+	//TODO:need to implement to load many plug-ins
+	vector<INowPlugin*>* lstPlugin = new vector<INowPlugin*>();
+	vector<string>* lstPluginFileName = NULL;
 
-	string strUIPlugin = "";
-
-	if (lstPluginFileName != NULL)
+	string strDebugMode = "";
+	string strDebugDir = "";
+	strDebugMode = NowDevice::getEnvironmentVariable(NOW_DEBUG_MODE);
+	if (strDebugMode.empty() || strDebugMode.compare("1") != 0)
 	{
-		if (lstPluginFileName->size() > 0)
-		{
-			strUIPlugin = *(lstPluginFileName->begin());
-			OutputDebugStringA(strUIPlugin.c_str());
-		}
+		strDebugDir = NowDevice::getCurrentDirectory();
 	}
-	
+	else
+	{
+		strDebugDir = NowDevice::getEnvironmentVariable(NOW_DEBUG_DIRECTORY);
+	}
 
+	lstPluginFileName = NowDevice::getAllFilesInDirectory(strDebugDir + "\\plugin", "dll");
+	
 	HINSTANCE hinstLib; 
 	NOW_PROC ProcAdd; 
 	BOOL fFreeResult, fRunTimeLinkSuccess = FALSE; 
+	string pluginFullPath = "";
 
 	// Get a handle to the DLL module.
-
-	//hinstLib = LoadLibrary(TEXT("plugin\\now.plugin.uiautomation.dll")); 
-	string pluginFullPath = NowDevice::getCurrentDirectory() + "\\plugin\\" + strUIPlugin ;
-	hinstLib = LoadLibrary(pluginFullPath.c_str()); 
-
-	// If the handle is valid, try to get the function address.
-
-	if (hinstLib != NULL) 
-	{ 
-		OutputDebugStringA("hinstLib != NULL");
-		ProcAdd = (NOW_PROC) GetProcAddress(hinstLib, "initialize"); 
-
-		// If the function address is valid, call the function.
-
-		if (NULL != ProcAdd) 
-		{
-			OutputDebugStringA("hinstLib != NULL");
-			fRunTimeLinkSuccess = TRUE;
-			INowPlugin* plugin = (ProcAdd) (); 
-			
-			if (plugin != 0)
-			{
-				OutputDebugStringA("plugin != 0");
-				return plugin;
-			}
-		}
-		// Free the DLL module.
-
-		fFreeResult = FreeLibrary(hinstLib); 
-	} 
-
-	// If unable to call the DLL function, use an alternative.
-	if (! fRunTimeLinkSuccess) 
+	for (std::vector<string>::iterator it = lstPluginFileName->begin() ; it != lstPluginFileName->end(); ++it)
 	{
-		//NowLogger::getInstance()->LogAString("[NowPluginManager::LoadPlugin]Message printed from executable\n");
-		//printf("Message printed from executable\n"); 
-		OutputDebugStringA("Message printed from executable");
+		pluginFullPath = strDebugDir + "\\plugin\\" + *it;
+		OutputDebugStringA(pluginFullPath.c_str());
+		hinstLib = LoadLibrary(pluginFullPath.c_str()); 
+
+		// If the handle is valid, try to get the function address.
+
+		if (hinstLib != NULL) 
+		{ 
+			OutputDebugStringA("Get Proc Address");
+			ProcAdd = (NOW_PROC) GetProcAddress(hinstLib, "initialize"); 
+
+			// If the function address is valid, call the function.
+
+			if (NULL != ProcAdd) 
+			{
+				OutputDebugStringA("Call Proc Address");
+				fRunTimeLinkSuccess = TRUE;
+				INowPlugin* plugin = (ProcAdd) (); 
+
+				if (plugin != 0)
+				{
+					OutputDebugStringA("push_back!!!");
+					lstPlugin->push_back(plugin);
+				}
+			}
+			// Free the DLL module.
+			//fFreeResult = FreeLibrary(hinstLib); 
+		} 
+
+		// If unable to call the DLL function, use an alternative.
+		if (! fRunTimeLinkSuccess) 
+		{
+			OutputDebugStringA("Message printed from executable");
+		}
 	}
-	system("pause");
-	return 0;
+
+	return lstPlugin;
 }
 
 bool NowPluginManager::isChangedControl( const string& strSignature )

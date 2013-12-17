@@ -6,6 +6,7 @@
 #include <string>
 #include <windows.h>
 #include <list>
+#include <vector>
 #include <iostream>
 #include <fstream>
 

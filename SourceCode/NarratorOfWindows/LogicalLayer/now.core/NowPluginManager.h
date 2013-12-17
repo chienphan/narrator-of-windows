@@ -17,7 +17,7 @@ public:
 	NowPluginManager(void);
 	~NowPluginManager(void);
 	
-	INowPlugin* LoadPlugins();
+	vector<INowPlugin*>* LoadPlugins();
 
 	bool isChangedControl(const string& strSignature);
 };

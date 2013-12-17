@@ -7,47 +7,30 @@
 #include "NowControl_UIA.h"
 #include "NowButton_UIA.h"
 
+NowPluginManager* pluginManager = NULL;
+vector<INowPlugin*>* lstPlugin = NULL;
+
+void runDebug(INowPlugin* plugin, POINT currentPoint, INowControl*& pControl, string& strSignature);
+
 int main( void ) 
 { 
 	
-	NowPluginManager* pluginManager = new NowPluginManager();
-	INowPlugin* plugin =  pluginManager->LoadPlugins();
+	pluginManager = new NowPluginManager();
+	lstPlugin =  pluginManager->LoadPlugins();
 
 	POINT currentPoint;
-
 	INowControl* pControl = NULL;
 	string strSignature = "";
+
 	while (true)
 	{
 		if (GetCursorPos(&currentPoint))
 		{
-			NOW_RESULT nRet = plugin->getElementAtPoint(currentPoint, pControl);
-			if (NOW_SUCCEED(nRet))
+			if (lstPlugin != NULL && lstPlugin->size() > 0)
 			{
-				if (pControl != NULL)
+				for (vector<INowPlugin*>::iterator it = lstPlugin->begin(); it != lstPlugin->end(); ++it)
 				{
-					pControl->getSignature(strSignature);
-					if (pluginManager->isChangedControl(strSignature))
-					{
-						wstring wstrHelpText = L"";
-						int nOK = pControl->getHelpText(wstrHelpText);
-						
-						if (NOW_SUCCEED(nOK))
-						{
-							if (!wstrHelpText.empty())
-							{
-								NowLogger::getInstance()->LogWString(wstrHelpText);
-							}
-						}
-						else
-						{
-							NowLogger::getInstance()->LogAString("FALSE!");
-						}
-					}
-				}
-				else
-				{
-					NowLogger::getInstance()->LogAString("Fail to get control");
+					runDebug(*it, currentPoint, pControl, strSignature);
 				}
 			}
 		}
@@ -60,4 +43,37 @@ int main( void )
 
 	delete pluginManager;
 	return 0;
+}
+
+void runDebug(INowPlugin* plugin, POINT currentPoint, INowControl*& pControl, string& strSignature)
+{
+	NOW_RESULT nRet = plugin->getElementAtPoint(currentPoint, pControl);
+	if (NOW_SUCCEED(nRet))
+	{
+		if (pControl != NULL)
+		{
+			pControl->getSignature(strSignature);
+			if (pluginManager->isChangedControl(strSignature))
+			{
+				wstring wstrHelpText = L"";
+				int nOK = pControl->getHelpText(wstrHelpText);
+
+				if (NOW_SUCCEED(nOK))
+				{
+					if (!wstrHelpText.empty())
+					{
+						NowLogger::getInstance()->LogWString(wstrHelpText);
+					}
+				}
+				else
+				{
+					NowLogger::getInstance()->LogAString("FALSE!");
+				}
+			}
+		}
+		else
+		{
+			NowLogger::getInstance()->LogAString("Fail to get control");
+		}
+	}
 }

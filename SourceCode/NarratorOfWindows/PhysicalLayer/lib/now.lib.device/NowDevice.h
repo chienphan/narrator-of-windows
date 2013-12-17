@@ -11,6 +11,7 @@
 #include <WinBase.h>
 
 #include <list>
+#include <vector>
 #include <string>
 
 #include <tchar.h>
@@ -31,8 +32,9 @@ public:
 	static long getCurrentProcessId();
 	static string getCurrentDateTime();
 	static string getCurrentDirectory();
-	static list<string>* getAllFilesInDirectory(const string& strDirectory, const string& strExtension);
+	static vector<string>* getAllFilesInDirectory(const string& strDirectory, const string& strExtension);
 	static void sleep(int milisecond);
+	static string getEnvironmentVariable(const string& strVariable);
 };
 
 #endif
