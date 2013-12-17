@@ -46,10 +46,6 @@ NOW_RESULT NowCommunication::getElementAtPoint( POINT point, string& strSignatur
 		strControlType = NowStringProcessor::StringToStlString(mstrControlType);
 	}
 
-	//NowLogger::getInstance()->LogAString(strSignatureControl);
-	//NowLogger::getInstance()->LogAString(strControlType);
-
-	//NowLogger::getInstance()->LogAString("[NowCommunication::getElementAtPoint] END");
 	return nResult;
 }
 

@@ -43,9 +43,9 @@ std::string NowDevice::getCurrentDirectory()
 	return string(cCurrentPath);
 }
 
-list<string>* NowDevice::getAllFilesInDirectory(const string& strDirectory, const string& strExtension )
+vector<string>* NowDevice::getAllFilesInDirectory(const string& strDirectory, const string& strExtension )
 {
-	list<string>* lstReturn = new list<string>();
+	vector<string>* lstReturn = new vector<string>();
 
 	WIN32_FIND_DATA ffd;
 	LARGE_INTEGER filesize;
@@ -138,4 +138,15 @@ list<string>* NowDevice::getAllFilesInDirectory(const string& strDirectory, cons
 void NowDevice::sleep( int milisecond )
 {
 	sleep(milisecond);
+}
+
+std::string NowDevice::getEnvironmentVariable( const string& strVariable )
+{
+	char* pPath = NULL;
+	pPath = getenv (strVariable.c_str());
+	if (pPath != NULL)
+	{
+		return string(pPath);
+	}
+	return "";
 }
