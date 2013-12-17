@@ -1,7 +1,0 @@
-F:\UIAutomation\UIAutomationProject\UIACommonLib\bin\x86\Debug\UIACommonLib.dll
-F:\UIAutomation\UIAutomationProject\UIACommonLib\bin\x86\Debug\UIACommonLib.pdb
-F:\UIAutomation\UIAutomationProject\bin\Win32\Debug\UIACommonLib.dll
-F:\UIAutomation\UIAutomationProject\bin\Win32\Debug\UIACommonLib.pdb
-F:\UIAutomation\UIAutomationProject\UIACommonLib\obj\x86\Debug\ResolveAssemblyReference.cache
-F:\UIAutomation\UIAutomationProject\UIACommonLib\obj\x86\Debug\UIACommonLib.dll
-F:\UIAutomation\UIAutomationProject\UIACommonLib\obj\x86\Debug\UIACommonLib.pdb
