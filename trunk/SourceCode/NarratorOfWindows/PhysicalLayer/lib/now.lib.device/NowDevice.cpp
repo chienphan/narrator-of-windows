@@ -137,7 +137,7 @@ vector<string>* NowDevice::getAllFilesInDirectory(const string& strDirectory, co
 
 void NowDevice::sleep( int milisecond )
 {
-	sleep(milisecond);
+	Sleep(milisecond);
 }
 
 std::string NowDevice::getEnvironmentVariable( const string& strVariable )

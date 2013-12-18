@@ -36,7 +36,7 @@ int main( void )
 		}
 
 		//TODO: check to place this Sleep method here???
-		//NowDevice::sleep(100);
+		NowDevice::sleep(50);
 	}
 
 	system("pause");
