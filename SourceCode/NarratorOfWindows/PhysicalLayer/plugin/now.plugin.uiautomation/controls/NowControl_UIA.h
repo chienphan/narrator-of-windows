@@ -4,8 +4,7 @@
 #include "NowDefine.h"
 #include "INowControl.h"
 
-class NowControl_UIA :
-	public INowControl
+class NowControl_UIA : public INowControl
 {
 private:
 
@@ -33,6 +32,8 @@ public:
 	virtual NOW_RESULT getSignature( string& strSignature );
 
 	virtual NOW_RESULT getNowClass( string& strNowClass );
+
+	virtual NOW_RESULT getUIProperty( const string& strPropName, string& strValue );
 
 };
 
