@@ -76,9 +76,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NowUIACommunication.cs" />
+    <Compile Include="NowUIALogger.cs" />
     <Compile Include="NowUIAService.cs" />
     <Compile Include="NowUIAStorage.cs" />
     <Compile Include="NowUIADefine.cs" />
+    <Compile Include="NowUIAUtilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

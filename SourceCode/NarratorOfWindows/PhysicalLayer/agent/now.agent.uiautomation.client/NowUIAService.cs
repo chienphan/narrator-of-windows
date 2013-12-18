@@ -1,7 +1,6 @@
-﻿using System.Windows.Automation;
-using System.Windows;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Windows.Automation;
 
 namespace now.agent.uiautomation.client
 {
