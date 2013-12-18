@@ -49,20 +49,21 @@ NOW_RESULT NowCommunication::getElementAtPoint( POINT point, string& strSignatur
 	return nResult;
 }
 
-NOW_RESULT NowCommunication::getHelpText( const string& strSignature, wstring& wstrHelpText )
+NOW_RESULT NowCommunication::getUIProperty(const string& strSignature, const string& strPropName , wstring& wstrValue)
 {
 	//NowLogger::getInstance()->LogAString("[NowCommunication::getHelpText] - BEGIN");
 	int nResult = NOW_FALSE;
 	String^ mstrSignature = NowStringProcessor::StlStringToString(strSignature);
-	String^ mstrHelpText = "";
+	String^ mstrPropName = NowStringProcessor::StlStringToString(strPropName);
+	String^ mstrValue = "";
 
-	nResult = NowUIACommunication::GetInstance()->GetHelpTextProperty(mstrSignature, mstrHelpText);
+	nResult = NowUIACommunication::GetInstance()->GetUIProperty(mstrSignature, mstrPropName, mstrValue);
 	//NowLogger::getInstance()->LogAString(strSignature);
 	if (NOW_SUCCEED(nResult))
 	{
 		//NowLogger::getInstance()->LogAString("[NowCommunication::getHelpText] OK!");
-		wstrHelpText = NowStringProcessor::StringToStlWString(mstrHelpText);
-		//NowLogger::getInstance()->LogWString(wstrHelpText);
+		wstrValue = NowStringProcessor::StringToStlWString(mstrValue);
+		//NowLogger::getInstance()->LogWString(wstrValue);
 	}
 	//NowLogger::getInstance()->LogAString("[NowCommunication::getHelpText] - END");
 	return nResult;

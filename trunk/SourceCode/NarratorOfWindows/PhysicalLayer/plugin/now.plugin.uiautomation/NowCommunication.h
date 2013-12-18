@@ -13,7 +13,7 @@ public:
 	~NowCommunication(void);
 
 	NOW_RESULT getElementAtPoint(POINT point, string& strSignatureControl, string& strControlType);
-	NOW_RESULT getHelpText(const string& strSignature, wstring& wstrHelpText);
+	NOW_RESULT getUIProperty(const string& strSignature, const string& strPropName , wstring& wstrValue);
 };
 
 #endif

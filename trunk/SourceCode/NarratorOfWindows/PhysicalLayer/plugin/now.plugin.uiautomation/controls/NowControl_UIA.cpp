@@ -29,15 +29,8 @@ NOW_RESULT NowControl_UIA::getCaption( wstring& wstrCaption )
 
 NOW_RESULT NowControl_UIA::getHelpText( wstring& wstrHelpText )
 {
-	//NowLogger::getInstance()->LogAString("[NowControl_UIA::getHelpText] BEGIN");
 	int nResult = NOW_FALSE;
-	nResult = NowCommunication::getInstance()->getHelpText(m_strSignature, wstrHelpText);
-	/*if (NOW_SUCCEED(nResult))
-	{
-		NowLogger::getInstance()->LogWString(wstrHelpText);
-	}
-	*/
-	//NowLogger::getInstance()->LogAString("[NowControl_UIA::getHelpText] END");
+	nResult = NowCommunication::getInstance()->getUIProperty(m_strSignature, NOW_PROP_HELP_TEXT, wstrHelpText);
 	return nResult;
 }
 
@@ -72,4 +65,9 @@ NOW_RESULT NowControl_UIA::getNowClass( string& strNowClass )
 	//NowLogger::getInstance()->LogAString("[NowControl_UIA::getNowClass]");
 	strNowClass = string(NOW_CONTROL);
 	return NOW_OK;
+}
+
+NOW_RESULT NowControl_UIA::getUIProperty( const string& strPropName, string& strValue )
+{
+	throw std::exception("The method or operation is not implemented.");
 }
