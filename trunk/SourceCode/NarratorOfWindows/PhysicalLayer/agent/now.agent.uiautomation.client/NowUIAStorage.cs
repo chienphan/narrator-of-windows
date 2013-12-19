@@ -28,6 +28,11 @@ namespace now.agent.uiautomation.client
             return m_instance;
         }
 
+        /// <summary>
+        /// Add Automation Element to cache
+        /// </summary>
+        /// <param name="strSignature">Signature of Automation Element</param>
+        /// <param name="currentElement">Automation Element</param>
         public void AddToCache(String strSignature, AutomationElement currentElement)
         {
             //int nResult = NowUIADefine.NOW_FALSE;
@@ -44,6 +49,9 @@ namespace now.agent.uiautomation.client
             m_dictionary.Add(strSignature, currentElement);
         }
 
+        /// <summary>
+        /// Clear the cache of Automation Element
+        /// </summary>
         public void ClearCache()
         {
             if (m_dictionary != null)
@@ -52,6 +60,11 @@ namespace now.agent.uiautomation.client
             }
         }
 
+        /// <summary>
+        /// Get Automation Element form cache
+        /// </summary>
+        /// <param name="strSignature">signature of Automation Element</param>
+        /// <returns>Automation Element, null if false</returns>
         public AutomationElement GetUIObjectFormCache(String strSignature)
         {
             AutomationElement returnElement = null;

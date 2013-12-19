@@ -59,11 +59,22 @@ namespace now.agent.uiautomation.client
             m_propMap.Add(NowUIAProperty.NOW_PROP_RUNTIME_ID, AutomationElement.RuntimeIdProperty);
         }
 
+        /// <summary>
+        /// Get signature of UI Automation element
+        /// </summary>
+        /// <param name="runtimeElement">Automation Element</param>
+        /// <returns>the signature</returns>
         public String GetSignature(AutomationElement runtimeElement)
         {
             return String.Format("{0}", runtimeElement.GetHashCode());
         }
 
+        /// <summary>
+        /// Get UI Automation Property
+        /// </summary>
+        /// <param name="runtimeElement">Automation Element</param>
+        /// <param name="strPropName">name of Property</param>
+        /// <returns>the value</returns>
         public String GetUIProperty(AutomationElement runtimeElement, String strPropName)
         {
             String strResult = String.Empty;
