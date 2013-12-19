@@ -8,7 +8,7 @@ namespace now.agent.uiautomation.client
         public static readonly int NOW_FALSE    =   -1;
     }
 
-    public class NowUIProperty
+    public class NowUIAProperty
     {
         public static readonly String NOW_PROP_ACCELERATOR_KEY      = "AcceleratorKeyProperty";
         public static readonly String NOW_PROP_ACCESS_KEY           = "AccessKeyProperty";
@@ -37,5 +37,24 @@ namespace now.agent.uiautomation.client
         public static readonly String NOW_PROP_ORIENTATION          = "OrientationProperty";
         public static readonly String NOW_PROP_PROCESS_ID           = "ProcessIdProperty";
         public static readonly String NOW_PROP_RUNTIME_ID           = "RuntimeIdProperty";
+    }
+
+    public class NowUIAEnvironmentVariable
+    {
+        public static readonly String NOW_DEBUG_DIRECTORY   = "NOW_DEBUG_DIRECTORY";
+        public static readonly String NOW_DEBUG_MODE        = "NOW_DEBUG_MODE";
+    }
+
+    public class NowLogMode
+    {
+        public static readonly int LOG_NONE = -1;
+        public static readonly int LOG_DEBUG_VIEW = 0;
+        public static readonly int LOG_FILE = 1;
+    }
+
+    public class NowEnvVariable
+    {
+        public static readonly String ENV_VARIABLE_LOG_ENABLE = "1";
+        public static readonly String ENV_VARIABLE_LOG_DISABLE = "0";
     }
 }
