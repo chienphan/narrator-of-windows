@@ -33,7 +33,7 @@ public:
 
 	virtual NOW_RESULT getNowClass( string& strNowClass );
 
-	virtual NOW_RESULT getUIProperty( const string& strPropName, string& strValue );
+	virtual NOW_RESULT getUIProperty( const string& strPropName, wstring& strValue );
 
 };
 

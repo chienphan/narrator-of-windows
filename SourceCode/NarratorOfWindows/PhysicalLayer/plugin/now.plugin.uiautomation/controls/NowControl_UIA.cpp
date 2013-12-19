@@ -67,7 +67,9 @@ NOW_RESULT NowControl_UIA::getNowClass( string& strNowClass )
 	return NOW_OK;
 }
 
-NOW_RESULT NowControl_UIA::getUIProperty( const string& strPropName, string& strValue )
+NOW_RESULT NowControl_UIA::getUIProperty( const string& strPropName, wstring& strValue )
 {
-	throw std::exception("The method or operation is not implemented.");
+	int nResult = NOW_FALSE;
+	nResult = NowCommunication::getInstance()->getUIProperty(m_strSignature, strPropName, strValue);
+	return nResult;
 }

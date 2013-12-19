@@ -2,12 +2,18 @@
 
 namespace now.agent.uiautomation.client
 {
+    /// <summary>
+    /// Define common constant
+    /// </summary>
     public class NowUIADefine
     {
         public static readonly int NOW_OK       =   0;
         public static readonly int NOW_FALSE    =   -1;
     }
 
+    /// <summary>
+    /// Define name of UI Automation property
+    /// </summary>
     public class NowUIAProperty
     {
         public static readonly String NOW_PROP_ACCELERATOR_KEY      = "AcceleratorKeyProperty";
@@ -39,12 +45,18 @@ namespace now.agent.uiautomation.client
         public static readonly String NOW_PROP_RUNTIME_ID           = "RuntimeIdProperty";
     }
 
+    /// <summary>
+    /// define environment variable
+    /// </summary>
     public class NowUIAEnvironmentVariable
     {
         public static readonly String NOW_DEBUG_DIRECTORY   = "NOW_DEBUG_DIRECTORY";
         public static readonly String NOW_DEBUG_MODE        = "NOW_DEBUG_MODE";
     }
 
+    /// <summary>
+    /// define log mode
+    /// </summary>
     public class NowLogMode
     {
         public static readonly int LOG_NONE = -1;
@@ -52,6 +64,9 @@ namespace now.agent.uiautomation.client
         public static readonly int LOG_FILE = 1;
     }
 
+    /// <summary>
+    /// define enable log mode
+    /// </summary>
     public class NowEnvVariable
     {
         public static readonly String ENV_VARIABLE_LOG_ENABLE = "1";

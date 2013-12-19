@@ -57,22 +57,14 @@ namespace now.agent.uiautomation.client
 
             return nResult;
         }
-
         
-        //public int GetHelpTextProperty(String strSignatureControl, ref String strHelpText)
-        //{
-        //    int nResult = NowUIADefine.NOW_FALSE;
-            
-        //    AutomationElement runtimeElement = NowUIAStorage.GetInstance().GetUIObjectFormCache(strSignatureControl);
-        //    if (runtimeElement != null)
-        //    {
-        //        strHelpText = runtimeElement.Current.HelpText;
-        //        nResult = NowUIADefine.NOW_OK;
-        //    }
-
-        //    return nResult;
-        //}
-
+        /// <summary>
+        /// Get UI Automation Property
+        /// </summary>
+        /// <param name="strSignatureControl">signature of Automation Element</param>
+        /// <param name="strPropName">Name of property</param>
+        /// <param name="strValue">return value</param>
+        /// <returns>NOW_OK if succeed, NOW_FALSE if false</returns>
         public int GetUIProperty(String strSignatureControl, String strPropName, ref String strValue)
         {
             int nResult = NowUIADefine.NOW_FALSE;
