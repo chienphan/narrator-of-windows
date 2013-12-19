@@ -30,33 +30,33 @@ namespace now.agent.uiautomation.client
         private void InitPropertiesMap()
         {
             m_propMap = new Dictionary<String, Object>();
-            m_propMap.Add(NowUIProperty.NOW_PROP_ACCELERATOR_KEY, AutomationElement.AcceleratorKeyProperty);
-            m_propMap.Add(NowUIProperty.NOW_PROP_ACCESS_KEY, AutomationElement.AccessKeyProperty);
-            m_propMap.Add(NowUIProperty.NOW_PROP_AUTOMATION_ID, AutomationElement.AutomationIdProperty);
-            m_propMap.Add(NowUIProperty.NOW_PROP_BOUNDING_RECTANGLE, AutomationElement.BoundingRectangleProperty);
-            m_propMap.Add(NowUIProperty.NOW_PROP_CLASS_NAME, AutomationElement.ClassNameProperty);
-            m_propMap.Add(NowUIProperty.NOW_PROP_CLICKABLE_POINT, AutomationElement.ClickablePointProperty);
-            m_propMap.Add(NowUIProperty.NOW_PROP_CONTROL_TYPE, AutomationElement.ControlTypeProperty);
-            m_propMap.Add(NowUIProperty.NOW_PROP_CULTURE, AutomationElement.CultureProperty);
-            m_propMap.Add(NowUIProperty.NOW_PROP_FRAMEWORK_ID, AutomationElement.FrameworkIdProperty);
-            m_propMap.Add(NowUIProperty.NOW_PROP_HAS_KEYBOARD_FOCUS, AutomationElement.HasKeyboardFocusProperty);
-            m_propMap.Add(NowUIProperty.NOW_PROP_HELP_TEXT, AutomationElement.HelpTextProperty);
-            m_propMap.Add(NowUIProperty.NOW_PROP_IS_CONTENT_ELEMENT, AutomationElement.IsContentElementProperty);
-            m_propMap.Add(NowUIProperty.NOW_PROP_IS_CONTROL_ELEMENT, AutomationElement.IsControlElementProperty);
-            m_propMap.Add(NowUIProperty.NOW_PROP_IS_ENABLED, AutomationElement.IsEnabledProperty);
-            m_propMap.Add(NowUIProperty.NOW_PROP_IS_KEYBOARD_FOCUSABLE, AutomationElement.IsKeyboardFocusableProperty);
-            m_propMap.Add(NowUIProperty.NOW_PROP_IS_OFF_SCREEN, AutomationElement.IsOffscreenProperty);
-            m_propMap.Add(NowUIProperty.NOW_PROP_IS_PASSWORD, AutomationElement.IsPasswordProperty);
-            m_propMap.Add(NowUIProperty.NOW_PROP_IS_REQUIRED_FOR_FORM, AutomationElement.IsRequiredForFormProperty);
-            m_propMap.Add(NowUIProperty.NOW_PROP_ITEM_STATUS, AutomationElement.ItemStatusProperty);
-            m_propMap.Add(NowUIProperty.NOW_PROP_ITEM_TYPE, AutomationElement.ItemTypeProperty);
-            m_propMap.Add(NowUIProperty.NOW_PROP_LABELED_BY, AutomationElement.LabeledByProperty);
-            m_propMap.Add(NowUIProperty.NOW_PROP_LOCALIZED_CONTROL_TYPE, AutomationElement.LocalizedControlTypeProperty);
-            m_propMap.Add(NowUIProperty.NOW_PROP_NAME, AutomationElement.NameProperty);
-            m_propMap.Add(NowUIProperty.NOW_PROP_NATIVE_WINDOW_HANDLE, AutomationElement.NativeWindowHandleProperty);
-            m_propMap.Add(NowUIProperty.NOW_PROP_ORIENTATION, AutomationElement.OrientationProperty);
-            m_propMap.Add(NowUIProperty.NOW_PROP_PROCESS_ID, AutomationElement.ProcessIdProperty);
-            m_propMap.Add(NowUIProperty.NOW_PROP_RUNTIME_ID, AutomationElement.RuntimeIdProperty);
+            m_propMap.Add(NowUIAProperty.NOW_PROP_ACCELERATOR_KEY, AutomationElement.AcceleratorKeyProperty);
+            m_propMap.Add(NowUIAProperty.NOW_PROP_ACCESS_KEY, AutomationElement.AccessKeyProperty);
+            m_propMap.Add(NowUIAProperty.NOW_PROP_AUTOMATION_ID, AutomationElement.AutomationIdProperty);
+            m_propMap.Add(NowUIAProperty.NOW_PROP_BOUNDING_RECTANGLE, AutomationElement.BoundingRectangleProperty);
+            m_propMap.Add(NowUIAProperty.NOW_PROP_CLASS_NAME, AutomationElement.ClassNameProperty);
+            m_propMap.Add(NowUIAProperty.NOW_PROP_CLICKABLE_POINT, AutomationElement.ClickablePointProperty);
+            m_propMap.Add(NowUIAProperty.NOW_PROP_CONTROL_TYPE, AutomationElement.ControlTypeProperty);
+            m_propMap.Add(NowUIAProperty.NOW_PROP_CULTURE, AutomationElement.CultureProperty);
+            m_propMap.Add(NowUIAProperty.NOW_PROP_FRAMEWORK_ID, AutomationElement.FrameworkIdProperty);
+            m_propMap.Add(NowUIAProperty.NOW_PROP_HAS_KEYBOARD_FOCUS, AutomationElement.HasKeyboardFocusProperty);
+            m_propMap.Add(NowUIAProperty.NOW_PROP_HELP_TEXT, AutomationElement.HelpTextProperty);
+            m_propMap.Add(NowUIAProperty.NOW_PROP_IS_CONTENT_ELEMENT, AutomationElement.IsContentElementProperty);
+            m_propMap.Add(NowUIAProperty.NOW_PROP_IS_CONTROL_ELEMENT, AutomationElement.IsControlElementProperty);
+            m_propMap.Add(NowUIAProperty.NOW_PROP_IS_ENABLED, AutomationElement.IsEnabledProperty);
+            m_propMap.Add(NowUIAProperty.NOW_PROP_IS_KEYBOARD_FOCUSABLE, AutomationElement.IsKeyboardFocusableProperty);
+            m_propMap.Add(NowUIAProperty.NOW_PROP_IS_OFF_SCREEN, AutomationElement.IsOffscreenProperty);
+            m_propMap.Add(NowUIAProperty.NOW_PROP_IS_PASSWORD, AutomationElement.IsPasswordProperty);
+            m_propMap.Add(NowUIAProperty.NOW_PROP_IS_REQUIRED_FOR_FORM, AutomationElement.IsRequiredForFormProperty);
+            m_propMap.Add(NowUIAProperty.NOW_PROP_ITEM_STATUS, AutomationElement.ItemStatusProperty);
+            m_propMap.Add(NowUIAProperty.NOW_PROP_ITEM_TYPE, AutomationElement.ItemTypeProperty);
+            m_propMap.Add(NowUIAProperty.NOW_PROP_LABELED_BY, AutomationElement.LabeledByProperty);
+            m_propMap.Add(NowUIAProperty.NOW_PROP_LOCALIZED_CONTROL_TYPE, AutomationElement.LocalizedControlTypeProperty);
+            m_propMap.Add(NowUIAProperty.NOW_PROP_NAME, AutomationElement.NameProperty);
+            m_propMap.Add(NowUIAProperty.NOW_PROP_NATIVE_WINDOW_HANDLE, AutomationElement.NativeWindowHandleProperty);
+            m_propMap.Add(NowUIAProperty.NOW_PROP_ORIENTATION, AutomationElement.OrientationProperty);
+            m_propMap.Add(NowUIAProperty.NOW_PROP_PROCESS_ID, AutomationElement.ProcessIdProperty);
+            m_propMap.Add(NowUIAProperty.NOW_PROP_RUNTIME_ID, AutomationElement.RuntimeIdProperty);
         }
 
         public String GetSignature(AutomationElement runtimeElement)
@@ -77,6 +77,7 @@ namespace now.agent.uiautomation.client
                         if (objValue != null)
                         {
                             strResult = objValue.ToString();
+                            NowUIALogger.GetInstance().LogError("[NowUIAService][GetUIProperty] [{0}]", strResult);
                         }
                     }
                     catch (System.Exception ex)
