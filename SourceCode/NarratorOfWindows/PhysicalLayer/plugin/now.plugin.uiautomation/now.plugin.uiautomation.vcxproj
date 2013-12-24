@@ -65,9 +65,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\plugin\</OutDir>
+    <LinkIncremental>
+    </LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\plugin\</OutDir>
+    <LinkIncremental>
+    </LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\plugin\</OutDir>
@@ -87,7 +91,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.lib.logger.lib;$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.core.lib</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.lib.logger.lib;$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.core.lib;$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.agent.uiautomation.client.netmodule</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -102,7 +106,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.lib.logger.lib;$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.core.lib</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.lib.logger.lib;$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.core.lib;$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.agent.uiautomation.client.netmodule</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

@@ -88,11 +88,11 @@ namespace now.agent.uiautomation.client
                         if (objValue != null)
                         {
                             strResult = objValue.ToString();
-                            NowUIALogger.GetInstance().LogError("[NowUIAService][GetUIProperty] [{0}]", strResult);
                         }
                     }
                     catch (System.Exception ex)
                     {
+                        NowUIALogger.GetInstance().LogError("[NowUIAService][GetUIProperty] Exception [{0}]", ex.Message);
                         return String.Empty;
                     }
                 }

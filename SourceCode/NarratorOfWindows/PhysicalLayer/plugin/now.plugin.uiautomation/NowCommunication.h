@@ -7,10 +7,10 @@ class NowCommunication
 {
 private:
 	static NowCommunication* m_instance;
-	NowCommunication(void);
+	NowCommunication();
 public:
 	static NowCommunication* getInstance();
-	~NowCommunication(void);
+	~NowCommunication();
 
 	NOW_RESULT getElementAtPoint(POINT point, string& strSignatureControl, string& strControlType);
 	NOW_RESULT getUIProperty(const string& strSignature, const string& strPropName , wstring& wstrValue);

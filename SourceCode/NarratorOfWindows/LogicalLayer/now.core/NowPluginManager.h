@@ -12,14 +12,19 @@ class DllExport NowPluginManager
 {
 private:
 	string m_strSignature;
+	static NowPluginManager* m_instance;
+	static NowListPlugins m_lstPlugins;
 
-public:
 	NowPluginManager(void);
+
+	static NowListPlugins loadPlugins();
+public:
+	static NowPluginManager* getInstance();
 	~NowPluginManager(void);
 	
-	vector<INowPlugin*>* LoadPlugins();
-
 	bool isChangedControl(const string& strSignature);
+
+	NowListPlugins getListPlugins();
 };
 
 #endif//_NOW_PLUGIN_MANAGER_H_
