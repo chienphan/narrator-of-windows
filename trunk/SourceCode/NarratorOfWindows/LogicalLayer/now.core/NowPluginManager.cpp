@@ -4,19 +4,31 @@
 #include "NowDevice.h"
 #include "NowLogger.h"
 
+NowPluginManager* NowPluginManager::m_instance = NULL;
+NowListPlugins NowPluginManager::m_lstPlugins = NULL;
+
 NowPluginManager::NowPluginManager(void)
 {
 	m_strSignature = "";
+	m_lstPlugins = loadPlugins();
 }
 
 NowPluginManager::~NowPluginManager(void)
 {
 }
 
-vector<INowPlugin*>* NowPluginManager::LoadPlugins()
+NowPluginManager* NowPluginManager::getInstance()
 {
-	//TODO:need to implement to load many plug-ins
-	vector<INowPlugin*>* lstPlugin = new vector<INowPlugin*>();
+	if (!m_instance)
+	{
+		m_instance = new NowPluginManager();
+	}
+	return m_instance;
+}
+
+NowListPlugins NowPluginManager::loadPlugins()
+{
+	NowListPlugins lstPlugin = new vector<INowPlugin*>();
 	vector<string>* lstPluginFileName = NULL;
 
 	string strDebugMode = "";
@@ -42,27 +54,23 @@ vector<INowPlugin*>* NowPluginManager::LoadPlugins()
 	for (std::vector<string>::iterator it = lstPluginFileName->begin() ; it != lstPluginFileName->end(); ++it)
 	{
 		pluginFullPath = strDebugDir + "\\plugin\\" + *it;
-		OutputDebugStringA(pluginFullPath.c_str());
+		NowLogger::getInstance()->LogAString(pluginFullPath);
 		hinstLib = LoadLibrary(pluginFullPath.c_str()); 
 
 		// If the handle is valid, try to get the function address.
-
 		if (hinstLib != NULL) 
 		{ 
-			OutputDebugStringA("Get Proc Address");
 			ProcAdd = (NOW_PROC) GetProcAddress(hinstLib, "initialize"); 
-
 			// If the function address is valid, call the function.
 
 			if (NULL != ProcAdd) 
 			{
-				OutputDebugStringA("Call Proc Address");
 				fRunTimeLinkSuccess = TRUE;
 				INowPlugin* plugin = (ProcAdd) (); 
 
 				if (plugin != 0)
 				{
-					OutputDebugStringA("push_back!!!");
+					NowLogger::getInstance()->LogAString("Push to list!");
 					lstPlugin->push_back(plugin);
 				}
 			}
@@ -73,7 +81,7 @@ vector<INowPlugin*>* NowPluginManager::LoadPlugins()
 		// If unable to call the DLL function, use an alternative.
 		if (! fRunTimeLinkSuccess) 
 		{
-			OutputDebugStringA("Message printed from executable");
+			NowLogger::getInstance()->LogAString("Unable to call the DLL function");
 		}
 	}
 
@@ -89,4 +97,9 @@ bool NowPluginManager::isChangedControl( const string& strSignature )
 		return true;
 	}
 	return false;
+}
+
+NowListPlugins NowPluginManager::getListPlugins()
+{
+	return m_lstPlugins;
 }

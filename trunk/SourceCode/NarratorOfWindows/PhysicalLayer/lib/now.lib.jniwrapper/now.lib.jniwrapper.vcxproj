@@ -18,6 +18,12 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="now_lib_jni_NowJNICaller.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="now_lib_jni_NowJNICaller.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{4C9CA955-FC68-4DB9-BF53-733E79E3B6BE}</ProjectGuid>
     <RootNamespace>nowlibjniwrapper</RootNamespace>
@@ -63,30 +69,34 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\</OutDir>
+    <IncludePath>$(JAVA_HOME)\include\;$(JAVA_HOME)\include\win32\;$(JAVA_HOME)\include\win32\bridge\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\</OutDir>
+    <IncludePath>$(JAVA_HOME)\include\;$(JAVA_HOME)\include\win32\;$(JAVA_HOME)\include\win32\bridge\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(SolutionDir)LogicalLayer\now.core\;$(SolutionDir)LogicalLayer\now.core\define\;$(SolutionDir)LogicalLayer\now.core\interface\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)LogicalLayer\now.core\;$(SolutionDir)LogicalLayer\now.core\define\;$(SolutionDir)LogicalLayer\now.core\interface\;$(SolutionDir)PhysicalLayer\lib\now.lib.logger</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.core.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.core.lib;$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.lib.logger.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(SolutionDir)LogicalLayer\now.core\;$(SolutionDir)LogicalLayer\now.core\define\;$(SolutionDir)LogicalLayer\now.core\interface\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)LogicalLayer\now.core\;$(SolutionDir)LogicalLayer\now.core\define\;$(SolutionDir)LogicalLayer\now.core\interface\;$(SolutionDir)PhysicalLayer\lib\now.lib.logger</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.core.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.core.lib;$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.lib.logger.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -115,12 +125,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="NowJNIWrapperObject.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="NowJNIWrapperObject.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

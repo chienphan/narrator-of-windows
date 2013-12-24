@@ -18,13 +18,10 @@ namespace now.agent.uiautomation.client
         private int m_logMode = NowLogMode.LOG_NONE;
 
         private String m_logFileFullPath = "";
-
-        //private Dictionary<int, DelegateLogger> m_delegateLoggerMethod = null;
-
+        
         private NowUIALogger()
         {
             InitLogConfig();
-            //InitTraceInstance();
         }
 
         /// <summary>
@@ -39,7 +36,6 @@ namespace now.agent.uiautomation.client
             }
             if (strLogMode.Equals(NowEnvVariable.ENV_VARIABLE_LOG_ENABLE))
             {
-                //NowOutPut.OutputDebugString("[InitLogConfig] ENV_VARIABLE_LOG_ENABLE");
                 InitLogFile();
                 InitTraceInstance();
             }        
@@ -51,7 +47,6 @@ namespace now.agent.uiautomation.client
         /// <returns></returns>
         private void InitLogFile()
         {
-            NowOutPut.OutputDebugString("[InitLogFile] BEGIN");
             m_logMode = NowLogMode.LOG_NONE;
             String strLogConfigFilePath = String.Empty;
 
@@ -93,7 +88,6 @@ namespace now.agent.uiautomation.client
                                     {
                                         m_logMode = NowLogMode.LOG_NONE;
                                     }
-                                    //NowOutPut.OutputDebugString(m_logFileFullPath);
                                 }
                             }
                         }//end-if
@@ -101,7 +95,6 @@ namespace now.agent.uiautomation.client
                     file.Close();
                 }//end-if
             }//end-if
-            //NowOutPut.OutputDebugString("[InitLogFile] END");
         }//end-method
 
         /// <summary>
@@ -109,7 +102,6 @@ namespace now.agent.uiautomation.client
         /// </summary>
         private void InitTraceInstance()
         {
-            //NowOutPut.OutputDebugString("[InitTraceInstance] BEGIN");
             if (Trace.Listeners.Count > 0)
             {
                 Trace.Listeners.Clear();
@@ -123,7 +115,6 @@ namespace now.agent.uiautomation.client
                 Trace.Listeners.Add(new TextWriterTraceListener(m_logFileFullPath));
                 Trace.AutoFlush = true;
             }
-            //NowOutPut.OutputDebugString("[InitTraceInstance] END");
         }//end-method
 
         public static NowUIALogger GetInstance()

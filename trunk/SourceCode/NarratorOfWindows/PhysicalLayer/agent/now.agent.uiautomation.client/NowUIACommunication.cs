@@ -52,7 +52,7 @@ namespace now.agent.uiautomation.client
             }
             catch (System.Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(String.Format("[NowAutomationElement][GetElementAtPoint] Exception[{0}]", ex.Message));
+                NowUIALogger.GetInstance().LogError("[NowUIACommunication][GetElementAtPoint] Exception [{0}]", ex.Message);
             }
 
             return nResult;

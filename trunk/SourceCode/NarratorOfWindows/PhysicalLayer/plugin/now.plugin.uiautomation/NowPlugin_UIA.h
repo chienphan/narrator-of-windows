@@ -4,7 +4,7 @@
 #include "NowDefine.h"
 #include "INowPlugin.h"
 
-using namespace System::Windows::Automation;
+//using namespace System::Windows::Automation;
 
 class NowPlugin_UIA : INowPlugin
 {

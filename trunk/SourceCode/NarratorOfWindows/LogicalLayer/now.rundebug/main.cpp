@@ -7,16 +7,16 @@
 #include "NowControl_UIA.h"
 #include "NowButton_UIA.h"
 
-NowPluginManager* pluginManager = NULL;
-vector<INowPlugin*>* lstPlugin = NULL;
+//NowPluginManager* pluginManager = NULL;
+NowListPlugins lstPlugin = NULL;
 
 void runDebug(INowPlugin* plugin, POINT currentPoint, INowControl*& pControl, string& strSignature);
 
 int main( void ) 
 { 
 	
-	pluginManager = new NowPluginManager();
-	lstPlugin =  pluginManager->LoadPlugins();
+	//pluginManager = new NowPluginManager();
+	lstPlugin =  NowPluginManager::getInstance()->getListPlugins();
 
 	POINT currentPoint;
 	INowControl* pControl = NULL;
@@ -41,7 +41,7 @@ int main( void )
 
 	system("pause");
 
-	delete pluginManager;
+	//delete pluginManager;
 	return 0;
 }
 
@@ -53,7 +53,7 @@ void runDebug(INowPlugin* plugin, POINT currentPoint, INowControl*& pControl, st
 		if (pControl != NULL)
 		{
 			pControl->getSignature(strSignature);
-			if (pluginManager->isChangedControl(strSignature))
+			if (NowPluginManager::getInstance()->isChangedControl(strSignature))
 			{
 				wstring wstrHelpText = L"";
 				int nOK = pControl->getHelpText(wstrHelpText);

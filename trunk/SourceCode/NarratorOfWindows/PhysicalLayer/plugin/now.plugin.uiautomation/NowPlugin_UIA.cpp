@@ -36,9 +36,7 @@ NOW_RESULT NowPlugin_UIA::getElementAtPoint( POINT point, INowControl*& pControl
 
 	string strControlType = "";
 	string strSignatureControl = "";
-
 	nResult = NowCommunication::getInstance()->getElementAtPoint(point, strSignatureControl, strControlType);
-	
 	if (NOW_SUCCEED(nResult))
 	{
 		//Check for change another control
