@@ -23,8 +23,9 @@ NOW_RESULT NowControl_UIA::getControlType( string& strControlType )
 
 NOW_RESULT NowControl_UIA::getCaption( wstring& wstrCaption )
 {
-	//NowLogger::getInstance()->LogAString("[NowControl_UIA::getCaption]");
-	return NOW_FALSE;
+	int nResult = NOW_FALSE;
+	nResult = NowCommunication::getInstance()->getUIProperty(m_strSignature, NOW_PROP_NAME, wstrCaption);
+	return nResult;
 }
 
 NOW_RESULT NowControl_UIA::getHelpText( wstring& wstrHelpText )

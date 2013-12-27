@@ -27,4 +27,4 @@ public:
 	NowListPlugins getListPlugins();
 };
 
-#endif//_NOW_PLUGIN_MANAGER_H_
+#endif//_NOW_PLUGIN_MANAGER_H_ 

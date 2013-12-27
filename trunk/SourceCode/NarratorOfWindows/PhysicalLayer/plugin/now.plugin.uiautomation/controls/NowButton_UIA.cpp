@@ -20,11 +20,11 @@ NOW_RESULT NowButton_UIA::getControlType( string& strControlType )
 	return NOW_OK;
 }
 
-NOW_RESULT NowButton_UIA::getCaption( wstring& wstrCaption )
-{
-	//NowLogger::getInstance()->LogAString("[NowButton_UIA::getCaption]");
-	return NOW_FALSE;
-}
+//NOW_RESULT NowButton_UIA::getCaption( wstring& wstrCaption )
+//{
+//	//NowLogger::getInstance()->LogAString("[NowButton_UIA::getCaption]");
+//	return NOW_FALSE;
+//}
 
 //NOW_RESULT NowButton_UIA::getHelpText( wstring& wstrHelpText )
 //{
