@@ -57,7 +57,6 @@ void runDebug(INowPlugin* plugin, POINT currentPoint, INowControl*& pControl, st
 			{
 				wstring wstrHelpText = L"";
 				int nOK = pControl->getHelpText(wstrHelpText);
-
 				if (NOW_SUCCEED(nOK))
 				{
 					if (!wstrHelpText.empty())
@@ -65,9 +64,21 @@ void runDebug(INowPlugin* plugin, POINT currentPoint, INowControl*& pControl, st
 						NowLogger::getInstance()->LogWString(wstrHelpText);
 					}
 				}
-				else
+
+				wstring wstrCaption = L"";
+				int nOK = pControl->getCaption(wstrCaption);
+				if (NOW_SUCCEED(nOK))
+				{
+					NowLogger::getInstance()->LogWString(wstrCaption);
+				}
+
+				/*else
 				{
 					NowLogger::getInstance()->LogAString("FALSE!");
+				}*/
+				if (!NOW_SUCCEED(nOK)) 
+				{
+					//LogAString("FALSE");
 				}
 			}
 		}
@@ -76,4 +87,4 @@ void runDebug(INowPlugin* plugin, POINT currentPoint, INowControl*& pControl, st
 			NowLogger::getInstance()->LogAString("Fail to get control");
 		}
 	}
-}
+} 
