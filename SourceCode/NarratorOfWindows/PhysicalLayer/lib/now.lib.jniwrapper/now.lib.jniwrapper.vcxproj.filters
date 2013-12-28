@@ -23,5 +23,8 @@
     <ClInclude Include="now_lib_jni_NowJNICaller.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="C:\Program Files\Java\jdk1.7.0_45\include\jni.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

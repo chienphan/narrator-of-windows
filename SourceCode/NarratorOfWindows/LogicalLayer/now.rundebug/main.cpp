@@ -56,6 +56,7 @@ void runDebug(INowPlugin* plugin, POINT currentPoint, INowControl*& pControl, st
 			if (NowPluginManager::getInstance()->isChangedControl(strSignature))
 			{
 				wstring wstrHelpText = L"";
+				//GetHelpText
 				int nOK = pControl->getHelpText(wstrHelpText);
 				if (NOW_SUCCEED(nOK))
 				{
@@ -65,8 +66,9 @@ void runDebug(INowPlugin* plugin, POINT currentPoint, INowControl*& pControl, st
 					}
 				}
 
+				//GetCaption
 				wstring wstrCaption = L"";
-				int nOK = pControl->getCaption(wstrCaption);
+				nOK = pControl->getCaption(wstrCaption);
 				if (NOW_SUCCEED(nOK))
 				{
 					NowLogger::getInstance()->LogWString(wstrCaption);
@@ -78,7 +80,7 @@ void runDebug(INowPlugin* plugin, POINT currentPoint, INowControl*& pControl, st
 				}*/
 				if (!NOW_SUCCEED(nOK)) 
 				{
-					//LogAString("FALSE");
+					NowLogger::getInstance()->LogAString("FALSE");
 				}
 			}
 		}
