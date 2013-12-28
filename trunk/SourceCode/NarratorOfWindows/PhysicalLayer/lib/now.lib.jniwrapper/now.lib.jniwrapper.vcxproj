@@ -22,6 +22,7 @@
     <ClCompile Include="now_lib_jni_NowJNICaller.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="C:\Program Files\Java\jdk1.7.0_45\include\jni.h" />
     <ClInclude Include="now_lib_jni_NowJNICaller.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -79,7 +80,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(SolutionDir)LogicalLayer\now.core\;$(SolutionDir)LogicalLayer\now.core\define\;$(SolutionDir)LogicalLayer\now.core\interface\;$(SolutionDir)PhysicalLayer\lib\now.lib.logger</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files\Java\jdk1.7.0_45\include\win32;C:\Program Files\Java\jdk1.7.0_45\include;$(SolutionDir)LogicalLayer\now.core\;$(SolutionDir)LogicalLayer\now.core\define\;$(SolutionDir)LogicalLayer\now.core\interface\;$(SolutionDir)PhysicalLayer\lib\now.lib.logger</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>

@@ -14,7 +14,7 @@ public:
 
 	virtual NOW_RESULT getControlType( string& strControlType );
 
-	virtual NOW_RESULT getCaption( wstring& wstrCaption );
+	//virtual NOW_RESULT getCaption( wstring& wstrCaption );
 
 	//virtual NOW_RESULT getHelpText( wstring& wstrHelpText );
 
