@@ -9,7 +9,6 @@ NowButton_UIA::NowButton_UIA(string strSignature, string strControlType) : NowCo
 	//m_strSignature = strSignature
 }
 
-
 NowButton_UIA::~NowButton_UIA(void)
 {
 }
