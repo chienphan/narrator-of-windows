@@ -19,7 +19,7 @@ public:
 	/*
 	* Get help text (tooltip) of control
 	*/
-	virtual NOW_RESULT getHelpText(wstring& wstrHelpText) = 0;
+	virtual NOW_RESULT getUIInformation(wstring& wstrHelpText) = 0;
 
 	/*
 	* Get parent of control

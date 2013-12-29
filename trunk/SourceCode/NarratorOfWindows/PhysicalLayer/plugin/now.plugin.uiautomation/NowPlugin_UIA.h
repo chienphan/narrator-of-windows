@@ -37,11 +37,11 @@ public:
 	
 	#pragma region Implement INowPlugin interface
 	
-	virtual string getPluginName();
+	virtual string		getPluginName();
 
-	virtual NOW_RESULT getElementAtPoint( POINT point, INowControl*& pControl );
+	virtual NOW_RESULT	getElementAtPoint( POINT point, INowControl*& pControl );
 
-	virtual NOW_RESULT clearCache();
+	virtual NOW_RESULT	clearCache();
 
 	#pragma endregion Implement INowPlugin interface
 };

@@ -9,11 +9,27 @@ extern "C" {
 #endif
 /*
  * Class:     now_lib_jni_NowJNICaller
- * Method:    getHelpText
+ * Method:    getControlSignatureUnderMouse
  * Signature: ()Ljava/lang/String;
  */
-JNIEXPORT jstring JNICALL Java_now_lib_jni_NowJNICaller_getHelpText
+JNIEXPORT jstring JNICALL Java_now_lib_jni_NowJNICaller_getControlSignatureUnderMouse
   (JNIEnv *, jobject);
+
+/*
+ * Class:     now_lib_jni_NowJNICaller
+ * Method:    getUIInformation
+ * Signature: (Ljava/lang/String;)Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_now_lib_jni_NowJNICaller_getUIInformation
+  (JNIEnv *, jobject, jstring);
+
+/*
+ * Class:     now_lib_jni_NowJNICaller
+ * Method:    getControlProperty
+ * Signature: (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_now_lib_jni_NowJNICaller_getControlProperty
+  (JNIEnv *, jobject, jstring, jstring);
 
 #ifdef __cplusplus
 }

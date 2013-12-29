@@ -28,11 +28,12 @@ NOW_RESULT NowButton_UIA::getCaption( wstring& wstrCaption )
 	return nResult;
 }
 
-//NOW_RESULT NowButton_UIA::getHelpText( wstring& wstrHelpText )
-//{
-//	NowLogger::getInstance()->LogAString("[NowButton_UIA::getHelpText]");
-//	return NOW_FALSE;
-//}
+NOW_RESULT NowButton_UIA::getUIInformation( wstring& wstrHelpText )
+{
+	int nResult = NOW_FALSE;
+	nResult = NowCommunication::getInstance()->getUIProperty(m_strSignature, NOW_PROP_HELP_TEXT, wstrHelpText);
+	return nResult;
+}
 
 NOW_RESULT NowButton_UIA::getParent( INowControl*& ctrParent )
 {
