@@ -30,7 +30,13 @@ NOW_RESULT NowButton_UIA::getCaption( wstring& wstrCaption )
 NOW_RESULT NowButton_UIA::getUIInformation( wstring& wstrHelpText )
 {
 	int nResult = NOW_FALSE;
-	nResult = NowCommunication::getInstance()->getUIProperty(m_strSignature, NOW_PROP_HELP_TEXT, wstrHelpText);
+	wstrHelpText = L"";
+	wstring	wstrCaption = L"";
+	wstring	wstrToolTip = L" ";
+	nResult = NowButton_UIA::getCaption( wstrCaption );
+	nResult = NowButton_UIA::getToolTip( wstrToolTip );
+	//wstrHelpText = wstrToolTip;
+	wstrHelpText = L"Caption is " + wstrCaption + L" Click to " + wstrToolTip + L"app";
 	return nResult;
 }
 
@@ -64,4 +70,11 @@ NOW_RESULT NowButton_UIA::getNowClass( string& strNowClass )
 	//NowLogger::getInstance()->LogAString("[NowButton_UIA::getNowClass]");
 	strNowClass = string(NOW_CONTROL_BUTTON);
 	return NOW_OK;
+}
+
+NOW_RESULT NowButton_UIA::getToolTip(wstring& wstrToolTip)
+{
+	int nResult = NOW_FALSE;
+	nResult = NowCommunication::getInstance()->getUIProperty(m_strSignature, NOW_PROP_HELP_TEXT, wstrToolTip);
+	return nResult;
 }

@@ -28,6 +28,8 @@ public:
 
 	virtual NOW_RESULT getNowClass( string& strNowClass );
 
+	virtual NOW_RESULT getToolTip( wstring& wstrToolTip);
+
 };
 
 #endif
