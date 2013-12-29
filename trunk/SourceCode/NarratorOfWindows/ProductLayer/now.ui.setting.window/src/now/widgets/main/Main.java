@@ -5,6 +5,15 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 
+
+
+import com.gtranslate.Language;
+//import com.gtranslate.Audio;
+//import com.gtranslate.Language;
+import com.gtranslate.Translator;
+
+
+
 import now.lib.jni.*;
 
 public class Main {
@@ -13,6 +22,8 @@ public class Main {
 		String informationt 	= "";
 		String signature 	= "";
 		String localizedControlType	= "";
+		String vietnamese = "";
+		Translator translator = Translator.getInstance();
 		
 		///////////////////////////////
 		Display display = new Display();
@@ -21,10 +32,12 @@ public class Main {
 	    shell.setBounds(0, 0, 400, 200);
 	    //shell.setSize(400, 200);
 	    
-	    Label label = new Label(shell, SWT.WRAP);
-	    label.setBounds(10, 10, 300, 30);
-	    label.setText("Default Text!");
+	    Label labelEng = new Label(shell, SWT.WRAP);
+	    labelEng.setBounds(10, 10, 380, 30);
+	    labelEng.setText("Default Text!");
 	    
+	    Label labelVie = new Label(shell, SWT.WRAP);
+	    labelVie.setBounds(10, 50, 380, 30);
 	    
 	    shell.open();
 	    while (!shell.isDisposed()) {
@@ -48,7 +61,42 @@ public class Main {
 				localizedControlType = NowJNICaller.getInstance().getControlProperty(signature, "LocalizedControlTypeProperty");
 				informationt 	= NowJNICaller.getInstance().getUIInformation(signature);
 				
-				label.setText("Java>>" + localizedControlType + " - " + informationt);
+				labelEng.setText("Eng>>" + localizedControlType + " - " + informationt);
+				//vietnamese = translator.translate(informationt, Language.ENGLISH, Language.VIETNAMESE);
+				//labelVie.setText("Vie>>" + vietnamese);
+				//Translate by Google Translate API
+		        
+				String[] temp = informationt.split(",");
+		        String[] vieString = new String[100];
+				
+				try{
+		            for (int i = 0; i < temp.length; i++) {
+//		                if(temp[i] == "," || temp[i] == "."){
+//		                    vieString[i] = temp[i] + " ";
+//		                    //System.out.println(vieString[i]);
+//		                }
+//		                else if(temp[i] == "\n"){
+//		                    vieString[i] = temp[i];
+//		                }
+//		                else if(temp[i] == null){
+//		                    //bo qua
+//		                }
+//		                else{
+		                    vieString[i] = translator.translate(temp[i], Language.ENGLISH, Language.VIETNAMESE);
+		                    //System.out.println(vieString[i]);
+//		                }
+		            }
+		        }
+		        catch(Exception e){
+		            e.printStackTrace();
+		        }
+		        for (int i = 0; i < vieString.length; i++) {
+		            if(vieString[i] != null){
+		            	vietnamese += vieString[i] + ", ";
+		            }
+		        }
+		        labelVie.setText("Vie>>" + vietnamese);
+		        vietnamese = "";
 				//System.out.println("Java>>" + localizedControlType + " - " + informationt);
 			}
 			//////////////////////////////////////////////
