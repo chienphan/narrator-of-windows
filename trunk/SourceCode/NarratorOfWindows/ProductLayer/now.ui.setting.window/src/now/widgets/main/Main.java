@@ -1,16 +1,38 @@
 package now.widgets.main;
 
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Shell;
+
 import now.lib.jni.*;
 
 public class Main {
 
 	public static void main(String[] args) {
-		String helpText 	= "";
+		String informationt 	= "";
 		String signature 	= "";
-		String controlType	= "";
+		String localizedControlType	= "";
 		
-		while (true) {
-			try {
+		///////////////////////////////
+		Display display = new Display();
+	    Shell shell = new Shell(display);
+	    shell.setText("Debug window");
+	    shell.setBounds(0, 0, 400, 200);
+	    //shell.setSize(400, 200);
+	    
+	    Label label = new Label(shell, SWT.WRAP);
+	    label.setBounds(10, 10, 300, 30);
+	    label.setText("Default Text!");
+	    
+	    
+	    shell.open();
+	    while (!shell.isDisposed()) {
+	      if (!display.readAndDispatch())
+	        //display.sleep();
+	      
+	      ////////////////////////////////////////////////////
+	      try {
 				Thread.sleep(100);
 			} 
 			catch (InterruptedException e) {
@@ -23,12 +45,16 @@ public class Main {
 			//If the control is changed, the signature will not null.
 			if(!signature.isEmpty())
 			{
-				controlType = NowJNICaller.getInstance().getControlProperty(signature, "LocalizedControlTypeProperty");
-				helpText 	= NowJNICaller.getInstance().getUIInformation(signature);
+				localizedControlType = NowJNICaller.getInstance().getControlProperty(signature, "LocalizedControlTypeProperty");
+				informationt 	= NowJNICaller.getInstance().getUIInformation(signature);
 				
-				System.out.println("Java>>" + controlType + " - " + helpText);
+				label.setText("Java>>" + localizedControlType + " - " + informationt);
+				//System.out.println("Java>>" + localizedControlType + " - " + informationt);
 			}
-		}
+			//////////////////////////////////////////////
+			
+	    }
+	    display.dispose();
 	}
 
 }
