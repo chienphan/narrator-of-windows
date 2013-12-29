@@ -1,6 +1,7 @@
 #include "NowButton_UIA.h"
 #include "NowControl_UIA.h"
 #include "NowLogger.h"
+#include "..\NowCommunication.h"
 
 NowButton_UIA::NowButton_UIA(string strSignature, string strControlType) : NowControl_UIA(strSignature, strControlType)
 {
@@ -13,18 +14,19 @@ NowButton_UIA::~NowButton_UIA(void)
 {
 }
 
-NOW_RESULT NowButton_UIA::getControlType( string& strControlType )
-{
-	//NowLogger::getInstance()->LogAString("[NowButton_UIA::getControlType]");
-	strControlType = m_strControlType;
-	return NOW_OK;
-}
-
-//NOW_RESULT NowButton_UIA::getCaption( wstring& wstrCaption )
+//NOW_RESULT NowButton_UIA::getControlType( string& strControlType )
 //{
-//	//NowLogger::getInstance()->LogAString("[NowButton_UIA::getCaption]");
-//	return NOW_FALSE;
+//	int nResult = NOW_FALSE;
+//	nResult = NowCommunication::getInstance()->getControlType( m_strSignature , string& strControlType );
+//	return nResult;
 //}
+
+NOW_RESULT NowButton_UIA::getCaption( wstring& wstrCaption )
+{
+	int nResult = NOW_FALSE;
+	nResult = NowCommunication::getInstance()->getUIProperty(m_strSignature, NOW_PROP_NAME, wstrCaption);
+	return nResult;
+}
 
 //NOW_RESULT NowButton_UIA::getHelpText( wstring& wstrHelpText )
 //{
