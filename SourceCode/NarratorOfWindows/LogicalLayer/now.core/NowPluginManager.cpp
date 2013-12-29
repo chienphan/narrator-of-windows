@@ -3,6 +3,7 @@
 #include "INowPlugin.h"
 #include "NowDevice.h"
 #include "NowLogger.h"
+#include "INowControl.h"
 
 NowPluginManager* NowPluginManager::m_instance = NULL;
 NowListPlugins NowPluginManager::m_lstPlugins = NULL;
@@ -10,6 +11,7 @@ NowListPlugins NowPluginManager::m_lstPlugins = NULL;
 NowPluginManager::NowPluginManager(void)
 {
 	m_strSignature = "";
+	m_control = NULL;
 	m_lstPlugins = loadPlugins();
 }
 
@@ -102,4 +104,27 @@ bool NowPluginManager::isChangedControl( const string& strSignature )
 NowListPlugins NowPluginManager::getListPlugins()
 {
 	return m_lstPlugins;
+}
+
+INowControl* NowPluginManager::getControlFromCache( const string& strSignature )
+{
+	if (m_control != NULL)
+	{
+		string currentSignature = "";
+		if (NOW_SUCCEED(m_control->getSignature(currentSignature)))
+		{
+			if (currentSignature.compare(strSignature) == 0)
+			{
+				return m_control;
+			}
+		}
+	}
+	return NULL;
+}
+
+NOW_RESULT NowPluginManager::keepControlToCache( INowControl* pControl )
+{
+	//TODO: Need to delete pointer after assign new pointer
+	m_control = pControl;
+	return NOW_OK;
 }

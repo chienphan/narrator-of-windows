@@ -143,7 +143,7 @@ void NowDevice::sleep( int milisecond )
 std::string NowDevice::getEnvironmentVariable( const string& strVariable )
 {
 	char* pPath = NULL;
-	pPath = getenv (strVariable.c_str());
+	pPath = getenv(strVariable.c_str());
 	if (pPath != NULL)
 	{
 		return string(pPath);

@@ -4,6 +4,7 @@
 #include "NowLogger.h"
 #include "NowControlBuilder.h"
 #include "NowCommunication.h"
+#include "NowPluginManager.h"
 
 NowPlugin_UIA* NowPlugin_UIA::m_pInstance = NULL;
 
@@ -33,15 +34,22 @@ string NowPlugin_UIA::getPluginName()
 NOW_RESULT NowPlugin_UIA::getElementAtPoint( POINT point, INowControl*& pControl )
 {
 	NOW_RESULT nResult = NOW_FALSE;
-
 	string strControlType = "";
 	string strSignatureControl = "";
+	
+	//Get control at point and return signature and control type of control
+	//If control is changed we will keep it to cache for reuse later
 	nResult = NowCommunication::getInstance()->getElementAtPoint(point, strSignatureControl, strControlType);
-	if (NOW_SUCCEED(nResult))
+	if (NOW_SUCCEED(nResult) && NowPluginManager::getInstance()->isChangedControl(strSignatureControl))
 	{
-		//Check for change another control
-		// We will check Logical Layer
+		//Create new wrapper of control then add it to cache
 		pControl = NowControlBuilder::getInstance()->createControlWrapper(strSignatureControl, strControlType);
+		nResult = NowPluginManager::getInstance()->keepControlToCache(pControl);
+	}
+	else
+	{
+		//This case for get element false or control is not changed
+		nResult = NOW_FALSE;
 	}
 
 	return nResult;
@@ -50,6 +58,6 @@ NOW_RESULT NowPlugin_UIA::getElementAtPoint( POINT point, INowControl*& pControl
 NOW_RESULT NowPlugin_UIA::clearCache()
 {
 	m_strControlSignature = "";
-	return NOW_FALSE;
+	return NOW_OK;
 }
 

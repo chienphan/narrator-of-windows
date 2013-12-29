@@ -5,102 +5,66 @@
 
 #include "INowControl.h"
 
-//void runDebug(INowPlugin* plugin, POINT currentPoint, INowControl*& pControl, string& strSignature, wstring& wstrHelpText)
-//{
-//	NOW_RESULT nRet = plugin->getElementAtPoint(currentPoint, pControl);
-//	printf("\nAfter getElementAtPoint");
-//	if (NOW_SUCCEED(nRet))
-//	{
-//		if (pControl != NULL)
-//		{
-//			pControl->getSignature(strSignature);
-//			printf("\nAfter getSignature");
-//			if (NowPluginManager::getInstance()->isChangedControl(strSignature))
-//			{
-//				printf("\nAfter isChangedControl");
-//				//wstring wstrHelpText = L"";
-//				int nOK = pControl->getHelpText(wstrHelpText);
-//				printf("\nAfter getHelpText");
-//				if (NOW_SUCCEED(nOK))
-//				{
-//					if (!wstrHelpText.empty())
-//					{
-//						NowLogger::getInstance()->LogWString(wstrHelpText);
-//					}
-//				}
-//				else
-//				{
-//					NowLogger::getInstance()->LogAString("FALSE!");
-//				}
-//			}
-//		}
-//		else
-//		{
-//			NowLogger::getInstance()->LogAString("Fail to get control");
-//		}
-//	}
-//}
-
-JNIEXPORT jstring JNICALL Java_now_lib_jni_NowJNICaller_getHelpText( JNIEnv * env, jobject obj)
+JNIEXPORT jstring JNICALL Java_now_lib_jni_NowJNICaller_getControlSignatureUnderMouse( JNIEnv * env, jobject jObject)
 {
-	//NowLogger::getInstance()->LogAString("\n[JNICALL Java_now_lib_jni_NowJNICaller_getHelpText]");
-	//(wstring(L"JNICALL Java_now_lib_jni_NowJNICaller_getHelpText")).c_str()
-	//wstring wstr = (wchar_t *)env->GetStringChars(jstr, NULL);
-	//wstring wstr = wstring(L"Phan Đức Chiến");
-	//jstring jstr = env->NewString((jchar *)wstr.c_str(), wstr.length());
-	//return env->NewString((jchar *)wstr.c_str(), wstr.length());
-
-	POINT currentPoint; //GetCursorPos(&currentPoint);
+	POINT currentPoint;
 	INowControl* pControl = NULL;
 	string strSignature = "";
-	wstring wstrHelpText = L"";
+
+	//Get list of plug-ins 
 	NowListPlugins lstPlugins = NowPluginManager::getInstance()->getListPlugins();
-	//printf("\nluginManager::getInstance()");
+
 	if (GetCursorPos(&currentPoint))
 	{
-		//printf("\nGetCursorPos(&currentPoint)");
 		if (lstPlugins != NULL && lstPlugins->size() > 0)
 		{
-			//printf("\nOK");
+			//For each plug-in, try to get control element. If succeed, we will have the control
 			for (vector<INowPlugin*>::iterator it = lstPlugins->begin(); it != lstPlugins->end(); ++it)
 			{
-				//printf("\nRunDebug");
+				//Get control element at mouse point and keep to cache if succeed
 				NOW_RESULT nRet = (*it)->getElementAtPoint(currentPoint, pControl);
-				//printf("\nAfter getElementAtPoint");
 				if (NOW_SUCCEED(nRet))
 				{
 					if (pControl != NULL)
 					{
+						//Get control signature
 						pControl->getSignature(strSignature);
-						//printf("\nAfter getSignature");
-						if (NowPluginManager::getInstance()->isChangedControl(strSignature))
-						{
-							//printf("\nAfter isChangedControl");
-							//wstring wstrHelpText = L"";
-							int nOK = pControl->getHelpText(wstrHelpText);
-							//printf("\nAfter getHelpText");
-							if (NOW_SUCCEED(nOK))
-							{
-								if (!wstrHelpText.empty())
-								{
-									NowLogger::getInstance()->LogWString(wstrHelpText);
-								}
-							}
-							else
-							{
-								//NowLogger::getInstance()->LogAString("FALSE!");
-							}
-						}
-					}
-					else
-					{
-						//NowLogger::getInstance()->LogAString("Fail to get control");
+						break;
 					}
 				}
 			}
 		}
 	}
-	//printf("\n Return!!!!!!!");
-	return env->NewString((jchar *)wstrHelpText.c_str(), wstrHelpText.length());
+	return env->NewStringUTF(strSignature.c_str());
 }
 
+JNIEXPORT jstring JNICALL Java_now_lib_jni_NowJNICaller_getUIInformation( JNIEnv * env, jobject jObject, jstring signature)
+{
+	wstring wstrResult = L"";
+	string strSignature = string(env->GetStringUTFChars(signature, false));
+	INowControl* pControl = NowPluginManager::getInstance()->getControlFromCache(strSignature);
+	if (pControl)
+	{
+		if (NOW_SUCCEED(pControl->getUIInformation(wstrResult)))
+		{
+			return env->NewString((jchar *)wstrResult.c_str(), wstrResult.length());
+		}
+	}
+	return env->NewStringUTF("");
+}
+
+JNIEXPORT jstring JNICALL Java_now_lib_jni_NowJNICaller_getControlProperty( JNIEnv * env, jobject jObject, jstring signature, jstring propertyName)
+{
+	wstring wstrResult = L"";
+	string strSignature = string(env->GetStringUTFChars(signature, false));
+	string strPropName = string(env->GetStringUTFChars(propertyName, false));
+	INowControl* pControl = NowPluginManager::getInstance()->getControlFromCache(strSignature);
+	if (pControl)
+	{
+		if (NOW_SUCCEED(pControl->getUIProperty(strPropName, wstrResult)))
+		{
+			return env->NewString((jchar *)wstrResult.c_str(), wstrResult.length());
+		}
+	}
+	return env->NewStringUTF("");
+}

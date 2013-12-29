@@ -16,7 +16,7 @@ public:
 
 	virtual NOW_RESULT getCaption( wstring& wstrCaption );
 
-	//virtual NOW_RESULT getHelpText( wstring& wstrHelpText );
+	virtual NOW_RESULT getUIInformation( wstring& wstrHelpText );
 
 	virtual NOW_RESULT getParent( INowControl*& ctrParent );
 

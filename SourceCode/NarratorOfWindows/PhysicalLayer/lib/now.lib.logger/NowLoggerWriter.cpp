@@ -27,7 +27,7 @@ std::string NowLoggerWriter::getFileName()
 
 	long processID = NowDevice::getCurrentProcessId();
 	char bufffer[NOW_MAXLENGTH] = {0}; 
-	sprintf(bufffer, "%d", processID);
+	sprintf_s(bufffer, "%d", processID);
 
 	strFileName.append(string(bufffer));
 	strFileName.append("-");

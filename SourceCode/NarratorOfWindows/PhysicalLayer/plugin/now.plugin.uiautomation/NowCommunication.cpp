@@ -2,7 +2,7 @@
 #include "NowStringProcessor.h"
 #include "NowLogger.h"
 
-#using "now.agent.uiautomation.client.netmodule"
+#using "now.agent.uiautomation.client.dll"
 
 using namespace now::agent::uiautomation::client;
 using namespace System::Diagnostics;

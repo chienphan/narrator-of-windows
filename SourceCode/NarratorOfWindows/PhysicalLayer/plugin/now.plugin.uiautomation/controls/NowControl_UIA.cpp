@@ -16,6 +16,7 @@ NowControl_UIA::~NowControl_UIA(void)
 
 NOW_RESULT NowControl_UIA::getControlType( string& strControlType )
 {
+	//TODO: Need to check to get what is control type???
 	int nResult = NOW_FALSE;
 	nResult = NowCommunication::getInstance()->getUIProperty( m_strSignature , NOW_PROP_LOCALIZED_CONTROL_TYPE , strControlType );
 	return nResult;
@@ -28,7 +29,7 @@ NOW_RESULT NowControl_UIA::getCaption( wstring& wstrCaption )
 	return nResult;
 }
 
-NOW_RESULT NowControl_UIA::getHelpText( wstring& wstrHelpText )
+NOW_RESULT NowControl_UIA::getUIInformation( wstring& wstrHelpText )
 {
 	int nResult = NOW_FALSE;
 	nResult = NowCommunication::getInstance()->getUIProperty(m_strSignature, NOW_PROP_HELP_TEXT, wstrHelpText);
