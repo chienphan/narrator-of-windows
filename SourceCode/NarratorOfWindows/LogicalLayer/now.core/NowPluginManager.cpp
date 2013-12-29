@@ -124,7 +124,16 @@ INowControl* NowPluginManager::getControlFromCache( const string& strSignature )
 
 NOW_RESULT NowPluginManager::keepControlToCache( INowControl* pControl )
 {
+	NOW_RESULT nResult = NOW_FALSE;
 	//TODO: Need to delete pointer after assign new pointer
-	m_control = pControl;
-	return NOW_OK;
+	if (pControl != NULL)
+	{
+		INowControl* pTemp = m_control;
+		m_control = pControl;
+		//delete old control
+		delete pTemp;
+		nResult = NOW_OK;
+	}
+	
+	return nResult;
 }
