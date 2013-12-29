@@ -61,3 +61,19 @@ NOW_RESULT NowCommunication::getUIProperty(const string& strSignature, const str
 	}
 	return nResult;
 }
+
+//GetControlType
+NOW_RESULT NowCommunication::getUIProperty (const string& strSignature, const string& strPropName , string& strValue)
+{ 
+	int nResult = NOW_FALSE;
+	String^ mstrSignature = NowStringProcessor::StlStringToString(strSignature);
+	String^ mstrPropName = NowStringProcessor::StlStringToString(strPropName);
+	String^ mstrValue = "";
+	
+	nResult = NowUIACommunication::GetInstance()->GetUIProperty(mstrSignature, mstrPropName, mstrValue);
+	if (NOW_SUCCEED(nResult))
+	{
+		strValue = NowStringProcessor::StringToStlString(mstrValue);
+	}
+	return nResult;
+}

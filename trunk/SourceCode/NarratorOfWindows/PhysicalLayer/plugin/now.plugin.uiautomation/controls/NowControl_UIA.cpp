@@ -16,9 +16,9 @@ NowControl_UIA::~NowControl_UIA(void)
 
 NOW_RESULT NowControl_UIA::getControlType( string& strControlType )
 {
-	//NowLogger::getInstance()->LogAString("[NowControl_UIA::getControlType]");
-	strControlType = m_strControlType;
-	return NOW_OK;
+	int nResult = NOW_FALSE;
+	nResult = NowCommunication::getInstance()->getUIProperty( m_strSignature , NOW_PROP_LOCALIZED_CONTROL_TYPE , strControlType );
+	return nResult;
 }
 
 NOW_RESULT NowControl_UIA::getCaption( wstring& wstrCaption )

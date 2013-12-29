@@ -3,6 +3,7 @@
 #include "NowPluginManager.h"
 #include "NowLogger.h"
 #include "NowDevice.h"
+#include <iostream>
 
 #include "NowControl_UIA.h"
 #include "NowButton_UIA.h"
@@ -56,8 +57,25 @@ void runDebug(INowPlugin* plugin, POINT currentPoint, INowControl*& pControl, st
 			if (NowPluginManager::getInstance()->isChangedControl(strSignature))
 			{
 				wstring wstrHelpText = L"";
+				//GetCaption
+				wstring wstrCaption = L"";
+				int nOK;
+				nOK = pControl->getCaption(wstrCaption);
+				if (NOW_SUCCEED(nOK))
+				{
+					NowLogger::getInstance()->LogWString(wstrCaption);
+
+				}
+
+				//GetControlType
+				string strControlType;
+				nOK = pControl->getControlType(strControlType);
+				if ( NOW_SUCCEED(nOK) )
+				{
+					NowLogger::getInstance()->LogAString(strControlType);
+				}
 				//GetHelpText
-				int nOK = pControl->getHelpText(wstrHelpText);
+				nOK = pControl->getHelpText(wstrHelpText);
 				if (NOW_SUCCEED(nOK))
 				{
 					if (!wstrHelpText.empty())
@@ -66,18 +84,6 @@ void runDebug(INowPlugin* plugin, POINT currentPoint, INowControl*& pControl, st
 					}
 				}
 
-				//GetCaption
-				wstring wstrCaption = L"";
-				nOK = pControl->getCaption(wstrCaption);
-				if (NOW_SUCCEED(nOK))
-				{
-					NowLogger::getInstance()->LogWString(wstrCaption);
-				}
-
-				/*else
-				{
-					NowLogger::getInstance()->LogAString("FALSE!");
-				}*/
 				if (!NOW_SUCCEED(nOK)) 
 				{
 					NowLogger::getInstance()->LogAString("FALSE");
