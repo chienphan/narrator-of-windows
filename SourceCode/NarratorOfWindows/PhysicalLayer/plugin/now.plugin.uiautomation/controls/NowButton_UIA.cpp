@@ -36,7 +36,7 @@ NOW_RESULT NowButton_UIA::getUIInformation( wstring& wstrHelpText )
 	nResult = NowButton_UIA::getCaption( wstrCaption );
 	nResult = NowButton_UIA::getToolTip( wstrToolTip );
 	//wstrHelpText = wstrToolTip;
-	wstrHelpText = L"Caption is " + wstrCaption + L" Click to " + wstrToolTip + L"app";
+	wstrHelpText = L"Caption is " + wstrCaption + L" Click to " + wstrToolTip;
 	return nResult;
 }
 
