@@ -32,21 +32,18 @@ INowControl* NowControlBuilder::createControlWrapper( string strSignatureControl
 	//create Button Wrapper
 	if (NowStringProcessor::compareIgnoreCase(strControlType, NOW_CONTROL_BUTTON))
 	{
-		checkControlCreate = false;
 		pControl = new NowButton_UIA(strSignatureControl, strControlType);
 	}
-
-	//create List Item Wrapper
-	if (NowStringProcessor::compareIgnoreCase(strControlType, NOW_CONTROL_LIST_ITEM))
+	else
 	{
-		checkControlCreate = false;
-		pControl = new  NowListItem_UIA(strSignatureControl, strControlType);
-	}
-
-	//TODO: implement create more control wrapper here!!!
-	if (checkControlCreate)
-	{
-		pControl = new NowControl_UIA(strSignatureControl, strControlType);
+		if (NowStringProcessor::compareIgnoreCase(strControlType, NOW_CONTROL_LIST_ITEM))
+		{
+			pControl = new  NowListItem_UIA(strSignatureControl, strControlType);
+		}
+		else
+		{			
+			pControl = new NowControl_UIA(strSignatureControl, strControlType);
+		}
 	}
 	return pControl;
 }

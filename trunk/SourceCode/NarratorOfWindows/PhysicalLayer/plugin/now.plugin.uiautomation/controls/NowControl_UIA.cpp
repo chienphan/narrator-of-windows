@@ -39,7 +39,6 @@ NOW_RESULT NowControl_UIA::getUIInformation( wstring& wstrHelpText )
 	{
 		return nResult;
 	}
-	wstrHelpText = L"Click to " + wstrToolTip;
 	return nResult;
 }
 
