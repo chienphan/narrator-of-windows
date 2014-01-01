@@ -4,6 +4,7 @@
 
 #include "NowControl_UIA.h"
 #include "NowButton_UIA.h"
+#include "NowListItem_UIA.h"
 
 NowControlBuilder* NowControlBuilder::m_Instance = NULL;
 
@@ -27,12 +28,23 @@ NowControlBuilder* NowControlBuilder::getInstance()
 INowControl* NowControlBuilder::createControlWrapper( string strSignatureControl, string strControlType )
 {
 	INowControl* pControl = NULL;
+	bool checkControlCreate = true;
+	//create Button Wrapper
 	if (NowStringProcessor::compareIgnoreCase(strControlType, NOW_CONTROL_BUTTON))
 	{
+		checkControlCreate = false;
 		pControl = new NowButton_UIA(strSignatureControl, strControlType);
 	}
+
+	//create List Item Wrapper
+	if (NowStringProcessor::compareIgnoreCase(strControlType, NOW_CONTROL_LIST_ITEM))
+	{
+		checkControlCreate = false;
+		pControl = new  NowListItem_UIA(strSignatureControl, strControlType);
+	}
+
 	//TODO: implement create more control wrapper here!!!
-	else
+	if (checkControlCreate)
 	{
 		pControl = new NowControl_UIA(strSignatureControl, strControlType);
 	}

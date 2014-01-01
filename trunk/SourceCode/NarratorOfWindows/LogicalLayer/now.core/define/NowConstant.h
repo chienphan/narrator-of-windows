@@ -30,6 +30,7 @@
 
 #define NOW_CONTROL				"control"
 #define NOW_CONTROL_BUTTON		"button"
+#define NOW_CONTROL_LIST_ITEM	"list item"
 
 #define NOW_PROP_ACCELERATOR_KEY		"AcceleratorKeyProperty"
 #define NOW_PROP_ACCESS_KEY				"AccessKeyProperty"

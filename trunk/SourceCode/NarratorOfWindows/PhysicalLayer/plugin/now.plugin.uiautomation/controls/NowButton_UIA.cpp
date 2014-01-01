@@ -6,7 +6,7 @@
 NowButton_UIA::NowButton_UIA(string strSignature, string strControlType) : NowControl_UIA(strSignature, strControlType)
 {
 	//m_strControlType = strControlType;
-	//m_strSignature = strSignature
+	//m_strSignature = strSignature;
 }
 
 NowButton_UIA::~NowButton_UIA(void)
@@ -32,11 +32,23 @@ NOW_RESULT NowButton_UIA::getUIInformation( wstring& wstrHelpText )
 	int nResult = NOW_FALSE;
 	wstrHelpText = L"";
 	wstring	wstrCaption = L"";
-	wstring	wstrToolTip = L" ";
-	nResult = NowButton_UIA::getCaption( wstrCaption );
-	nResult = NowButton_UIA::getToolTip( wstrToolTip );
+	wstring	wstrToolTip = L"";
+	nResult = NowCommunication::getInstance()->getUIProperty(m_strSignature, NOW_PROP_NAME, wstrCaption);
+	if (!NOW_SUCCEED(nResult))
+	{
+		return nResult;
+	}
+	nResult = NowCommunication::getInstance()->getUIProperty(m_strSignature, NOW_PROP_HELP_TEXT, wstrToolTip);
+	if (!NOW_SUCCEED(nResult))
+	{
+		return nResult;
+	}
+	if (wstrToolTip.length() == 0)
+	{
+		wstrToolTip = wstrCaption;
+	}
 	//wstrHelpText = wstrToolTip;
-	wstrHelpText = L"Caption is " + wstrCaption + L" Click to " + wstrToolTip;
+	wstrHelpText =  wstrCaption + L" Button"+ L" . Click to " + wstrToolTip;
 	return nResult;
 }
 
