@@ -30,7 +30,6 @@ NOW_RESULT NowButton_UIA::getCaption( wstring& wstrCaption )
 NOW_RESULT NowButton_UIA::getUIInformation( wstring& wstrHelpText )
 {
 	int nResult = NOW_FALSE;
-	wstrHelpText = L"";
 	wstring	wstrCaption = L"";
 	wstring	wstrToolTip = L"";
 	nResult = NowCommunication::getInstance()->getUIProperty(m_strSignature, NOW_PROP_NAME, wstrCaption);
