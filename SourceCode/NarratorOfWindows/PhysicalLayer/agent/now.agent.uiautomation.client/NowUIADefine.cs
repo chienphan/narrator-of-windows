@@ -11,6 +11,20 @@ namespace now.agent.uiautomation.client
         public static readonly int NOW_FALSE    =   -1;
     }
 
+    public class NowUIAState
+    {
+        public static readonly int NOW_STATE_VISIBLE = 1;
+        public static readonly int NOW_STATE_INVISIBLE = 2;
+        public static readonly int NOW_STATE_ENABLE = 4;
+        public static readonly int NOW_STATE_DISABLE = 8;
+        public static readonly int NOW_STATE_COLLAPSED = 16;
+        public static readonly int NOW_STATE_EXPANDED = 32;
+        public static readonly int NOW_STATE_CHECKED = 64;
+        public static readonly int NOW_STATE_UNCHECKED = 128;
+        public static readonly int NOW_STATE_SELECTED = 256;
+        public static readonly int NOW_STATE_UNSETECTED = 512;
+    }
+
     /// <summary>
     /// Define name of UI Automation property
     /// </summary>
@@ -30,6 +44,7 @@ namespace now.agent.uiautomation.client
         public static readonly String NOW_PROP_IS_CONTENT_ELEMENT   = "IsContentElementProperty";
         public static readonly String NOW_PROP_IS_CONTROL_ELEMENT   = "IsControlElementProperty";
         public static readonly String NOW_PROP_IS_ENABLED           = "IsEnabledProperty";
+        public static readonly String NOW_PROP_IS_SELECTED          = "IsSelectedProperty";
         public static readonly String NOW_PROP_IS_KEYBOARD_FOCUSABLE = "IsKeyboardFocusableProperty";
         public static readonly String NOW_PROP_IS_OFF_SCREEN        = "IsOffscreenProperty";
         public static readonly String NOW_PROP_IS_PASSWORD          = "IsPasswordProperty";

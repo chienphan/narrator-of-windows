@@ -46,6 +46,7 @@
 #define NOW_PROP_IS_CONTENT_ELEMENT		"IsContentElementProperty"
 #define NOW_PROP_IS_CONTROL_ELEMENT		"IsControlElementProperty"
 #define NOW_PROP_IS_ENABLED				"IsEnabledProperty"
+#define NOW_PROP_IS_SELECTED			"IsSelectedProperty"
 #define NOW_PROP_IS_KEYBOARD_FOCUSABLE	"IsKeyboardFocusableProperty"
 #define NOW_PROP_IS_OFF_SCREEN			"IsOffscreenProperty"
 #define NOW_PROP_IS_PASSWORD			"IsPasswordProperty"
