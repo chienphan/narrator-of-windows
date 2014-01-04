@@ -10,7 +10,7 @@ namespace now.agent.uiautomation.client
 
         private NowUIACommunication()
         {
-
+            
         }
 
         /// <summary>
@@ -19,6 +19,7 @@ namespace now.agent.uiautomation.client
         /// <returns>NowAutomationService instance</returns>
         public static NowUIACommunication GetInstance()
         {
+            
             if (m_instance == null)
             {
                 m_instance = new NowUIACommunication();
@@ -68,11 +69,28 @@ namespace now.agent.uiautomation.client
         public int GetUIProperty(String strSignatureControl, String strPropName, ref String strValue)
         {
             int nResult = NowUIADefine.NOW_FALSE;
-
+            NowUIALogger.GetInstance().LogInfor("ok check commu {0}",1);
             AutomationElement runtimeElement = NowUIAStorage.GetInstance().GetUIObjectFormCache(strSignatureControl);
             if (runtimeElement != null)
             {
                 strValue = NowUIAService.GetInstance().GetUIProperty(runtimeElement, strPropName);
+                nResult = NowUIADefine.NOW_OK;
+            }
+
+            return nResult;
+        }
+
+
+        public int GetUIState(String strSignatureControl, String strStateName, ref int stateValue)
+        {
+
+            
+            int nResult = NowUIADefine.NOW_FALSE;
+
+            AutomationElement runtimeElement = NowUIAStorage.GetInstance().GetUIObjectFormCache(strSignatureControl);
+            if (runtimeElement != null)
+            {
+                stateValue = NowUIAService.GetInstance().GetUIState(runtimeElement, strStateName);
                 nResult = NowUIADefine.NOW_OK;
             }
 

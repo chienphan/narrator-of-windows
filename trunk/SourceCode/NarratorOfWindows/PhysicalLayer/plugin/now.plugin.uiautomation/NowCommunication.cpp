@@ -1,6 +1,8 @@
 #include "NowCommunication.h"
 #include "NowStringProcessor.h"
 #include "NowLogger.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 #using "now.agent.uiautomation.client.dll"
 
@@ -77,3 +79,35 @@ NOW_RESULT NowCommunication::getUIProperty(const string& strSignature, const str
 	return nResult;
 }
 
+NOW_RESULT NowCommunication::getUIState(const string& strSignature , wstring& strState)
+{
+	int nResult = NOW_FALSE;
+	int nState = 0 ;
+	String^ mstrSignature = NowStringProcessor::StlStringToString(strSignature);
+
+	String^ mstrStateName = NowStringProcessor::StlStringToString(NOW_PROP_IS_SELECTED);
+	nResult = NowUIACommunication::GetInstance()->GetUIState(mstrSignature , mstrStateName , nState); // getState
+	
+	char buffer[512];
+	sprintf_s(buffer, "%d ", nState & NOW_STATE_SELECTED);
+	NowLogger::getInstance()->LogAString(string(buffer));
+
+	if (!NOW_SUCCEED(nResult))
+	{
+		return nResult;
+	}
+	int compareState = nState & NOW_STATE_SELECTED;
+
+	if (compareState == NOW_STATE_SELECTED )
+	{
+		strState = strState + L"selected";
+	}
+	else if (compareState != NOW_STATE_SELECTED )
+	{
+		
+		strState = strState + L"not selected";
+	}
+
+	
+	return nResult;		
+}

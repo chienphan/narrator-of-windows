@@ -8,6 +8,7 @@ namespace now.agent.uiautomation.client
     {
         private static NowUIAService m_instance = null;
         private static Dictionary<String, Object> m_propMap = null;
+        private static Dictionary<String, int> m_stateMap = null;
 
         private NowUIAService()
         {
@@ -30,6 +31,8 @@ namespace now.agent.uiautomation.client
         private void InitPropertiesMap()
         {
             m_propMap = new Dictionary<String, Object>();
+            m_stateMap = new Dictionary<string, int>();
+
             m_propMap.Add(NowUIAProperty.NOW_PROP_ACCELERATOR_KEY, AutomationElement.AcceleratorKeyProperty);
             m_propMap.Add(NowUIAProperty.NOW_PROP_ACCESS_KEY, AutomationElement.AccessKeyProperty);
             m_propMap.Add(NowUIAProperty.NOW_PROP_AUTOMATION_ID, AutomationElement.AutomationIdProperty);
@@ -57,6 +60,10 @@ namespace now.agent.uiautomation.client
             m_propMap.Add(NowUIAProperty.NOW_PROP_ORIENTATION, AutomationElement.OrientationProperty);
             m_propMap.Add(NowUIAProperty.NOW_PROP_PROCESS_ID, AutomationElement.ProcessIdProperty);
             m_propMap.Add(NowUIAProperty.NOW_PROP_RUNTIME_ID, AutomationElement.RuntimeIdProperty);
+
+            m_propMap.Add(NowUIAProperty.NOW_PROP_IS_SELECTED, SelectionItemPattern.IsSelectedProperty);
+
+            m_stateMap.Add(NowUIAProperty.NOW_PROP_IS_SELECTED, NowUIAState.NOW_STATE_SELECTED);
         }
 
         /// <summary>
@@ -100,5 +107,36 @@ namespace now.agent.uiautomation.client
 
             return strResult;
         }
+
+        public int GetUIState(AutomationElement runtimeElement, String strPropName)
+        {
+            int nState = 0;
+            bool check = false;
+            
+            if (m_propMap.ContainsKey(strPropName))
+            {
+                try
+                {
+                    check = (bool)runtimeElement.GetCurrentPropertyValue(m_propMap[strPropName] as AutomationProperty);
+                    if (check)
+                    {
+                        
+                        if (m_stateMap.ContainsKey(strPropName))
+                        {
+                            nState = m_stateMap[strPropName];
+                        }
+                    }
+                    
+                }
+                catch (System.Exception ex)
+                {
+                    NowUIALogger.GetInstance().LogError("[NowUIAService][GetUIState] Exception [{0}]", ex.Message);
+                    return nState;
+                }
+            }
+
+            return nState;
+        }
     }
 }
+

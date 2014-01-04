@@ -23,6 +23,22 @@ NOW_RESULT NowListItem_UIA::getUIInformation(wstring& wrtrHelpText)
 	{
 		return nResult;
 	}
-	wrtrHelpText = wstrCaption + L" item";
+
+	wstring strState = L"";
+	nResult = NowCommunication::getInstance()->getUIState(m_strSignature , strState );
+	if (!NOW_SUCCEED(nResult))
+	{
+		return nResult;
+	}
+
+	wstring wstrToolTip = L"";
+	nResult = NowCommunication::getInstance()->getUIProperty(m_strSignature,NOW_PROP_HELP_TEXT,wstrToolTip);
+	if (!NOW_SUCCEED(nResult))
+	{
+		return nResult;
+	}
+	wrtrHelpText = wstrCaption + L" is " + strState;
+
+	//wrtrHelpText = wstrToolTip ;
 	return nResult;
 }
