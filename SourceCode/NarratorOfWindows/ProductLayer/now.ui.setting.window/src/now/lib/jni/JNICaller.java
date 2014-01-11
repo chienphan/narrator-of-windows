@@ -1,26 +1,26 @@
 package now.lib.jni;
 
-import now.lib.utilities.NowUtilDevice;
+import now.lib.utilities.UtilitiesDevice;
 
-public class NowJNICaller {
-	private static NowJNICaller m_instance = null;
+public class JNICaller {
+	private static JNICaller m_instance = null;
 	
 	/**
 	 * The constructor.
 	 */
-	private NowJNICaller()
+	private JNICaller()
 	{
-		String libPath = NowUtilDevice.getCurrentDirectory() + "\\now.lib.jniwrapper.dll";
-		NowUtilDevice.loadLibrary(libPath);
+		String libPath = UtilitiesDevice.getCurrentDirectory() + "\\now.lib.jniwrapper.dll";
+		UtilitiesDevice.loadLibrary(libPath);
 	}
 	
 	/**
 	 * Get instance of this class.
 	 * @return The singleton instance.
 	 */
-	public static NowJNICaller getInstance() {
+	public static JNICaller getInstance() {
 		if (m_instance == null) {
-			m_instance = new NowJNICaller();
+			m_instance = new JNICaller();
 		}
 		return m_instance;
 	}

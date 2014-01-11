@@ -3,7 +3,7 @@ package now.lib.utilities;
 import java.io.File;
 import java.io.IOException;
 
-public class NowUtilDevice {
+public class UtilitiesDevice {
 	
 	/** Get value of Environment Variable
 	 * @author Chien.Phan

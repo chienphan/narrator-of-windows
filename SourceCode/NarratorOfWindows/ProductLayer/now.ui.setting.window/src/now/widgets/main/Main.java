@@ -4,27 +4,20 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
-
-
-
 import com.gtranslate.Language;
-//import com.gtranslate.Audio;
-//import com.gtranslate.Language;
 import com.gtranslate.Translator;
 
-
-
+import now.lib.configuration.ConfigLanguage;
 import now.lib.jni.*;
 
 public class Main {
-
-	public static void main(String[] args) {
+	private static void runDebug() {
 		String informationt 	= "";
 		String signature 	= "";
 		String localizedControlType	= "";
 		String vietnamese = "";
 		Translator translator = Translator.getInstance();
-		
+	
 		///////////////////////////////
 		Display display = new Display();
 	    Shell shell = new Shell(display);
@@ -52,14 +45,14 @@ public class Main {
 				System.out.println("InterruptedException: " + e.getMessage());
 			}
 			
-			signature = NowJNICaller.getInstance().getControlSignatureUnderMouse();
+			signature = JNICaller.getInstance().getControlSignatureUnderMouse();
 			
 			//Do not need check the control is changed or not. 
 			//If the control is changed, the signature will not null.
 			if(!signature.isEmpty())
 			{
-				localizedControlType = NowJNICaller.getInstance().getControlProperty(signature, "LocalizedControlTypeProperty");
-				informationt 	= NowJNICaller.getInstance().getUIInformation(signature);
+				localizedControlType = JNICaller.getInstance().getControlProperty(signature, "LocalizedControlTypeProperty");
+				informationt 	= JNICaller.getInstance().getUIInformation(signature);
 				
 				labelEng.setText("Eng>>" + localizedControlType + " - " + informationt);
 				//vietnamese = translator.translate(informationt, Language.ENGLISH, Language.VIETNAMESE);
@@ -105,4 +98,26 @@ public class Main {
 	    display.dispose();
 	}
 
+	public static void main(String[] args) {
+		//TODO: if you want to run debug to c++/c# follow, you should run method "runDebug"
+		//runDebug();
+		
+		//TODO: this method is used to run java follow.
+		runJavaFollow();
+	}
+	
+	private static void runJavaFollow(){
+		
+		System.out.println("Display Language: " + ConfigLanguage.getInstance().getDisplayLanguage());
+		System.out.println("Input Language: " + ConfigLanguage.getInstance().getInputLanguage());
+		System.out.println("Output Language: " + ConfigLanguage.getInstance().getOutputLanguage());
+		
+		ConfigLanguage.getInstance().setOutputLanguage("English");
+		//ConfigLanguage.getInstance().setInputLanguage("Vietnamese");
+		
+		//System.out.println("Display Language: " + ConfigLanguage.getInstance().getDisplayLanguage());
+		//System.out.println("Input Language: " + ConfigLanguage.getInstance().getInputLanguage());
+		System.out.println(">>Output Language: " + ConfigLanguage.getInstance().getOutputLanguage());
+
+	}
 }
