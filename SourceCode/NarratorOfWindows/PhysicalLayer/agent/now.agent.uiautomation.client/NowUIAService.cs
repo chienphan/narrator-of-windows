@@ -8,7 +8,9 @@ namespace now.agent.uiautomation.client
     {
         private static NowUIAService m_instance = null;
         private static Dictionary<String, Object> m_propMap = null;
-        private static Dictionary<String, int> m_stateMap = null;
+        private static Dictionary<String, int> m_stateValMap = null;
+        private static Dictionary<String, object> m_checkUIHaveStateMap = null;
+        private static Dictionary<String, String> m_nameStateMap = null;
 
         private NowUIAService()
         {
@@ -31,7 +33,10 @@ namespace now.agent.uiautomation.client
         private void InitPropertiesMap()
         {
             m_propMap = new Dictionary<String, Object>();
-            m_stateMap = new Dictionary<string, int>();
+            m_stateValMap = new Dictionary<string, int>();
+            m_checkUIHaveStateMap = new Dictionary<string, object>();
+            m_nameStateMap = new Dictionary<String, String>();
+
 
             m_propMap.Add(NowUIAProperty.NOW_PROP_ACCELERATOR_KEY, AutomationElement.AcceleratorKeyProperty);
             m_propMap.Add(NowUIAProperty.NOW_PROP_ACCESS_KEY, AutomationElement.AccessKeyProperty);
@@ -62,8 +67,23 @@ namespace now.agent.uiautomation.client
             m_propMap.Add(NowUIAProperty.NOW_PROP_RUNTIME_ID, AutomationElement.RuntimeIdProperty);
 
             m_propMap.Add(NowUIAProperty.NOW_PROP_IS_SELECTED, SelectionItemPattern.IsSelectedProperty);
+            m_propMap.Add(NowUIAProperty.NOW_PROP_IS_EXPANDED, ExpandCollapsePattern.ExpandCollapseStateProperty);
+            m_propMap.Add(NowUIAProperty.NOW_PROP_IS_COLLAPSED, ExpandCollapsePattern.ExpandCollapseStateProperty);
+            m_propMap.Add(NowUIAProperty.NOW_PROP_IS_LEAF_NODE, ExpandCollapsePattern.ExpandCollapseStateProperty);
 
-            m_stateMap.Add(NowUIAProperty.NOW_PROP_IS_SELECTED, NowUIAState.NOW_STATE_SELECTED);
+            m_stateValMap.Add(NowUIAProperty.NOW_PROP_IS_SELECTED, NowUIAState.NOW_STATE_SELECTED);
+            m_stateValMap.Add(NowUIAProperty.NOW_PROP_IS_COLLAPSED, NowUIAState.NOW_STATE_COLLAPSED);
+            m_stateValMap.Add(NowUIAProperty.NOW_PROP_IS_EXPANDED, NowUIAState.NOW_STATE_EXPANDED);
+            m_stateValMap.Add(NowUIAProperty.NOW_PROP_IS_LEAF_NODE, NowUIAState.NOW_STATE_LEAF_NODE);
+
+            m_checkUIHaveStateMap.Add(NowUIAProperty.NOW_PROP_IS_SELECTED, AutomationElement.IsSelectionItemPatternAvailableProperty);
+            m_checkUIHaveStateMap.Add(NowUIAProperty.NOW_PROP_IS_EXPANDED, AutomationElement.IsExpandCollapsePatternAvailableProperty);
+            m_checkUIHaveStateMap.Add(NowUIAProperty.NOW_PROP_IS_COLLAPSED, AutomationElement.IsExpandCollapsePatternAvailableProperty);
+            m_checkUIHaveStateMap.Add(NowUIAProperty.NOW_PROP_IS_LEAF_NODE, AutomationElement.IsExpandCollapsePatternAvailableProperty);
+
+            m_nameStateMap.Add(NowUIAProperty.NOW_PROP_IS_EXPANDED, "expanded");
+            m_nameStateMap.Add(NowUIAProperty.NOW_PROP_IS_COLLAPSED, "collapsed");
+            m_nameStateMap.Add(NowUIAProperty.NOW_PROP_IS_LEAF_NODE, "leafnode");
         }
 
         /// <summary>
@@ -95,11 +115,11 @@ namespace now.agent.uiautomation.client
                         if (objValue != null)
                         {
                             strResult = objValue.ToString();
+                            //   NowOutPut.OutputDebugString(strResult);
                         }
                     }
                     catch (System.Exception ex)
                     {
-                        NowUIALogger.GetInstance().LogError("[NowUIAService][GetUIProperty] Exception [{0}]", ex.Message);
                         return String.Empty;
                     }
                 }
@@ -108,35 +128,48 @@ namespace now.agent.uiautomation.client
             return strResult;
         }
 
-        public int GetUIState(AutomationElement runtimeElement, String strPropName)
+        public int GetUIState(AutomationElement runtimeElement, String strPropName, ref int nResult)
         {
+            nResult = NowUIADefine.NOW_OK;
             int nState = 0;
             bool check = false;
-            
-            if (m_propMap.ContainsKey(strPropName))
+
+            check = (bool)runtimeElement.GetCurrentPropertyValue(m_checkUIHaveStateMap[strPropName] as AutomationProperty);
+
+            if (check)
             {
-                try
+                String strState = "";
+                strState = runtimeElement.GetCurrentPropertyValue(m_propMap[strPropName] as AutomationProperty).ToString();
+                NowOutPut.OutputDebugString(strState);
+                if (strState.ToLower().Equals("false"))
                 {
-                    check = (bool)runtimeElement.GetCurrentPropertyValue(m_propMap[strPropName] as AutomationProperty);
-                    if (check)
-                    {
-                        
-                        if (m_stateMap.ContainsKey(strPropName))
-                        {
-                            nState = m_stateMap[strPropName];
-                        }
-                    }
-                    
-                }
-                catch (System.Exception ex)
-                {
-                    NowUIALogger.GetInstance().LogError("[NowUIAService][GetUIState] Exception [{0}]", ex.Message);
                     return nState;
                 }
-            }
+                else if (strState.ToLower().Equals("true"))
+                {
+                    return m_stateValMap[strPropName];
+                }
+                else
+                {
+                    if (m_nameStateMap.ContainsKey(strPropName))
+                    {
 
+                        if (strState.ToLower().Equals(m_nameStateMap[strPropName]))
+                        {
+                            if (m_stateValMap.ContainsKey(strPropName))
+                            {
+                                return m_stateValMap[strPropName];
+                            }
+                        }
+
+                    }
+
+                }
+            }
             return nState;
-        }
+        }        
     }
 }
+
+    
 

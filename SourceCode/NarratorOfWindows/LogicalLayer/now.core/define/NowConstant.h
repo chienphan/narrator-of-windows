@@ -21,6 +21,7 @@
 #define NOW_STATE_UNCHECKED		128
 #define NOW_STATE_SELECTED		256
 #define NOW_STATE_UNSETECTED	512
+#define NOW_STATE_LEAF_NODE		1024	
 
 #define NOW_LOGGER_NONE_MODE		0
 #define NOW_LOGGER_DEBUGVIEW_MODE	1
@@ -31,6 +32,8 @@
 #define NOW_CONTROL				"control"
 #define NOW_CONTROL_BUTTON		"button"
 #define NOW_CONTROL_LIST_ITEM	"list item"
+#define NOW_CONTROL_TREE_ITEM	"tree item"
+#define NOW_CONTROL_TREE_VIEW_ITEM "tree view item"
 
 #define NOW_PROP_ACCELERATOR_KEY		"AcceleratorKeyProperty"
 #define NOW_PROP_ACCESS_KEY				"AccessKeyProperty"
@@ -60,5 +63,8 @@
 #define NOW_PROP_ORIENTATION			"OrientationProperty"
 #define NOW_PROP_PROCESS_ID				"ProcessIdProperty"
 #define NOW_PROP_RUNTIME_ID				"RuntimeIdProperty"
+#define NOW_PROP_IS_EXPANDED			"IsExpandedProperty"
+#define NOW_PROP_IS_COLLAPSED			"IsCollapsedProperty"
+#define NOW_PROP_IS_LEAF_NODE			"IsLeafNodeProperty"
 
 #endif
