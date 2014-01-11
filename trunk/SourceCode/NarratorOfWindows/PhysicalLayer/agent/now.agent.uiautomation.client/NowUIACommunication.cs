@@ -34,7 +34,6 @@ namespace now.agent.uiautomation.client
         /// <returns>Return AutomationElement if succeed, null if false</returns>
         public int GetElementAtPoint(Point point, ref String strSignatureControl, ref String strControlType)
         {
-            //NowUIALogger.GetInstance().LogInfor("GetElementAtPoint");
             int nResult = NowUIADefine.NOW_FALSE;
             AutomationElement currentElement = null;
 
@@ -70,30 +69,34 @@ namespace now.agent.uiautomation.client
         public int GetUIProperty(String strSignatureControl, String strPropName, ref String strValue)
         {
             int nResult = NowUIADefine.NOW_FALSE;
+           // NowUIALogger.GetInstance().LogInfor("ok check commu {0}",1);
             AutomationElement runtimeElement = NowUIAStorage.GetInstance().GetUIObjectFormCache(strSignatureControl);
             if (runtimeElement != null)
             {
                 strValue = NowUIAService.GetInstance().GetUIProperty(runtimeElement, strPropName);
-                nResult = NowUIADefine.NOW_OK;
+                //if (!strValue.Equals(String.Empty))
+                //{
+                    nResult = NowUIADefine.NOW_OK;
+                //}
+               // NowOutPut.OutputDebugString(nResult.ToString());
             }
-
+         //   NowOutPut.OutputDebugString(nResult.ToString());
             return nResult;
         }
 
 
         public int GetUIState(String strSignatureControl, String strStateName, ref int stateValue)
         {
-
             
-            int nResult = NowUIADefine.NOW_FALSE;
+           // NowOutPut.OutputDebugString(strStateName);
+           int nResult = NowUIADefine.NOW_FALSE;
 
             AutomationElement runtimeElement = NowUIAStorage.GetInstance().GetUIObjectFormCache(strSignatureControl);
             if (runtimeElement != null)
             {
-                stateValue = NowUIAService.GetInstance().GetUIState(runtimeElement, strStateName);
-                nResult = NowUIADefine.NOW_OK;
+                stateValue = NowUIAService.GetInstance().GetUIState(runtimeElement, strStateName, ref nResult);
+               // NowOutPut.OutputDebugString(stateValue.ToString());
             }
-
             return nResult;
         }
     }

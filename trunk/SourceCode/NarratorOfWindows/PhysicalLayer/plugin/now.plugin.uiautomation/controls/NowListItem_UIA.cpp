@@ -20,11 +20,11 @@ NOW_RESULT NowListItem_UIA::getUIInformation(wstring& wrtrHelpText)
 	wrtrHelpText = L"";
 	wstring wstrCaption = L"";
 	nResult = NowCommunication::getInstance()->getUIProperty(m_strSignature , NOW_PROP_NAME , wstrCaption);
+	//NowLogger::getInstance()->LogWString(wstrCaption);
 	if (!NOW_SUCCEED(nResult))
 	{
 		return nResult;
 	}
-
 	string strState = "";
 	nResult = NowCommunication::getInstance()->getUIState(m_strSignature , strState);
 	if (!NOW_SUCCEED(nResult))
@@ -32,12 +32,12 @@ NOW_RESULT NowListItem_UIA::getUIInformation(wstring& wrtrHelpText)
 		return nResult;
 	}
 
-	wstring wstrToolTip = L"";
-	nResult = NowCommunication::getInstance()->getUIProperty(m_strSignature,NOW_PROP_HELP_TEXT,wstrToolTip);
-	if (!NOW_SUCCEED(nResult))
-	{
-		return nResult;
-	}
+	//wstring wstrToolTip = L"";
+	//nResult = NowCommunication::getInstance()->getUIProperty(m_strSignature,NOW_PROP_HELP_TEXT,wstrToolTip);
+	//if (!NOW_SUCCEED(nResult))
+	//{
+	//	return nResult;
+	//}
 	wrtrHelpText = wstrCaption + L" is " + NowStringProcessor::Utf8ToStlWString(strState);
 
 	//wrtrHelpText = wstrToolTip ;

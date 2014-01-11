@@ -23,6 +23,7 @@ namespace now.agent.uiautomation.client
         public static readonly int NOW_STATE_UNCHECKED = 128;
         public static readonly int NOW_STATE_SELECTED = 256;
         public static readonly int NOW_STATE_UNSETECTED = 512;
+        public static readonly int NOW_STATE_LEAF_NODE = 1024;
     }
 
     /// <summary>
@@ -58,6 +59,9 @@ namespace now.agent.uiautomation.client
         public static readonly String NOW_PROP_ORIENTATION          = "OrientationProperty";
         public static readonly String NOW_PROP_PROCESS_ID           = "ProcessIdProperty";
         public static readonly String NOW_PROP_RUNTIME_ID           = "RuntimeIdProperty";
+        public static readonly String NOW_PROP_IS_EXPANDED          = "IsExpandedProperty";
+        public static readonly String NOW_PROP_IS_COLLAPSED         = "IsCollapsedProperty";
+        public static readonly String NOW_PROP_IS_LEAF_NODE         = "IsLeafNodeProperty";
     }
 
     /// <summary>

@@ -5,6 +5,8 @@
 #include "NowControl_UIA.h"
 #include "NowButton_UIA.h"
 #include "NowListItem_UIA.h"
+#include "NowTreeItem_UIA.h"
+#include "NowLogger.h"
 
 NowControlBuilder* NowControlBuilder::m_Instance = NULL;
 
@@ -28,8 +30,7 @@ NowControlBuilder* NowControlBuilder::getInstance()
 INowControl* NowControlBuilder::createControlWrapper( string strSignatureControl, string strControlType )
 {
 	INowControl* pControl = NULL;
-	bool checkControlCreate = true;
-	//create Button Wrapper
+	
 	if (NowStringProcessor::compareIgnoreCase(strControlType, NOW_CONTROL_BUTTON))
 	{
 		pControl = new NowButton_UIA(strSignatureControl, strControlType);
@@ -38,8 +39,16 @@ INowControl* NowControlBuilder::createControlWrapper( string strSignatureControl
 	{
 		pControl = new  NowListItem_UIA(strSignatureControl, strControlType);
 	}
-	else
+	else if (NowStringProcessor::compareIgnoreCase(strControlType, NOW_CONTROL_TREE_ITEM))
 	{
+		pControl = new NowTreeItem_UIA(strSignatureControl , strControlType);
+	}
+	else if (NowStringProcessor::compareIgnoreCase(strControlType,NOW_CONTROL_TREE_VIEW_ITEM))
+	{
+		pControl = new NowTreeItem_UIA(strSignatureControl,strControlType);
+	}
+	else
+	{			
 		pControl = new NowControl_UIA(strSignatureControl, strControlType);
 	}
 	return pControl;
