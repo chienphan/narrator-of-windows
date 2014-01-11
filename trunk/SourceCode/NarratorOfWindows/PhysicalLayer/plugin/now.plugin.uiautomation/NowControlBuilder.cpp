@@ -34,16 +34,13 @@ INowControl* NowControlBuilder::createControlWrapper( string strSignatureControl
 	{
 		pControl = new NowButton_UIA(strSignatureControl, strControlType);
 	}
+	else if (NowStringProcessor::compareIgnoreCase(strControlType, NOW_CONTROL_LIST_ITEM))
+	{
+		pControl = new  NowListItem_UIA(strSignatureControl, strControlType);
+	}
 	else
 	{
-		if (NowStringProcessor::compareIgnoreCase(strControlType, NOW_CONTROL_LIST_ITEM))
-		{
-			pControl = new  NowListItem_UIA(strSignatureControl, strControlType);
-		}
-		else
-		{			
-			pControl = new NowControl_UIA(strSignatureControl, strControlType);
-		}
+		pControl = new NowControl_UIA(strSignatureControl, strControlType);
 	}
 	return pControl;
 }

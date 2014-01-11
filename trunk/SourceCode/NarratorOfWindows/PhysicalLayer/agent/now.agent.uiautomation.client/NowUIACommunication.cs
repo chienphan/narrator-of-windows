@@ -34,6 +34,7 @@ namespace now.agent.uiautomation.client
         /// <returns>Return AutomationElement if succeed, null if false</returns>
         public int GetElementAtPoint(Point point, ref String strSignatureControl, ref String strControlType)
         {
+            //NowUIALogger.GetInstance().LogInfor("GetElementAtPoint");
             int nResult = NowUIADefine.NOW_FALSE;
             AutomationElement currentElement = null;
 
@@ -69,7 +70,6 @@ namespace now.agent.uiautomation.client
         public int GetUIProperty(String strSignatureControl, String strPropName, ref String strValue)
         {
             int nResult = NowUIADefine.NOW_FALSE;
-            NowUIALogger.GetInstance().LogInfor("ok check commu {0}",1);
             AutomationElement runtimeElement = NowUIAStorage.GetInstance().GetUIObjectFormCache(strSignatureControl);
             if (runtimeElement != null)
             {

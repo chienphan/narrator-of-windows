@@ -47,7 +47,7 @@ NOW_RESULT NowButton_UIA::getUIInformation( wstring& wstrHelpText )
 		wstrToolTip = wstrCaption;
 	}
 	//wstrHelpText = wstrToolTip;
-	wstrHelpText =  wstrCaption + L" Button"+ L" . Click to " + wstrToolTip;
+	wstrHelpText =  wstrCaption + L" button"+ L". Click to " + wstrToolTip;
 	return nResult;
 }
 
