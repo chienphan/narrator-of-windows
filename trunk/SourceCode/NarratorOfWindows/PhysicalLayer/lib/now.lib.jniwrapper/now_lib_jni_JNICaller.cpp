@@ -1,11 +1,11 @@
-﻿#include "now_lib_jni_NowJNICaller.h"
+﻿#include "now_lib_jni_JNICaller.h"
 #include "NowDefine.h"
 #include "NowLogger.h"
 #include "NowPluginManager.h"
 
 #include "INowControl.h"
 
-JNIEXPORT jstring JNICALL Java_now_lib_jni_NowJNICaller_getControlSignatureUnderMouse( JNIEnv * env, jobject jObject)
+JNIEXPORT jstring JNICALL Java_now_lib_jni_JNICaller_getControlSignatureUnderMouse( JNIEnv * env, jobject jObject)
 {
 	POINT currentPoint;
 	INowControl* pControl = NULL;
@@ -38,7 +38,7 @@ JNIEXPORT jstring JNICALL Java_now_lib_jni_NowJNICaller_getControlSignatureUnder
 	return env->NewStringUTF(strSignature.c_str());
 }
 
-JNIEXPORT jstring JNICALL Java_now_lib_jni_NowJNICaller_getUIInformation( JNIEnv * env, jobject jObject, jstring signature)
+JNIEXPORT jstring JNICALL Java_now_lib_jni_JNICaller_getUIInformation( JNIEnv * env, jobject jObject, jstring signature)
 {
 	wstring wstrResult = L"";
 	string strSignature = string(env->GetStringUTFChars(signature, false));
@@ -53,7 +53,7 @@ JNIEXPORT jstring JNICALL Java_now_lib_jni_NowJNICaller_getUIInformation( JNIEnv
 	return env->NewStringUTF("");
 }
 
-JNIEXPORT jstring JNICALL Java_now_lib_jni_NowJNICaller_getControlProperty( JNIEnv * env, jobject jObject, jstring signature, jstring propertyName)
+JNIEXPORT jstring JNICALL Java_now_lib_jni_JNICaller_getControlProperty( JNIEnv * env, jobject jObject, jstring signature, jstring propertyName)
 {
 	wstring wstrResult = L"";
 	string strSignature = string(env->GetStringUTFChars(signature, false));

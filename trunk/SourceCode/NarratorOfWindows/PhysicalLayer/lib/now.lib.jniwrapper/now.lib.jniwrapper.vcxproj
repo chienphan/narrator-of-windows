@@ -19,11 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="now_lib_jni_NowJNICaller.cpp" />
+    <ClInclude Include="C:\Program Files\Java\jdk1.7.0_45\include\jni.h" />
+    <ClInclude Include="now_lib_jni_JNICaller.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\Program Files\Java\jdk1.7.0_45\include\jni.h" />
-    <ClInclude Include="now_lib_jni_NowJNICaller.h" />
+    <ClCompile Include="now_lib_jni_JNICaller.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{4C9CA955-FC68-4DB9-BF53-733E79E3B6BE}</ProjectGuid>
