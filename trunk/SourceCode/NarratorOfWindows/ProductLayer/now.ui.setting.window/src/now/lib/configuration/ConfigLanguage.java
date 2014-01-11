@@ -1,6 +1,6 @@
 package now.lib.configuration;
 
-import now.lib.utilities.FileXML;
+import now.lib.utilities.UtilitiesFileXML;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -9,11 +9,11 @@ public class ConfigLanguage {
 	private static ConfigLanguage m_instance = null;
 	
 	private String m_fileConfig = ConfigDefine.FILE_CONFIG_LANGUAGE;
-	private FileXML m_xmlFile = null;
+	private UtilitiesFileXML m_xmlFile = null;
 	private Document m_xmlDocument = null;
 	
 	private ConfigLanguage(){
-		m_xmlFile = new FileXML(m_fileConfig);
+		m_xmlFile = new UtilitiesFileXML(m_fileConfig);
 		m_xmlDocument = m_xmlFile.getXMLDocument();
 	};
 	

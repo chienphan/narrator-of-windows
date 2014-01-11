@@ -1,5 +1,5 @@
 package now.lib.utilities;
 
-public class FileTXT {
+public class UtilitiesFileTXT {
 
 }

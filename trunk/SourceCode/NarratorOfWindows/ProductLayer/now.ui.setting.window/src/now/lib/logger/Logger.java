@@ -1,5 +1,5 @@
 package now.lib.logger;
 
-public class NowLogger {
+public class Logger {
 	
 }

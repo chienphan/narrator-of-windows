@@ -20,12 +20,12 @@ import java.io.IOException;
  * @author Chien.Phan
  *
  */
-public class FileXML {
+public class UtilitiesFileXML {
 	private String m_fileName = "";
 	private File m_xmlFile = null;
 	private Document m_xmlDocument = null;
 	
-	public FileXML(String filePath)	{
+	public UtilitiesFileXML(String filePath)	{
 		m_fileName = filePath;
 		m_xmlFile = new File(m_fileName);
 		if(!m_fileName.isEmpty() && m_xmlFile.exists())
