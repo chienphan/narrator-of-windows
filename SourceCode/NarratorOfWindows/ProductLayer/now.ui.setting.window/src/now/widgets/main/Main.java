@@ -4,10 +4,12 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
+
 import com.gtranslate.Language;
 import com.gtranslate.Translator;
 
 import now.lib.configuration.ConfigLanguage;
+import now.lib.configuration.ConfigTranslateEngine;
 import now.lib.jni.*;
 
 public class Main {
@@ -107,17 +109,10 @@ public class Main {
 	}
 	
 	private static void runJavaFollow(){
-		
-		System.out.println("Display Language: " + ConfigLanguage.getInstance().getDisplayLanguage());
-		System.out.println("Input Language: " + ConfigLanguage.getInstance().getInputLanguage());
-		System.out.println("Output Language: " + ConfigLanguage.getInstance().getOutputLanguage());
-		
-		ConfigLanguage.getInstance().setOutputLanguage("English");
-		//ConfigLanguage.getInstance().setInputLanguage("Vietnamese");
-		
-		//System.out.println("Display Language: " + ConfigLanguage.getInstance().getDisplayLanguage());
-		//System.out.println("Input Language: " + ConfigLanguage.getInstance().getInputLanguage());
-		System.out.println(">>Output Language: " + ConfigLanguage.getInstance().getOutputLanguage());
-
+		ConfigTranslateEngine.getInstance().setTranslatorEngine(now.lib.translator.Translator.TranslatorEngineName.TRANSLATOR_ENGINE_GOOGLE);
+		ConfigLanguage.getInstance().setInputLanguage(now.lib.translator.Translator.TranslatorLanguageName.ENGLISH);
+		ConfigLanguage.getInstance().setOutputLanguage(now.lib.translator.Translator.TranslatorLanguageName.VIETNAMESE);
+		String result = now.lib.translator.Translator.getInstance().translateAutoDetectInput("hello everyone!");
+		System.out.println(result);
 	}
 }
