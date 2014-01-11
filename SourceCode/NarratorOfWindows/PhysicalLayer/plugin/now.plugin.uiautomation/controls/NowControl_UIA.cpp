@@ -31,15 +31,7 @@ NOW_RESULT NowControl_UIA::getCaption( wstring& wstrCaption )
 
 NOW_RESULT NowControl_UIA::getUIInformation( wstring& wstrHelpText )
 {
-	int nResult = NOW_FALSE;
-	wstring wstrToolTip = L"";
-	wstrHelpText = L"";
-	nResult = NowCommunication::getInstance()->getUIProperty(m_strSignature, NOW_PROP_HELP_TEXT, wstrToolTip);
-	if (!NOW_SUCCEED(nResult))
-	{
-		return nResult;
-	}
-	return nResult;
+	return NowCommunication::getInstance()->getUIProperty(m_strSignature, NOW_PROP_HELP_TEXT, wstrHelpText);
 }
 
 NOW_RESULT NowControl_UIA::getParent( INowControl*& ctrParent )

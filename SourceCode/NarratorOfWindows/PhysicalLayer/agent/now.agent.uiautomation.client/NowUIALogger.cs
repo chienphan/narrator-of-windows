@@ -10,8 +10,6 @@ namespace now.agent.uiautomation.client
 {
     public class NowUIALogger
     {
-        private delegate void DelegateLogger(String log);
-
         private static NowUIALogger m_instance = null;
         private static String m_logConfigFileName = "\\logconfig.txt";
 
@@ -102,16 +100,23 @@ namespace now.agent.uiautomation.client
         /// </summary>
         private void InitTraceInstance()
         {
+            //NowOutPut.OutputDebugString("InitTraceInstance");
+            //NowOutPut.OutputDebugString("Count" + Trace.Listeners.Count.ToString());
             if (Trace.Listeners.Count > 0)
             {
+                //NowOutPut.OutputDebugString("Clear");
                 Trace.Listeners.Clear();
             }
             if (m_logMode == NowLogMode.LOG_DEBUG_VIEW)
             {
+                //NowOutPut.OutputDebugString("LOG_DEBUG_VIEW");
                 Trace.Listeners.Add(new DefaultTraceListener());
+                Trace.AutoFlush = true;
+                //Trace.UseGlobalLock = false;
             }
             if (m_logMode == NowLogMode.LOG_FILE)
             {
+                //NowOutPut.OutputDebugString("LOG_FILE");
                 Trace.Listeners.Add(new TextWriterTraceListener(m_logFileFullPath));
                 Trace.AutoFlush = true;
             }
@@ -128,6 +133,7 @@ namespace now.agent.uiautomation.client
         
         public void LogInfor(String format, params object[] args)
         {
+            //NowOutPut.OutputDebugString("TraceInformation");
             Trace.TraceInformation(format, args);
         }
 

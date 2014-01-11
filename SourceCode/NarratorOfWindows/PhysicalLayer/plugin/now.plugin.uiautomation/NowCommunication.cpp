@@ -64,7 +64,7 @@ NOW_RESULT NowCommunication::getUIProperty(const string& strSignature, const str
 	return nResult;
 }
 
-NOW_RESULT NowCommunication::getUIProperty(const string& strSignature, const string& strPropName , string& wstrValue)
+NOW_RESULT NowCommunication::getUIProperty(const string& strSignature, const string& strPropName , string& strValue)
 {
 	int nResult = NOW_FALSE;
 	String^ mstrSignature = NowStringProcessor::StlStringToString(strSignature);
@@ -74,12 +74,12 @@ NOW_RESULT NowCommunication::getUIProperty(const string& strSignature, const str
 	nResult = NowUIACommunication::GetInstance()->GetUIProperty(mstrSignature, mstrPropName, mstrValue);
 	if (NOW_SUCCEED(nResult))
 	{
-		wstrValue = NowStringProcessor::StringToStlString(mstrValue);
+		strValue = NowStringProcessor::StringToStlString(mstrValue);
 	}
 	return nResult;
 }
 
-NOW_RESULT NowCommunication::getUIState(const string& strSignature , wstring& strState)
+NOW_RESULT NowCommunication::getUIState(const string& strSignature , string& strState)
 {
 	int nResult = NOW_FALSE;
 	int nState = 0 ;
@@ -92,6 +92,8 @@ NOW_RESULT NowCommunication::getUIState(const string& strSignature , wstring& st
 	sprintf_s(buffer, "%d ", nState & NOW_STATE_SELECTED);
 	NowLogger::getInstance()->LogAString(string(buffer));
 
+	//TODO: [Chien.Phan] Need to detach this code to another method!
+	//We need a method to parse state from int to string
 	if (!NOW_SUCCEED(nResult))
 	{
 		return nResult;
@@ -100,12 +102,12 @@ NOW_RESULT NowCommunication::getUIState(const string& strSignature , wstring& st
 
 	if (compareState == NOW_STATE_SELECTED )
 	{
-		strState = strState + L"selected";
+		strState = strState + "selected";
 	}
 	else if (compareState != NOW_STATE_SELECTED )
 	{
 		
-		strState = strState + L"not selected";
+		strState = strState + "not selected";
 	}
 
 	

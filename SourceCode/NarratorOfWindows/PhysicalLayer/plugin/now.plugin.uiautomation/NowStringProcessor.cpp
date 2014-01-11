@@ -75,19 +75,21 @@ String^ NowStringProcessor::StlStringToString( string const& s )
 	return gcnew String(s.c_str());
 }
 
+
+
 //std::string NowStringProcessor::IntToStlString( const int& number )
 //{
 //	return to_string((long)number);
 //}
 
 
-//wstring NowStringProcessor::Utf8ToStlWString( char const* pUtfString)
-//{
-//	wstring stlString;
-//	MAKE_WIDEPTR_FROMUTF8(pString, pUtfString);
-//	stlString = pString;
-//	return stlString;
-//}
+wstring NowStringProcessor::Utf8ToStlWString( const string& pUtfString)
+{
+	wstring stlString(pUtfString.begin(), pUtfString.end());
+	//MAKE_WIDEPTR_FROMUTF8(pString, pUtfString);
+	//stlString = pString;
+	return stlString;
+}
 //
 //void NowStringProcessor::Utf8ToStlWStringN( char const* pUtfString, ULONG length )
 //{

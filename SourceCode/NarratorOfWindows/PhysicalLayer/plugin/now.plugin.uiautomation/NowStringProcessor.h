@@ -24,8 +24,8 @@ public:
 	static string toLowerCase(const string& strNormal);
 
 	//static string IntToStlString(const int& number);
-	/*static wstring Utf8ToStlWString(char const* pUtfString);
-	static wstring Utf8ToStlWStringN(char const* pUtfString, ULONG length);*/
+	static wstring Utf8ToStlWString(const string & pUtfString);
+	/*static wstring Utf8ToStlWStringN(char const* pUtfString, ULONG length);*/
 };
 
 #endif
