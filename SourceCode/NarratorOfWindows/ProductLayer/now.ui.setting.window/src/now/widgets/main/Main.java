@@ -13,6 +13,15 @@ import now.lib.configuration.ConfigTranslateEngine;
 import now.lib.jni.*;
 
 public class Main {
+	
+	public static final class TranslatorLanguageName{
+		//This class will be remove when using UI to handle config
+		public static final String VIETNAMESE 	= "Vietnamese";
+		public static final String ENGLISH 		= "English";
+		public static final String FRENCH 		= "French";
+	}
+	
+	@SuppressWarnings("unused")
 	private static void runDebug() {
 		String informationt 	= "";
 		String signature 	= "";
@@ -102,17 +111,18 @@ public class Main {
 
 	public static void main(String[] args) {
 		//TODO: if you want to run debug to c++/c# follow, you should run method "runDebug"
-		//runDebug();
+		runDebug();
 		
 		//TODO: this method is used to run java follow.
-		runJavaFollow();
+		//runJavaFollow();
 	}
 	
 	private static void runJavaFollow(){
-		ConfigTranslateEngine.getInstance().setTranslatorEngine(now.lib.translator.Translator.TranslatorEngineName.TRANSLATOR_ENGINE_GOOGLE);
-		ConfigLanguage.getInstance().setInputLanguage(now.lib.translator.Translator.TranslatorLanguageName.ENGLISH);
-		ConfigLanguage.getInstance().setOutputLanguage(now.lib.translator.Translator.TranslatorLanguageName.VIETNAMESE);
-		String result = now.lib.translator.Translator.getInstance().translateAutoDetectInput("hello everyone!");
-		System.out.println(result);
+		ConfigTranslateEngine.getInstance().setTranslatorEngine(now.lib.translator.engine.TranslatorEngineName.TRANSLATOR_ENGINE_GOOGLE);
+		ConfigLanguage.getInstance().setInputLanguage(now.widgets.main.Main.TranslatorLanguageName.ENGLISH);
+		ConfigLanguage.getInstance().setOutputLanguage(now.widgets.main.Main.TranslatorLanguageName.VIETNAMESE);
+		System.out.println(now.lib.translator.Translator.getInstance().translateAutoDetectInput("Hello everyone! i'm a machine."));
+		System.out.println(now.lib.translator.Translator.getInstance().translateAutoDetectInput("Hello everyone! i'm a machine.",
+				now.widgets.main.Main.TranslatorLanguageName.FRENCH));
 	}
 }
