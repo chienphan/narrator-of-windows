@@ -2,6 +2,7 @@
 #include "NowControl_UIA.h"
 #include "NowLogger.h"
 #include "..\NowCommunication.h"
+#include "..\NowStringProcessor.h"
 
 NowTreeItem_UIA::NowTreeItem_UIA(string strSignature, string strControlType)  : NowControl_UIA(strSignature, strControlType)
 {
@@ -24,8 +25,8 @@ NOW_RESULT NowTreeItem_UIA::getUIInformation(wstring& wstrHelpText)
 	}
 	//NowLogger::getInstance()->LogWString(wstrCaption);
 
-	wstring wstrState = L"";
-	nResult = NowCommunication::getInstance()->getUIState(m_strSignature , wstrState);
-	wstrHelpText = wstrCaption + L" is" + wstrState ; 
+	string strState = "";
+	nResult = NowCommunication::getInstance()->getUIState(m_strSignature , strState);
+	wstrHelpText = wstrCaption + L" is" + NowStringProcessor::Utf8ToStlWString(strState); 
 	return nResult;
 }
