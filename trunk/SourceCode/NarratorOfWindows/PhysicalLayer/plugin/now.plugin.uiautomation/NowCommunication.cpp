@@ -85,7 +85,7 @@ NOW_RESULT NowCommunication::getUIProperty(const string& strSignature, const str
 	return nResult;
 }
 
-NOW_RESULT NowCommunication::getUIState(const string& strSignature , wstring& strState)
+NOW_RESULT NowCommunication::getUIState(const string& strSignature , string& strState)
 {
 	int nResult = NOW_FALSE;
 	int nState = 0 ;
@@ -102,7 +102,7 @@ NOW_RESULT NowCommunication::getUIState(const string& strSignature , wstring& st
 	nResult = NowUIACommunication::GetInstance()->GetUIState(mstrSignature , mstrStateName , nState);
 	if (!NOW_SUCCEED(nResult))
 	{
-		strState = strState + L"";
+		strState = strState + "";
 	}
 	else
 	{
@@ -110,11 +110,11 @@ NOW_RESULT NowCommunication::getUIState(const string& strSignature , wstring& st
 		compareState = nState & NOW_STATE_SELECTED;
 		if (compareState == NOW_STATE_SELECTED )
 		{
-			strState = strState + L" selected";
+			strState = strState + " selected";
 		}
 		else if (compareState != NOW_STATE_SELECTED )
 		{
-			strState = strState + L" not selected";
+			strState = strState + " not selected";
 		}
 
 	}
@@ -126,14 +126,14 @@ NOW_RESULT NowCommunication::getUIState(const string& strSignature , wstring& st
 	nResult = NowUIACommunication::GetInstance()->GetUIState(mstrSignature , mstrStateName , nState);
 	if (!NOW_SUCCEED(nResult))
 	{
-		strState = strState + L"";
+		strState = strState + "";
 	}
 	else
 	{
 		compareState = nState & NOW_STATE_EXPANDED ; 
 		if (compareState == NOW_STATE_EXPANDED)
 		{
-			strState = strState + L" Expanded";
+			strState = strState + " Expanded";
 		}
 	}
 
@@ -144,14 +144,14 @@ NOW_RESULT NowCommunication::getUIState(const string& strSignature , wstring& st
 	nResult = NowUIACommunication::GetInstance()->GetUIState(mstrSignature , mstrStateName , nState);
 	if (!NOW_SUCCEED(nResult))
 	{
-		strState = strState + L"";
+		strState = strState + "";
 	}
 	else
 	{
 		compareState = nState & NOW_STATE_COLLAPSED ; 
 		if (compareState == NOW_STATE_COLLAPSED)
 		{
-			strState = strState + L" Collapsed";
+			strState = strState + " Collapsed";
 		}
 	}
 
@@ -162,14 +162,14 @@ NOW_RESULT NowCommunication::getUIState(const string& strSignature , wstring& st
 	nResult = NowUIACommunication::GetInstance()->GetUIState(mstrSignature , mstrStateName , nState);
 	if (!NOW_SUCCEED(nResult))
 	{
-		strState = strState + L"";
+		strState = strState + "";
 	}
 	else
 	{
 		compareState = nState & NOW_STATE_LEAF_NODE ; 
 		if (compareState == NOW_STATE_LEAF_NODE)
 		{
-			strState = strState + L" Leaf Node";
+			strState = strState + " Leaf Node";
 		}
 	}
 	return NOW_OK;		

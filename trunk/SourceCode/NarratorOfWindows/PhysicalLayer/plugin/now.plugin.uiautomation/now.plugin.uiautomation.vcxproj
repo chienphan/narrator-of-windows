@@ -141,6 +141,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="controls\NowListItem_UIA.cpp" />
+    <ClCompile Include="controls\NowTreeItem_UIA.cpp" />
     <ClCompile Include="main_UIA.cpp" />
     <ClCompile Include="controls\NowButton_UIA.cpp" />
     <ClCompile Include="controls\NowControl_UIA.cpp" />
@@ -153,6 +154,7 @@
     <ClInclude Include="controls\NowButton_UIA.h" />
     <ClInclude Include="controls\NowControl_UIA.h" />
     <ClInclude Include="controls\NowListItem_UIA.h" />
+    <ClInclude Include="controls\NowTreeItem_UIA.h" />
     <ClInclude Include="NowCommunication.h" />
     <ClInclude Include="NowControlBuilder.h" />
     <ClInclude Include="NowPlugin_UIA.h" />
