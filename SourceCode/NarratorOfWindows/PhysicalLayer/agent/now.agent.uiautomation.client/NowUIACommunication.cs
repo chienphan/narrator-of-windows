@@ -43,6 +43,7 @@ namespace now.agent.uiautomation.client
                 currentElement = AutomationElement.FromPoint(point);
                 if (currentElement != null)
                 {
+                    //TODO: Need check for control type and decide the control to return
                     // Get signature, control type and create cache
                     strControlType = currentElement.Current.LocalizedControlType; //TODO: Need check for get LocalizedControlType or ControlType
                     strSignatureControl = NowUIAService.GetInstance().GetSignature(currentElement);
@@ -85,17 +86,20 @@ namespace now.agent.uiautomation.client
         }
 
 
-        public int GetUIState(String strSignatureControl, String strStateName, ref int stateValue)
+        public int GetUIState(String strSignatureControl, ref int stateValue)
         {
-            
-           // NowOutPut.OutputDebugString(strStateName);
-           int nResult = NowUIADefine.NOW_FALSE;
-
+            //NowOutPut.OutputDebugString(strSignatureControl);
+            int nResult = NowUIADefine.NOW_FALSE;
             AutomationElement runtimeElement = NowUIAStorage.GetInstance().GetUIObjectFormCache(strSignatureControl);
             if (runtimeElement != null)
             {
-                stateValue = NowUIAService.GetInstance().GetUIState(runtimeElement, strStateName, ref nResult);
+              //  NowOutPut.OutputDebugString("ok");
+                stateValue = NowUIAService.GetInstance().GetUIState(runtimeElement, ref nResult);
                // NowOutPut.OutputDebugString(stateValue.ToString());
+            }
+            else
+            {
+               // NowOutPut.OutputDebugString("not ok");
             }
             return nResult;
         }

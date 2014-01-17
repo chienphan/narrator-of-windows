@@ -3,6 +3,7 @@
 #include "NowLogger.h"
 #include "..\NowStringProcessor.h"
 #include "..\NowCommunication.h"
+#include "..\NowService.h"
 
 NowListItem_UIA::NowListItem_UIA(string strSignature, string strControlType) : NowControl_UIA(strSignature, strControlType)
 {
@@ -20,26 +21,17 @@ NOW_RESULT NowListItem_UIA::getUIInformation(wstring& wrtrHelpText)
 	wrtrHelpText = L"";
 	wstring wstrCaption = L"";
 	nResult = NowCommunication::getInstance()->getUIProperty(m_strSignature , NOW_PROP_NAME , wstrCaption);
-	//NowLogger::getInstance()->LogWString(wstrCaption);
-	if (!NOW_SUCCEED(nResult))
+	
+	if (NOW_SUCCEED(nResult))
 	{
-		return nResult;
-	}
-	string strState = "";
-	nResult = NowCommunication::getInstance()->getUIState(m_strSignature , strState);
-	if (!NOW_SUCCEED(nResult))
-	{
-		return nResult;
-	}
+		int nState = 0;
+		nResult = NowCommunication::getInstance()->getUIState(m_strSignature , nState);
 
-	//wstring wstrToolTip = L"";
-	//nResult = NowCommunication::getInstance()->getUIProperty(m_strSignature,NOW_PROP_HELP_TEXT,wstrToolTip);
-	//if (!NOW_SUCCEED(nResult))
-	//{
-	//	return nResult;
-	//}
-	wrtrHelpText = wstrCaption + L" is " + NowStringProcessor::Utf8ToStlWString(strState);
-
-	//wrtrHelpText = wstrToolTip ;
+		if (NOW_SUCCEED(nResult))
+		{
+			wrtrHelpText = wstrCaption + L" is " + NowStringProcessor::Utf8ToStlWString(NowService::getInstance()->ParseState(nState));
+			NowLogger::getInstance()->LogAString(NowService::getInstance()->ParseState(nState));
+		}
+	}
 	return nResult;
 }

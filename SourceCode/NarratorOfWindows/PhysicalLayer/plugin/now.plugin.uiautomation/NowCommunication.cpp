@@ -85,92 +85,13 @@ NOW_RESULT NowCommunication::getUIProperty(const string& strSignature, const str
 	return nResult;
 }
 
-NOW_RESULT NowCommunication::getUIState(const string& strSignature , string& strState)
+NOW_RESULT NowCommunication::getUIState(const string& strSignature , int& nState)
 {
-	int nResult = NOW_FALSE;
-	int nState = 0 ;
 	String^ mstrSignature = NowStringProcessor::StlStringToString(strSignature);
-	String^ mstrStateName = "";
-	int compareState = 0 ;
-
-	/*char buffer[512];
-	sprintf_s(buffer, "%d ", nState & NOW_STATE_SELECTED);
-	NowLogger::getInstance()->LogAString(string(buffer));*/
-
-	//get Selected State
-	mstrStateName = NowStringProcessor::StlStringToString(NOW_PROP_IS_SELECTED);
-	nResult = NowUIACommunication::GetInstance()->GetUIState(mstrSignature , mstrStateName , nState);
-	if (!NOW_SUCCEED(nResult))
-	{
-		strState = strState + "";
-	}
-	else
-	{
-
-		compareState = nState & NOW_STATE_SELECTED;
-		if (compareState == NOW_STATE_SELECTED )
-		{
-			strState = strState + " selected";
-		}
-		else if (compareState != NOW_STATE_SELECTED )
-		{
-			strState = strState + " not selected";
-		}
-
-	}
-
-	//get Expanded state 
-	nState = 0 ;
-	mstrStateName = "";
-	mstrStateName = NowStringProcessor::StlStringToString(NOW_PROP_IS_EXPANDED);
-	nResult = NowUIACommunication::GetInstance()->GetUIState(mstrSignature , mstrStateName , nState);
-	if (!NOW_SUCCEED(nResult))
-	{
-		strState = strState + "";
-	}
-	else
-	{
-		compareState = nState & NOW_STATE_EXPANDED ; 
-		if (compareState == NOW_STATE_EXPANDED)
-		{
-			strState = strState + " Expanded";
-		}
-	}
-
-	//get Collapsed state
-	nState = 0 ;
-	mstrStateName = "";
-	mstrStateName = NowStringProcessor::StlStringToString(NOW_PROP_IS_COLLAPSED);
-	nResult = NowUIACommunication::GetInstance()->GetUIState(mstrSignature , mstrStateName , nState);
-	if (!NOW_SUCCEED(nResult))
-	{
-		strState = strState + "";
-	}
-	else
-	{
-		compareState = nState & NOW_STATE_COLLAPSED ; 
-		if (compareState == NOW_STATE_COLLAPSED)
-		{
-			strState = strState + " Collapsed";
-		}
-	}
-
-	//get Leaf Node state
-	nState = 0 ;
-	mstrStateName = "";
-	mstrStateName = NowStringProcessor::StlStringToString(NOW_PROP_IS_LEAF_NODE);
-	nResult = NowUIACommunication::GetInstance()->GetUIState(mstrSignature , mstrStateName , nState);
-	if (!NOW_SUCCEED(nResult))
-	{
-		strState = strState + "";
-	}
-	else
-	{
-		compareState = nState & NOW_STATE_LEAF_NODE ; 
-		if (compareState == NOW_STATE_LEAF_NODE)
-		{
-			strState = strState + " Leaf Node";
-		}
-	}
-	return NOW_OK;		
+	int nResult = NowUIACommunication::GetInstance()->GetUIState(mstrSignature, nState);
+	//char buffer[512];
+	//sprintf_s(buffer, "%d ", nState);
+	//NowLogger::getInstance()->LogAString(string(buffer));
+	
+	return nResult ;		
 }
