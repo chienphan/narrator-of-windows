@@ -8,6 +8,7 @@
 #include "NowTreeItem_UIA.h"
 #include "NowCheckBox_UIA.h"
 #include "NowRadioButton_UIA.h"
+#include "NowHyperlink_UIA.h"
 #include "NowLogger.h"
 
 NowControlBuilder* NowControlBuilder::m_Instance = NULL;
@@ -55,6 +56,10 @@ INowControl* NowControlBuilder::createControlWrapper( string strSignatureControl
 	else if (NowStringProcessor::compareIgnoreCase(strControlType,NOW_CONTROL_RADIO_BUTTON))
 	{
 		pControl = new NowRadioButton_UIA(strSignatureControl,strControlType);
+	}
+	else if (NowStringProcessor::compareIgnoreCase(strControlType,NOW_CONTROL_HYPERLINK))
+	{
+		pControl = new NowHyperlink_UIA(strSignatureControl,strControlType);
 	}
 	else
 	{			
