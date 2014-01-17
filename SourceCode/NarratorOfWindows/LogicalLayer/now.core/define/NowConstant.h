@@ -35,6 +35,7 @@
 #define NOW_CONTROL_TREE_ITEM	"tree item"
 #define NOW_CONTROL_TREE_VIEW_ITEM "tree view item"
 #define NOW_CONTROL_CHECK_BOX	"check box"
+#define NOW_CONTROL_RADIO_BUTTON "radio button"
 
 #define NOW_PROP_ACCELERATOR_KEY		"AcceleratorKeyProperty"
 #define NOW_PROP_ACCESS_KEY				"AccessKeyProperty"
@@ -67,5 +68,5 @@
 #define NOW_PROP_IS_EXPANDED			"IsExpandedProperty"
 #define NOW_PROP_IS_COLLAPSED			"IsCollapsedProperty"
 #define NOW_PROP_IS_LEAF_NODE			"IsLeafNodeProperty"
-
+#define NOW_PROP_IS_RADIO_BUTTON		"IsRadioButtonProperrty"
 #endif
