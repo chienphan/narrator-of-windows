@@ -65,25 +65,33 @@ namespace now.agent.uiautomation.client
             m_propMap.Add(NowUIAProperty.NOW_PROP_ORIENTATION, AutomationElement.OrientationProperty);
             m_propMap.Add(NowUIAProperty.NOW_PROP_PROCESS_ID, AutomationElement.ProcessIdProperty);
             m_propMap.Add(NowUIAProperty.NOW_PROP_RUNTIME_ID, AutomationElement.RuntimeIdProperty);
-
             m_propMap.Add(NowUIAProperty.NOW_PROP_IS_SELECTED, SelectionItemPattern.IsSelectedProperty);
             m_propMap.Add(NowUIAProperty.NOW_PROP_IS_EXPANDED, ExpandCollapsePattern.ExpandCollapseStateProperty);
             m_propMap.Add(NowUIAProperty.NOW_PROP_IS_COLLAPSED, ExpandCollapsePattern.ExpandCollapseStateProperty);
             m_propMap.Add(NowUIAProperty.NOW_PROP_IS_LEAF_NODE, ExpandCollapsePattern.ExpandCollapseStateProperty);
+            m_propMap.Add(NowUIAProperty.NOW_PROP_IS_CHECKED, TogglePattern.ToggleStateProperty);
+            m_propMap.Add(NowUIAProperty.NOW_PROP_IS_UNCHECKED, TogglePattern.ToggleStateProperty);
 
             m_stateValMap.Add(NowUIAProperty.NOW_PROP_IS_SELECTED, NowUIAState.NOW_STATE_SELECTED);
             m_stateValMap.Add(NowUIAProperty.NOW_PROP_IS_COLLAPSED, NowUIAState.NOW_STATE_COLLAPSED);
             m_stateValMap.Add(NowUIAProperty.NOW_PROP_IS_EXPANDED, NowUIAState.NOW_STATE_EXPANDED);
             m_stateValMap.Add(NowUIAProperty.NOW_PROP_IS_LEAF_NODE, NowUIAState.NOW_STATE_LEAF_NODE);
+            m_stateValMap.Add(NowUIAProperty.NOW_PROP_IS_CHECKED, NowUIAState.NOW_STATE_CHECKED);
+            m_stateValMap.Add(NowUIAProperty.NOW_PROP_IS_UNCHECKED, NowUIAState.NOW_STATE_UNCHECKED);
 
             m_checkUIHaveStateMap.Add(NowUIAProperty.NOW_PROP_IS_SELECTED, AutomationElement.IsSelectionItemPatternAvailableProperty);
             m_checkUIHaveStateMap.Add(NowUIAProperty.NOW_PROP_IS_EXPANDED, AutomationElement.IsExpandCollapsePatternAvailableProperty);
             m_checkUIHaveStateMap.Add(NowUIAProperty.NOW_PROP_IS_COLLAPSED, AutomationElement.IsExpandCollapsePatternAvailableProperty);
             m_checkUIHaveStateMap.Add(NowUIAProperty.NOW_PROP_IS_LEAF_NODE, AutomationElement.IsExpandCollapsePatternAvailableProperty);
+            m_checkUIHaveStateMap.Add(NowUIAProperty.NOW_PROP_IS_CHECKED, AutomationElement.IsTogglePatternAvailableProperty);
+            m_checkUIHaveStateMap.Add(NowUIAProperty.NOW_PROP_IS_UNCHECKED, AutomationElement.IsTogglePatternAvailableProperty);
 
+            m_nameStateMap.Add(NowUIAProperty.NOW_PROP_IS_SELECTED, "true");
             m_nameStateMap.Add(NowUIAProperty.NOW_PROP_IS_EXPANDED, "expanded");
             m_nameStateMap.Add(NowUIAProperty.NOW_PROP_IS_COLLAPSED, "collapsed");
             m_nameStateMap.Add(NowUIAProperty.NOW_PROP_IS_LEAF_NODE, "leafnode");
+            m_nameStateMap.Add(NowUIAProperty.NOW_PROP_IS_CHECKED, "on");
+            m_nameStateMap.Add(NowUIAProperty.NOW_PROP_IS_UNCHECKED, "off");
         }
 
         /// <summary>
@@ -128,44 +136,38 @@ namespace now.agent.uiautomation.client
             return strResult;
         }
 
-        public int GetUIState(AutomationElement runtimeElement, String strPropName, ref int nResult)
+        public int GetUIState(AutomationElement runtimeElement, ref int nResult)
         {
             nResult = NowUIADefine.NOW_OK;
             int nState = 0;
             bool check = false;
-
-            check = (bool)runtimeElement.GetCurrentPropertyValue(m_checkUIHaveStateMap[strPropName] as AutomationProperty);
-
-            if (check)
+            try
             {
-                String strState = "";
-                strState = runtimeElement.GetCurrentPropertyValue(m_propMap[strPropName] as AutomationProperty).ToString();
-                NowOutPut.OutputDebugString(strState);
-                if (strState.ToLower().Equals("false"))
+                foreach (KeyValuePair<String, int> itemState in m_stateValMap)
                 {
-                    return nState;
-                }
-                else if (strState.ToLower().Equals("true"))
-                {
-                    return m_stateValMap[strPropName];
-                }
-                else
-                {
-                    if (m_nameStateMap.ContainsKey(strPropName))
+                    check = (bool)runtimeElement.GetCurrentPropertyValue(m_checkUIHaveStateMap[itemState.Key] as AutomationProperty);
+                    if (check)
                     {
-
-                        if (strState.ToLower().Equals(m_nameStateMap[strPropName]))
+                        String strState = "";
+                        strState = runtimeElement.GetCurrentPropertyValue(m_propMap[itemState.Key] as AutomationProperty).ToString();
+                        if (strState.ToLower().Equals(m_nameStateMap[itemState.Key]))
                         {
-                            if (m_stateValMap.ContainsKey(strPropName))
+                            if (m_nameStateMap.ContainsKey(itemState.Key))
                             {
-                                return m_stateValMap[strPropName];
+                                if (strState.ToLower().Equals(m_nameStateMap[itemState.Key]))
+                                {
+                                    nState = nState | itemState.Value;
+                                }
                             }
                         }
-
                     }
-
                 }
             }
+            catch (System.Exception )
+            {
+                nResult = NowUIADefine.NOW_FALSE;
+            }
+            
             return nState;
         }        
     }

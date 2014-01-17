@@ -15,7 +15,7 @@ public:
 	NOW_RESULT getElementAtPoint(POINT point, string& strSignatureControl, string& strControlType);
 	NOW_RESULT getUIProperty(const string& strSignature, const string& strPropName , wstring& wstrValue); // return wstring
 	NOW_RESULT getUIProperty(const string& strSignature, const string& strPropName , string& strValue);	// return string
-	NOW_RESULT getUIState(const string& strSignature , string& strState);
+	NOW_RESULT getUIState(const string& strSignature , int& strState);
 };
 
 #endif

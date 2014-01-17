@@ -3,7 +3,6 @@
 #include "..\NowCommunication.h"
 
 NowControl_UIA::NowControl_UIA(string strSignature, string strControlType) 
-	//: m_strControlType(strControlType), m_strSignature(strSignature)
 {
 	m_strSignature = strSignature;
 	m_strControlType = strControlType;
