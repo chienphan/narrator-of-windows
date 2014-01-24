@@ -65,6 +65,7 @@ namespace now.agent.uiautomation.client
         public static readonly String NOW_PROP_IS_CHECKED           = "IsCheckProperty";
         public static readonly String NOW_PROP_IS_UNCHECKED         = "IsUncheckedProperty";
         public static readonly String NOW_PROP_IS_RADIO_BUTTON      = "IsRadioButtonProperty";
+        public static readonly String NOW_PROP_IS_VALUE             = "IsValueProperty";
     }
 
     /// <summary>

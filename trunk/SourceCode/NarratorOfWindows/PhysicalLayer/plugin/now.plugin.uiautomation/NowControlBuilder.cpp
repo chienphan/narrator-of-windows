@@ -11,6 +11,7 @@
 #include "NowHyperlink_UIA.h"
 #include "NowMenuBar_UIA.h"
 #include "NowTabItem_UIA.h"
+#include "NowProgressBar_UIA.h"
 #include "NowLogger.h"
 
 NowControlBuilder* NowControlBuilder::m_Instance = NULL;
@@ -74,6 +75,10 @@ INowControl* NowControlBuilder::createControlWrapper( string strSignatureControl
 	else if (NowStringProcessor::compareIgnoreCase(strControlType,NOW_CONTROL_TAB_ITEM))
 	{
 		pControl = new NowTabItem_UIA(strSignatureControl,strControlType);
+	}
+	else if (NowStringProcessor::compareIgnoreCase(strControlType,NOW_CONTROL_PROGRESS_BAR))
+	{
+		pControl = new NowProgressBar_UIA(strSignatureControl,strControlType);
 	}
 	else
 	{			
