@@ -71,6 +71,7 @@ namespace now.agent.uiautomation.client
             m_propMap.Add(NowUIAProperty.NOW_PROP_IS_LEAF_NODE, ExpandCollapsePattern.ExpandCollapseStateProperty);
             m_propMap.Add(NowUIAProperty.NOW_PROP_IS_CHECKED, TogglePattern.ToggleStateProperty);
             m_propMap.Add(NowUIAProperty.NOW_PROP_IS_UNCHECKED, TogglePattern.ToggleStateProperty);
+            m_propMap.Add(NowUIAProperty.NOW_PROP_IS_VALUE, RangeValuePattern.ValueProperty);
 
             m_stateValMap.Add(NowUIAProperty.NOW_PROP_IS_SELECTED, NowUIAState.NOW_STATE_SELECTED);
             m_stateValMap.Add(NowUIAProperty.NOW_PROP_IS_COLLAPSED, NowUIAState.NOW_STATE_COLLAPSED);
@@ -123,7 +124,6 @@ namespace now.agent.uiautomation.client
                         if (objValue != null)
                         {
                             strResult = objValue.ToString();
-                            //   NowOutPut.OutputDebugString(strResult);
                         }
                     }
                     catch (System.Exception ex)

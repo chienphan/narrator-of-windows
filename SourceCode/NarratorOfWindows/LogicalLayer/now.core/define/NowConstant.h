@@ -40,6 +40,7 @@
 #define NOW_CONTROL_MENU_BAR	"menu bar"
 #define NOW_CONTROL_MENU_ITEM	"menu item"
 #define NOW_CONTROL_TAB_ITEM	"tab item"
+#define NOW_CONTROL_PROGRESS_BAR "progress bar"
 
 #define NOW_PROP_ACCELERATOR_KEY		"AcceleratorKeyProperty"
 #define NOW_PROP_ACCESS_KEY				"AccessKeyProperty"
@@ -74,5 +75,5 @@
 #define NOW_PROP_IS_LEAF_NODE			"IsLeafNodeProperty"
 #define NOW_PROP_IS_RADIO_BUTTON		"IsRadioButtonProperty"
 #define NOW_PROP_IS_HYPERLINK			"IsHyperlinkProperty"
-
+#define NOW_PROP_IS_VALUE				"IsValueProperty"
 #endif
