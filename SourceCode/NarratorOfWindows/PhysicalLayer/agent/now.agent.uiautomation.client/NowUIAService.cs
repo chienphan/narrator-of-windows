@@ -72,6 +72,7 @@ namespace now.agent.uiautomation.client
             m_propMap.Add(NowUIAProperty.NOW_PROP_IS_CHECKED, TogglePattern.ToggleStateProperty);
             m_propMap.Add(NowUIAProperty.NOW_PROP_IS_UNCHECKED, TogglePattern.ToggleStateProperty);
             m_propMap.Add(NowUIAProperty.NOW_PROP_IS_VALUE, RangeValuePattern.ValueProperty);
+           
 
             m_stateValMap.Add(NowUIAProperty.NOW_PROP_IS_SELECTED, NowUIAState.NOW_STATE_SELECTED);
             m_stateValMap.Add(NowUIAProperty.NOW_PROP_IS_COLLAPSED, NowUIAState.NOW_STATE_COLLAPSED);
