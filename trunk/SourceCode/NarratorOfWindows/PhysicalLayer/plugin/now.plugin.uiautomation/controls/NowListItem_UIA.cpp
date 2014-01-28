@@ -26,10 +26,17 @@ NOW_RESULT NowListItem_UIA::getUIInformation(wstring& wrtrHelpText)
 	{
 		int nState = 0;
 		nResult = NowCommunication::getInstance()->getUIState(m_strSignature , nState);
-
 		if (NOW_SUCCEED(nResult))
 		{
-			wrtrHelpText = wstrCaption + L" is " + NowStringProcessor::Utf8ToStlWString(NowService::getInstance()->ParseState(nState));
+			string strState = NowService::getInstance()->ParseState(nState);
+			if (strState != "")
+			{
+				wrtrHelpText = wstrCaption + L" is " + NowStringProcessor::Utf8ToStlWString(strState);
+			}
+			else
+			{
+				wrtrHelpText = wstrCaption;
+			}
 			NowLogger::getInstance()->LogAString(NowService::getInstance()->ParseState(nState));
 		}
 	}
