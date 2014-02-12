@@ -140,7 +140,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="controls\NowCheckBox_UIA.cpp" />
+    <ClCompile Include="controls\NowHyperlink_UIA.cpp" />
     <ClCompile Include="controls\NowListItem_UIA.cpp" />
+    <ClCompile Include="controls\NowMenuBar_UIA.cpp" />
+    <ClCompile Include="controls\NowProgressBar_UIA.cpp" />
+    <ClCompile Include="controls\NowRadioButton_UIA.cpp" />
+    <ClCompile Include="controls\NowTabItem_UIA.cpp" />
+    <ClCompile Include="controls\NowTitleBar_UIA.cpp" />
     <ClCompile Include="controls\NowTreeItem_UIA.cpp" />
     <ClCompile Include="main_UIA.cpp" />
     <ClCompile Include="controls\NowButton_UIA.cpp" />
@@ -148,16 +155,25 @@
     <ClCompile Include="NowCommunication.cpp" />
     <ClCompile Include="NowControlBuilder.cpp" />
     <ClCompile Include="NowPlugin_UIA.cpp" />
+    <ClCompile Include="NowService.cpp" />
     <ClCompile Include="NowStringProcessor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controls\NowButton_UIA.h" />
+    <ClInclude Include="controls\NowCheckBox_UIA.h" />
     <ClInclude Include="controls\NowControl_UIA.h" />
+    <ClInclude Include="controls\NowHyperlink_UIA.h" />
     <ClInclude Include="controls\NowListItem_UIA.h" />
+    <ClInclude Include="controls\NowMenuBar_UIA.h" />
+    <ClInclude Include="controls\NowProgressBar_UIA.h" />
+    <ClInclude Include="controls\NowRadioButton_UIA.h" />
+    <ClInclude Include="controls\NowTabItem_UIA.h" />
+    <ClInclude Include="controls\NowTitleBar_UIA.h" />
     <ClInclude Include="controls\NowTreeItem_UIA.h" />
     <ClInclude Include="NowCommunication.h" />
     <ClInclude Include="NowControlBuilder.h" />
     <ClInclude Include="NowPlugin_UIA.h" />
+    <ClInclude Include="NowService.h" />
     <ClInclude Include="NowStringProcessor.h" />
   </ItemGroup>
   <ItemGroup>
