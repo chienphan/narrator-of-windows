@@ -1,10 +1,16 @@
 package now.widgets.main;
 
+import java.io.IOException;
+import java.io.InputStream;
+
+import javazoom.jl.decoder.JavaLayerException;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 
+import com.gtranslate.Audio;
 import com.gtranslate.Language;
 import com.gtranslate.Translator;
 
@@ -86,7 +92,7 @@ public class Main {
 //		                    //bo qua
 //		                }
 //		                else{
-		                    vieString[i] = translator.translate(temp[i], Language.ENGLISH, Language.VIETNAMESE);
+		                    //vieString[i] = translator.translate(temp[i], Language.ENGLISH, Language.VIETNAMESE);
 		                    //System.out.println(vieString[i]);
 //		                }
 		            }
@@ -111,18 +117,30 @@ public class Main {
 
 	public static void main(String[] args) {
 		//TODO: if you want to run debug to c++/c# follow, you should run method "runDebug"
-		runDebug();
+		//runDebug();
 		
 		//TODO: this method is used to run java follow.
-		//runJavaFollow();
+		runJavaFollow();
 	}
 	
 	private static void runJavaFollow(){
-		ConfigTranslateEngine.getInstance().setTranslatorEngine(now.lib.translator.engine.TranslatorEngineName.TRANSLATOR_ENGINE_GOOGLE);
-		ConfigLanguage.getInstance().setInputLanguage(now.widgets.main.Main.TranslatorLanguageName.ENGLISH);
-		ConfigLanguage.getInstance().setOutputLanguage(now.widgets.main.Main.TranslatorLanguageName.VIETNAMESE);
-		System.out.println(now.lib.translator.Translator.getInstance().translateAutoDetectInput("Hello everyone! i'm a machine."));
-		System.out.println(now.lib.translator.Translator.getInstance().translateAutoDetectInput("Hello everyone! i'm a machine.",
-				now.widgets.main.Main.TranslatorLanguageName.FRENCH));
+//		ConfigTranslateEngine.getInstance().setTranslatorEngine(now.lib.translator.engine.TranslatorEngineName.TRANSLATOR_ENGINE_GOOGLE);
+//		ConfigLanguage.getInstance().setInputLanguage(now.widgets.main.Main.TranslatorLanguageName.ENGLISH);
+//		ConfigLanguage.getInstance().setOutputLanguage(now.widgets.main.Main.TranslatorLanguageName.VIETNAMESE);
+//		System.out.println(now.lib.translator.Translator.getInstance().translateAutoDetectInput("Hello everyone! i'm a machine."));
+//		System.out.println(now.lib.translator.Translator.getInstance().translateAutoDetectInput("Hello everyone! i'm a machine.",
+//				now.widgets.main.Main.TranslatorLanguageName.FRENCH));
+		//"Xin chào tất cả mọi người! Tôi là một máy."
+		//"Bonjour à tous! Je suis une machine."
+		try {
+			InputStream inputStream = Audio.getInstance().getAudio(now.lib.translator.Translator.getInstance().translateAutoDetectInput("An optional update resolves several nagging snafus",
+					now.widgets.main.Main.TranslatorLanguageName.VIETNAMESE), Language.VIETNAMESE);
+			System.out.println("Create Input Stream");
+			Audio.getInstance().play(inputStream);
+			System.out.println("Play sound done!");
+		} catch (IOException | JavaLayerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
