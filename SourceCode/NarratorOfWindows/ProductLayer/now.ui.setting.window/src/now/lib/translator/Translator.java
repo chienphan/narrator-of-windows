@@ -33,18 +33,7 @@ public class Translator {
 	 * @return sentence after translate
 	 */
 	public String translateAutoDetectInput(String sentence){
-		String result = "";
-		if(ConfigTranslateEngine.getInstance().getTranslatorEngine().equalsIgnoreCase(TranslatorEngineName.TRANSLATOR_ENGINE_GOOGLE)){
-			result = TranslatorGoogleEngine.getInstance().translate(
-					sentence, 
-					TranslatorLanguageManager.getInstance().getLanguageCode(ConfigLanguage.getInstance().getInputLanguage()), 
-					TranslatorLanguageManager.getInstance().getLanguageCode(ConfigLanguage.getInstance().getOutputLanguage()));
-		}
-		if(ConfigTranslateEngine.getInstance().getTranslatorEngine().equalsIgnoreCase(TranslatorEngineName.TRANSLATOR_ENGINE_MICROSOFT)){
-			//http://msdn.microsoft.com/en-us/library/ff512437.aspx
-			result = "This method is not implemented yet";
-		}
-		return result;
+		return translateAutoDetectInput(sentence, ConfigLanguage.getInstance().getOutputLanguage());
 	}
 	
 	/**
