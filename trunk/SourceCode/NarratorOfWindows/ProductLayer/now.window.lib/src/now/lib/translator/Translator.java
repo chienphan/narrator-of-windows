@@ -2,7 +2,7 @@ package now.lib.translator;
 
 import now.lib.configuration.ConfigLanguage;
 import now.lib.configuration.ConfigTranslateEngine;
-import now.lib.translator.engine.TranslatorEngineName;
+import now.lib.define.DefineEngineName;
 import now.lib.translator.engine.TranslatorGoogleEngine;
 
 public class Translator {
@@ -11,8 +11,12 @@ public class Translator {
 	private Translator(){
 		
 	}
-	
-	public static Translator getInstance(){
+
+    /**
+     *Get instance of class
+     * @return instance of Translator
+     */
+    public static Translator getInstance(){
 		if(m_instance == null){
 			m_instance = new Translator();
 		}
@@ -44,13 +48,13 @@ public class Translator {
 	 */
 	public String translateAutoDetectInput(String sentence, String languageOutput){
 		String result = "";
-		if(ConfigTranslateEngine.getInstance().getTranslatorEngine().equalsIgnoreCase(TranslatorEngineName.TRANSLATOR_ENGINE_GOOGLE)){
+		if(ConfigTranslateEngine.getInstance().getTranslatorEngine().equalsIgnoreCase(DefineEngineName.TRANSLATOR_ENGINE_GOOGLE)){
 			result = TranslatorGoogleEngine.getInstance().translate(
 					sentence, 
 					TranslatorLanguageManager.getInstance().getLanguageCode(ConfigLanguage.getInstance().getInputLanguage()), 
 					TranslatorLanguageManager.getInstance().getLanguageCode(languageOutput));
 		}
-		if(ConfigTranslateEngine.getInstance().getTranslatorEngine().equalsIgnoreCase(TranslatorEngineName.TRANSLATOR_ENGINE_MICROSOFT)){
+		if(ConfigTranslateEngine.getInstance().getTranslatorEngine().equalsIgnoreCase(DefineEngineName.TRANSLATOR_ENGINE_MICROSOFT)){
 			//http://msdn.microsoft.com/en-us/library/ff512437.aspx
 			result = "This method is not implemented yet";
 		}

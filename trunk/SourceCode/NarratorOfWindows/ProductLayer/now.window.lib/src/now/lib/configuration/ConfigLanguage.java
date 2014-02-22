@@ -8,9 +8,9 @@ import org.w3c.dom.Element;
 public class ConfigLanguage {
 	private static ConfigLanguage m_instance = null;
 	
-	private String m_fileConfig = ConfigDefine.FILE_CONFIG_LANGUAGE;
-	private UtilitiesFileXML m_xmlFile = null;
-	private Document m_xmlDocument = null;
+	private final String m_fileConfig = ConfigDefine.FILE_CONFIG_LANGUAGE;
+	private final UtilitiesFileXML m_xmlFile;
+	private final Document m_xmlDocument;
 	
 	private ConfigLanguage(){
 		m_xmlFile = new UtilitiesFileXML(m_fileConfig);

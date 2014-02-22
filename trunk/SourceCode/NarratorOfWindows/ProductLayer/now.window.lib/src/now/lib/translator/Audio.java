@@ -29,8 +29,6 @@ public class Audio {
 			InputStream input = com.gtranslate.Audio.getInstance().getAudio(sentence, language);
 			com.gtranslate.Audio.getInstance().play(input);
 		} catch (IOException | JavaLayerException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
 }

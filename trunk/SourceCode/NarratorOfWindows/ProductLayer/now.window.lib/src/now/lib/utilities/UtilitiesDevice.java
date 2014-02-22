@@ -2,6 +2,7 @@ package now.lib.utilities;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class UtilitiesDevice {
 	
@@ -25,11 +26,10 @@ public class UtilitiesDevice {
 		try {
 			return directory.getCanonicalPath().toString();
 		} catch (IOException e) {
-			e.printStackTrace();
 		}
 		return "";
 	}
-
+        
 	/** Dynamic loading library
 	 * 
 	 * @param strFullFilePath
@@ -47,4 +47,14 @@ public class UtilitiesDevice {
 		System.out.println("\n[loadLibrary] ok!!"); 
 		return true;
 	}
+        
+        public static ArrayList<String> getAllFile(File directory){
+            ArrayList result = new ArrayList();
+            for (final File fileEntry : directory.listFiles()) {
+                if (fileEntry.isFile()) {
+                    result.add(fileEntry.getPath());
+                }
+            }
+            return result;
+        }
 }
