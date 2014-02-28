@@ -6,8 +6,6 @@
 
 package now.widgets.main;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import now.lib.configuration.ConfigDefine;
 import now.lib.define.DefineDisplayCode;
 import now.lib.display.DisplayText;
@@ -29,10 +27,100 @@ import org.eclipse.swt.widgets.TrayItem;
  */
 public class NowSystemTray {
     private static NowSystemTray m_instance = null;
-    private Display display = null;
-    private Shell configShell = null;
+    
+    //The display
+    private Display     m_display          = null;
+    
+    //Shells
+    private Shell       m_systemTrayShell  = null;
+    private Shell       configShell        = null;
+    
+    //Image of system tray icon
+    private ImageData   m_imageData        = null;
+    private Image       m_image            = null;
+    
+    //The system tray
+    private Tray        m_tray             = null;
+    private TrayItem    m_itemTray         = null;
+    
+    //The popup menu
+    private Menu        m_popupMenu        = null;
+    private MenuItem    m_menuConfigWindow = null;
+    private MenuItem    m_separator        = null;
+    private MenuItem    m_menuClose        = null;
+    
     private NowSystemTray(){
+        //Create display and init the shell
+        m_display               = new Display();
+	m_systemTrayShell       = new Shell(m_display);
         
+        m_tray                  = m_display.getSystemTray();
+        if (m_tray == null) {
+            System.out.println("The system tray is not available");
+        } else {
+            m_imageData             = new ImageData(ConfigDefine.FILE_IMAGE_TRAY_ICON);
+            m_image                 = new Image(m_display, m_imageData);
+            m_itemTray              = new TrayItem(m_tray, SWT.NONE);
+            m_popupMenu             = new Menu(m_systemTrayShell, SWT.POP_UP);
+            m_menuConfigWindow      = new MenuItem(m_popupMenu, SWT.PUSH);
+            m_separator             = new MenuItem(m_popupMenu, SWT.SEPARATOR);
+            m_menuClose             = new MenuItem(m_popupMenu, SWT.PUSH);
+
+            //init listener
+            initListener();
+            initContent();
+        }
+    }
+    
+    private void initListener(){
+        //Open the config window
+        m_menuConfigWindow.addListener(SWT.Selection, new Listener() {
+
+            @Override
+            public void handleEvent(Event event) {
+                if(configShell == null || configShell.isDisposed()){
+                    configShell = new Shell(m_display, SWT.DIALOG_TRIM);
+                    configShell.setSize(500, 250);
+                    configShell.open();
+                    System.out.println("open!!!");
+                }
+            }
+        });
+        
+        //Close the app
+        m_menuClose.addListener(SWT.Selection, new Listener() {
+
+            @Override
+            public void handleEvent(Event event) {
+                m_itemTray.dispose();
+                System.exit(0);
+            }
+        });
+        
+        //Click right mouse 
+        m_itemTray.addListener(SWT.MenuDetect, new Listener() {
+            public void handleEvent(Event event) {
+                m_popupMenu.setVisible(true);
+            }
+        });
+            
+        //Click left mouse
+        m_itemTray.addListener(SWT.Selection, new Listener() {
+
+            @Override
+            public void handleEvent(Event event) {
+                m_popupMenu.setVisible(true);
+            }
+        });
+    }
+    
+    private void initContent(){
+        //Set tooltip for tray icon
+        m_itemTray.setToolTipText("Click to show menu");
+        m_itemTray.setImage(m_image);
+        m_popupMenu.setDefaultItem(m_menuConfigWindow);
+        m_menuConfigWindow.setText(DisplayText.getInstance().getText(DefineDisplayCode.SYSTEM_TRAY_CONFIGURATION));
+        m_menuClose.setText(DisplayText.getInstance().getText(DefineDisplayCode.SYSTEM_TRAY_EXIT));
     }
     
     public static NowSystemTray getInstance(){
@@ -41,81 +129,13 @@ public class NowSystemTray {
         }
         return m_instance;
     }
-    
-    public void bbb(){};
-    
+        
     public void showSystemTray(){
-        //Create display
-        display = new Display();
-	Shell shell = new Shell(display);
-        
-        ImageData imageData = new ImageData(ConfigDefine.FILE_IMAGE_TRAY_ICON);
-	Image image = new Image(display, imageData);
-        
-        //Create system tray icon
-        final Tray tray = display.getSystemTray();
-	if (tray == null) {
-            System.out.println("The system tray is not available");
-        } else {
-            final TrayItem itemTray = new TrayItem(tray, SWT.NONE);
-            //Set tooltip for tray icon
-            itemTray.setToolTipText("Click to show menu");
-	            
-            //Build popup menu
-            final Menu popupMenu = new Menu(shell, SWT.POP_UP);
-                 
-            MenuItem menuShowConfigWindow = new MenuItem(popupMenu, SWT.PUSH);
-            menuShowConfigWindow.setText(DisplayText.getInstance().getText(DefineDisplayCode.SYSTEM_TRAY_CONFIGURATION));
-            menuShowConfigWindow.addListener(SWT.Selection, new Listener() {
-
-                @Override
-                public void handleEvent(Event event) {
-                    if(configShell == null || configShell.isDisposed()){
-                        configShell = new Shell(display, SWT.DIALOG_TRIM);
-                        configShell.setSize(500, 250);
-                        configShell.open();
-                        System.out.println("open!!!");
-                    }
-                }
-            });
-            
-            popupMenu.setDefaultItem(menuShowConfigWindow);
-            
-            MenuItem separator = new MenuItem(popupMenu, SWT.SEPARATOR);
-            
-            MenuItem menuClose = new MenuItem(popupMenu, SWT.PUSH);
-            menuClose.setText(DisplayText.getInstance().getText(DefineDisplayCode.SYSTEM_TRAY_EXIT));
-            menuClose.addListener(SWT.Selection, new Listener() {
-
-                @Override
-                public void handleEvent(Event event) {
-                    itemTray.dispose();
-                    System.exit(0);
-                }
-            });
-            
-            itemTray.addListener(SWT.MenuDetect, new Listener() {
-                public void handleEvent(Event event) {
-                    popupMenu.setVisible(true);
-                }
-            });
-            
-            itemTray.addListener(SWT.Selection, new Listener() {
-
-                @Override
-                public void handleEvent(Event event) {
-                    popupMenu.setVisible(true);
-                }
-            });
-            
-            itemTray.setImage(image);
+        while (!m_systemTrayShell.isDisposed()) {
+          if (!m_display.readAndDispatch())
+            m_display.sleep();
         }
-        
-        while (!shell.isDisposed()) {
-          if (!display.readAndDispatch())
-            display.sleep();
-        }
-        image.dispose();
-        display.dispose();
+        m_image.dispose();
+        m_display.dispose();
     }
 }
