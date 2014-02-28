@@ -29,16 +29,9 @@ import org.eclipse.swt.widgets.TabItem;
  */
 public class NowConfigurationWindow {
     private static NowConfigurationWindow m_instance = null;
-    private Display m_display = null;
     private Shell m_shell = null;
         
     private NowConfigurationWindow(){
-        m_display = new Display();
-        m_shell = new Shell(m_display, SWT.DIALOG_TRIM | SWT.APPLICATION_MODAL);
-        
-        //build the shell
-        m_shell.setSize(500, 250);
-        setDisplayPointAtCenterScreen(m_display, m_shell);
     }
     
     private void setDisplayPointAtCenterScreen(Display display, Shell shell){
@@ -58,20 +51,10 @@ public class NowConfigurationWindow {
     }
     
     public void showConfigurationWindow(){
-        if(m_shell.isDisposed()){
-            m_shell = new Shell(m_display, SWT.DIALOG_TRIM | SWT.APPLICATION_MODAL);
-        }
-        m_shell.open();
-        System.out.println("open");
-        m_shell.open();
-        while (!m_shell.isDisposed()) {
-          if (!m_display.readAndDispatch())
-            m_display.sleep();
-        }
+        
     }
     
     public void closeConfigurationWindow(){
-        //m_shell.close();
-        //m_display.dispose();
+        
     }
 }
