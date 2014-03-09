@@ -20,12 +20,16 @@ import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Tray;
 import org.eclipse.swt.widgets.TrayItem;
+import org.jnativehook.GlobalScreen;
+import org.jnativehook.NativeHookException;
+import org.jnativehook.keyboard.NativeKeyEvent;
+import org.jnativehook.keyboard.NativeKeyListener;
 
 /**
  *
  * @author Chien.Phan
  */
-public class NowSystemTray {
+public class NowSystemTray implements NativeKeyListener {
     private static NowSystemTray m_instance = null;
     
     //The display
@@ -99,6 +103,7 @@ public class NowSystemTray {
         
         //Click right mouse 
         m_itemTray.addListener(SWT.MenuDetect, new Listener() {
+            @Override
             public void handleEvent(Event event) {
                 m_popupMenu.setVisible(true);
             }
@@ -123,6 +128,21 @@ public class NowSystemTray {
         m_menuClose.setText(DisplayText.getInstance().getText(DefineDisplayCode.SYSTEM_TRAY_EXIT));
     }
     
+    private void beginKeyboardListener(){
+        try {
+                GlobalScreen.registerNativeHook();
+            }
+            catch (NativeHookException ex) {
+                System.err.println("There was a problem registering the native hook.");
+                System.err.println(ex.getMessage());
+
+                System.exit(1);
+            }
+
+            //Construct the example object and initialze native hook.
+            GlobalScreen.getInstance().addNativeKeyListener(NowSystemTray.getInstance());
+    }
+    
     public static NowSystemTray getInstance(){
         if(m_instance == null){
             m_instance = new NowSystemTray();
@@ -131,11 +151,39 @@ public class NowSystemTray {
     }
         
     public void showSystemTray(){
+        beginKeyboardListener();
         while (!m_systemTrayShell.isDisposed()) {
           if (!m_display.readAndDispatch())
             m_display.sleep();
         }
         m_image.dispose();
         m_display.dispose();
+    }
+
+    @Override
+    public void nativeKeyPressed(NativeKeyEvent e) {
+        //System.out.println("Key Pressed: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
+        if (e.getKeyCode() == NativeKeyEvent.VK_CONTROL){
+            Display.getDefault().asyncExec(new Runnable() {
+                @Override
+                public void run() {
+                    NowInformationWindow.getInstance().showWindow(m_display);
+                }
+            });
+            
+        }
+        if (e.getKeyCode() == NativeKeyEvent.VK_ESCAPE) {
+            GlobalScreen.unregisterNativeHook();
+        }
+    }
+
+    @Override
+    public void nativeKeyReleased(NativeKeyEvent e) {
+        //System.out.println("Key Released: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
+    }
+
+    @Override
+    public void nativeKeyTyped(NativeKeyEvent e) {
+        //System.out.println("Key Typed: " + e.getKeyText(e.getKeyCode()));
     }
 }
