@@ -156,6 +156,7 @@ public class NowSystemTray implements NativeKeyListener {
           if (!m_display.readAndDispatch())
             m_display.sleep();
         }
+        GlobalScreen.unregisterNativeHook();
         m_image.dispose();
         m_display.dispose();
     }
@@ -172,9 +173,9 @@ public class NowSystemTray implements NativeKeyListener {
             });
             
         }
-        if (e.getKeyCode() == NativeKeyEvent.VK_ESCAPE) {
-            GlobalScreen.unregisterNativeHook();
-        }
+//        if (e.getKeyCode() == NativeKeyEvent.VK_ESCAPE) {
+//            GlobalScreen.unregisterNativeHook();
+//        }
     }
 
     @Override
