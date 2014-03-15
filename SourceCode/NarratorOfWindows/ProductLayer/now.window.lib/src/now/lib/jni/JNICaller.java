@@ -12,14 +12,15 @@ public class JNICaller {
 	private JNICaller()
 	{
             String libPath = "";
-            if("1".equals(UtilitiesDevice.getEnvironmentVariableValue(NowConst.NOW_DEBUG_MODE))){
-                libPath = UtilitiesDevice.getEnvironmentVariableValue(NowConst.NOW_DEBUG_DIRECTORY) + "\\now.lib.jniwrapper.dll";
+            if(NowConst.NOW_DO_DEBUG.equals(UtilitiesDevice.getEnvironmentVariableValue(NowConst.NOW_DEBUG_MODE))){
+                libPath = UtilitiesDevice.getEnvironmentVariableValue(NowConst.NOW_DEBUG_DIRECTORY) + 
+                        NowConst.NOW_BACKSLASH + NowConst.NOW_NATIVE_LIB;
             }
             else{
-                libPath = UtilitiesDevice.getCurrentDirectory() + "\\now.lib.jniwrapper.dll";
+                libPath = UtilitiesDevice.getCurrentDirectory() + NowConst.NOW_BACKSLASH + NowConst.NOW_NATIVE_LIB;
             }
 	
-            if(!"".equals(libPath)){
+            if(!NowConst.NOW_EMPTY_STRING.equals(libPath)){
                 UtilitiesDevice.loadLibrary(libPath);
             }
 	}
