@@ -9,6 +9,7 @@ package now.widgets.main;
 import now.lib.configuration.ConfigDefine;
 import now.lib.define.DefineDisplayCode;
 import now.lib.display.DisplayText;
+import now.lib.jni.JNIHelper;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
@@ -164,11 +165,14 @@ public class NowSystemTray implements NativeKeyListener {
     @Override
     public void nativeKeyPressed(NativeKeyEvent e) {
         //System.out.println("Key Pressed: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
-        if (e.getKeyCode() == NativeKeyEvent.VK_CONTROL){
+        if (e.getKeyCode() == NativeKeyEvent.VK_SHIFT){
             Display.getDefault().asyncExec(new Runnable() {
                 @Override
                 public void run() {
-                    NowInformationWindow.getInstance().showWindow(m_display);
+                    String infor = JNIHelper.getInstance().getUIInformation();
+                    if(!infor.isEmpty()){
+                        NowInformationWindow.getInstance().showWindow(m_display, infor);
+                    }
                 }
             });
             

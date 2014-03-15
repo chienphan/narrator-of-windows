@@ -38,11 +38,9 @@ public class NowConfigurationWindow {
         return m_instance;
     }
     
-    public void showConfigurationWindow(){
-        
+    public void showConfigurationWindow(){        
     }
     
-    public void closeConfigurationWindow(){
-        
+    public void closeConfigurationWindow(){        
     }
 }
