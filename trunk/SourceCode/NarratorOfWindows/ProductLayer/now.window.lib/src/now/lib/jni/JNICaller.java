@@ -1,5 +1,6 @@
 package now.lib.jni;
 
+import now.lib.constant.NowConst;
 import now.lib.utilities.UtilitiesDevice;
 
 public class JNICaller {
@@ -10,8 +11,17 @@ public class JNICaller {
 	 */
 	private JNICaller()
 	{
-		String libPath = UtilitiesDevice.getCurrentDirectory() + "\\now.lib.jniwrapper.dll";
-		UtilitiesDevice.loadLibrary(libPath);
+            String libPath = "";
+            if("1".equals(UtilitiesDevice.getEnvironmentVariableValue(NowConst.NOW_DEBUG_MODE))){
+                libPath = UtilitiesDevice.getEnvironmentVariableValue(NowConst.NOW_DEBUG_DIRECTORY) + "\\now.lib.jniwrapper.dll";
+            }
+            else{
+                libPath = UtilitiesDevice.getCurrentDirectory() + "\\now.lib.jniwrapper.dll";
+            }
+	
+            if(!"".equals(libPath)){
+                UtilitiesDevice.loadLibrary(libPath);
+            }
 	}
 	
 	/**
