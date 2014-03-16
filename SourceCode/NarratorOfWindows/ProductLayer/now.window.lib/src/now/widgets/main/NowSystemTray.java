@@ -62,7 +62,8 @@ public class NowSystemTray implements NativeKeyListener {
         m_tray                  = m_display.getSystemTray();
         if (m_tray == null) {
             System.out.println("The system tray is not available");
-        } else {
+        } 
+        else {
             m_imageData             = new ImageData(ConfigDefine.FILE_IMAGE_TRAY_ICON);
             m_image                 = new Image(m_display, m_imageData);
             m_itemTray              = new TrayItem(m_tray, SWT.NONE);
@@ -131,17 +132,17 @@ public class NowSystemTray implements NativeKeyListener {
     
     private void beginKeyboardListener(){
         try {
-                GlobalScreen.registerNativeHook();
-            }
-            catch (NativeHookException ex) {
-                System.err.println("There was a problem registering the native hook.");
-                System.err.println(ex.getMessage());
+            GlobalScreen.registerNativeHook();
+        }
+        catch (NativeHookException ex) {
+            System.err.println("There was a problem registering the native hook.");
+            System.err.println(ex.getMessage());
 
-                System.exit(1);
-            }
+            System.exit(1);
+        }
 
-            //Construct the example object and initialze native hook.
-            GlobalScreen.getInstance().addNativeKeyListener(NowSystemTray.getInstance());
+        //Construct the example object and initialze native hook.
+        GlobalScreen.getInstance().addNativeKeyListener(NowSystemTray.getInstance());
     }
     
     public static NowSystemTray getInstance(){

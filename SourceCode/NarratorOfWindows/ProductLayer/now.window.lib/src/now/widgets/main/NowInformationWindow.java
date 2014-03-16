@@ -119,8 +119,8 @@ public class NowInformationWindow implements NativeMouseInputListener {
     }
     
     private void initMouseMoveListener(){
-            GlobalScreen.getInstance().addNativeMouseListener(NowInformationWindow.getInstance());
-            GlobalScreen.getInstance().addNativeMouseMotionListener(NowInformationWindow.getInstance());
+        GlobalScreen.getInstance().addNativeMouseListener(NowInformationWindow.getInstance());
+        GlobalScreen.getInstance().addNativeMouseMotionListener(NowInformationWindow.getInstance());
     }
     
     public static NowInformationWindow getInstance(){
