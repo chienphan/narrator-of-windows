@@ -165,9 +165,10 @@ public class NowSystemTray implements NativeKeyListener {
 
     @Override
     public void nativeKeyPressed(NativeKeyEvent e) {
-        //System.out.println("Key Pressed: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
+        //Check for the pressed key
         if (e.getKeyCode() == NativeKeyEvent.VK_SHIFT){
             Display.getDefault().asyncExec(new Runnable() {
+                
                 @Override
                 public void run() {
                     String infor = JNIHelper.getInstance().getUIInformation();
@@ -178,9 +179,6 @@ public class NowSystemTray implements NativeKeyListener {
             });
             
         }
-//        if (e.getKeyCode() == NativeKeyEvent.VK_ESCAPE) {
-//            GlobalScreen.unregisterNativeHook();
-//        }
     }
 
     @Override
