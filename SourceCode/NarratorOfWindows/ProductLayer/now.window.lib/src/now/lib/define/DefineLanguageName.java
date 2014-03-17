@@ -15,4 +15,11 @@ public class DefineLanguageName {
     public static final String VIETNAMESE 	= "Vietnamese";
     public static final String ENGLISH 		= "English";
     public static final String FRENCH 		= "French";
+    
+    public static final String[] getAllLanguageName(){
+        String items[] = {  VIETNAMESE, 
+                            ENGLISH, 
+                            FRENCH };
+        return items;
+    }
 }

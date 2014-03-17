@@ -9,7 +9,12 @@ package now.widgets.main;
 import now.lib.configuration.ConfigLanguage;
 import now.lib.configuration.ConfigTranslateEngine;
 import now.lib.constant.NowConst;
+import now.lib.define.DefineEngineName;
 import now.lib.define.DefineLanguageName;
+import now.lib.translator.Audio;
+import now.lib.translator.Translator;
+import now.lib.translator.TranslatorLanguageManager;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.graphics.Point;
@@ -18,11 +23,13 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
+
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.mouse.NativeMouseEvent;
 import org.jnativehook.mouse.NativeMouseInputListener;
@@ -33,96 +40,150 @@ import org.jnativehook.mouse.NativeMouseInputListener;
  */
 public class NowInformationWindow implements NativeMouseInputListener {
     private static NowInformationWindow m_instance = null;
-    private String information = NowConst.NOW_EMPTY_STRING;
-    private Shell shell = null;
-    private double distance = 0.0;
-    private Rectangle windowRectangle = null;
-    private Point windowPoint = null;
     
+    private Shell       m_shell         = null;
+    private Combo       m_cboLanguage   = null;
+    private StyledText  m_txtInfor      = null;
+    private Button      m_btnPlay       = null;
+    private Button      m_btnTranslate  = null;
+    private Composite   m_cmpContainer  = null;
+    private Composite   m_cmpLeft       = null;
+    private Composite   m_cmpRight      = null;
+    private GridLayout  m_gridLayoutMain    = null;
+    private GridLayout  m_gridLayoutSecond    = null;
+    
+    private RowLayout   m_rowLayout     = null;
+    private GridData    m_gridDataMain      = null;
+    private GridData    m_gridDataSecond      = null;
+            
+    private String      m_strOriginalInfor = NowConst.NOW_EMPTY_STRING;
+    private double      m_nDistance     = 0.0;
+    private Rectangle   m_rectwindow    = null;
+    private Point       m_pointWindow   = null;
+    
+    /**
+     * Constructor
+     */
     private NowInformationWindow(){
-        ConfigTranslateEngine.getInstance().setTranslatorEngine(now.lib.define.DefineEngineName.TRANSLATOR_ENGINE_GOOGLE);
-		ConfigLanguage.getInstance().setInputLanguage(DefineLanguageName.ENGLISH);
-		ConfigLanguage.getInstance().setOutputLanguage(DefineLanguageName.VIETNAMESE);
+        ConfigTranslateEngine.getInstance().setTranslatorEngine(DefineEngineName.TRANSLATOR_ENGINE_GOOGLE);
+        ConfigLanguage.getInstance().setInputLanguage(DefineLanguageName.ENGLISH);
+        //ConfigLanguage.getInstance().setOutputLanguage(DefineLanguageName.VIETNAMESE);
     }
     
-    private void initWindow(){
-        Point currentMousePoint = shell.getDisplay().getCursorLocation();
-        shell.setSize(500, 150);
+    /**
+     * Initialize Information Window
+     */
+    private void initializeWindow(){
+        m_gridLayoutMain = new GridLayout();
+        m_gridLayoutMain.numColumns = 1;
         
-        //Create grid layout
-        GridLayout gridLayout = new GridLayout();
-        gridLayout.numColumns = 1;
+        Point currentMousePoint = m_shell.getDisplay().getCursorLocation();
+        m_shell.setSize(500, 150);
+        m_shell.setLayout(m_gridLayoutMain);
+        m_shell.setLocation(new Point(currentMousePoint.x + 20, currentMousePoint.y + 20));
+              
+        m_gridDataMain = new GridData();
+        m_gridDataMain.horizontalAlignment = GridData.FILL;
+        m_gridDataMain.grabExcessHorizontalSpace = true;
+        m_gridDataMain.widthHint = 450;
+        m_gridDataMain.heightHint = 100;
+            
+        m_txtInfor = new StyledText (m_shell, SWT.MULTI | SWT.WRAP);
+        m_txtInfor.setLayoutData(m_gridDataMain);
+        m_txtInfor.setSize(440, 50);
         
-        GridData gridData = new GridData();
-        gridData.horizontalAlignment = GridData.FILL;
-        gridData.grabExcessHorizontalSpace = true;
-        gridData.widthHint = 450;
-        gridData.heightHint = 100;
+        m_gridLayoutSecond = new GridLayout();
+        m_gridLayoutSecond.numColumns = 2;
         
-        shell.setLayout(gridLayout);
-        shell.setLocation(new Point(currentMousePoint.x + 20, currentMousePoint.y + 20));
+        m_gridDataSecond = new GridData();
+        m_gridDataMain.widthHint = 100;
         
-        final StyledText text = new StyledText (shell, SWT.WRAP);
-        text.setLayoutData(gridData);
-        //text.setText("Do not need check the control is changed or not.");
-        text.setSize(440, 50);
+        m_cmpContainer = new Composite(m_shell, SWT.NONE);
+        m_cmpContainer.setLayoutData(m_gridDataMain);
+        m_cmpContainer.setLayout(m_gridLayoutSecond);
         
-        final Composite composite = new Composite(shell, SWT.NONE);
-        composite.setLayoutData(gridData);
+        m_cmpLeft = new Composite(m_cmpContainer, SWT.NONE);
+        m_cmpLeft.setLayoutData(m_gridDataSecond);
+        m_cboLanguage = new Combo(m_cmpLeft, SWT.READ_ONLY);
+        m_cboLanguage.setBounds(0, 0, 150, 65);
+        m_cboLanguage.setItems(DefineLanguageName.getAllLanguageName());
+        String languageName = ConfigLanguage.getInstance().getOutputLanguage();
+        m_cboLanguage.setText(languageName);
         
-        RowLayout rowLayout = new RowLayout();
-        rowLayout.pack = false;
-        composite.setLayout(rowLayout);
+        m_cmpRight = new Composite(m_cmpContainer, SWT.NONE);
         
-        text.setText(information);
-         
-        Button btnTranslate = new Button(composite, SWT.PUSH);
-        btnTranslate.setText("Translate");
-        btnTranslate.setSize(75, 24);
+        m_rowLayout = new RowLayout();
+        m_rowLayout.pack = false;
+        m_cmpRight.setLayout(m_rowLayout);
         
-        btnTranslate.addListener(SWT.Selection, new Listener() {
-
-            @Override
-            public void handleEvent(Event event) {
-                String strTemp = text.getText();
-                String strOk = now.lib.translator.Translator.getInstance().translateAutoDetectInput(strTemp);
-                text.setText(strOk);
-            }
-        });
+        m_btnTranslate = new Button(m_cmpRight, SWT.PUSH);
+        m_btnTranslate.setText("Translate");
         
-        Button btnPlay = new Button(composite, SWT.PUSH);
-        btnPlay.setText("Play");
-        btnPlay.setSize(75, 24);
+        m_btnPlay = new Button(m_cmpRight, SWT.PUSH);
+        m_btnPlay.setText("Play");
         
-        btnPlay.addListener(SWT.Selection, new Listener() {
-
-            @Override
-            public void handleEvent(Event event) {
-                String strTemp = text.getText();
-                
-                now.lib.translator.Audio.getInstance().play(strTemp);
-                System.out.println(strTemp);
-            }
-        });
+        m_txtInfor.setText(m_strOriginalInfor);
     }
         
-    private void initDistance(){
-        windowPoint = new Point(shell.getLocation().x + shell.getSize().x / 2,
-                                        shell.getLocation().y + shell.getSize().y / 2);
-        Point mousePoint = shell.getDisplay().getCursorLocation();
-        distance = getDistance(windowPoint, mousePoint);
+    /**
+     * Initialize distance of mouse cursor location and window
+     */
+    private void initializeDistance(){
+        m_pointWindow = new Point(m_shell.getLocation().x + m_shell.getSize().x / 2, m_shell.getLocation().y + m_shell.getSize().y / 2);
+        Point mousePoint = m_shell.getDisplay().getCursorLocation();
+        m_nDistance = getDistance(m_pointWindow, mousePoint);
     }
     
+    /**
+     * Calculate distance between two point
+     * @param pointA
+     * @param pointB
+     * @return the distance
+     */
     private double getDistance(Point pointA, Point pointB){
         return Math.sqrt((pointA.x - pointB.x)*(pointA.x - pointB.x) 
                             + (pointA.y - pointB.y)*(pointA.y - pointB.y));
     }
     
-    private void initMouseMoveListener(){
+    /**
+     * initialize mouse move listener
+     */
+    private void initializeMouseMoveListener(){
         GlobalScreen.getInstance().addNativeMouseListener(NowInformationWindow.getInstance());
         GlobalScreen.getInstance().addNativeMouseMotionListener(NowInformationWindow.getInstance());
     }
     
+    /**
+     * Initialize Button Listener
+     */
+    private void initializeButtonListener() {
+        m_btnTranslate.addListener(SWT.Selection, new Listener() {
+
+            @Override
+            public void handleEvent(Event event) {
+                String languageName = m_cboLanguage.getText();
+                ConfigLanguage.getInstance().setOutputLanguage(languageName);
+                String strAfterTranslate = Translator.getInstance().translateAutoDetectInput(m_strOriginalInfor);
+                m_txtInfor.setText(strAfterTranslate);
+            }
+        });
+        
+        m_btnPlay.addListener(SWT.Selection, new Listener() {
+
+            @Override
+            public void handleEvent(Event event) {
+                String languageName = m_cboLanguage.getText();
+                ConfigLanguage.getInstance().setOutputLanguage(languageName);
+                String strAfterTranslate = Translator.getInstance().translateAutoDetectInput(m_strOriginalInfor);
+                Audio.getInstance().play(strAfterTranslate);
+            }
+        });
+    }
+    
+    /**
+     * Get instance of NowInformationWindow class
+     * @return the instance
+     */
     public static NowInformationWindow getInstance(){
         if(m_instance == null){
             m_instance = new NowInformationWindow();
@@ -130,40 +191,49 @@ public class NowInformationWindow implements NativeMouseInputListener {
         return m_instance;
     }
     
+    /**
+     * Translate auto detect input and out language (using configuration)
+     * @param display current display
+     * @param information information to display in Information Window
+     */
     public void showWindow(Display display, String information){
-        this.information = information;
+        //TODO: check for information empty!!!!!!!!
         
-        if(shell != null ){
-            if(!shell.isDisposed()){
-                shell.dispose();
+        //Firstly, save original information
+        m_strOriginalInfor = information;
+        //Check for old shell, if have exist shell: close it and declare a new one
+        if(m_shell != null ){
+            if(!m_shell.isDisposed()){
+                m_shell.dispose();
             }
         }
-        
-        shell = new Shell(display, SWT.BORDER_DASH | SWT.ON_TOP);
-        initWindow();
-        shell.open();
-        initDistance();
-        windowRectangle = new Rectangle(shell.getLocation().x, shell.getLocation().y, 
-                                            shell.getSize().x, shell.getSize().y);
-        initMouseMoveListener();
+        //Create new shell
+        m_shell = new Shell(display, SWT.BORDER_DASH | SWT.ON_TOP);
+        initializeWindow();
+        m_shell.open();
+        initializeDistance();
+        m_rectwindow = new Rectangle(m_shell.getLocation().x, m_shell.getLocation().y, m_shell.getSize().x, m_shell.getSize().y);
+        initializeMouseMoveListener();
+        initializeButtonListener();
     }
 
     @Override
     public void nativeMouseMoved(NativeMouseEvent e) {
-        if(!shell.isDisposed()){
+        if(!m_shell.isDisposed()){
             Point mousePoint = new Point(e.getX(), e.getY());
-            //System.out.println("Point of mouse: " + mousePoint.x + ", " + mousePoint.y);
-            if(!windowRectangle.contains(mousePoint) && (getDistance(windowPoint, mousePoint) > distance)){
+            //Condition to close Information Window
+            if(!m_rectwindow.contains(mousePoint) && (getDistance(m_pointWindow, mousePoint) > m_nDistance)){
                 Display.getDefault().asyncExec(new Runnable() {
+                    
                     @Override
                     public void run() {
-                        shell.dispose();
+                        m_shell.dispose();
                     }
                 });
             }
         }
     }
-
+    
     @Override
     public void nativeMouseDragged(NativeMouseEvent e) {
     }
