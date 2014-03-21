@@ -13,7 +13,6 @@ import now.lib.define.DefineEngineName;
 import now.lib.define.DefineLanguageName;
 import now.lib.translator.Audio;
 import now.lib.translator.Translator;
-import now.lib.translator.TranslatorLanguageManager;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyledText;
