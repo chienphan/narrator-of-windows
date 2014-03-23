@@ -38,7 +38,7 @@ public class NowSystemTray implements NativeKeyListener {
     
     //Shells
     private Shell       m_systemTrayShell  = null;
-    private Shell       configShell        = null;
+    //private Shell       configShell        = null;
     
     //Image of system tray icon
     private ImageData   m_imageData        = null;
@@ -84,12 +84,7 @@ public class NowSystemTray implements NativeKeyListener {
 
             @Override
             public void handleEvent(Event event) {
-                if(configShell == null || configShell.isDisposed()){
-                    configShell = new Shell(m_display, SWT.DIALOG_TRIM);
-                    configShell.setSize(500, 250);
-                    configShell.open();
-                    System.out.println("open!!!");
-                }
+                NowConfigurationWindow.getInstance().showWindow(m_display);
             }
         });
         

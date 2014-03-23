@@ -8,7 +8,7 @@ package now.lib.constant;
 
 /**
  *
- * @author Administrator
+ * @author Chien Phan
  */
 public class NowConst {
     public static final String NOW_DEBUG_DIRECTORY          = "NOW_DEBUG_DIRECTORY"; 
@@ -19,4 +19,10 @@ public class NowConst {
     public static final String NOW_EMPTY_STRING             = "";
     public static final String NOW_DO_DEBUG                 = "1";
     public static final String NOW_NOT_AVAILABLE            = "N/A";
+    
+    public static final String NOW_TRUE                     = "true";
+    public static final String NOW_FALSE                    = "false";
+    
+    public static final int NOW_CONFIG_WINDOW_HEIGHT        = 475;
+    public static final int NOW_CONFIG_WINDOW_WIDTH         = 425;
 }
