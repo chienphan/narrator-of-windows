@@ -6,20 +6,14 @@
 
 package now.lib.define;
 
+import now.lib.translator.TranslatorLanguageManager;
+
 /**
  *
  * @author Chien.Phan
  */
 public class DefineLanguageName {
-    //This class will be remove when using UI to handle config
-    public static final String VIETNAMESE 	= "Vietnamese";
-    public static final String ENGLISH 		= "English";
-    public static final String FRENCH 		= "French";
-    
     public static final String[] getAllLanguageName(){
-        String items[] = {  VIETNAMESE, 
-                            ENGLISH, 
-                            FRENCH };
-        return items;
+        return TranslatorLanguageManager.getInstance().getListLanguageName();
     }
 }

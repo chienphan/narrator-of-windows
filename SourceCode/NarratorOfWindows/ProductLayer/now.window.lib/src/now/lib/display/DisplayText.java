@@ -9,9 +9,9 @@ package now.lib.display;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import now.lib.configuration.ConfigLanguage;
 import now.lib.define.DefineDisplayCode;
-import now.lib.define.DefineLanguageName;
 import now.lib.utilities.UtilitiesDevice;
 import now.lib.utilities.UtilitiesFileTXT;
 
@@ -43,7 +43,8 @@ public class DisplayText {
             languageMap = m_displayTextCollection.get(ConfigLanguage.getInstance().getDisplayLanguage()).getLanguageMap();
         }
         else{
-            languageMap = m_displayTextCollection.get(DefineLanguageName.ENGLISH).getLanguageMap();
+            //Default case
+            languageMap = m_displayTextCollection.get("English").getLanguageMap();
         }
         
         if(languageMap.containsKey(displayCode)){
@@ -86,5 +87,15 @@ public class DisplayText {
                 }
             }
         }
+    }
+
+    public String[] getListDisplayLanguage(){
+        String[] result = new String[m_displayTextCollection.size()];
+        int index = 0;
+        for (Map.Entry<String, DisplayTextCollection> entry : m_displayTextCollection.entrySet()) {
+            result[index] = entry.getKey();
+            index++;
+        }
+        return result;
     }
 }

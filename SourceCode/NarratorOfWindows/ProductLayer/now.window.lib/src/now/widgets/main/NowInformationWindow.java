@@ -7,9 +7,7 @@
 package now.widgets.main;
 
 import now.lib.configuration.ConfigLanguage;
-import now.lib.configuration.ConfigTranslateEngine;
 import now.lib.constant.NowConst;
-import now.lib.define.DefineEngineName;
 import now.lib.define.DefineLanguageName;
 import now.lib.translator.Audio;
 import now.lib.translator.Translator;
@@ -64,9 +62,7 @@ public class NowInformationWindow implements NativeMouseInputListener {
      * Constructor
      */
     private NowInformationWindow(){
-        ConfigTranslateEngine.getInstance().setTranslatorEngine(DefineEngineName.TRANSLATOR_ENGINE_GOOGLE);
-        ConfigLanguage.getInstance().setInputLanguage(DefineLanguageName.ENGLISH);
-        //ConfigLanguage.getInstance().setOutputLanguage(DefineLanguageName.VIETNAMESE);
+        
     }
     
     /**

@@ -2,5 +2,8 @@
 	<inputlanguage>English</inputlanguage>
 	<outputlanguage>Vietnamese</outputlanguage>
 	<displaylanguage>English</displaylanguage>
-	<translatorengine>Google</translatorengine>
+	<translatorengine>Google Translator</translatorengine>
+	<automovemouse>false</automovemouse>
+	<autoplaysound>false</autoplaysound>
+	<autotranslate>false</autotranslate>
 </LanguageConfig>
