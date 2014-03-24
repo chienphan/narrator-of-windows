@@ -70,7 +70,7 @@ public class NowConfigurationWindow {
 
             @Override
             public void handleEvent(Event event) {
-                Display.getDefault().asyncExec(new Runnable() {
+                Display.getDefault().syncExec(new Runnable() {
 
                     @Override
                     public void run() {
@@ -84,7 +84,7 @@ public class NowConfigurationWindow {
 
             @Override
             public void handleEvent(Event event) {
-                Display.getDefault().asyncExec(new Runnable() {
+                Display.getDefault().syncExec(new Runnable() {
 
                     @Override
                     public void run() {
@@ -123,7 +123,7 @@ public class NowConfigurationWindow {
 
             @Override
             public void handleEvent(Event event) {
-                Display.getDefault().asyncExec(new Runnable() {
+                Display.getDefault().syncExec(new Runnable() {
 
                     @Override
                     public void run() {
@@ -232,7 +232,7 @@ public class NowConfigurationWindow {
     }
     
     private void setEnableApplyButton(){
-        Display.getDefault().asyncExec(new Runnable() {
+        Display.getDefault().syncExec(new Runnable() {
 
             @Override
             public void run() {

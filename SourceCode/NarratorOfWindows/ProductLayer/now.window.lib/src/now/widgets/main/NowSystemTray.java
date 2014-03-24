@@ -6,10 +6,16 @@
 
 package now.widgets.main;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import now.lib.configuration.ConfigCommon;
 import now.lib.configuration.ConfigDefine;
+import now.lib.configuration.ConfigLanguage;
 import now.lib.define.DefineDisplayCode;
 import now.lib.display.DisplayText;
 import now.lib.jni.JNIHelper;
+import now.lib.translator.Audio;
+import now.lib.translator.Translator;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
@@ -75,7 +81,34 @@ public class NowSystemTray implements NativeKeyListener {
             //init listener
             initListener();
             initContent();
+            
+            
+            listenMouseMoveEvent();
+            NowInformationWindow.getInstance().showWindow(m_display);
+            
         }
+    }
+    
+    private void listenMouseMoveEvent(){
+        Thread thread = new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                while(!m_systemTrayShell.isDisposed()){
+                    if(ConfigCommon.getInstance().getAutoMoveMouse() == true){
+                        try {
+                            getSupportedInformation();
+                            Thread.sleep(50);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(NowSystemTray.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        
+                    }
+                }
+            }
+        });
+        
+        thread.start();
     }
     
     private void initListener(){
@@ -157,22 +190,47 @@ public class NowSystemTray implements NativeKeyListener {
         m_image.dispose();
         m_display.dispose();
     }
+    
+    private void getSupportedInformation(){
+        Display.getDefault().syncExec(new Runnable() {
+
+            @Override
+            public void run() {
+                if (ConfigCommon.getInstance().getAutoPlaySound() == true) {
+                    String infor = JNIHelper.getInstance().getUIInformation();
+                    if(!infor.isEmpty()){
+                    //Check config auto play sound
+                    //if(ConfigCommon.getInstance().getAutoPlaySound() == false){
+                        //NowInformationWindow.getInstance().showWindow(m_display, infor);
+                    //} 
+                    //else 
+                    if (ConfigCommon.getInstance().getAutoPlaySound() == true) {
+                        String outString = "";
+                        //Check config auto translate
+                        if(ConfigCommon.getInstance().getAutoTranslate() == true){
+                            outString = Translator.getInstance().translateAutoDetectInput(infor);
+                            Audio.getInstance().play(outString);
+                            System.out.println("Speak AutoTranslate: " + outString);
+                        }else{
+                            Audio.getInstance().play(infor, ConfigLanguage.getInstance().getInputLanguage());
+                            System.out.println("Speak : " + infor);
+                        }
+                    }
+
+                }
+            
+                }
+            }
+        });
+    }
 
     @Override
     public void nativeKeyPressed(NativeKeyEvent e) {
         //Check for the pressed key
-        if (e.getKeyCode() == NativeKeyEvent.VK_SHIFT){
-            Display.getDefault().asyncExec(new Runnable() {
-                
-                @Override
-                public void run() {
-                    String infor = JNIHelper.getInstance().getUIInformation();
-                    if(!infor.isEmpty()){
-                        NowInformationWindow.getInstance().showWindow(m_display, infor);
-                    }
-                }
-            });
-            
+        if(ConfigCommon.getInstance().getAutoMoveMouse() == false){
+            if (e.getKeyCode() == NativeKeyEvent.VK_CONTROL){
+                getSupportedInformation();
+            }
         }
     }
 
