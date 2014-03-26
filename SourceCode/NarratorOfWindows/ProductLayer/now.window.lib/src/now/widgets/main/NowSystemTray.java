@@ -96,13 +96,12 @@ public class NowSystemTray implements NativeKeyListener {
             public void run() {
                 while(!m_systemTrayShell.isDisposed()){
                     if(ConfigCommon.getInstance().getAutoMoveMouse() == true){
-                        try {
-                            getSupportedInformation();
-                            Thread.sleep(50);
-                        } catch (InterruptedException ex) {
-                            Logger.getLogger(NowSystemTray.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        
+                        getSupportedInformation();
+                    }
+                    try {   
+                        Thread.sleep(100);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(NowSystemTray.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             }
@@ -199,12 +198,7 @@ public class NowSystemTray implements NativeKeyListener {
                 if (ConfigCommon.getInstance().getAutoPlaySound() == true) {
                     String infor = JNIHelper.getInstance().getUIInformation();
                     if(!infor.isEmpty()){
-                    //Check config auto play sound
-                    //if(ConfigCommon.getInstance().getAutoPlaySound() == false){
-                        //NowInformationWindow.getInstance().showWindow(m_display, infor);
-                    //} 
-                    //else 
-                    if (ConfigCommon.getInstance().getAutoPlaySound() == true) {
+                        //Check config auto play sound
                         String outString = "";
                         //Check config auto translate
                         if(ConfigCommon.getInstance().getAutoTranslate() == true){
@@ -216,10 +210,10 @@ public class NowSystemTray implements NativeKeyListener {
                             System.out.println("Speak : " + infor);
                         }
                     }
-
                 }
-            
-                }
+                //else{
+                    //NowInformationWindow.getInstance().showWindow(m_display);
+                //}
             }
         });
     }

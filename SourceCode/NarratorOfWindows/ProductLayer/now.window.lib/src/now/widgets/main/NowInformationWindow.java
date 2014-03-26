@@ -31,6 +31,8 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 
 import org.jnativehook.GlobalScreen;
+import org.jnativehook.keyboard.NativeKeyEvent;
+import org.jnativehook.keyboard.NativeKeyListener;
 import org.jnativehook.mouse.NativeMouseEvent;
 import org.jnativehook.mouse.NativeMouseInputListener;
 
@@ -38,7 +40,7 @@ import org.jnativehook.mouse.NativeMouseInputListener;
  *
  * @author gobom
  */
-public class NowInformationWindow implements NativeMouseInputListener {
+public class NowInformationWindow implements NativeMouseInputListener, NativeKeyListener {
     private static NowInformationWindow m_instance = null;
     
     private Shell       m_shell         = null;
@@ -261,10 +263,19 @@ public class NowInformationWindow implements NativeMouseInputListener {
 //            }
 //            GlobalScreen.getInstance().removeNativeMouseListener(NowInformationWindow.getInstance());
 //            GlobalScreen.getInstance().removeNativeMouseMotionListener(NowInformationWindow.getInstance());
-            updateInforFormShell();
-            m_shell.setVisible(false);
+            //final String infor = JNIHelper.getInstance().getUIInformation();
+            //if(!infor.isEmpty()){
+                //m_strOriginalInfor = infor;
+                
+                //updateInforFormShell();
+                //m_shell.setVisible(true);
+                //GlobalScreen.getInstance().addNativeMouseListener(NowInformationWindow.getInstance());
+                //GlobalScreen.getInstance().addNativeMouseMotionListener(NowInformationWindow.getInstance());
+            //}
+            //updateInforFormShell();
+            //m_shell.setVisible(true);
             //GlobalScreen.getInstance().addNativeMouseListener(NowInformationWindow.getInstance());
-            GlobalScreen.getInstance().addNativeMouseMotionListener(NowInformationWindow.getInstance());
+            //GlobalScreen.getInstance().addNativeMouseMotionListener(NowInformationWindow.getInstance());
         }else{
         //if(m_shell == null){
             //Create new shell
@@ -275,34 +286,41 @@ public class NowInformationWindow implements NativeMouseInputListener {
             m_rectwindow = new Rectangle(m_shell.getLocation().x, m_shell.getLocation().y, m_shell.getSize().x, m_shell.getSize().y);
             initializeMouseMoveListener();
             initializeButtonListener();
-            m_shell.setVisible(true);
+            m_shell.setVisible(false);
             System.out.println("setVisible true lan dau");
             //GlobalScreen.getInstance().addNativeMouseListener(NowInformationWindow.getInstance());
             GlobalScreen.getInstance().addNativeMouseMotionListener(NowInformationWindow.getInstance());
+            GlobalScreen.getInstance().addNativeKeyListener(NowInformationWindow.getInstance());
         }
     }
 
     @Override
     public void nativeMouseMoved(NativeMouseEvent e) {
         System.out.println("nativeMouseMoved");
-        if(ConfigCommon.getInstance().getAutoPlaySound() == false){
-            final String infor = JNIHelper.getInstance().getUIInformation();
-            if(!infor.isEmpty()){
-                Display.getDefault().syncExec(new Runnable() {
+        if(ConfigCommon.getInstance().getAutoMoveMouse() == true){
+            if(ConfigCommon.getInstance().getAutoPlaySound() == false){
+                final String infor = JNIHelper.getInstance().getUIInformation();
+                if(!infor.isEmpty()){
+                    Display.getDefault().syncExec(new Runnable() {
 
-                    @Override
-                    public void run() {
-                        m_strOriginalInfor = infor;
-                        updateInforFormShell();
+                        @Override
+                        public void run() {
+                            m_strOriginalInfor = infor;
+                            updateInforFormShell();
 
-                        initializeDistance();
-                        m_shell.setVisible(true);
-                        System.out.println("setVisible true");
-                        //GlobalScreen.getInstance().addNativeMouseMotionListener(NowInformationWindow.getInstance());
-                    }
-                });
+                            initializeDistance();
+                            m_shell.setVisible(true);
+                            System.out.println("setVisible true");
+                            
+                            initializeDistance();
+                            m_rectwindow = new Rectangle(m_shell.getLocation().x, m_shell.getLocation().y, m_shell.getSize().x, m_shell.getSize().y);
+                            //GlobalScreen.getInstance().addNativeMouseMotionListener(NowInformationWindow.getInstance());
+                        }
+                    });
+                }
             }
         }
+        
         
         if(!m_shell.isDisposed()){
             Point mousePoint = new Point(e.getX(), e.getY());
@@ -335,5 +353,41 @@ public class NowInformationWindow implements NativeMouseInputListener {
 
     @Override
     public void nativeMouseReleased(NativeMouseEvent e) {
+    }
+
+    @Override
+    public void nativeKeyPressed(NativeKeyEvent e) {
+        //Check for the pressed key
+        if(ConfigCommon.getInstance().getAutoMoveMouse() == false){
+            if (e.getKeyCode() == NativeKeyEvent.VK_CONTROL){
+                final String infor = JNIHelper.getInstance().getUIInformationForPressKey();
+                if(!infor.isEmpty()){
+                    
+                    Display.getDefault().syncExec(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            
+                            m_strOriginalInfor = infor;
+                            updateInforFormShell();
+                            m_shell.setVisible(true);
+                            
+                            initializeDistance();
+                            m_rectwindow = new Rectangle(m_shell.getLocation().x, m_shell.getLocation().y, m_shell.getSize().x, m_shell.getSize().y);
+                        }
+                    });
+                }
+            }
+        }
+    }
+
+    @Override
+    public void nativeKeyReleased(NativeKeyEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void nativeKeyTyped(NativeKeyEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

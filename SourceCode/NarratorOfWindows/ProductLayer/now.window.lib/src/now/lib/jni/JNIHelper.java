@@ -51,4 +51,22 @@ public class JNIHelper {
         }
         return m_information;
     }
+    
+    public String getUIInformationForPressKey(){
+        String signature = "";
+        String information = "";
+        try{
+            signature = JNICaller.getInstance().getControlSignatureUnderMouse();
+        }catch(Exception e){
+            System.out.println("getUIInformation" + e.getMessage());
+        }
+        
+        if(!signature.isEmpty())
+        {
+            information = JNICaller.getInstance().getUIInformation(signature);
+        }else{
+            information = NowConst.NOW_EMPTY_STRING;
+        }
+        return information;
+    }
 }
