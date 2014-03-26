@@ -40,7 +40,7 @@ NOW_RESULT NowPlugin_UIA::getElementAtPoint( POINT point, INowControl*& pControl
 	//Get control at point and return signature and control type of control
 	//If control is changed we will keep it to cache for reuse later
 	nResult = NowCommunication::getInstance()->getElementAtPoint(point, strSignatureControl, strControlType);
-	if (NOW_SUCCEED(nResult) && NowPluginManager::getInstance()->isChangedControl(strSignatureControl))
+	if (NOW_SUCCEED(nResult))// && NowPluginManager::getInstance()->isChangedControl(strSignatureControl))
 	{
 		//Create new wrapper of control then add it to cache
 		pControl = NowControlBuilder::getInstance()->createControlWrapper(strSignatureControl, strControlType);
