@@ -1,8 +1,11 @@
 package now.lib.utilities;
 
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import org.eclipse.swt.graphics.Point;
 
 public class UtilitiesDevice {
 	
@@ -57,5 +60,10 @@ public class UtilitiesDevice {
             }
         }
         return result;
+    }
+    
+    public static Point getScreenResolution(){
+        GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+        return new Point(gd.getDisplayMode().getWidth(), gd.getDisplayMode().getHeight());
     }
 }

@@ -25,4 +25,6 @@ public class NowConst {
     
     public static final int NOW_CONFIG_WINDOW_HEIGHT        = 475;
     public static final int NOW_CONFIG_WINDOW_WIDTH         = 425;
+    public static final int NOW_INFOR_WINDOW_HEIGHT        = 150;
+    public static final int NOW_INFOR_WINDOW_WIDTH         = 500;
 }

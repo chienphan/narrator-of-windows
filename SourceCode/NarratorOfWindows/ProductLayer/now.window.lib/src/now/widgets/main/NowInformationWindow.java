@@ -14,6 +14,7 @@ import now.lib.jni.JNIHelper;
 import now.lib.translator.Audio;
 import now.lib.translator.Translator;
 import now.lib.utilities.UtilitiesCommon;
+import now.lib.utilities.UtilitiesDevice;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyledText;
@@ -80,7 +81,7 @@ public class NowInformationWindow implements NativeMouseInputListener, NativeKey
         m_gridLayoutMain.numColumns = 1;
         
         Point currentMousePoint = m_shell.getDisplay().getCursorLocation();
-        m_shell.setSize(500, 150);
+        m_shell.setSize(NowConst.NOW_INFOR_WINDOW_WIDTH, NowConst.NOW_INFOR_WINDOW_HEIGHT);
         m_shell.setLayout(m_gridLayoutMain);
         m_shell.setLocation(new Point(currentMousePoint.x + 20, currentMousePoint.y + 20));
               
@@ -388,8 +389,20 @@ public class NowInformationWindow implements NativeMouseInputListener, NativeKey
     }
 
     private Point calculateLocation(Point cursorLocation) {
+        Point screenResolution = UtilitiesDevice.getScreenResolution();
+        System.out.println("Resolution=" + screenResolution.toString());
         Point resultPoint = cursorLocation;
-        //TODO: calculate the position of window to display
+        //calculate the position of window to display
+        if(cursorLocation.x > screenResolution.x - NowConst.NOW_INFOR_WINDOW_WIDTH){
+            resultPoint.x -= (NowConst.NOW_INFOR_WINDOW_WIDTH + 10);
+        } else {
+            resultPoint.x += 10;
+        }
+        if(cursorLocation.y > screenResolution.y - NowConst.NOW_INFOR_WINDOW_HEIGHT){
+            resultPoint.y -= (NowConst.NOW_INFOR_WINDOW_HEIGHT + 10);
+        } else {
+            resultPoint.y += 10;
+        }
         return resultPoint;
     }
 }
