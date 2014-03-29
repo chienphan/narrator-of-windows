@@ -63,6 +63,7 @@ public class NowInformationWindow implements NativeMouseInputListener, NativeKey
     private Rectangle   m_rectwindow    = null;
     private Point       m_pointWindow   = null;
     
+    private boolean m_isOutWindow = true;
     /**
      * Constructor
      */
@@ -167,8 +168,8 @@ public class NowInformationWindow implements NativeMouseInputListener, NativeKey
      * initialize mouse move listener
      */
     private void initializeMouseMoveListener(){
-        //GlobalScreen.getInstance().addNativeMouseListener(NowInformationWindow.getInstance());
-        //GlobalScreen.getInstance().addNativeMouseMotionListener(NowInformationWindow.getInstance());
+        GlobalScreen.getInstance().addNativeMouseMotionListener(NowInformationWindow.getInstance());
+        GlobalScreen.getInstance().addNativeKeyListener(NowInformationWindow.getInstance());
     }
     
     /**
@@ -252,45 +253,21 @@ public class NowInformationWindow implements NativeMouseInputListener, NativeKey
      * @param information information to display in Information Window
      */
     public void showWindow(Display display){
-        //TODO: check for information empty!!!!!!!!
-        
-        //Firstly, save original information
-        //m_strOriginalInfor = information;
-        //Check for old shell, if have exist shell: close it and declare a new one
-        if(m_shell != null ){
-//            if(!m_shell.isDisposed()){
-//                m_shell.dispose();
-//            }
-//            GlobalScreen.getInstance().removeNativeMouseListener(NowInformationWindow.getInstance());
-//            GlobalScreen.getInstance().removeNativeMouseMotionListener(NowInformationWindow.getInstance());
-            //final String infor = JNIHelper.getInstance().getUIInformation();
-            //if(!infor.isEmpty()){
-                //m_strOriginalInfor = infor;
-                
-                //updateInforFormShell();
-                //m_shell.setVisible(true);
-                //GlobalScreen.getInstance().addNativeMouseListener(NowInformationWindow.getInstance());
-                //GlobalScreen.getInstance().addNativeMouseMotionListener(NowInformationWindow.getInstance());
-            //}
-            //updateInforFormShell();
-            //m_shell.setVisible(true);
-            //GlobalScreen.getInstance().addNativeMouseListener(NowInformationWindow.getInstance());
-            //GlobalScreen.getInstance().addNativeMouseMotionListener(NowInformationWindow.getInstance());
-        }else{
-        //if(m_shell == null){
+        if(m_shell == null){
             //Create new shell
             m_shell = new Shell(display, SWT.BORDER_DASH | SWT.ON_TOP);
             initializeWindow();
             m_shell.open();
             initializeDistance();
             m_rectwindow = new Rectangle(m_shell.getLocation().x, m_shell.getLocation().y, m_shell.getSize().x, m_shell.getSize().y);
-            initializeMouseMoveListener();
+            
             initializeButtonListener();
             m_shell.setVisible(false);
+            
             System.out.println("setVisible true lan dau");
-            //GlobalScreen.getInstance().addNativeMouseListener(NowInformationWindow.getInstance());
-            GlobalScreen.getInstance().addNativeMouseMotionListener(NowInformationWindow.getInstance());
-            GlobalScreen.getInstance().addNativeKeyListener(NowInformationWindow.getInstance());
+            
+            initializeMouseMoveListener();
+            
         }
     }
 
@@ -299,7 +276,7 @@ public class NowInformationWindow implements NativeMouseInputListener, NativeKey
         //This case for "Automatic Move mouse" and "display information window" mode
         if(ConfigCommon.getInstance().getAutoMoveMouse() == true
                 && ConfigCommon.getInstance().getAutoPlaySound() == false){
-            //if(ConfigCommon.getInstance().getAutoPlaySound() == false){
+            if(isMousePointerOutOfInformationWindow() == true){
                 final String infor = JNIHelper.getInstance().getUIInformation();
                 if(!infor.isEmpty()){
                     Display.getDefault().syncExec(new Runnable() {
@@ -319,10 +296,10 @@ public class NowInformationWindow implements NativeMouseInputListener, NativeKey
                         }
                     });
                 }
-            //}
+            }
         }
         
-        
+        //Check to close the window
         if(!m_shell.isDisposed()){
             Point mousePoint = new Point(e.getX(), e.getY());
             //Condition to close Information Window
@@ -390,5 +367,21 @@ public class NowInformationWindow implements NativeMouseInputListener, NativeKey
     @Override
     public void nativeKeyTyped(NativeKeyEvent e) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private boolean isMousePointerOutOfInformationWindow() {
+        m_isOutWindow = true;
+        Display.getDefault().syncExec(new Runnable() {
+
+            @Override
+            public void run() {
+                Point mousePoint = m_shell.getDisplay().getCursorLocation();
+                if(m_shell.getBounds().contains(mousePoint)){
+                    m_isOutWindow = false;
+                }
+            }
+        });
+        
+        return m_isOutWindow;
     }
 }
