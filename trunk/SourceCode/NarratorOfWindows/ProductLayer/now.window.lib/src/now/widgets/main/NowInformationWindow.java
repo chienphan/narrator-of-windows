@@ -296,9 +296,10 @@ public class NowInformationWindow implements NativeMouseInputListener, NativeKey
 
     @Override
     public void nativeMouseMoved(NativeMouseEvent e) {
-        System.out.println("nativeMouseMoved");
-        if(ConfigCommon.getInstance().getAutoMoveMouse() == true){
-            if(ConfigCommon.getInstance().getAutoPlaySound() == false){
+        //This case for "Automatic Move mouse" and "display information window" mode
+        if(ConfigCommon.getInstance().getAutoMoveMouse() == true
+                && ConfigCommon.getInstance().getAutoPlaySound() == false){
+            //if(ConfigCommon.getInstance().getAutoPlaySound() == false){
                 final String infor = JNIHelper.getInstance().getUIInformation();
                 if(!infor.isEmpty()){
                     Display.getDefault().syncExec(new Runnable() {
@@ -318,7 +319,7 @@ public class NowInformationWindow implements NativeMouseInputListener, NativeKey
                         }
                     });
                 }
-            }
+            //}
         }
         
         
