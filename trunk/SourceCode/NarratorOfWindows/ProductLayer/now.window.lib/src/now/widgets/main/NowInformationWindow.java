@@ -200,23 +200,23 @@ public class NowInformationWindow implements NativeMouseInputListener, NativeKey
     }
     
     private void updateInforFormShell(){
-        final Point currentMousePoint = m_shell.getDisplay().getCursorLocation();
+        final Point locationWindow = calculateLocation(m_shell.getDisplay().getCursorLocation());
         
         Display.getDefault().syncExec(new Runnable() {
 
                 @Override
                 public void run() {
-                    m_shell.setLocation(new Point(currentMousePoint.x + 20, currentMousePoint.y + 20));
+                    m_shell.setLocation(new Point(locationWindow.x, locationWindow.y));
                 }
         });
         
+        //This case for "Automation translate to output language"
         if(ConfigCommon.getInstance().getAutoTranslate() == true){
-            
             Display.getDefault().syncExec(new Runnable() {
 
                 @Override
                 public void run() {
-                    m_shell.setLocation(new Point(currentMousePoint.x + 20, currentMousePoint.y + 20));
+                    //m_shell.setLocation(new Point(currentMousePoint.x + 20, currentMousePoint.y + 20));
                     String outString = Translator.getInstance().translateAutoDetectInput(m_strOriginalInfor);
                     if(!outString.isEmpty()){
                         m_txtInfor.setText(outString);
@@ -225,7 +225,9 @@ public class NowInformationWindow implements NativeMouseInputListener, NativeKey
                     }
                 }
             });
-        }else{
+        }
+        //This case is not translate
+        else{
             Display.getDefault().syncExec(new Runnable() {
 
                 @Override
@@ -286,13 +288,15 @@ public class NowInformationWindow implements NativeMouseInputListener, NativeKey
                             m_strOriginalInfor = infor;
                             updateInforFormShell();
 
-                            initializeDistance();
                             m_shell.setVisible(true);
                             System.out.println("setVisible true");
                             
                             initializeDistance();
-                            m_rectwindow = new Rectangle(m_shell.getLocation().x, m_shell.getLocation().y, m_shell.getSize().x, m_shell.getSize().y);
-                            //GlobalScreen.getInstance().addNativeMouseMotionListener(NowInformationWindow.getInstance());
+                            //Update new bounding rectangle of window
+                            m_rectwindow = new Rectangle(m_shell.getLocation().x, 
+                                                            m_shell.getLocation().y, 
+                                                            m_shell.getSize().x, 
+                                                            m_shell.getSize().y);
                         }
                     });
                 }
@@ -309,8 +313,6 @@ public class NowInformationWindow implements NativeMouseInputListener, NativeKey
                     @Override
                     public void run() {
                         m_shell.setVisible(false);
-                        System.out.println("setVisible false");
-                        //GlobalScreen.getInstance().removeNativeMouseMotionListener(NowInformationWindow.getInstance());
                     }
                 });
             }
@@ -383,5 +385,11 @@ public class NowInformationWindow implements NativeMouseInputListener, NativeKey
         });
         
         return m_isOutWindow;
+    }
+
+    private Point calculateLocation(Point cursorLocation) {
+        Point resultPoint = cursorLocation;
+        //TODO: calculate the position of window to display
+        return resultPoint;
     }
 }
