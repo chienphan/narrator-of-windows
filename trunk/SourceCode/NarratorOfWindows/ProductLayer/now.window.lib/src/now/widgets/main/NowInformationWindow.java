@@ -9,7 +9,9 @@ package now.widgets.main;
 import now.lib.configuration.ConfigCommon;
 import now.lib.configuration.ConfigLanguage;
 import now.lib.constant.NowConst;
+import now.lib.define.DefineDisplayCode;
 import now.lib.define.DefineLanguageName;
+import now.lib.display.DisplayText;
 import now.lib.jni.JNIHelper;
 import now.lib.translator.Audio;
 import now.lib.translator.Translator;
@@ -20,6 +22,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.layout.RowLayout;
@@ -55,7 +58,9 @@ public class NowInformationWindow implements NativeMouseInputListener, NativeKey
     private GridLayout  m_gridLayoutMain    = null;
     private GridLayout  m_gridLayoutSecond    = null;
     
-    private RowLayout   m_rowLayout     = null;
+    //private RowLayout   m_rowLayout     = null;
+    private GridLayout  m_gridLayoutButton  = null;
+    private GridData    m_gridDataButton    = null;
     private GridData    m_gridDataMain      = null;
     private GridData    m_gridDataSecond      = null;
             
@@ -83,7 +88,7 @@ public class NowInformationWindow implements NativeMouseInputListener, NativeKey
         Point currentMousePoint = m_shell.getDisplay().getCursorLocation();
         m_shell.setSize(NowConst.NOW_INFOR_WINDOW_WIDTH, NowConst.NOW_INFOR_WINDOW_HEIGHT);
         m_shell.setLayout(m_gridLayoutMain);
-        m_shell.setLocation(new Point(currentMousePoint.x + 20, currentMousePoint.y + 20));
+        //m_shell.setLocation(new Point(currentMousePoint.x + 20, currentMousePoint.y + 20));
               
         m_gridDataMain = new GridData();
         m_gridDataMain.horizontalAlignment = GridData.FILL;
@@ -115,15 +120,25 @@ public class NowInformationWindow implements NativeMouseInputListener, NativeKey
         
         m_cmpRight = new Composite(m_cmpContainer, SWT.NONE);
         
-        m_rowLayout = new RowLayout();
-        m_rowLayout.pack = false;
-        m_cmpRight.setLayout(m_rowLayout);
+        m_gridLayoutButton = new GridLayout();
+        m_gridLayoutButton.numColumns = 2;
+        m_gridDataButton = new GridData();
+        m_gridDataButton.heightHint = NowConst.NOW_BUTTON_HEIGHT;
+        m_gridDataButton.widthHint = NowConst.NOW_BUTTON_WIDTH;
+        
+        m_cmpRight.setLayout(m_gridLayoutButton);
+        
+        //m_rowLayout = new RowLayout();
+        //m_rowLayout.pack = false;
+        //m_cmpRight.setLayout(m_rowLayout);
         
         m_btnTranslate = new Button(m_cmpRight, SWT.PUSH);
-        m_btnTranslate.setText("Translate");
+        m_btnTranslate.setLayoutData(m_gridDataButton);
+        //m_btnTranslate.setText("Translate");
         
         m_btnPlay = new Button(m_cmpRight, SWT.PUSH);
-        m_btnPlay.setText("Play");
+        m_btnPlay.setLayoutData(m_gridDataButton);
+        //m_btnPlay.setText("Play");
         
         if(ConfigCommon.getInstance().getAutoTranslate() == true){
             
@@ -142,6 +157,8 @@ public class NowInformationWindow implements NativeMouseInputListener, NativeKey
         }else{
             m_txtInfor.setText(m_strOriginalInfor);
         }
+        
+        updateContent();
     }
         
     /**
@@ -239,6 +256,11 @@ public class NowInformationWindow implements NativeMouseInputListener, NativeKey
         }
     }
     
+    private void updateContent(){
+        m_btnTranslate.setText(DisplayText.getInstance().getText(DefineDisplayCode.WINDOW_INFOR_BUTTON_TRANSLATE));
+        m_btnPlay.setText(DisplayText.getInstance().getText(DefineDisplayCode.WINDOW_INFOR_BUTTON_PLAY));
+    }
+    
     /**
      * Get instance of NowInformationWindow class
      * @return the instance
@@ -288,7 +310,7 @@ public class NowInformationWindow implements NativeMouseInputListener, NativeKey
                         public void run() {
                             m_strOriginalInfor = infor;
                             updateInforFormShell();
-
+                            updateContent();
                             m_shell.setVisible(true);
                             System.out.println("setVisible true");
                             
@@ -351,6 +373,7 @@ public class NowInformationWindow implements NativeMouseInputListener, NativeKey
                             
                             m_strOriginalInfor = infor;
                             updateInforFormShell();
+                            updateContent();
                             m_shell.setVisible(true);
                             
                             initializeDistance();

@@ -5,5 +5,5 @@
 	<translatorengine>Google Translator</translatorengine>
 	<automovemouse>false</automovemouse>
 	<autoplaysound>false</autoplaysound>
-	<autotranslate>true</autotranslate>
+	<autotranslate>false</autotranslate>
 </LanguageConfig>

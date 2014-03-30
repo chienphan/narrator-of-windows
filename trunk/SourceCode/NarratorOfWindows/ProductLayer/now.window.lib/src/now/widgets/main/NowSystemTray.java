@@ -134,6 +134,7 @@ public class NowSystemTray implements NativeKeyListener {
         m_itemTray.addListener(SWT.MenuDetect, new Listener() {
             @Override
             public void handleEvent(Event event) {
+                updateContent();
                 m_popupMenu.setVisible(true);
             }
         });
@@ -143,6 +144,7 @@ public class NowSystemTray implements NativeKeyListener {
 
             @Override
             public void handleEvent(Event event) {
+                updateContent();
                 m_popupMenu.setVisible(true);
             }
         });
@@ -150,9 +152,13 @@ public class NowSystemTray implements NativeKeyListener {
     
     private void initContent(){
         //Set tooltip for tray icon
-        m_itemTray.setToolTipText("Click to show menu");
+        updateContent();
         m_itemTray.setImage(m_image);
         m_popupMenu.setDefaultItem(m_menuConfigWindow);
+    }
+    
+    private void updateContent(){
+        m_itemTray.setToolTipText(DisplayText.getInstance().getText(DefineDisplayCode.SYSTEM_TRAY_CLICK_SHOW_MENU));
         m_menuConfigWindow.setText(DisplayText.getInstance().getText(DefineDisplayCode.SYSTEM_TRAY_CONFIGURATION));
         m_menuClose.setText(DisplayText.getInstance().getText(DefineDisplayCode.SYSTEM_TRAY_EXIT));
     }
