@@ -59,6 +59,8 @@ public class DisplayText {
         
         if(languageMap.containsKey(displayCode)){
             strResult = languageMap.get(displayCode);
+        }else{
+            strResult = m_displayTextCollection.get("English").getLanguageMap().get(displayCode);
         }
         return strResult;
     }
