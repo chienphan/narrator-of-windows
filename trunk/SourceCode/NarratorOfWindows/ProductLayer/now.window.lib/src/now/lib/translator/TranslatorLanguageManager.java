@@ -1,7 +1,9 @@
 package now.lib.translator;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import now.lib.configuration.ConfigDefine;
@@ -69,16 +71,26 @@ public class TranslatorLanguageManager {
     }
     
     public String[] getListLanguageName(){
-        String[] result = null;
+        String[] result = new String[m_mapLangGoogleEngine.size()];
         int index = 0;
         if(ConfigTranslateEngine.getInstance().getTranslatorEngine().equalsIgnoreCase(DefineEngineName.TRANSLATOR_ENGINE_GOOGLE)){
-            result = new String[m_mapLangGoogleEngine.size()];
+//            result = new String[m_mapLangGoogleEngine.size()];
+//            for (Map.Entry<String, String> entry : m_mapLangGoogleEngine.entrySet()) {
+//                result[index] = entry.getKey();
+//                index++;
+//            }
+            ArrayList<String> arrayList = new ArrayList<>();
             for (Map.Entry<String, String> entry : m_mapLangGoogleEngine.entrySet()) {
-                result[index] = entry.getKey();
-                index++;
+                arrayList.add(entry.getKey());
             }
-        }
-        if(ConfigTranslateEngine.getInstance().getTranslatorEngine().equalsIgnoreCase(DefineEngineName.TRANSLATOR_ENGINE_MICROSOFT)){
+            Collections.sort(arrayList);
+            if(arrayList.size() > 0){
+                for (Iterator<String> it = arrayList.iterator(); it.hasNext();) {
+                    result[index] = it.next();
+                    index++;
+                }
+            }
+        }else if(ConfigTranslateEngine.getInstance().getTranslatorEngine().equalsIgnoreCase(DefineEngineName.TRANSLATOR_ENGINE_MICROSOFT)){
             System.err.println("This method is not implemented yet");
         }
         return result;
