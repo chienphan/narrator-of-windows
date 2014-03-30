@@ -10,6 +10,7 @@ import now.lib.configuration.ConfigCommon;
 import now.lib.configuration.ConfigLanguage;
 import now.lib.configuration.ConfigTranslateEngine;
 import now.lib.constant.NowConst;
+import now.lib.define.DefineDisplayCode;
 import now.lib.define.DefineEngineName;
 import now.lib.define.DefineLanguageName;
 import now.lib.display.DisplayText;
@@ -62,6 +63,8 @@ public class NowConfigurationWindow {
         initializeTranslateTab();
         initializeDisplayTab();
         initializeListener();
+        
+        updateContent();
     }
     
     private void initializeListener(){
@@ -150,7 +153,7 @@ public class NowConfigurationWindow {
                         }else{
                             ConfigCommon.getInstance().setAutoTranslate(false);
                         }
-                        
+                        updateContent();
                         m_btnApply.setEnabled(false);
                     }
                 });
@@ -267,7 +270,7 @@ public class NowConfigurationWindow {
         //m_gridDataDisplayRight.heightHint = 30;
         
         m_labelDisplay = new Label(m_compositeDisplay, SWT.SINGLE);
-        m_labelDisplay.setText("Display Language:");
+        //m_labelDisplay.setText("Display Language:");
         m_labelDisplay.setLayoutData(m_gridDataDisplayLeft);
         
         m_comboDisplay = new Combo(m_compositeDisplay, SWT.READ_ONLY);
@@ -303,7 +306,7 @@ public class NowConfigurationWindow {
         //m_gridDataTranslateRight.heightHint = 30;
         
         m_labelInputLanguage = new Label(m_compositeTranslateMain, SWT.SINGLE);
-        m_labelInputLanguage.setText("Input Language:");
+        //m_labelInputLanguage.setText("Input Language:");
         m_labelInputLanguage.setLayoutData(m_gridDataTranslateLeft);
         
         m_comboInputLanguage = new Combo(m_compositeTranslateMain, SWT.READ_ONLY);
@@ -313,7 +316,7 @@ public class NowConfigurationWindow {
         m_comboInputLanguage.setLayoutData(m_gridDataTranslateRight);
         
         m_labelOutputLanguage = new Label(m_compositeTranslateMain, SWT.SINGLE);
-        m_labelOutputLanguage.setText("Output Language:");
+        //m_labelOutputLanguage.setText("Output Language:");
         m_labelOutputLanguage.setLayoutData(m_gridDataTranslateLeft);
         
         m_comboOutputLanguage = new Combo(m_compositeTranslateMain, SWT.READ_ONLY);
@@ -321,12 +324,9 @@ public class NowConfigurationWindow {
         m_comboOutputLanguage.select(UtilitiesCommon.getIndex(listLanguageName, 
                 ConfigLanguage.getInstance().getOutputLanguage()));
         m_comboOutputLanguage.setLayoutData(m_gridDataTranslateRight);
-        
-        //Label label = new Label(m_compositeTranslateMain,  SWT.SEPARATOR | SWT.HORIZONTAL);
-        //label.setSize(400, 10);
-        
+                
         m_labelEngineTranslate = new Label(m_compositeTranslateMain, SWT.SINGLE);
-        m_labelEngineTranslate.setText("Translate Engine:");
+        //m_labelEngineTranslate.setText("Translate Engine:");
         m_labelEngineTranslate.setLayoutData(m_gridDataTranslateLeft);
         
         m_comboEngineTranslate = new Combo(m_compositeTranslateMain, SWT.READ_ONLY);
@@ -351,11 +351,11 @@ public class NowConfigurationWindow {
         m_gridDataGeneral.heightHint = 100;
         
         m_groupOperation = new Group(m_compositeGeneralMain, SWT.NULL);
-        m_groupOperation.setText("Operation");
+        //m_groupOperation.setText("Operation");
         m_groupOperation.setLayoutData(m_gridDataGeneral);
         
         m_groupOutputMode = new Group(m_compositeGeneralMain, SWT.NULL);
-        m_groupOutputMode.setText("Output Mode");
+        //m_groupOutputMode.setText("Output Mode");
         m_groupOutputMode.setLayoutData(m_gridDataGeneral);
                 
         m_gridLayoutGeneralGroup = new GridLayout();
@@ -369,32 +369,32 @@ public class NowConfigurationWindow {
         
         m_gridDataGeneralGroup = new GridData();
         
-        Text m_textOperation = new Text(m_groupOperation, SWT.WRAP);
-        m_textOperation.setText("Choise the way to play sound or display supported information.");
+        m_textOperation = new Text(m_groupOperation, SWT.WRAP);
+        //m_textOperation.setText("Choise the way to play sound or display supported information.");
         m_textOperation.setLayoutData(m_gridDataGeneralGroup);
         
         m_radioOperationAuto = new Button(m_groupOperation, SWT.RADIO | SWT.WRAP);
-        m_radioOperationAuto.setText("Automatic when move mouse");
+        //m_radioOperationAuto.setText("Automatic when move mouse");
         m_radioOperationAuto.setSelection(ConfigCommon.getInstance().getAutoMoveMouse());
         m_radioOperationAuto.setLayoutData(m_gridDataGeneralGroup);
         
         m_radioOperationPress = new Button(m_groupOperation, SWT.RADIO);
-        m_radioOperationPress.setText("When press Ctrl keyboard");
+        //m_radioOperationPress.setText("When press Ctrl keyboard");
         m_radioOperationPress.setSelection(!ConfigCommon.getInstance().getAutoMoveMouse());
         m_radioOperationPress.setLayoutData(m_gridDataGeneralGroup);
         
         m_radioModePlay = new Button(m_groupOutputMode, SWT.RADIO);
-        m_radioModePlay.setText("Play sound");
+        //m_radioModePlay.setText("Play sound");
         m_radioModePlay.setSelection(ConfigCommon.getInstance().getAutoPlaySound());
         m_radioModePlay.setLayoutData(m_gridDataGeneralGroup);
         
         m_radioModeDisplay = new Button(m_groupOutputMode, SWT.RADIO);
-        m_radioModeDisplay.setText("Display information window");
+        //m_radioModeDisplay.setText("Display information window");
         m_radioModeDisplay.setSelection(!ConfigCommon.getInstance().getAutoPlaySound());
         m_radioModeDisplay.setLayoutData(m_gridDataGeneralGroup);
         
         m_checkAutoTranslate = new Button(m_groupOutputMode, SWT.CHECK);
-        m_checkAutoTranslate.setText("Automatic translate to the output language");
+        //m_checkAutoTranslate.setText("Automatic translate to the output language");
         m_checkAutoTranslate.setSelection(ConfigCommon.getInstance().getAutoTranslate());
         m_checkAutoTranslate.setLayoutData(m_gridDataGeneralGroup);
     }
@@ -424,30 +424,59 @@ public class NowConfigurationWindow {
                 
         m_gridDataButton = new GridData();
         m_gridDataButton.horizontalAlignment = GridData.END;
-        m_gridDataButton.heightHint = 24;
-        m_gridDataButton.widthHint = 75;
+        m_gridDataButton.heightHint = NowConst.NOW_BUTTON_HEIGHT;
+        m_gridDataButton.widthHint = NowConst.NOW_BUTTON_WIDTH;
         
         m_compositeMain.setLayout(m_gridLayoutButton);
         
         m_btnOK = new Button(m_compositeMain, SWT.PUSH);
         m_btnOK.setLayoutData(m_gridDataButton);
-        m_btnOK.setText("OK");
+        //m_btnOK.setText("OK");
         
         m_btnCancel = new Button(m_compositeMain, SWT.PUSH);
         m_btnCancel.setLayoutData(m_gridDataButton);
-        m_btnCancel.setText("Cancel");
+        //m_btnCancel.setText("Cancel");
         
         m_btnApply = new Button(m_compositeMain, SWT.PUSH);
         m_btnApply.setLayoutData(m_gridDataButton);
-        m_btnApply.setText("Apply");
+        //m_btnApply.setText("Apply");
         m_btnApply.setEnabled(false);
         
         m_tabItemGeneral = new TabItem(m_tabMain, SWT.NULL);
-        m_tabItemGeneral.setText("General");
+        //m_tabItemGeneral.setText("General");
         m_tabItemTranslate = new TabItem(m_tabMain, SWT.NULL);
-        m_tabItemTranslate.setText("Translate");
+        //m_tabItemTranslate.setText("Translate");
         m_tabItemDisplay = new TabItem(m_tabMain, SWT.NULL);
-        m_tabItemDisplay.setText("Display");
+        //m_tabItemDisplay.setText("Display");
+    }
+    
+    private void updateContent(){
+        m_shell.setText(DisplayText.getInstance().getText(DefineDisplayCode.WINDOW_CONFIG_TITLE));
+        
+        m_btnOK.setText(DisplayText.getInstance().getText(DefineDisplayCode.BUTTON_OK));
+        m_btnCancel.setText(DisplayText.getInstance().getText(DefineDisplayCode.BUTTON_CANCEL));
+        m_btnApply.setText(DisplayText.getInstance().getText(DefineDisplayCode.BUTTON_APPLY));
+        
+        m_tabItemGeneral.setText(DisplayText.getInstance().getText(DefineDisplayCode.TAB_GENERAL));
+        m_tabItemTranslate.setText(DisplayText.getInstance().getText(DefineDisplayCode.TAB_TRANSLATE));
+        m_tabItemDisplay.setText(DisplayText.getInstance().getText(DefineDisplayCode.TAB_DISPLAY));
+        
+        m_checkAutoTranslate.setText(DisplayText.getInstance().getText(DefineDisplayCode.CHECKBOX_AUTO_TRANSLATE));
+        
+        m_radioModeDisplay.setText(DisplayText.getInstance().getText(DefineDisplayCode.RADIO_MODE_DISPLAY));
+        m_radioModePlay.setText(DisplayText.getInstance().getText(DefineDisplayCode.RADIO_MODE_PLAY));
+        m_radioOperationPress.setText(DisplayText.getInstance().getText(DefineDisplayCode.RADIO_OPERATION_PRESS));
+        m_radioOperationAuto.setText(DisplayText.getInstance().getText(DefineDisplayCode.RADIO_OPERATION_AUTO));
+        
+        m_textOperation.setText(DisplayText.getInstance().getText(DefineDisplayCode.TEXT_OPERATION));
+        
+        m_groupOutputMode.setText(DisplayText.getInstance().getText(DefineDisplayCode.GROUP_OUTPUT_MODE));
+        m_groupOperation.setText(DisplayText.getInstance().getText(DefineDisplayCode.GROUP_OPERATION));
+        
+        m_labelEngineTranslate.setText(DisplayText.getInstance().getText(DefineDisplayCode.LABEL_ENGINE_TRANSLATE));
+        m_labelOutputLanguage.setText(DisplayText.getInstance().getText(DefineDisplayCode.LABEL_OUTPUT_LANGUAGE));
+        m_labelInputLanguage.setText(DisplayText.getInstance().getText(DefineDisplayCode.LABEL_INPUT_LANGUAGE));
+        m_labelDisplay.setText(DisplayText.getInstance().getText(DefineDisplayCode.LABEL_DISPLAY));
     }
     
     public static NowConfigurationWindow getInstance(){
@@ -518,6 +547,8 @@ public class NowConfigurationWindow {
     private Button m_radioModePlay = null;
     private Button m_radioModeDisplay = null;
     private Button m_checkAutoTranslate = null;
+    
+    private Text m_textOperation = null;
     /**
      * for m_tabItemTranslate
      */
