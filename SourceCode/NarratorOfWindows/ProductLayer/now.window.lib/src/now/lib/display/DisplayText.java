@@ -8,7 +8,11 @@ package now.lib.display;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import now.lib.configuration.ConfigLanguage;
 import now.lib.define.DefineDisplayCode;
@@ -26,6 +30,7 @@ public class DisplayText {
     private DisplayText(){
         m_displayTextCollection = new HashMap<>();
         initDisplayTextCollection();
+        
     }
     
     public static DisplayText getInstance(){
@@ -35,6 +40,11 @@ public class DisplayText {
         return m_instance;
     }
     
+    /**
+     * Get text with output language
+     * @param displayCode
+     * @return 
+     */
     public String getText(String displayCode){
         String strResult = "N/A";
         HashMap<String, String> languageMap = new HashMap<>();
@@ -91,11 +101,24 @@ public class DisplayText {
 
     public String[] getListDisplayLanguage(){
         String[] result = new String[m_displayTextCollection.size()];
+        ArrayList<String> arrayList = new ArrayList<String>();
         int index = 0;
         for (Map.Entry<String, DisplayTextCollection> entry : m_displayTextCollection.entrySet()) {
-            result[index] = entry.getKey();
+            //result[index] = entry.getKey();
+            arrayList.add(entry.getKey());
+            //index++;
+        }
+        if(arrayList.size() == 0){
+            return null;
+        }
+        Collections.sort(arrayList);
+        
+        for (Iterator<String> item = arrayList.iterator(); item.hasNext();) {
+            String string = item.next();
+            result[index] = string;
             index++;
         }
+        
         return result;
     }
 }

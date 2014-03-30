@@ -18,8 +18,8 @@ public class DefineDisplayCode {
     public static final String SYSTEM_TRAY_EXIT             = "SYSTEM_TRAY_EXIT";
     public static final String SYSTEM_TRAY_CLICK_SHOW_MENU  = "SYSTEM_TRAY_CLICK_SHOW_MENU";
     
-    public static final String WINDOW_INFOR_BUTTON_TRANSLATE       = "WINDOW_INFOR_TRANSLATE";
-    public static final String WINDOW_INFOR_BUTTON_PLAY            = "WINDOW_INFOR_PLAY";
+    public static final String WINDOW_INFOR_BUTTON_TRANSLATE       = "WINDOW_INFOR_BUTTON_TRANSLATE";
+    public static final String WINDOW_INFOR_BUTTON_PLAY            = "WINDOW_INFOR_BUTTON_PLAY";
     
     public static final String BUTTON_OK = "BUTTON_OK";
     public static final String BUTTON_CANCEL = "BUTTON_CANCEL";
