@@ -128,10 +128,15 @@
     <ClInclude Include="define\NowDefine.h" />
     <ClInclude Include="interface\INowControl.h" />
     <ClInclude Include="interface\INowPlugin.h" />
+    <ClInclude Include="interface\INowWindow.h" />
+    <ClInclude Include="NowMatching.h" />
     <ClInclude Include="NowPluginManager.h" />
+    <ClInclude Include="NowStorage.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="NowMatching.cpp" />
     <ClCompile Include="NowPluginManager.cpp" />
+    <ClCompile Include="NowStorage.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

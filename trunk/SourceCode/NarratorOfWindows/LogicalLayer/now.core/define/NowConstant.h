@@ -28,6 +28,7 @@
 #define NOW_LOGGER_FILE_MODE		2
 
 #define NOW_CHAR_EQUAL '='
+#define NOW_CHAR_OR '|'
 
 #define NOW_PLUGIN_NAME_UIA "uiautomation"
 

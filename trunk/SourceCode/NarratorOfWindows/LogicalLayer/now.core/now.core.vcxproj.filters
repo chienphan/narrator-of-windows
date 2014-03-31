@@ -30,9 +30,24 @@
     <ClInclude Include="define\NowConstant.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="NowMatching.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="interface\INowWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NowStorage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NowPluginManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NowMatching.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NowStorage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
