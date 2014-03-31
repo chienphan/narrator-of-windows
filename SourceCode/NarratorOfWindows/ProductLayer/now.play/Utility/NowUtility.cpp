@@ -5,7 +5,23 @@
 
 vector<vector<string>*>* NowUtility::readData(const string& strFileName)
 {
-	string strFullPath = NowDevice::getEnvironmentVariable(NOW_DEBUG_DIRECTORY) + strFileName;
+	if (strFileName.empty())
+	{
+		return NULL;
+	}
+
+	string strFullPath = "";
+	string strDirectory = NowDevice::getEnvironmentVariable(NOW_DEBUG_DIRECTORY);
+	if (strDirectory.empty())
+	{
+		strFullPath = NowDevice::getCurrentDirectory() + strFileName;
+	}
+	else
+	{
+		strFullPath = strDirectory + strFileName;
+	}
+
+	// + strFileName;
 	vector<vector<string>*>* reRsult = new vector<vector<string>*>();
 	string strTemp = "";
 	ifstream infile;

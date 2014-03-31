@@ -1,0 +1,6 @@
+lesson_no=1
+lesson_name=blabla
+lesson_description=alo ola
+window=window_name|window_title
+control=control_name|property_name;property_value
+click=control_name
