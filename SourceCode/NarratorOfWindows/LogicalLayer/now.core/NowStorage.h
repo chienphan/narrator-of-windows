@@ -14,8 +14,8 @@ public:
 	static NowStorage* getInstance();
 	~NowStorage(void);
 
-	NOW_RESULT keepWindowToStorage(const char* szWindowTitle, INowWindow* pwindow);
-	NOW_RESULT getWindowFromStorage(const char* szWindowTitle, INowWindow*& pWindow);
+	NOW_RESULT keepWindowToStorage(const char* szWindowName, INowWindow* pwindow);
+	NOW_RESULT getWindowFromStorage(const char* szWindowName, INowWindow*& pWindow);
 
 	NOW_RESULT emptyStorage();
 };
