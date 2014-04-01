@@ -91,6 +91,7 @@ Global
 		{F7726E19-B68C-49A6-B5F9-CFC3C26D862D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{F7726E19-B68C-49A6-B5F9-CFC3C26D862D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{F7726E19-B68C-49A6-B5F9-CFC3C26D862D}.Release|Win32.ActiveCfg = Release|Any CPU
+		{F7726E19-B68C-49A6-B5F9-CFC3C26D862D}.Release|Win32.Build.0 = Release|Any CPU
 		{F7726E19-B68C-49A6-B5F9-CFC3C26D862D}.Release|x64.ActiveCfg = Release|Any CPU
 		{F7726E19-B68C-49A6-B5F9-CFC3C26D862D}.Release|x64.Build.0 = Release|Any CPU
 		{0067848E-1D4D-4E01-8B87-BF9AE92351E4}.Debug|Any CPU.ActiveCfg = Debug|x64
