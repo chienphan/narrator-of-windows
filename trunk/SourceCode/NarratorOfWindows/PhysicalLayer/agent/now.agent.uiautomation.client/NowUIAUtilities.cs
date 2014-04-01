@@ -98,5 +98,21 @@ namespace now.agent.uiautomation.client
             DirectoryInfo info = Directory.CreateDirectory(path);
             return info.Exists;
         }
+
+        public bool IsRegExpPattern(String strPattern)
+        {
+            if (strPattern.StartsWith("{") && strPattern.EndsWith("}"))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public string TrimRegExpPattern(string strTitleWindow)
+        {
+            String result = strTitleWindow.TrimStart(new char[] { '{' });
+            result = result.TrimEnd(new char[] { '}' });
+            return result;
+        }
     }
 }

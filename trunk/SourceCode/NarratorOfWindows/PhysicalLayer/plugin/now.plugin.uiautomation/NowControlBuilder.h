@@ -18,6 +18,11 @@ public:
 	* Create wrapper for control
 	*/
 	INowControl* createControlWrapper(string strSignatureControl, string strControlType);
+
+	/*
+	* Create wrapper for window
+	*/
+	INowWindow* createWindowWrapper(string strWindowHandle);
 };
 
 #endif// _NOW_CONTROL_BUILDER_H_

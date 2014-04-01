@@ -25,6 +25,7 @@ public:
 	
 	bool isChangedControl(const string& strSignature);
 	NowListPlugins getListPlugins();
+	
 	NOW_RESULT keepControlToCache(INowControl* pControl);
 	INowControl* getControlFromCache(const string& signature);
 };

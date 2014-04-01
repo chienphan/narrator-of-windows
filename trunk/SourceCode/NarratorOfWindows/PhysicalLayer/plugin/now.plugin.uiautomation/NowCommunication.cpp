@@ -59,18 +59,12 @@ NOW_RESULT NowCommunication::getUIProperty(const string& strSignature, const str
 	nResult = NowUIACommunication::GetInstance()->GetUIProperty(mstrSignature, mstrPropName, mstrValue);
 	if (NOW_SUCCEED(nResult))
 	{
-		//NowLogger::getInstance()->LogAString(" NOW_SUCCEED(nResult)");
 		wstrValue = NowStringProcessor::StringToStlWString(mstrValue);
 	}
-	//NowLogger::getInstance()->LogWString(wstrValue);
-	/*char buffer[512];
-	sprintf_s(buffer, "%d ", nResult);
-	NowLogger::getInstance()->LogAString(string(buffer));*/
-	//NowLogger::getInstance()->LogWString(wstrValue);
 	return nResult;
 }
 
-NOW_RESULT NowCommunication::getUIProperty(const string& strSignature, const string& strPropName , string& wstrValue)
+NOW_RESULT NowCommunication::getUIProperty(const string& strSignature, const string& strPropName , string& strValue)
 {
 	int nResult = NOW_FALSE;
 	String^ mstrSignature = NowStringProcessor::StlStringToString(strSignature);
@@ -80,7 +74,7 @@ NOW_RESULT NowCommunication::getUIProperty(const string& strSignature, const str
 	nResult = NowUIACommunication::GetInstance()->GetUIProperty(mstrSignature, mstrPropName, mstrValue);
 	if (NOW_SUCCEED(nResult))
 	{
-		wstrValue = NowStringProcessor::StringToStlString(mstrValue);
+		strValue = NowStringProcessor::StringToStlString(mstrValue);
 	}
 	return nResult;
 }
@@ -88,10 +82,20 @@ NOW_RESULT NowCommunication::getUIProperty(const string& strSignature, const str
 NOW_RESULT NowCommunication::getUIState(const string& strSignature , int& nState)
 {
 	String^ mstrSignature = NowStringProcessor::StlStringToString(strSignature);
-	int nResult = NowUIACommunication::GetInstance()->GetUIState(mstrSignature, nState);
-	//char buffer[512];
-	//sprintf_s(buffer, "%d ", nState);
-	//NowLogger::getInstance()->LogAString(string(buffer));
-	
+	int nResult = NowUIACommunication::GetInstance()->GetUIState(mstrSignature, nState);	
 	return nResult ;		
+}
+
+NOW_RESULT NowCommunication::getWindowByTitle( const string& strTitleWindow, string& strWindowHandle )
+{
+	NOW_RESULT nResult = NOW_FALSE;
+	String^ mstrTitleWindow = NowStringProcessor::StlStringToString(strTitleWindow);
+	NowUIALogger::GetInstance()->LogInfor("[NowCommunication::getWindowByTitle]" + mstrTitleWindow);
+	String^ mstrHandleWindow = "";
+	nResult = NowUIACommunication::GetInstance()->GetWindowByTitle(mstrTitleWindow, mstrHandleWindow);
+	if (NOW_SUCCEED(nResult))
+	{
+		strWindowHandle = NowStringProcessor::StringToStlString(mstrHandleWindow);
+	}
+	return nResult ;	
 }

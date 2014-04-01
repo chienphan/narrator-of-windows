@@ -43,6 +43,8 @@ public:
 
 	virtual NOW_RESULT	clearCache();
 
+	virtual NOW_RESULT  matchWindow(const char* szTitleWindow, INowWindow*& pWindow);
+
 	#pragma endregion Implement INowPlugin interface
 };
 

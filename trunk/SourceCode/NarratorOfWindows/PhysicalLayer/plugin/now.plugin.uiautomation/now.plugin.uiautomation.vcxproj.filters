@@ -66,6 +66,9 @@
     <ClCompile Include="controls\NowTitleBar_UIA.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="NowWindow_UIA.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NowPlugin_UIA.h">
@@ -114,6 +117,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="controls\NowTitleBar_UIA.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NowWindow_UIA.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

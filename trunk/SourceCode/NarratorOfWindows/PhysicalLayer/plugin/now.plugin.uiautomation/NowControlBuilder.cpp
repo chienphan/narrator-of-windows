@@ -1,7 +1,9 @@
 #include "NowControlBuilder.h"
 #include "INowControl.h"
+#include "INowWindow.h"
 #include "NowStringProcessor.h"
 
+#include "NowWindow_UIA.h"
 #include "NowControl_UIA.h"
 #include "NowButton_UIA.h"
 #include "NowListItem_UIA.h"
@@ -90,4 +92,13 @@ INowControl* NowControlBuilder::createControlWrapper( string strSignatureControl
 		pControl = new NowControl_UIA(strSignatureControl, strControlType);
 	}
 	return pControl;
+}
+
+INowWindow* NowControlBuilder::createWindowWrapper( string strWindowHandle )
+{
+	if (!strWindowHandle.empty())
+	{
+		return new NowWindow_UIA(strWindowHandle);
+	}
+	return NULL;
 }
