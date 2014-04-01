@@ -41,7 +41,7 @@
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
@@ -76,11 +76,14 @@
     <OutDir>$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\</OutDir>
     <IncludePath>$(JAVA_HOME)\include\;$(JAVA_HOME)\include\win32\;$(JAVA_HOME)\include\win32\bridge\;$(IncludePath)</IncludePath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\</OutDir>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>C:\Program Files\Java\jdk1.7.0_45\include\win32;C:\Program Files\Java\jdk1.7.0_45\include;$(SolutionDir)LogicalLayer\now.core\;$(SolutionDir)LogicalLayer\now.core\define\;$(SolutionDir)LogicalLayer\now.core\interface\;$(SolutionDir)PhysicalLayer\lib\now.lib.logger</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\Java\jdk1.7.0_51\include\win32;C:\Program Files (x86)\Java\jdk1.7.0_51\include;$(SolutionDir)LogicalLayer\now.core\;$(SolutionDir)LogicalLayer\now.core\define\;$(SolutionDir)LogicalLayer\now.core\interface\;$(SolutionDir)PhysicalLayer\lib\now.lib.logger</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
@@ -106,11 +109,14 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\Java\jdk1.7.0_51\include\win32;C:\Program Files (x86)\Java\jdk1.7.0_51\include;$(SolutionDir)LogicalLayer\now.core;$(SolutionDir)LogicalLayer\now.core\define\;$(SolutionDir)LogicalLayer\now.core\interface;$(SolutionDir)PhysicalLayer\lib\now.lib.logger;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.lib.logger.lib;$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.core.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
