@@ -16,6 +16,8 @@ public:
 	NOW_RESULT getUIProperty(const string& strSignature, const string& strPropName , wstring& wstrValue); // return wstring
 	NOW_RESULT getUIProperty(const string& strSignature, const string& strPropName , string& strValue);	// return string
 	NOW_RESULT getUIState(const string& strSignature , int& strState);
+
+	NOW_RESULT getWindowByTitle(const string& strTitleWindow, string& strWindowHandle);
 };
 
 #endif

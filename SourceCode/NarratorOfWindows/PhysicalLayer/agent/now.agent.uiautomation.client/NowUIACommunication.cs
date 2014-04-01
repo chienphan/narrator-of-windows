@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Automation;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace now.agent.uiautomation.client
 {
@@ -85,7 +87,6 @@ namespace now.agent.uiautomation.client
             return nResult;
         }
 
-
         public int GetUIState(String strSignatureControl, ref int stateValue)
         {
             //NowOutPut.OutputDebugString(strSignatureControl);
@@ -101,6 +102,53 @@ namespace now.agent.uiautomation.client
             {
                // NowOutPut.OutputDebugString("not ok");
             }
+            return nResult;
+        }
+
+
+        public int GetWindowByTitle(String strTitleWindow, ref String strHandleWindow)
+        {
+            NowUIALogger.GetInstance().LogInfor("[GetWindowByTitle]" + strTitleWindow);
+            int nResult = NowUIADefine.NOW_FALSE;
+            AutomationElement currentWindow = null;
+            
+            //check for regular expression
+            if (NowUIAUtilities.GetInstance().IsRegExpPattern(strTitleWindow))
+            {
+                strTitleWindow = NowUIAUtilities.GetInstance().TrimRegExpPattern(strTitleWindow);
+            }
+
+            //get all windows
+            List<AutomationElement> listWindow = new List<AutomationElement>();
+            TreeWalker rawView = TreeWalker.RawViewWalker;
+            currentWindow = rawView.GetFirstChild(AutomationElement.RootElement);
+
+            while (currentWindow != null)
+            {
+                NowUIALogger.GetInstance().LogInfor(">>>" + currentWindow.Current.Name);
+                listWindow.Add(currentWindow);
+                currentWindow = rawView.GetNextSibling(currentWindow);
+            }
+
+            //find the window has strTitleWindow
+            foreach (AutomationElement window in listWindow)
+            {
+                if (Regex.IsMatch(window.Current.Name, strTitleWindow))
+                {
+                    NowUIALogger.GetInstance().LogInfor("IsMatch:" + window.Current.Name);
+                    currentWindow = window;
+                    nResult = NowUIADefine.NOW_OK;
+                    break;
+                }
+            }
+
+            if (nResult == NowUIADefine.NOW_OK)
+            {
+                //keep the window element to cache and return strHandleWindow
+                strHandleWindow = String.Format("{0}", currentWindow.Current.NativeWindowHandle);
+                NowUIAStorage.GetInstance().AddToCache(strHandleWindow, currentWindow);
+            }
+
             return nResult;
         }
     }

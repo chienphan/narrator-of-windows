@@ -26,6 +26,14 @@ public:
 	* @return : NOW_OK if succeed, NOW_FALSE if not
 	*/
 	virtual NOW_RESULT clearCache() = 0;
+
+	/*
+	* Match the window
+	* @param szTitleWindow : title of window
+	* @param pWindow : NowWindow element
+	* @return : NOW_OK if succeed, NOW_FALSE if not
+	*/
+	virtual NOW_RESULT matchWindow(const char* szTitleWindow, INowWindow*& pWindow) = 0;
 };
 
 #endif

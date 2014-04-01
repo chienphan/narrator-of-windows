@@ -61,3 +61,19 @@ NOW_RESULT NowPlugin_UIA::clearCache()
 	return NOW_OK;
 }
 
+//Only matching the window, do not do anything else.
+//We will keep this window to storage latter
+NOW_RESULT NowPlugin_UIA::matchWindow( const char* szTitleWindow, INowWindow*& pWindow )
+{
+	NOW_RESULT nResult = NOW_FALSE;
+	string strWindowHandle = "";
+	const string strTitleWindow = string(szTitleWindow);
+	NowLogger::getInstance()->LogAString("[NowPlugin_UIA::matchWindow]" + strTitleWindow);
+	nResult = NowCommunication::getInstance()->getWindowByTitle(strTitleWindow, strWindowHandle);
+	if (NOW_SUCCEED(nResult))
+	{
+		pWindow = NowControlBuilder::getInstance()->createWindowWrapper(strWindowHandle);
+	}
+	return nResult;
+}
+
