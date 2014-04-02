@@ -71,10 +71,11 @@ INowControl* NowControlBuilder::createControlWrapper( string strSignatureControl
 	{
 		pControl = new NowMenuBar_UAI(strSignatureControl,strControlType);
 	}
-	else if (NowStringProcessor::compareIgnoreCase(strControlType,NOW_CONTROL_MENU_ITEM))
+	//Don't map Menu Item to Menu Bar
+	/*else if (NowStringProcessor::compareIgnoreCase(strControlType,NOW_CONTROL_MENU_ITEM))
 	{
-		pControl = new NowMenuBar_UAI(strSignatureControl,strControlType);
-	}
+	pControl = new NowMenuBar_UAI(strSignatureControl,strControlType);
+	}*/
 	else if (NowStringProcessor::compareIgnoreCase(strControlType,NOW_CONTROL_TAB_ITEM))
 	{
 		pControl = new NowTabItem_UIA(strSignatureControl,strControlType);

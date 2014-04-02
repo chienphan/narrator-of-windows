@@ -18,6 +18,10 @@ NOW_RESULT NowTitleBar_UIA::getUIInformation(wstring& wrtrHelpText)
 	wrtrHelpText = L"";
 	wstring wstrCaption = L"";
 	nResult = NowCommunication::getInstance()->getUIProperty(m_strSignature , NOW_PROP_NAME , wstrCaption);
-	wrtrHelpText = wstrCaption;
+	if (NOW_SUCCEED(nResult))
+	{
+		wrtrHelpText = wstrCaption;
+	}
+	
 	return nResult;
 }

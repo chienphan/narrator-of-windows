@@ -368,6 +368,7 @@ public class NowConfigurationWindow {
         m_groupOutputMode.setLayout(m_gridLayoutGeneralGroup);
         
         m_gridDataGeneralGroup = new GridData();
+        m_gridDataGeneralGroup.widthHint = 300;
         
         m_textOperation = new Text(m_groupOperation, SWT.WRAP);
         //m_textOperation.setText("Choise the way to play sound or display supported information.");
