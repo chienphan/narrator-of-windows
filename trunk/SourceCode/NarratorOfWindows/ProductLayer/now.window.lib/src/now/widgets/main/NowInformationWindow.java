@@ -359,7 +359,8 @@ public class NowInformationWindow implements NativeMouseInputListener, NativeKey
     @Override
     public void nativeKeyPressed(NativeKeyEvent e) {
         //Check for the pressed key
-        if(ConfigCommon.getInstance().getAutoMoveMouse() == false){
+        if(ConfigCommon.getInstance().getAutoMoveMouse() == false &&
+                ConfigCommon.getInstance().getAutoPlaySound() == false){
             if (e.getKeyCode() == NativeKeyEvent.VK_CONTROL){
                 final String infor = JNIHelper.getInstance().getUIInformationForPressKey();
                 if(!infor.isEmpty()){

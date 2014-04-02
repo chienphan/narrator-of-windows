@@ -20,7 +20,7 @@ NOW_RESULT NowTabItem_UIA::getUIInformation(wstring& wrtrHelpText)
 	nResult = NowCommunication::getInstance()->getUIProperty(m_strSignature , NOW_PROP_NAME , wstrCaption);
 	if (NOW_SUCCEED(nResult))
 	{
-		int nState = 0;
+		/*int nState = 0;
 		nResult = NowCommunication::getInstance()->getUIState(m_strSignature , nState);
 		char buffer[512];
 		sprintf_s(buffer, "%d ", nState);
@@ -28,7 +28,8 @@ NOW_RESULT NowTabItem_UIA::getUIInformation(wstring& wrtrHelpText)
 		if (NOW_SUCCEED(nResult))
 		{
 			wrtrHelpText = wstrCaption + L" is " + NowStringProcessor::Utf8ToStlWString(NowService::getInstance()->ParseState(nState));
-		}
+		}*/
+		wrtrHelpText = wstrCaption;
 	}
 	//wrtrHelpText = wstrCaption;
 	return nResult;

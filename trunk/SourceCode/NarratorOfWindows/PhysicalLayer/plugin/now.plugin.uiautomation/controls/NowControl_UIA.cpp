@@ -30,7 +30,25 @@ NOW_RESULT NowControl_UIA::getCaption( wstring& wstrCaption )
 
 NOW_RESULT NowControl_UIA::getUIInformation( wstring& wstrHelpText )
 {
-	return NowCommunication::getInstance()->getUIProperty(m_strSignature, NOW_PROP_HELP_TEXT, wstrHelpText);
+	NOW_RESULT nResult = NOW_FALSE;
+	wstring wstrTemp = L"";
+	nResult = getCaption(wstrTemp);
+	if (NOW_SUCCEED(nResult))
+	{
+		if (!wstrTemp.empty())
+		{
+			wstrHelpText += wstrTemp + L".";
+		}
+	}
+	nResult = NowCommunication::getInstance()->getUIProperty(m_strSignature, NOW_PROP_HELP_TEXT, wstrTemp);
+	if (NOW_SUCCEED(nResult))
+	{
+		if (!wstrTemp.empty())
+		{
+			wstrHelpText += L" " + wstrTemp;
+		}
+	}
+	return nResult;
 }
 
 NOW_RESULT NowControl_UIA::getParent( INowControl*& ctrParent )
