@@ -18,6 +18,7 @@
 class INowPlugin;
 class INowControl;
 class INowWindow;
+class INowAction;
 
 //using define
 using namespace std;
@@ -28,8 +29,8 @@ typedef INowPlugin* (__cdecl *NOW_PROC)();
 //typedef INowPlugin* (__cdecl *MYPROC)(LPWSTR); 
 
 typedef vector<INowPlugin*>* NowListPlugins;
-
 typedef map<string, INowWindow*> NowMapWindow;
+typedef map<string, INowControl*> NowMapControl;
 
 #define DllExport   __declspec( dllexport )
 
