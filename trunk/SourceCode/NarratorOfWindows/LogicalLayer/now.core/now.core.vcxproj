@@ -78,7 +78,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <CompileAs>CompileAsCpp</CompileAs>
-      <AdditionalIncludeDirectories>$(ProjectDir)interface\;$(ProjectDir)define\;$(SolutionDir)PhysicalLayer\lib\now.lib.device\;$(SolutionDir)PhysicalLayer\lib\now.lib.logger\;$(ProjectDir)action\common\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)interface\;$(ProjectDir)define\;$(SolutionDir)PhysicalLayer\lib\now.lib.device\;$(SolutionDir)PhysicalLayer\lib\now.lib.logger\;$(ProjectDir)action\common\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -103,7 +103,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>$(ProjectDir)interface\;$(ProjectDir)define\;$(SolutionDir)PhysicalLayer\lib\now.lib.device\;$(SolutionDir)PhysicalLayer\lib\now.lib.logger\;$(ProjectDir)action\common\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)interface\;$(ProjectDir)define\;$(SolutionDir)PhysicalLayer\lib\now.lib.device\;$(SolutionDir)PhysicalLayer\lib\now.lib.logger\;$(ProjectDir)action\common\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -138,7 +138,7 @@
     <ClInclude Include="action\common\NowActionTypeKey.h" />
     <ClInclude Include="NowMatching.h" />
     <ClInclude Include="NowPluginManager.h" />
-    <ClInclude Include="NowWindowStorage.h" />
+    <ClInclude Include="NowStorage.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="action\common\NowActionClick.cpp" />
@@ -147,7 +147,7 @@
     <ClCompile Include="action\common\NowActionTypeKey.cpp" />
     <ClCompile Include="NowMatching.cpp" />
     <ClCompile Include="NowPluginManager.cpp" />
-    <ClCompile Include="NowWindowStorage.cpp" />
+    <ClCompile Include="NowStorage.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

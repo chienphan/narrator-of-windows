@@ -2,7 +2,8 @@
 #include "INowWindow.h"
 #include "NowDefine.h"
 #include "NowPluginManager.h"
-#include "NowWindowStorage.h"
+#include "NowStorage.h"
+#include "NowActionData.h"
 
 NowMatching* NowMatching::m_instance = 0;
 
@@ -24,7 +25,7 @@ NowMatching* NowMatching::getInstance()
 	return m_instance;
 }
 
-NOW_RESULT NowMatching::matchWindow(const char* szWindowName, const char* szWindowTitle)
+NOW_RESULT NowMatching::matchWindow(const char* szWindowName)
 {
 	INowWindow* pWindow = NULL;
 
@@ -35,49 +36,85 @@ NOW_RESULT NowMatching::matchWindow(const char* szWindowName, const char* szWind
 		return NOW_FALSE;
 	}
 
-	//Check for exist window
-	if (NOW_SUCCEED(NowWindowStorage::getInstance()->getWindowFromStorage(szWindowName, pWindow)))
-	{
-		//Window is ready exist
-		if (pWindow != NULL)
-		{
-			return NOW_OK;
-		}
-	}
-
 	if (lstPlugins->size() > 0)
 	{
 		//For each plug-in, try to get control element. If succeed, we will have the control
 		for (vector<INowPlugin*>::iterator it = lstPlugins->begin(); it != lstPlugins->end(); ++it)
 		{
+			string strWindowTitle = "";
+			NowActionData::getInstance()->getWindowTitle(string(szWindowName), strWindowTitle);
 			//Get control element at mouse point and keep to cache if succeed
-			NOW_RESULT nRet = (*it)->matchWindow(szWindowTitle, pWindow);
+			NOW_RESULT nRet = (*it)->matchWindow(strWindowTitle.c_str(), pWindow);
 			if (NOW_SUCCEED(nRet))
 			{
 				break;
 			}
 		}
 
-		NowWindowStorage::getInstance()->keepWindowToStorage(szWindowName, pWindow);
+		NowStorage::getInstance()->keepWindow(szWindowName, pWindow);
 		return NOW_OK;
 	}
 
 	return NOW_FALSE;
 }
 
-NOW_RESULT NowMatching::matchControl( const char* szWindowName, const char* szControlName, map<string, string>* propvalue )
+NOW_RESULT NowMatching::matchControl( const char* szControlName)
 {
-	INowWindow* pWindow = NULL;
-	NOW_RESULT nResult = NowWindowStorage::getInstance()->getWindowFromStorage(szWindowName, pWindow);
-	if (NOW_SUCCEED(nResult))
+	NOW_RESULT nResult = NOW_FALSE;
+	INowControl* pControl = NULL;
+	
+	//Get list of plug-ins 
+	NowListPlugins lstPlugins = NowPluginManager::getInstance()->getListPlugins();
+	if (lstPlugins == NULL)
 	{
-		//Window is not exist
-		if (pWindow == NULL)
+		return NOW_FALSE;
+	}
+
+	if (lstPlugins->size() > 0)
+	{
+		string strWindowHandle = "";
+		string strPropsData = "";
+		nResult = getWindowHandle(szControlName, strWindowHandle);
+		
+		if (NOW_SUCCEED(nResult))
 		{
-			//re-matching window
+			nResult = NowActionData::getInstance()->getControlData(string(szControlName), strPropsData);
+			if (NOW_SUCCEED(nResult))
+			{
+				//For each plug-in, try to get control element. If succeed, we will have the control
+				for (vector<INowPlugin*>::iterator it = lstPlugins->begin(); it != lstPlugins->end(); ++it)
+				{
+
+					//Get control element at mouse point and keep to cache if succeed
+					nResult = (*it)->matchControl(strWindowHandle.c_str(), strPropsData.c_str(), pControl);
+					if (NOW_SUCCEED(nResult))
+					{
+						break;
+					}
+				}
+
+				NowStorage::getInstance()->keepControl(szControlName, pControl);
+				nResult = NOW_OK;
+			}
 		}
 	}
-	return NOW_FALSE;
+
+	return nResult;
 }
 
-
+NOW_RESULT NowMatching::getWindowHandle(const char* szControlName, string& strWindowHandle)
+{
+	NOW_RESULT nResult = NOW_FALSE;
+	string strWindowName = "";
+	nResult = NowActionData::getInstance()->getWindowName(string(szControlName), strWindowName);
+	if (NOW_SUCCEED(nResult))
+	{
+		INowWindow* pWindow = NULL;
+		nResult = NowStorage::getInstance()->getWindow(strWindowName.c_str(), pWindow);
+		if (NOW_SUCCEED(nResult))
+		{
+			pWindow->getWindowHandle(strWindowHandle);
+		}
+	}
+	return nResult;
+}

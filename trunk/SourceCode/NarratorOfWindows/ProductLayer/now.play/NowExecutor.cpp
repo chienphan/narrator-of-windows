@@ -55,35 +55,39 @@ NOW_RESULT NowExecutor::initialize(const string& dataFileName)
 			if (vectControl->size() > 2)
 			{
 				int nCounter = 0;
-				string szWindowName  = "";
-				string szControlName = "";
-				map<string, string>* vectProperties = new map<string, string>();
+				string strWindowName  = "";
+				string strControlName = "";
+				string strProperties = "";
 
 				vector<string>::iterator it = vectControl->begin();
 				for (; it != vectControl->end(); it++)
 				{
 					if (nCounter == 0)
 					{
-						szWindowName = *it;
+						strWindowName = *it;
 					}
 					else if (nCounter == 1)
 					{
-						szControlName = *it;
+						strControlName = *it;
 					}
 					else
 					{
 						vector<string>* vectArgument = NowUtility::split(*it, NOW_CHAR_COLON);
 						if (vectArgument->size() == 2)
 						{
-
-							vectProperties->insert(pair<string, string>(vectArgument->at(0), vectArgument->at(1)));
+							strProperties += vectArgument->at(0) + NOW_CHAR_EQUAL + vectArgument->at(1) + NOW_CHAR_OR ; 
 						}
 					}
 					nCounter++;
 				}
 
+				if (strProperties.size() > 0)
+				{
+					strProperties = strProperties.substr(0, strProperties.size() - 1);
+				}
+
 				//add to action data
-				NowActionData::getInstance()->addControlData(szWindowName, szControlName, vectProperties);
+				NowActionData::getInstance()->addControlData(strWindowName, strControlName, strProperties);
 			}
 		}
 		//<action_name>=<action_argument_1>|<action_argument_2>>...

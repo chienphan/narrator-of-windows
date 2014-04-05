@@ -6,6 +6,12 @@
 
 class NowActionClick : public INowAction
 {
+private:
+	INowControl* m_control;
+	string m_strWindowName;
+	string m_strControlname;
+	int m_pointX;
+	int m_pointY;
 public:
 	NowActionClick(void);
 	~NowActionClick(void);
