@@ -90,3 +90,8 @@ NOW_RESULT NowControl_UIA::getUIProperty( const string& strPropName, wstring& st
 	nResult = NowCommunication::getInstance()->getUIProperty(m_strSignature, strPropName, strValue);
 	return nResult;
 }
+
+NOW_RESULT NowControl_UIA::getProperty( const string& strPropName, string& strValue )
+{
+	return NowCommunication::getInstance()->getUIProperty(m_strSignature, strPropName, strValue);
+}

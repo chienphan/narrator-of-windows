@@ -30,6 +30,7 @@
 #define NOW_CHAR_EQUAL '='
 #define NOW_CHAR_OR '|'
 #define NOW_CHAR_COLON ':'
+#define NOW_CHAR_COMMA ','
 
 #define NOW_PLUGIN_NAME_UIA "uiautomation"
 

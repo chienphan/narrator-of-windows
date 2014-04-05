@@ -35,6 +35,7 @@ public:
 
 	virtual NOW_RESULT getUIProperty( const string& strPropName, wstring& strValue );
 
+	virtual NOW_RESULT getProperty( const string& strPropName, string& strValue );
 };
 
 #endif//_NOW_CONTROL_UIA_H_
