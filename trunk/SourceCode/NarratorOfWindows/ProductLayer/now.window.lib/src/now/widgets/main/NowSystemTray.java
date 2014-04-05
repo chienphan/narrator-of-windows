@@ -78,14 +78,15 @@ public class NowSystemTray implements NativeKeyListener {
             m_separator             = new MenuItem(m_popupMenu, SWT.SEPARATOR);
             m_menuClose             = new MenuItem(m_popupMenu, SWT.PUSH);
 
+            
             //init listener
             initListener();
+            //init content
             initContent();
-            
-            
+            //init mouse event
             listenMouseMoveEvent();
-            NowInformationWindow.getInstance().showWindow(m_display);
             
+            NowInformationWindow.getInstance().initWindow(m_display);
         }
     }
     

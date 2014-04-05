@@ -28,7 +28,8 @@ NOW_RESULT NowTreeItem_UIA::getUIInformation(wstring& wstrHelpText)
 		nResult = NowCommunication::getInstance()->getUIState(m_strSignature , nState);
 		if (NOW_SUCCEED(nResult))
 		{
-			wstrHelpText = wstrCaption + L" is " + NowStringProcessor::Utf8ToStlWString(NowService::getInstance()->ParseState(nState));
+			//wstrHelpText = wstrCaption + L" is " + NowStringProcessor::Utf8ToStlWString(NowService::getInstance()->ParseState(nState));
+			wstrHelpText = wstrCaption;
 		}*/
 		wstrHelpText = wstrCaption;
 	}
