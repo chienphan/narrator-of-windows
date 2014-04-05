@@ -1,6 +1,8 @@
 #include "NowActionClick.h"
 #include "NowStorage.h"
 #include "NowLogger.h"
+#include "NowUtility.h"
+#include "NowDeviceMouse.h"
 
 NowActionClick::NowActionClick(void)
 {
@@ -26,11 +28,25 @@ NOW_RESULT NowActionClick::prepareArguments(vector<string>* argumnents)
 
 NOW_RESULT NowActionClick::doAction()
 {
-	wstring wstrValue = L"";
+	NOW_RESULT nResult = NOW_FALSE;
+	string strValue = "";
 	if (m_control != NULL)
 	{
-		m_control->getUIProperty(NOW_PROP_BOUNDING_RECTANGLE, wstrValue);
-		NowLogger::getInstance()->LogWString(L"[NowActionClick::doAction]" + wstrValue);
+		nResult = m_control->getProperty(NOW_PROP_BOUNDING_RECTANGLE, strValue);
+
+		if (NOW_SUCCEED(nResult))
+		{
+			vector<string>* vec = NowUtility::split(strValue, NOW_CHAR_COMMA);
+			if (vec != NULL)
+			{
+				int left = 0;
+				int top = 0;
+				int width = 0;
+				int height = 0;
+				NowUtility::getRectData(vec, left, top, width, height);
+				NowDeviceMouse::clickMouse(left + width / 2, top + height / 2, NowDeviceMouse::getClickType(m_clickType));
+			}
+		}
 	}
 	return NOW_OK;
 }

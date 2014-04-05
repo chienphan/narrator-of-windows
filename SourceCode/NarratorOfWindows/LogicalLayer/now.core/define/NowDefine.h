@@ -1,6 +1,9 @@
 #ifndef _NOW_DEFINE_H_
 #define _NOW_DEFINE_H_
 
+#include <tchar.h>
+#include <stdlib.h>
+#include <sstream>
 #include <stdio.h>
 #include <iostream>
 #include <string>

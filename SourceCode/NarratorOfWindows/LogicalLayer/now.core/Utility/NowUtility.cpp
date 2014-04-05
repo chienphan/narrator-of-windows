@@ -1,4 +1,4 @@
-#include "stdafx.h"
+//#include "stdafx.h"
 #include "NowUtility.h"
 #include "NowDevice.h"
 #include "NowConstant.h"
@@ -50,9 +50,13 @@ vector<string>* NowUtility::split(const std::string& source, char delim)
 	return vecResult;
 }
 
-
-//std::vector<std::string> split(const std::string &s, char delim) {
-//	std::vector<std::string> elems;
-//	split(s, delim, elems);
-//	return elems;
-//}
+void NowUtility::getRectData( vector<string>* data, int& left, int& top, int& widht, int& height )
+{
+	if (data->size() == 4)
+	{
+		left = atoi(data->at(0).c_str());
+		top = atoi(data->at(1).c_str());
+		widht = atoi(data->at(2).c_str());
+		height = atoi(data->at(3).c_str());
+	}
+}
