@@ -1,26 +1,26 @@
-#include "NowStorage.h"
+#include "NowWindowStorage.h"
 
-NowStorage* NowStorage::m_instance = 0;
+NowWindowStorage* NowWindowStorage::m_instance = 0;
 
-NowStorage::NowStorage(void)
+NowWindowStorage::NowWindowStorage(void)
 {
 	m_mapWindow = new map<string, INowWindow*>();
 }
 
-NowStorage::~NowStorage(void)
+NowWindowStorage::~NowWindowStorage(void)
 {
 }
 
-NowStorage* NowStorage::getInstance()
+NowWindowStorage* NowWindowStorage::getInstance()
 {
 	if (m_instance == 0)
 	{
-		m_instance = new NowStorage();
+		m_instance = new NowWindowStorage();
 	}
 	return m_instance;
 }
 
-NOW_RESULT NowStorage::keepWindowToStorage( const char* szWindowName, INowWindow* pwindow )
+NOW_RESULT NowWindowStorage::keepWindowToStorage( const char* szWindowName, INowWindow* pwindow )
 {
 	//if pWindow == NULL, we also add to storage, when we use it later, 
 	//we will check and matching it again
@@ -29,7 +29,7 @@ NOW_RESULT NowStorage::keepWindowToStorage( const char* szWindowName, INowWindow
 		string strWindowTitle = string(szWindowName);
 		NowMapWindow::iterator it = m_mapWindow->find(szWindowName);
 		//check window is keep in map or not
-		if (it == m_mapWindow->end())
+		if (it == m_mapWindow->end() || it->second == NULL)
 		{
 			m_mapWindow->insert(pair<string, INowWindow*>(szWindowName, pwindow));
 			return NOW_OK;
@@ -38,7 +38,7 @@ NOW_RESULT NowStorage::keepWindowToStorage( const char* szWindowName, INowWindow
 	return NOW_FALSE;
 }
 
-NOW_RESULT NowStorage::getWindowFromStorage( const char* szWindowName, INowWindow*& pWindow )
+NOW_RESULT NowWindowStorage::getWindowFromStorage( const char* szWindowName, INowWindow*& pWindow )
 {
 	if (szWindowName != NULL)
 	{
@@ -53,7 +53,7 @@ NOW_RESULT NowStorage::getWindowFromStorage( const char* szWindowName, INowWindo
 	return NOW_FALSE;
 }
 
-NOW_RESULT NowStorage::emptyStorage()
+NOW_RESULT NowWindowStorage::emptyStorage()
 {
 	m_mapWindow->clear();
 	return NOW_OK;

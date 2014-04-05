@@ -13,7 +13,8 @@ public:
 	static NowMatching* getInstance();
 	~NowMatching(void);
 
-	NOW_RESULT matchWindow(const char* szWindowTitle, INowWindow*& pWindow);
+	NOW_RESULT matchWindow(const char* szWindowName, const char* szWindowTitle);
+	NOW_RESULT matchControl(const char* szWindowName, const char* szControlName, map<string, string>* propvalue);
 };
 
 #endif

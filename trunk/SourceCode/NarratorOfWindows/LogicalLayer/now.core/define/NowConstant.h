@@ -29,6 +29,7 @@
 
 #define NOW_CHAR_EQUAL '='
 #define NOW_CHAR_OR '|'
+#define NOW_CHAR_COLON ':'
 
 #define NOW_PLUGIN_NAME_UIA "uiautomation"
 
@@ -81,4 +82,8 @@
 #define NOW_PROP_IS_RADIO_BUTTON		"IsRadioButtonProperty"
 #define NOW_PROP_IS_HYPERLINK			"IsHyperlinkProperty"
 #define NOW_PROP_IS_VALUE				"IsValueProperty"
+
+#define NOW_ACTION_CLICK				"click"
+#define NOW_ACTION_TYPE_KEY				"type key"
+
 #endif

@@ -36,7 +36,22 @@
     <ClInclude Include="interface\INowWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="NowStorage.h">
+    <ClInclude Include="NowWindowStorage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NowActionData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NowActionManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="interface\INowAction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="action\common\NowActionClick.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="action\common\NowActionTypeKey.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -47,7 +62,19 @@
     <ClCompile Include="NowMatching.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="NowStorage.cpp">
+    <ClCompile Include="NowWindowStorage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NowActionData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NowActionManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="action\common\NowActionClick.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="action\common\NowActionTypeKey.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
