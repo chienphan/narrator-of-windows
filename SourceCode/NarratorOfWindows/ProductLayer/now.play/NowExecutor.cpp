@@ -111,18 +111,21 @@ NOW_RESULT NowExecutor::doActions()
 		return NOW_FALSE;
 	}
 
-	vector<vector<string>*>::iterator it = lstActionData->begin();
-	INowAction* pAction = NULL;
-	for (; it != lstActionData->end(); it++)
+	if (lstActionData->size() > 0)
 	{
-		vector<string>* actionData = *it;
-		nResult = NowActionManager::getInstance()->getAction(actionData->at(0), pAction);
-		if (NOW_SUCCEED(nResult))
+		vector<vector<string>*>::iterator it = lstActionData->begin();
+		INowAction* pAction = NULL;
+		for (; it != lstActionData->end(); it++)
 		{
-			nResult = pAction->prepareArguments(actionData);
+			vector<string>* actionData = *it;
+			nResult = NowActionManager::getInstance()->getAction(actionData->at(0), pAction);
 			if (NOW_SUCCEED(nResult))
 			{
-				nResult = pAction->doAction();
+				nResult = pAction->prepareArguments(actionData);
+				if (NOW_SUCCEED(nResult))
+				{
+					nResult = pAction->doAction();
+				}
 			}
 		}
 	}

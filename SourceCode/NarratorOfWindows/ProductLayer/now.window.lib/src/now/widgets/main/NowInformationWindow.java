@@ -275,22 +275,21 @@ public class NowInformationWindow implements NativeMouseInputListener, NativeKey
      * @param display current display
      * @param information information to display in Information Window
      */
-    public void showWindow(Display display){
+    public void initWindow(Display display){
         if(m_shell == null){
             //Create new shell
             m_shell = new Shell(display, SWT.BORDER_DASH | SWT.ON_TOP);
             initializeWindow();
-            m_shell.open();
             initializeDistance();
+            //m_shell.setVisible(false);
+            //m_shell.open();
             m_rectwindow = new Rectangle(m_shell.getLocation().x, m_shell.getLocation().y, m_shell.getSize().x, m_shell.getSize().y);
             
             initializeButtonListener();
-            m_shell.setVisible(false);
-            
+                        
             System.out.println("setVisible true lan dau");
             
             initializeMouseMoveListener();
-            
         }
     }
 

@@ -33,16 +33,16 @@ NOW_RESULT NowButton_UIA::getUIInformation( wstring& wstrHelpText )
 	wstring	wstrCaption = L"";
 	wstring	wstrToolTip = L"";
 	nResult = NowCommunication::getInstance()->getUIProperty(m_strSignature, NOW_PROP_NAME, wstrCaption);
-	if (!NOW_SUCCEED(nResult))
+	if (NOW_SUCCEED(nResult))
 	{
 		wstrHelpText += wstrCaption + L".";
-		return nResult;
+		//return nResult;
 	}
 	nResult = NowCommunication::getInstance()->getUIProperty(m_strSignature, NOW_PROP_HELP_TEXT, wstrToolTip);
-	if (!NOW_SUCCEED(nResult))
+	if (NOW_SUCCEED(nResult))
 	{
 		wstrHelpText += L" " + wstrToolTip;
-		return nResult;
+		//return nResult;
 	}
 	/*if (wstrToolTip.length() == 0)
 	{

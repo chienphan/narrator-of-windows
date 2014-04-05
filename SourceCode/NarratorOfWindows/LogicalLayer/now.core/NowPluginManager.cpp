@@ -47,13 +47,24 @@ NowListPlugins NowPluginManager::loadPlugins()
 
 	lstPluginFileName = NowDevice::getAllFilesInDirectory(strDebugDir + "\\plugin", "dll");
 	
+	if (lstPluginFileName == NULL)
+	{
+		return NULL;
+	}
+
 	HINSTANCE hinstLib; 
 	NOW_PROC ProcAdd; 
 	BOOL fFreeResult, fRunTimeLinkSuccess = FALSE; 
 	string pluginFullPath = "";
 
+	if (lstPluginFileName->size() <= 0)
+	{
+		return NULL;
+	}
+
 	// Get a handle to the DLL module.
-	for (std::vector<string>::iterator it = lstPluginFileName->begin() ; it != lstPluginFileName->end(); ++it)
+	std::vector<string>::iterator it = lstPluginFileName->begin();
+	for ( ; it != lstPluginFileName->end(); ++it)
 	{
 		pluginFullPath = strDebugDir + "\\plugin\\" + *it;
 		NowLogger::getInstance()->LogAString(pluginFullPath);
