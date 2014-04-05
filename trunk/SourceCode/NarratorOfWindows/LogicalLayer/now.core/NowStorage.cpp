@@ -64,6 +64,11 @@ NOW_RESULT NowStorage::getWindow( const char* szWindowName, INowWindow*& pWindow
 		{
 			nResult = getWindowFromStorage(strWindowName, pWindow);
 		}
+
+		if (pWindow == NULL)
+		{
+			nResult = NOW_FALSE;
+		}
 	}
 
 	return nResult;
@@ -128,6 +133,11 @@ NOW_RESULT NowStorage::getControl(const char* szControlName, INowControl*& pCont
 		if (NOW_SUCCEED(nResult))
 		{
 			nResult = getControlFromStogare(strControlName, pControl);
+		}
+
+		if (pControl == NULL)
+		{
+			nResult = NOW_FALSE;
 		}
 	}
 

@@ -3,11 +3,18 @@ using System.Windows;
 using System.Windows.Automation;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System.Runtime.InteropServices;
 
 namespace now.agent.uiautomation.client
 {
     public class NowUIACommunication
     {
+        [DllImport("user32.dll")]
+        static extern bool IsWindow(int handleWindow);
+
+        [DllImport("user32.dll")]
+        static extern bool BringWindowToTop(int handleWindow);
+
         private static NowUIACommunication m_instance = null;
 
         private NowUIACommunication()
@@ -49,7 +56,7 @@ namespace now.agent.uiautomation.client
                     // Get signature, control type and create cache
                     strControlType = currentElement.Current.LocalizedControlType; //TODO: Need check for get LocalizedControlType or ControlType
                     strSignatureControl = NowUIAService.GetInstance().GetSignature(currentElement);
-                    NowUIAStorage.GetInstance().AddToCache(strSignatureControl, currentElement);
+                    NowUIAStorageAction.GetInstance().AddToCache(strSignatureControl, currentElement);
 
                     nResult = NowUIADefine.NOW_OK;
                 }
@@ -73,7 +80,7 @@ namespace now.agent.uiautomation.client
         {
             int nResult = NowUIADefine.NOW_FALSE;
            // NowUIALogger.GetInstance().LogInfor("ok check commu {0}",1);
-            AutomationElement runtimeElement = NowUIAStorage.GetInstance().GetUIObjectFormCache(strSignatureControl);
+            AutomationElement runtimeElement = NowUIAStorageAction.GetInstance().GetUIObjectFormCache(strSignatureControl);
             if (runtimeElement != null)
             {
                 strValue = NowUIAService.GetInstance().GetUIProperty(runtimeElement, strPropName);
@@ -91,7 +98,7 @@ namespace now.agent.uiautomation.client
         {
             //NowOutPut.OutputDebugString(strSignatureControl);
             int nResult = NowUIADefine.NOW_FALSE;
-            AutomationElement runtimeElement = NowUIAStorage.GetInstance().GetUIObjectFormCache(strSignatureControl);
+            AutomationElement runtimeElement = NowUIAStorageAction.GetInstance().GetUIObjectFormCache(strSignatureControl);
             if (runtimeElement != null)
             {
               //  NowOutPut.OutputDebugString("ok");
@@ -125,7 +132,7 @@ namespace now.agent.uiautomation.client
 
             while (currentWindow != null)
             {
-                NowUIALogger.GetInstance().LogInfor(">>>" + currentWindow.Current.Name);
+                //NowUIALogger.GetInstance().LogInfor(">>>" + currentWindow.Current.Name);
                 listWindow.Add(currentWindow);
                 currentWindow = rawView.GetNextSibling(currentWindow);
             }
@@ -146,7 +153,7 @@ namespace now.agent.uiautomation.client
             {
                 //keep the window element to cache and return strHandleWindow
                 strHandleWindow = String.Format("{0}", currentWindow.Current.NativeWindowHandle);
-                NowUIAStorage.GetInstance().AddToCache(strHandleWindow, currentWindow);
+                NowUIAStorageAction.GetInstance().AddToCache(strHandleWindow, currentWindow);
             }
 
             return nResult;
@@ -156,7 +163,7 @@ namespace now.agent.uiautomation.client
         {
             NowUIALogger.GetInstance().LogInfor("[GetControlByCondition] handle: " + strWindowHandle);
             int nResult = NowUIADefine.NOW_FALSE;
-            AutomationElement window = NowUIAStorage.GetInstance().GetUIObjectFormCache(strWindowHandle);
+            AutomationElement window = NowUIAStorageAction.GetInstance().GetUIObjectFormCache(strWindowHandle);
             if (window != null)
             {
                 NowUIALogger.GetInstance().LogInfor("[GetControlByCondition] window: " + window.Current.Name);
@@ -169,7 +176,7 @@ namespace now.agent.uiautomation.client
                         NowUIALogger.GetInstance().LogInfor("[GetControlByCondition] control: " + control.Current.Name);
                         strSignatureControl = NowUIAService.GetInstance().GetSignature(control);
                         strControlType = control.Current.LocalizedControlType;
-                        NowUIAStorage.GetInstance().AddToCache(strSignatureControl, control);
+                        NowUIAStorageAction.GetInstance().AddToCache(strSignatureControl, control);
 
                         nResult = NowUIADefine.NOW_OK;
                     }
@@ -182,6 +189,49 @@ namespace now.agent.uiautomation.client
             else
             {
                 NowUIALogger.GetInstance().LogInfor("[GetControlByCondition] window: NULL");
+            }
+            return nResult;
+        }
+
+        public int BringWindowToTop(String strWindowSignature)
+        {
+            NowUIALogger.GetInstance().LogInfor("[BringWindowToTop]" + strWindowSignature);
+            int nResult = NowUIADefine.NOW_FALSE;
+
+            //int nHandleWindow =  Convert.ToInt32(strWindowSignature);
+            //if (IsWindow(nHandleWindow))
+            //{
+            //    NowUIALogger.GetInstance().LogInfor("[BringWindowToTop] IsWindow");
+            //    BringWindowToTop(nHandleWindow);
+            //    NowUIALogger.GetInstance().LogInfor("[BringWindowToTop] BringWindowToTop");
+            //    nResult = NowUIADefine.NOW_OK;
+            //}
+            //else
+            //{
+            //    NowUIALogger.GetInstance().LogInfor("[BringWindowToTop] Not Window");
+            //}
+
+            AutomationElement window = NowUIAStorageAction.GetInstance().GetUIObjectFormCache(strWindowSignature.Trim());
+            NowUIALogger.GetInstance().LogInfor("[BringWindowToTop] GetUIObjectFormCache");
+            if (window != null)
+            {
+                NowUIALogger.GetInstance().LogInfor("[BringWindowToTop] window: not NULL");
+                object obj = window.GetCurrentPropertyValue(AutomationElement.IsWindowPatternAvailableProperty);
+                if (obj != null)
+                {
+                    bool hasWindowPattern = (bool)obj;
+                    if (hasWindowPattern == true)
+                    {
+                        NowUIALogger.GetInstance().LogInfor("[BringWindowToTop] hasWindowPattern");
+                        obj = window.GetCurrentPattern(WindowPattern.Pattern);
+                        if (obj != null)
+                        {
+                            WindowPattern windowPattern = obj as WindowPattern;
+                            windowPattern.SetWindowVisualState(WindowVisualState.Maximized);
+                            nResult = NowUIADefine.NOW_OK;
+                        }
+                    }
+                }
             }
             return nResult;
         }

@@ -9,7 +9,7 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	NOW_RESULT nResult = NOW_FALSE;
 	//Hide the console window
-	//ShowWindow(GetConsoleWindow(), SW_HIDE);
+	ShowWindow(GetConsoleWindow(), SW_HIDE);
 	NowActionManager::getInstance()->initialize();
 	//Read the resource file, ex: lesson001.dat
 		//After read file, we will have a list of ACTIONS and DEFINE to "DoWork"
@@ -28,7 +28,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	//Sleep(5000);
 
 	//ShowWindow(GetConsoleWindow(), SW_NORMAL);
-	system("pause");
+	//system("pause");
 	return 0;
 }
 

@@ -19,6 +19,7 @@ public:
 
 	NOW_RESULT getWindowByTitle(const string& strTitleWindow, string& strWindowHandle);
 	NOW_RESULT getControlByCondition(const string& strWindowHandle, const string& strPropsData, string& strSignatureControl, string& strControlType);
+	NOW_RESULT bringWindowToTop(const string& strSignatureWindow);
 };
 
 #endif

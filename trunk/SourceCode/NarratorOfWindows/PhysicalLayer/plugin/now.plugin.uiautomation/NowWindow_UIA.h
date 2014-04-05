@@ -15,6 +15,8 @@ public:
 
 	virtual NOW_RESULT getWindowHandle( string& strWindowHandle );
 
+	virtual NOW_RESULT bringToTop();
+
 };
 
 #endif

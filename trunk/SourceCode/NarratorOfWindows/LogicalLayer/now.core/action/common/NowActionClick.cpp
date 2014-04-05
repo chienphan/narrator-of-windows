@@ -7,6 +7,7 @@
 NowActionClick::NowActionClick(void)
 {
 	m_control = NULL;
+	m_window = NULL;
 }
 
 
@@ -22,14 +23,24 @@ NOW_RESULT NowActionClick::prepareArguments(vector<string>* argumnents)
 	m_strWindowName = argumnents->at(1);
 	m_strControlname = argumnents->at(2);
 	m_clickType = argumnents->at(3);
-	nResult = NowStorage::getInstance()->getControl(m_strControlname.c_str(), m_control);
+	nResult = NowStorage::getInstance()->getWindow(m_strWindowName.c_str(), m_window);
+	if (NOW_SUCCEED(nResult))
+	{
+		nResult = NowStorage::getInstance()->getControl(m_strControlname.c_str(), m_control);
+	}
 	return nResult;
 }
 
 NOW_RESULT NowActionClick::doAction()
 {
 	NOW_RESULT nResult = NOW_FALSE;
-	string strValue = "";
+
+	if (m_window != NULL)
+	{
+		m_window->bringToTop();
+	}
+	Sleep(500);
+	string strValue;// = "";
 	if (m_control != NULL)
 	{
 		nResult = m_control->getProperty(NOW_PROP_BOUNDING_RECTANGLE, strValue);

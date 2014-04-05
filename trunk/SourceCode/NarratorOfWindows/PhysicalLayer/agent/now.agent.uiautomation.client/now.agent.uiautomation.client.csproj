@@ -81,6 +81,7 @@
     <Compile Include="NowUIAService.cs" />
     <Compile Include="NowUIAStorage.cs" />
     <Compile Include="NowUIADefine.cs" />
+    <Compile Include="NowUIAStorageAction.cs" />
     <Compile Include="NowUIAUtilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
