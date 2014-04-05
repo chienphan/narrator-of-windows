@@ -34,6 +34,14 @@ public:
 	* @return : NOW_OK if succeed, NOW_FALSE if not
 	*/
 	virtual NOW_RESULT matchWindow(const char* szTitleWindow, INowWindow*& pWindow) = 0;
+	/*
+	* Match the control
+	* @param szWindowHandle : handle of window contain control
+	* @param mapPropsData : list condition to find the control
+	* @param pWindow : NowControl element
+	* @return : NOW_OK if succeed, NOW_FALSE if not
+	*/
+	virtual NOW_RESULT matchControl(const char* szWindowHandle, const char* szPropsData, INowControl*& pControl) = 0;
 };
 
 #endif

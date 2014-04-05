@@ -135,7 +135,7 @@ namespace now.agent.uiautomation.client
             {
                 if (Regex.IsMatch(window.Current.Name, strTitleWindow))
                 {
-                    NowUIALogger.GetInstance().LogInfor("IsMatch:" + window.Current.Name);
+                    NowUIALogger.GetInstance().LogInfor("IsMatch:" + window.Current.Name + "|" + window.Current.NativeWindowHandle);
                     currentWindow = window;
                     nResult = NowUIADefine.NOW_OK;
                     break;
@@ -149,6 +149,40 @@ namespace now.agent.uiautomation.client
                 NowUIAStorage.GetInstance().AddToCache(strHandleWindow, currentWindow);
             }
 
+            return nResult;
+        }
+
+        public int GetControlByCondition(String strWindowHandle, String strPropsData, ref String strSignatureControl, ref String strControlType)
+        {
+            NowUIALogger.GetInstance().LogInfor("[GetControlByCondition] handle: " + strWindowHandle);
+            int nResult = NowUIADefine.NOW_FALSE;
+            AutomationElement window = NowUIAStorage.GetInstance().GetUIObjectFormCache(strWindowHandle);
+            if (window != null)
+            {
+                NowUIALogger.GetInstance().LogInfor("[GetControlByCondition] window: " + window.Current.Name);
+                Condition condControl = NowUIAService.GetInstance().GetCondition(strPropsData);
+                if (condControl != null)
+                {
+                    AutomationElement control = window.FindFirst(TreeScope.Descendants, condControl);
+                    if (control != null)
+                    {
+                        NowUIALogger.GetInstance().LogInfor("[GetControlByCondition] control: " + control.Current.Name);
+                        strSignatureControl = NowUIAService.GetInstance().GetSignature(control);
+                        strControlType = control.Current.LocalizedControlType;
+                        NowUIAStorage.GetInstance().AddToCache(strSignatureControl, control);
+
+                        nResult = NowUIADefine.NOW_OK;
+                    }
+                    else
+                    {
+                        NowUIALogger.GetInstance().LogInfor("[GetControlByCondition] control: NULL");
+                    }
+                }
+            }
+            else
+            {
+                NowUIALogger.GetInstance().LogInfor("[GetControlByCondition] window: NULL");
+            }
             return nResult;
         }
     }

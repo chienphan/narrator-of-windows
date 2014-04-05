@@ -99,3 +99,23 @@ NOW_RESULT NowCommunication::getWindowByTitle( const string& strTitleWindow, str
 	}
 	return nResult ;	
 }
+
+NOW_RESULT NowCommunication::getControlByCondition( const string& strWindowHandle, const string& strPropsData, string& strSignatureControl, string& strControlType )
+{
+	NOW_RESULT nResult = NOW_FALSE;
+	String^ mstrWindowHandle = NowStringProcessor::StlStringToString(strWindowHandle);
+	String^ mstrPropsData = NowStringProcessor::StlStringToString(strPropsData);
+	String^ mstrSignatureControl = "";
+	String^ mstrControlType = "";
+
+	nResult = NowUIACommunication::GetInstance()->GetControlByCondition(mstrWindowHandle, mstrPropsData, mstrSignatureControl, mstrControlType);
+	if (NOW_SUCCEED(nResult))
+	{
+		NowUIALogger::GetInstance()->LogInfor("[NowCommunication::getControlByCondition]" + mstrSignatureControl + "|" + mstrControlType);
+		strSignatureControl = NowStringProcessor::StringToStlString(mstrSignatureControl);
+		strControlType = NowStringProcessor::StringToStlString(mstrControlType);
+	}
+	return nResult ;
+}
+
+

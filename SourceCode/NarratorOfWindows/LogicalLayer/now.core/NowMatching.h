@@ -9,12 +9,15 @@ class DllExport NowMatching
 private:
 	static NowMatching* m_instance;
 	NowMatching(void);
+
+	NOW_RESULT getWindowHandle(const char* szControlName, string& strWindowHandle);
+
 public:
 	static NowMatching* getInstance();
 	~NowMatching(void);
 
-	NOW_RESULT matchWindow(const char* szWindowName, const char* szWindowTitle);
-	NOW_RESULT matchControl(const char* szWindowName, const char* szControlName, map<string, string>* propvalue);
+	NOW_RESULT matchWindow(const char* szWindowName);
+	NOW_RESULT matchControl(const char* szControlName);
 };
 
 #endif

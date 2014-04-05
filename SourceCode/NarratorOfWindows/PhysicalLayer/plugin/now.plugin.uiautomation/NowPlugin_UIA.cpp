@@ -67,12 +67,28 @@ NOW_RESULT NowPlugin_UIA::matchWindow( const char* szTitleWindow, INowWindow*& p
 {
 	NOW_RESULT nResult = NOW_FALSE;
 	string strWindowHandle = "";
-	const string strTitleWindow = string(szTitleWindow);
-	NowLogger::getInstance()->LogAString("[NowPlugin_UIA::matchWindow]" + strTitleWindow);
+	string strTitleWindow = string(szTitleWindow);
+	//NowLogger::getInstance()->LogAString("[NowPlugin_UIA::matchWindow]" + strTitleWindow);
 	nResult = NowCommunication::getInstance()->getWindowByTitle(strTitleWindow, strWindowHandle);
 	if (NOW_SUCCEED(nResult))
 	{
 		pWindow = NowControlBuilder::getInstance()->createWindowWrapper(strWindowHandle);
+	}
+	return nResult;
+}
+
+NOW_RESULT NowPlugin_UIA::matchControl( const char* szWindowHandle, const char* mapPropsData, INowControl*& pControl )
+{
+	NOW_RESULT nResult = NOW_FALSE;
+
+	string strSignatureControl = "";
+	string strControlType = "";
+
+	nResult = NowCommunication::getInstance()->getControlByCondition(string(szWindowHandle), string(mapPropsData), strSignatureControl, strControlType);
+	if (NOW_SUCCEED(nResult))
+	{
+		NowLogger::getInstance()->LogAString("[NowPlugin_UIA::matchControl]" + strSignatureControl + "|" + strControlType);
+		pControl = NowControlBuilder::getInstance()->createControlWrapper(strSignatureControl, strControlType);
 	}
 	return nResult;
 }

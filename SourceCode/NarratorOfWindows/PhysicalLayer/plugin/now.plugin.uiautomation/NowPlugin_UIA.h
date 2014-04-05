@@ -45,6 +45,8 @@ public:
 
 	virtual NOW_RESULT  matchWindow(const char* szTitleWindow, INowWindow*& pWindow);
 
+	virtual NOW_RESULT  matchControl( const char* szWindowHandle, const char* szPropsData, INowControl*& pControl );
+
 	#pragma endregion Implement INowPlugin interface
 };
 

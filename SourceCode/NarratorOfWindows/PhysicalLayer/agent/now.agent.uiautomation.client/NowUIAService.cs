@@ -170,7 +170,30 @@ namespace now.agent.uiautomation.client
             }
             
             return nState;
-        }        
+        }
+
+        public PropertyCondition GetCondition(String strPropValue)
+        {
+            PropertyCondition condResult = null;
+
+            String propName = "";
+            String propValue = "";
+            String[] arrTemp = null;
+            String[] arrPropValue = strPropValue.Split(new char[] { '|' });
+            foreach (String prop in arrPropValue)
+            {
+                arrTemp = prop.Split(new char[] { '=' });
+                if (arrTemp.Length == 2)
+                {
+                    propName = arrTemp[0];
+                    propValue = arrTemp[1];
+
+                    condResult = new PropertyCondition(m_propMap[propName] as AutomationProperty, propValue);
+                }
+            }
+
+            return condResult;
+        }
     }
 }
 
