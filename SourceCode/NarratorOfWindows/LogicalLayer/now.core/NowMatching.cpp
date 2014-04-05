@@ -84,8 +84,6 @@ NOW_RESULT NowMatching::matchControl( const char* szControlName)
 				//For each plug-in, try to get control element. If succeed, we will have the control
 				for (vector<INowPlugin*>::iterator it = lstPlugins->begin(); it != lstPlugins->end(); ++it)
 				{
-
-					//Get control element at mouse point and keep to cache if succeed
 					nResult = (*it)->matchControl(strWindowHandle.c_str(), strPropsData.c_str(), pControl);
 					if (NOW_SUCCEED(nResult))
 					{

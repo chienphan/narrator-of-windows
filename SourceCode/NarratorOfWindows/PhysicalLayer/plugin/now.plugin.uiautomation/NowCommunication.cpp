@@ -95,6 +95,7 @@ NOW_RESULT NowCommunication::getWindowByTitle( const string& strTitleWindow, str
 	nResult = NowUIACommunication::GetInstance()->GetWindowByTitle(mstrTitleWindow, mstrHandleWindow);
 	if (NOW_SUCCEED(nResult))
 	{
+		NowUIALogger::GetInstance()->LogInfor("[NowCommunication::getWindowByTitle] >>>>" + mstrHandleWindow);
 		strWindowHandle = NowStringProcessor::StringToStlString(mstrHandleWindow);
 	}
 	return nResult ;	
@@ -116,6 +117,13 @@ NOW_RESULT NowCommunication::getControlByCondition( const string& strWindowHandl
 		strControlType = NowStringProcessor::StringToStlString(mstrControlType);
 	}
 	return nResult ;
+}
+
+NOW_RESULT NowCommunication::bringWindowToTop( const string& strSignatureWindow )
+{
+	NowUIALogger::GetInstance()->LogInfor("[NowCommunication::bringWindowToTop]");
+	String^ mstrSignatureWindow = NowStringProcessor::StlStringToString(strSignatureWindow);
+	return NowUIACommunication::GetInstance()->BringWindowToTop(mstrSignatureWindow);
 }
 
 

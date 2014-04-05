@@ -8,6 +8,7 @@ class NowActionClick : public INowAction
 {
 private:
 	INowControl* m_control;
+	INowWindow* m_window;
 	string m_strWindowName;
 	string m_strControlname;
 	string m_clickType;

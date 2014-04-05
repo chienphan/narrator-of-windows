@@ -65,15 +65,21 @@ void RightClick ( )
 void NowDeviceMouse::clickMouse( int x, int y, int mouseType )
 {
 	SetCursorPos(x, y);
-	//MouseMove(x, y);
+
 	//click
 	if (mouseType == NowDeviceMouse::MOUSE_LEFT)
 	{
 		LeftClick();
-		/*mouse_event(MOUSEEVENTF_LEFTDOWN, x, y, 0, 0);
-		mouse_event(MOUSEEVENTF_LEFTUP, x, y, 0, 0);*/
 	}
-	
-	//Move mouse to x, y
-	//mouse_event(MOUSEEVENTF_MOVE, x, y, 0, 0);
+	else if (mouseType == NowDeviceMouse::MOUSE_RIGHT)
+	{
+		RightClick();
+	}
+	else if (mouseType == NowDeviceMouse::MOUSE_DOUBLE)
+	{
+		LeftClick();
+		Sleep(50);
+		LeftClick();
+	}
+
 }

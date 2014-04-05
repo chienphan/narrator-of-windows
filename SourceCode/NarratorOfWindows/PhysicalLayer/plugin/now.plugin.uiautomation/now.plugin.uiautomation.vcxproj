@@ -87,8 +87,8 @@
       <CompileAs>CompileAsCpp</CompileAs>
       <AdditionalIncludeDirectories>$(SolutionDir)LogicalLayer\now.core\;$(SolutionDir)LogicalLayer\now.core\interface\;$(SolutionDir)LogicalLayer\now.core\define\;$(SolutionDir)PhysicalLayer\lib\now.lib.logger\;$(ProjectDir)controls\;$(SolutionDir)PhysicalLayer\lib\now.lib.device\</AdditionalIncludeDirectories>
       <AdditionalUsingDirectories>$(SolutionDir)bin\$(ConfigurationName)_$(PlatformArchitecture)\</AdditionalUsingDirectories>
-      <CallingConvention>
-      </CallingConvention>
+      <CallingConvention>Cdecl</CallingConvention>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
