@@ -118,6 +118,8 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <AdditionalIncludeDirectories>$(SolutionDir)LogicalLayer\now.core\;$(SolutionDir)LogicalLayer\now.core\interface\;$(SolutionDir)LogicalLayer\now.core\define\;$(SolutionDir)PhysicalLayer\lib\now.lib.logger\;$(ProjectDir)controls\;$(SolutionDir)PhysicalLayer\lib\now.lib.device\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalUsingDirectories>$(SolutionDir)bin\$(ConfigurationName)_$(PlatformArchitecture)\</AdditionalUsingDirectories>
+      <CallingConvention>Cdecl</CallingConvention>
+      <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -178,6 +180,7 @@
     <ClInclude Include="NowPlugin_UIA.h" />
     <ClInclude Include="NowService.h" />
     <ClInclude Include="NowStringProcessor.h" />
+    <ClInclude Include="NowUIAActionDefine.h" />
     <ClInclude Include="NowWindow_UIA.h" />
   </ItemGroup>
   <ItemGroup>

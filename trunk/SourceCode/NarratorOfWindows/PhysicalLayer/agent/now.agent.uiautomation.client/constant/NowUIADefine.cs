@@ -1,17 +1,20 @@
 ﻿using System;
 
-namespace now.agent.uiautomation.client
+namespace now.agent.uiautomation.client.constant
 {
     /// <summary>
     /// Define common constant
     /// </summary>
-    public class NowUIADefine
+    public sealed class NowUIADefine
     {
         public static readonly int NOW_OK       =   0;
         public static readonly int NOW_FALSE    =   -1;
     }
 
-    public class NowUIAState
+    /// <summary>
+    /// define status of controls
+    /// </summary>
+    public sealed class NowUIAState
     {
         public static readonly int NOW_STATE_VISIBLE = 1;
         public static readonly int NOW_STATE_INVISIBLE = 2;
@@ -29,7 +32,7 @@ namespace now.agent.uiautomation.client
     /// <summary>
     /// Define name of UI Automation property
     /// </summary>
-    public class NowUIAProperty
+    public sealed class NowUIAProperty
     {
         public static readonly String NOW_PROP_ACCELERATOR_KEY      = "AcceleratorKeyProperty";
         public static readonly String NOW_PROP_ACCESS_KEY           = "AccessKeyProperty";
@@ -71,7 +74,7 @@ namespace now.agent.uiautomation.client
     /// <summary>
     /// define environment variable
     /// </summary>
-    public class NowUIAEnvironmentVariable
+    public sealed class NowUIAEnvironmentVariable
     {
         public static readonly String NOW_DEBUG_DIRECTORY   = "NOW_DEBUG_DIRECTORY";
         public static readonly String NOW_DEBUG_MODE        = "NOW_DEBUG_MODE";
@@ -80,7 +83,7 @@ namespace now.agent.uiautomation.client
     /// <summary>
     /// define log mode
     /// </summary>
-    public class NowLogMode
+    public sealed class NowLogMode
     {
         public static readonly int LOG_NONE = -1;
         public static readonly int LOG_DEBUG_VIEW = 0;
@@ -90,7 +93,7 @@ namespace now.agent.uiautomation.client
     /// <summary>
     /// define enable log mode
     /// </summary>
-    public class NowEnvVariable
+    public sealed class NowEnvVariable
     {
         public static readonly String ENV_VARIABLE_LOG_ENABLE = "1";
         public static readonly String ENV_VARIABLE_LOG_DISABLE = "0";

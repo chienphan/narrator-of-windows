@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Diagnostics;
 using System.IO;
+using now.agent.uiautomation.client.logger;
 
-namespace now.agent.uiautomation.client
+namespace now.agent.uiautomation.client.utility
 {
     public class NowUIAUtilities
     {
