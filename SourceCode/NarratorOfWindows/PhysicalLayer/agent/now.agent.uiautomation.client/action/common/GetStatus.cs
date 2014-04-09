@@ -14,7 +14,7 @@ namespace now.agent.uiautomation.client.action.common
         {
             //[Apr 9 2014] Chien.Phan TODO: this action work incorrect. 
             //Need to check it laster 
-            NowUIALogger.GetInstance().LogInfor("[GetStatus.DoAction] IN");
+            //NowUIALogger.GetInstance().LogInfor("[GetStatus.DoAction] IN");
             int nResult = NowUIADefine.NOW_FALSE;
 
             String strSignatureControl = NowUIAArgumentIn.GetInstance().GetStringArgument(NowUIAPropertyDefine.UIA_PROP_SIGNATURE);
@@ -25,9 +25,9 @@ namespace now.agent.uiautomation.client.action.common
                 int nState = 0;
                 nResult = NowUIAService.GetInstance().GetStatus(runtimeElement, ref nState);
                 NowUIAArgumentOut.GetInstance().Data = nState;
-                NowUIALogger.GetInstance().LogInfor("[GetStatus.DoAction] nState=" + nState);
+                //NowUIALogger.GetInstance().LogInfor("[GetStatus.DoAction] nState=" + nState);
             }
-            NowUIALogger.GetInstance().LogInfor("[GetStatus.DoAction] OUT");
+            //NowUIALogger.GetInstance().LogInfor("[GetStatus.DoAction] OUT");
             return nResult;
         }
     }

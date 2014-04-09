@@ -12,7 +12,7 @@ namespace now.agent.uiautomation.client.storage
 
         private NowUIAStorage()
         {
-
+            m_dictionary = new Dictionary<String, AutomationElement>();
         }
 
         /// <summary>
@@ -35,12 +35,6 @@ namespace now.agent.uiautomation.client.storage
         /// <param name="currentElement">Automation Element</param>
         public void AddToCache(String strSignature, AutomationElement currentElement)
         {
-            //int nResult = NowUIADefine.NOW_FALSE;
-            if (m_dictionary == null)
-            {
-                m_dictionary = new Dictionary<String, AutomationElement>();
-            }
-
             if (m_dictionary.Count > 0)
             {
                 m_dictionary.Clear();
@@ -68,10 +62,7 @@ namespace now.agent.uiautomation.client.storage
         public AutomationElement GetUIObjectFormCache(String strSignature)
         {
             AutomationElement returnElement = null;
-            if (m_dictionary.TryGetValue(strSignature,out returnElement))
-            {
-                return returnElement;
-            }
+            m_dictionary.TryGetValue(strSignature, out returnElement);
             return returnElement;
         }
     }

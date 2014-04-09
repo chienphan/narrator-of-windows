@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Automation;
+using now.agent.uiautomation.client.logger;
 
 namespace now.agent.uiautomation.client.storage
 {
@@ -37,10 +38,7 @@ namespace now.agent.uiautomation.client.storage
             AutomationElement returnElement = NowUIAStorage.GetInstance().GetUIObjectFormCache(strSignature);
             if (returnElement == null)
             {
-                if (m_dictionary.TryGetValue(strSignature, out returnElement))
-                {
-                    return returnElement;
-                }
+                m_dictionary.TryGetValue(strSignature, out returnElement);
             }
             return returnElement;
         }

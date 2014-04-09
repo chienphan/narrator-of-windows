@@ -62,7 +62,7 @@ namespace now.agent.uiautomation.client.action
             }
             catch (System.Exception ex)
             {
-                NowUIALogger.GetInstance().LogError("[NowUIAActionManager.GetAction]{0}", ex.Message);
+                NowUIALogger.GetInstance().LogError("[NowUIAActionManager.GetAction] Exception:{0}", ex.Message);
             }
 
             return nResult;
