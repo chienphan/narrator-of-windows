@@ -72,7 +72,7 @@ namespace now.agent.uiautomation.client.storage
             {
                 return returnElement;
             }
-            return null;
+            return returnElement;
         }
     }
 }

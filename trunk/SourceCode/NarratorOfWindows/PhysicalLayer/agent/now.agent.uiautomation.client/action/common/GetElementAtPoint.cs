@@ -30,7 +30,7 @@ namespace now.agent.uiautomation.client.action.common
                     // Get signature, control type and create cache
                     String strControlType = currentElement.Current.LocalizedControlType; //TODO: Need check for get LocalizedControlType or ControlType
                     String strSignatureControl = NowUIAService.GetInstance().GetSignature(currentElement);
-                    NowUIAStorageAction.GetInstance().AddToCache(strSignatureControl, currentElement);
+                    NowUIAStorage.GetInstance().AddToCache(strSignatureControl, currentElement);
 
                     NowUIAArgumentOut.GetInstance().Data = strSignatureControl + "|" + strControlType;
 
