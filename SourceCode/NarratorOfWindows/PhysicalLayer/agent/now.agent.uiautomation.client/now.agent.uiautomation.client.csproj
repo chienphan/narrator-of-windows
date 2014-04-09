@@ -76,15 +76,24 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NowUIACommunication.cs" />
-    <Compile Include="NowUIALogger.cs" />
+    <Compile Include="action\common\GetElementAtPoint.cs" />
+    <Compile Include="action\common\GetProperty.cs" />
+    <Compile Include="action\common\GetStatus.cs" />
+    <Compile Include="argument\NowUIAArgumentIn.cs" />
+    <Compile Include="argument\NowUIAArgumentOut.cs" />
+    <Compile Include="constant\NowUIAActionConst.cs" />
+    <Compile Include="action\NowUIAActionManager.cs" />
+    <Compile Include="communication\NowUIACommunication.cs" />
+    <Compile Include="interfaces\INowUIAAction.cs" />
+    <Compile Include="logger\NowUIALogger.cs" />
     <Compile Include="NowUIAService.cs" />
-    <Compile Include="NowUIAStorage.cs" />
-    <Compile Include="NowUIADefine.cs" />
-    <Compile Include="NowUIAStorageAction.cs" />
-    <Compile Include="NowUIAUtilities.cs" />
+    <Compile Include="storage\NowUIAStorage.cs" />
+    <Compile Include="constant\NowUIADefine.cs" />
+    <Compile Include="storage\NowUIAStorageAction.cs" />
+    <Compile Include="utility\NowUIAUtilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>$(SolutionDir)bin\$(ConfigurationName)_32\netmodule-build.bat</PostBuildEvent>

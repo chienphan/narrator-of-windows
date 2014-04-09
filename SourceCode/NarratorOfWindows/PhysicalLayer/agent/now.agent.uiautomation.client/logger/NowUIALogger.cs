@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
+using now.agent.uiautomation.client.constant;
+using now.agent.uiautomation.client.utility;
 
-namespace now.agent.uiautomation.client
+namespace now.agent.uiautomation.client.logger
 {
     public class NowUIALogger
     {
@@ -114,7 +113,7 @@ namespace now.agent.uiautomation.client
                 Trace.AutoFlush = true;
                 //Trace.UseGlobalLock = false;
             }
-            if (m_logMode == NowLogMode.LOG_FILE)
+            else if (m_logMode == NowLogMode.LOG_FILE)
             {
                 //NowOutPut.OutputDebugString("LOG_FILE");
                 Trace.Listeners.Add(new TextWriterTraceListener(m_logFileFullPath));

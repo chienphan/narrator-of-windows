@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Automation;
 
-namespace now.agent.uiautomation.client
+namespace now.agent.uiautomation.client.storage
 {
     class NowUIAStorage
     {

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Automation;
+using now.agent.uiautomation.client.constant;
+using now.agent.uiautomation.client.logger;
 
 namespace now.agent.uiautomation.client
 {
@@ -129,6 +131,7 @@ namespace now.agent.uiautomation.client
                     }
                     catch (System.Exception ex)
                     {
+                        NowUIALogger.GetInstance().LogError("[NowUIAService.GetUIProperty]", ex.Message);
                         return String.Empty;
                     }
                 }
@@ -137,7 +140,7 @@ namespace now.agent.uiautomation.client
             return strResult;
         }
 
-        public int GetUIState(AutomationElement runtimeElement, ref int nResult)
+        public int GetStatus(AutomationElement runtimeElement, ref int nResult)
         {
             nResult = NowUIADefine.NOW_OK;
             int nState = 0;

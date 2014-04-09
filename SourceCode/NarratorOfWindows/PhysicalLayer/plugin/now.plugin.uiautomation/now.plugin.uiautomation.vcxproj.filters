@@ -122,5 +122,8 @@
     <ClInclude Include="NowWindow_UIA.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="NowUIAActionDefine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

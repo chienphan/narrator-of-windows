@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Automation;
 
-namespace now.agent.uiautomation.client
+namespace now.agent.uiautomation.client.storage
 {
     class NowUIAStorageAction
     {
