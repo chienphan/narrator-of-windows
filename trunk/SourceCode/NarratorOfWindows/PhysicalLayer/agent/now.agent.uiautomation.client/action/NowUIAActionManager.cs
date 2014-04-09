@@ -20,9 +20,12 @@ namespace now.agent.uiautomation.client.action
         private void InitializeActionMap()
         {
             m_mapAction = new Dictionary<String, INowUIAAction>();
-            m_mapAction.Add(NowUIAActionConst.NOW_GET_PROPERTY, new GetProperty());
+            m_mapAction.Add(NowUIAActionConst.UIA_ACTION_GET_PROPERTY, new GetProperty());
             m_mapAction.Add(NowUIAActionConst.UIA_ACTION_GET_ELEMENT_AT_POINT, new GetElementAtPoint());
             m_mapAction.Add(NowUIAActionConst.UIA_ACTION_GETSTATUS, new GetStatus());
+            m_mapAction.Add(NowUIAActionConst.UIA_ACTION_GET_WINDOW_BY_TITLE, new GetWindowByTitle());
+            m_mapAction.Add(NowUIAActionConst.UIA_ACTION_GET_CONTROL_BY_CONDITION, new GetControlByCondition());
+            m_mapAction.Add(NowUIAActionConst.UIA_ACTION_BRING_WINDOW_TO_TOP, new BringWindowToTop());
         }
 
         public static NowUIAActionManager GetInstance()

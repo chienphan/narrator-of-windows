@@ -9,7 +9,6 @@
 
 using namespace now::agent::uiautomation::client::action;
 using namespace now::agent::uiautomation::client::argument;
-using namespace now::agent::uiautomation::client::communication;
 using namespace System::Diagnostics;
 using namespace System;
 
@@ -130,41 +129,65 @@ NOW_RESULT NowCommunication::getWindowByTitle( const string& strTitleWindow, str
 {
 	NOW_RESULT nResult = NOW_FALSE;
 	String^ mstrTitleWindow = NowStringProcessor::StlStringToString(strTitleWindow);
-	//NowUIALogger::GetInstance()->LogInfor("[NowCommunication::getWindowByTitle]" + mstrTitleWindow);
-	String^ mstrHandleWindow = "";
-	nResult = NowUIACommunication::GetInstance()->GetWindowByTitle(mstrTitleWindow, mstrHandleWindow);
+
+	NowUIAArgumentIn::GetInstance()->ActionName = UIA_ACTION_GET_WINDOW_BY_TITLE;
+	NowUIAArgumentIn::GetInstance()->AddArgument(UIA_PROP_WINDOW_TITLE, mstrTitleWindow);
+
+	nResult = NowUIAActionManager::GetInstance()->DoAction();
+
 	if (NOW_SUCCEED(nResult))
 	{
-		//NowUIALogger::GetInstance()->LogInfor("[NowCommunication::getWindowByTitle] >>>>" + mstrHandleWindow);
+		String^ mstrHandleWindow = NowUIAArgumentOut::GetInstance()->GetStringArgument();
 		strWindowHandle = NowStringProcessor::StringToStlString(mstrHandleWindow);
 	}
-	return nResult ;	
+	//Clear data
+	NowUIAArgumentIn::GetInstance()->ClearArguments();
+	return nResult;
 }
 
 NOW_RESULT NowCommunication::getControlByCondition( const string& strWindowHandle, const string& strPropsData, string& strSignatureControl, string& strControlType )
 {
-	//NowLogger::getInstance()->LogAString("[NowCommunication::getControlByCondition]");
 	NOW_RESULT nResult = NOW_FALSE;
 	String^ mstrWindowHandle = NowStringProcessor::StlStringToString(strWindowHandle);
 	String^ mstrPropsData = NowStringProcessor::StlStringToString(strPropsData);
-	String^ mstrSignatureControl = "";
-	String^ mstrControlType = "";
 
-	nResult = NowUIACommunication::GetInstance()->GetControlByCondition(mstrWindowHandle, mstrPropsData, mstrSignatureControl, mstrControlType);
+	NowUIAArgumentIn::GetInstance()->ActionName = UIA_ACTION_GET_CONTROL_BY_CONDITION;
+	NowUIAArgumentIn::GetInstance()->AddArgument(UIA_PROP_DATA, mstrPropsData);
+	NowUIAArgumentIn::GetInstance()->AddArgument(UIA_PROP_WINDOW_HANDLE, mstrWindowHandle);
+	
+	nResult = NowUIAActionManager::GetInstance()->DoAction();
+
 	if (NOW_SUCCEED(nResult))
 	{
-		//NowUIALogger::GetInstance()->LogInfor("[NowCommunication::getControlByCondition]" + mstrSignatureControl + "|" + mstrControlType);
-		strSignatureControl = NowStringProcessor::StringToStlString(mstrSignatureControl);
-		strControlType = NowStringProcessor::StringToStlString(mstrControlType);
+		String^ mstrValue = NowUIAArgumentOut::GetInstance()->GetStringArgument();
+		array<String^>^ arrValue = mstrValue->Split(*(NowStringProcessor::StringToStlWString(gcnew String("|")).c_str()));
+
+		if (arrValue->Length == 2)
+		{
+			strSignatureControl = NowStringProcessor::StringToStlString(arrValue[0]);
+			strControlType = NowStringProcessor::StringToStlString(arrValue[1]);
+		}
+		else
+		{
+			nResult = NOW_FALSE;
+		}
 	}
+	//Clear data
+	NowUIAArgumentIn::GetInstance()->ClearArguments();
 	return nResult ;
 }
 
 NOW_RESULT NowCommunication::bringWindowToTop( const string& strSignatureWindow )
 {
-	//NowUIALogger::GetInstance()->LogInfor("[NowCommunication::bringWindowToTop]");
+	NOW_RESULT nResult = NOW_FALSE;
 	String^ mstrSignatureWindow = NowStringProcessor::StlStringToString(strSignatureWindow);
-	return NowUIACommunication::GetInstance()->BringWindowToTop(mstrSignatureWindow);
+
+	NowUIAArgumentIn::GetInstance()->ActionName = UIA_ACTION_BRING_WINDOW_TO_TOP;
+	NowUIAArgumentIn::GetInstance()->AddArgument(UIA_PROP_SIGNATURE, mstrSignatureWindow);
+
+	nResult = NowUIAActionManager::GetInstance()->DoAction();
+
+	//Clear data
+	NowUIAArgumentIn::GetInstance()->ClearArguments();
+	return nResult ;
 }
-
-
