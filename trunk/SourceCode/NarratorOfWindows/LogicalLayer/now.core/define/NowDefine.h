@@ -13,6 +13,7 @@
 #include <map>
 #include <iostream>
 #include <fstream>
+#include <tchar.h>
 
 //#include "NowDevice.h"
 #include "NowConstant.h"

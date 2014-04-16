@@ -85,6 +85,6 @@
 #define NOW_PROP_IS_VALUE				"IsValueProperty"
 
 #define NOW_ACTION_CLICK				"click"
-#define NOW_ACTION_TYPE_KEY				"type key"
+#define NOW_ACTION_ENTER				"enter"
 
 #endif

@@ -21,12 +21,18 @@
     <ClInclude Include="NowDeviceMouse.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="NowDeviceKeyboard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NowDevice.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="NowDeviceMouse.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NowDeviceKeyboard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

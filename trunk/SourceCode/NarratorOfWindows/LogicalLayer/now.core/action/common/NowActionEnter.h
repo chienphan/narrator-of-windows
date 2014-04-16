@@ -4,11 +4,17 @@
 #include "NowDefine.h"
 #include "inowaction.h"
 
-class NowActionTypeKey : public INowAction
+class NowActionEnter : public INowAction
 {
+private:
+	string m_strWindowName;
+	string m_strControlname;
+	string m_strContent;
+	INowControl* m_control;
+	INowWindow* m_window;
 public:
-	NowActionTypeKey(void);
-	~NowActionTypeKey(void);
+	NowActionEnter(void);
+	~NowActionEnter(void);
 
 	virtual NOW_RESULT prepareArguments(vector<string>* argumnents);
 
