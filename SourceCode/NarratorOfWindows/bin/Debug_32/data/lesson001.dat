@@ -1,15 +1,20 @@
 lesson_no=1
 lesson_name=How to open and save a Microsoft Word Document
 lesson_description=This lesson help user ....
-window=StartWindow|{}
-control=StartWindow|StartButton|NameProperty:Start
-#window=NotePad|{.*Notepad.*}
-#control=windowName1|control_name_1|NameProperty:Organize
-#control=windowName1|control_name_2|NameProperty:Include in library
-#control=windowName1|control_name_3|NameProperty:Share with
-#control=NotePad|Editer|LocalizedControlTypeProperty:document
-#click=windowName1|control_name_1|left
-#click=windowName1|control_name_2|left
-#click=windowName1|control_name_3|left
+###########################################################
+#Define windows
+window=Desktop|Program Manager
+window=MicrosoftWordWindow|{.*Microsoft Word.*}
+###########################################################
+#Define controls
+control=Desktop|MSWordIcon|NameProperty:Microsoft Word 2010
+control=MicrosoftWordWindow|btnParagraph|HelpTextProperty:Show the Paragraph dialog box.
+control=MicrosoftWordWindow|edit|NameProperty:Microsoft Word Document
+###########################################################
+#Do actions
+click=Desktop|MSWordIcon|double
+#click=MicrosoftWordWindow|btnParagraph|left
+sleep=1000
+enter=MicrosoftWordWindow|edit|How to open and save a Microsoft Word Document
 #enter=NotePad|Editer|How to open and save a Microsoft Word Document
-click=StartWindow|StartButton|left
+#click=StartWindow|StartButton|left

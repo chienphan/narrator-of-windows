@@ -86,5 +86,6 @@
 
 #define NOW_ACTION_CLICK				"click"
 #define NOW_ACTION_ENTER				"enter"
+#define NOW_ACTION_SLEEP				"sleep"
 
 #endif

@@ -57,6 +57,9 @@
     <ClInclude Include="action\common\NowActionEnter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="action\common\NowActionSleep.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NowPluginManager.cpp">
@@ -81,6 +84,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="action\common\NowActionEnter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="action\common\NowActionSleep.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

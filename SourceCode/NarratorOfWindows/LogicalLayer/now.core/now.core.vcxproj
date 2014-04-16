@@ -136,6 +136,7 @@
     <ClInclude Include="NowActionData.h" />
     <ClInclude Include="NowActionManager.h" />
     <ClInclude Include="action\common\NowActionEnter.h" />
+    <ClInclude Include="action\common\NowActionSleep.h" />
     <ClInclude Include="NowMatching.h" />
     <ClInclude Include="NowPluginManager.h" />
     <ClInclude Include="NowStorage.h" />
@@ -146,6 +147,7 @@
     <ClCompile Include="NowActionData.cpp" />
     <ClCompile Include="NowActionManager.cpp" />
     <ClCompile Include="action\common\NowActionEnter.cpp" />
+    <ClCompile Include="action\common\NowActionSleep.cpp" />
     <ClCompile Include="NowMatching.cpp" />
     <ClCompile Include="NowPluginManager.cpp" />
     <ClCompile Include="NowStorage.cpp" />
