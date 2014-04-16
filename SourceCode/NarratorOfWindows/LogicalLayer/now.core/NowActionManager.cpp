@@ -2,7 +2,7 @@
 #include "INowAction.h"
 
 #include "NowActionClick.h"
-#include "NowActionTypeKey.h"
+#include "NowActionEnter.h"
 
 NowActionManager* NowActionManager::m_instance = NULL;
 
@@ -38,6 +38,6 @@ NOW_RESULT NowActionManager::getAction( const string& actionName, INowAction*& p
 void NowActionManager::initialize()
 {
 	m_mapAction->insert(pair<string, INowAction*>(NOW_ACTION_CLICK, new NowActionClick()));
-	m_mapAction->insert(pair<string, INowAction*>(NOW_ACTION_TYPE_KEY, new NowActionTypeKey()));
+	m_mapAction->insert(pair<string, INowAction*>(NOW_ACTION_ENTER, new NowActionEnter()));
 }
 

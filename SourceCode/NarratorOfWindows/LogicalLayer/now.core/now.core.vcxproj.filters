@@ -48,13 +48,13 @@
     <ClInclude Include="action\common\NowActionClick.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="action\common\NowActionTypeKey.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="NowStorage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Utility\NowUtility.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="action\common\NowActionEnter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -74,13 +74,13 @@
     <ClCompile Include="action\common\NowActionClick.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="action\common\NowActionTypeKey.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="NowStorage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Utility\NowUtility.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="action\common\NowActionEnter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
