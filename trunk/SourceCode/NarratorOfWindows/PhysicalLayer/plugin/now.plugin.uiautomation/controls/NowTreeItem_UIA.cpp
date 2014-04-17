@@ -24,14 +24,13 @@ NOW_RESULT NowTreeItem_UIA::getUIInformation(wstring& wstrHelpText)
 	//NowLogger::getInstance()->LogWString(wstrCaption);
 	if (NOW_SUCCEED(nResult))
 	{
-		/*int nState = 0;
-		nResult = NowCommunication::getInstance()->getUIState(m_strSignature , nState);
+		int nState = 0;
+		nResult = NowCommunication::getInstance()->getStatus(m_strSignature , nState);
 		if (NOW_SUCCEED(nResult))
 		{
-			//wstrHelpText = wstrCaption + L" is " + NowStringProcessor::Utf8ToStlWString(NowService::getInstance()->ParseState(nState));
-			wstrHelpText = wstrCaption;
-		}*/
-		wstrHelpText = wstrCaption;
+			wstrHelpText = wstrCaption + L" is " + NowStringProcessor::Utf8ToStlWString(NowService::getInstance()->ParseState(nState));
+		}
+		//wstrHelpText = wstrCaption;
 	}
 	return nResult;
 }
