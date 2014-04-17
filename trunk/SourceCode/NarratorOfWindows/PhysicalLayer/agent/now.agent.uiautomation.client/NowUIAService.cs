@@ -140,10 +140,10 @@ namespace now.agent.uiautomation.client
             return strResult;
         }
 
-        public int GetStatus(AutomationElement runtimeElement, ref int nResult)
+        public int GetStatus(AutomationElement runtimeElement, ref int nState)
         {
-            nResult = NowUIADefine.NOW_OK;
-            int nState = 0;
+            int nResult = NowUIADefine.NOW_OK;
+            nState = 0;
             bool check = false;
             try
             {
@@ -161,6 +161,7 @@ namespace now.agent.uiautomation.client
                                 if (strState.ToLower().Equals(m_nameStateMap[itemState.Key]))
                                 {
                                     nState = nState | itemState.Value;
+                                   // NowUIALogger.GetInstance().LogInfor("yes and =" + nState);
                                 }
                             }
                         }
@@ -172,7 +173,7 @@ namespace now.agent.uiautomation.client
                 nResult = NowUIADefine.NOW_FALSE;
             }
             
-            return nState;
+            return nResult;
         }
 
         public PropertyCondition GetCondition(String strPropValue)

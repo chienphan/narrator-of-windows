@@ -27,27 +27,27 @@ std::string NowService::ParseState( int nState )
 	string strState = "";
 	if ( (nState & NOW_STATE_SELECTED) == NOW_STATE_SELECTED)
 	{
-		strState = strState + " Selected";
+		strState = strState + "is selected";
 	}
 	if ( (nState & NOW_STATE_COLLAPSED) == NOW_STATE_COLLAPSED)
 	{
-		strState = strState + " Collapsed";
+		strState = strState + " collapsed";
 	}
 	if ( (nState & NOW_STATE_EXPANDED) == NOW_STATE_EXPANDED)
 	{
-		strState = strState + " Expanded";
+		strState = strState + " expanded";
 	}
 	if ( (nState & NOW_STATE_LEAF_NODE) == NOW_STATE_LEAF_NODE)
 	{
-		strState = strState + " Leaf Node";
+		strState = strState + " leaf node";
 	}
 	if ( (nState & NOW_STATE_CHECKED) == NOW_STATE_CHECKED)
 	{
-		strState = strState + " Checked";
+		strState = strState + " checked";
 	}
 	if ( (nState & NOW_STATE_UNCHECKED) == NOW_STATE_UNCHECKED)
 	{
-		strState = strState + " Unchecked";
+		strState = strState + " unchecked";
 	}
 	return strState;
 }
