@@ -27,7 +27,7 @@ NOW_RESULT NowRadioButton_UIA::getUIInformation(wstring& wrtrHelpText)
 		NowLogger::getInstance()->LogAString(string(buffer));
 		if (NOW_SUCCEED(nResult))
 		{
-			wrtrHelpText = wstrCaption + L" is " + NowStringProcessor::Utf8ToStlWString(NowService::getInstance()->ParseState(nState));
+			wrtrHelpText = wstrCaption + L" " + NowStringProcessor::Utf8ToStlWString(NowService::getInstance()->ParseState(nState));
 		}*/
 		wrtrHelpText = wstrCaption;
 	}

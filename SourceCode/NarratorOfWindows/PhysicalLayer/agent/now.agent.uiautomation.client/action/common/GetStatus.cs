@@ -27,7 +27,6 @@ namespace now.agent.uiautomation.client.action.common
                 NowUIAArgumentOut.GetInstance().Data = nState;
                 //NowUIALogger.GetInstance().LogInfor("[GetStatus.DoAction] nState=" + nState);
             }
-            //NowUIALogger.GetInstance().LogInfor("[GetStatus.DoAction] OUT");
             return nResult;
         }
     }
