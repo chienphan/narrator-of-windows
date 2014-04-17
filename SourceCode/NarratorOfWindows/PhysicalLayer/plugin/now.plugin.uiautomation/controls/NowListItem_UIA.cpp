@@ -17,7 +17,7 @@ NowListItem_UIA::~NowListItem_UIA(void)
 
 NOW_RESULT NowListItem_UIA::getUIInformation(wstring& wrtrHelpText)
 {
-	return NowControl_UIA::getUIInformation(wrtrHelpText);
+	return NowCommunication::getInstance()->getUIProperty(m_strSignature, NOW_PROP_NAME,wrtrHelpText);
 	//int nResult = NOW_FALSE;
 	//wrtrHelpText = L"";
 	//wstring wstrCaption = L"";
