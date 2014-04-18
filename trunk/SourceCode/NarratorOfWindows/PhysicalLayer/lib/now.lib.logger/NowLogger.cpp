@@ -48,3 +48,10 @@ void NowLogger::LogAString( const string strLog )
 		NowLoggerWriter::getInstance()->writeAString(strLog);
 	}
 }
+
+void NowLogger::LogInt(const int intLog)
+{
+	char buffer[512];
+	sprintf_s(buffer, "%d ", intLog);
+	NowLogger::getInstance()->LogAString(string(buffer));
+}
