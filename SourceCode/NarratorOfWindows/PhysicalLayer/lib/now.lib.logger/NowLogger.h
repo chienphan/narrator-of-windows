@@ -16,6 +16,7 @@ public:
 	~NowLogger();
 	void LogWString(const wstring wstrLog);
 	void LogAString(const string strLog);
+	void LogInt(const int intLog);
 };
 
 #endif // _NOW_LOGGER_H_
