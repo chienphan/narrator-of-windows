@@ -1,4 +1,4 @@
-#include "NowActionEnter.h"
+﻿#include "NowActionEnter.h"
 #include "NowStorage.h"
 #include "NowLogger.h"
 #include "NowUtility.h"
@@ -53,13 +53,14 @@ NOW_RESULT NowActionEnter::doAction()
 				int height = 0;
 				NowUtility::getRectData(vec, left, top, width, height);
 				NowDeviceMouse::clickMouse(left + width / 2, top + height / 2, NowDeviceMouse::getClickType("left"));
-				Sleep(100);
+				//Sleep(100);
 				//enter keys
-				NowDeviceKeyboard::getInstance()->SendKeys("^a");
-				Sleep(50);
-				NowDeviceKeyboard::getInstance()->SendKeys("{DEL}");
-				Sleep(50);
-				NowDeviceKeyboard::getInstance()->SendKeys(m_strContent.c_str());
+				NowDeviceKeyboard::sendKey(L"^a");
+				//Sleep(50);
+				NowDeviceKeyboard::sendKey(L"{DEL}");
+				//Sleep(50);
+				NowDeviceKeyboard::sendKey(L"Xin chào các bạn!");
+				
 			}
 		}
 	}
