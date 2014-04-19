@@ -1,7 +1,7 @@
 #include "NowControlBuilder.h"
 #include "INowControl.h"
 #include "INowWindow.h"
-#include "NowStringProcessor.h"
+#include "NowStringProcessor_UIA.h"
 
 #include "NowWindow_UIA.h"
 #include "NowControl_UIA.h"
@@ -16,6 +16,7 @@
 #include "NowProgressBar_UIA.h"
 #include "NowLogger.h"
 #include "NowTitleBar_UIA.h"
+#include "NowStringProcessor.h"
 
 NowControlBuilder* NowControlBuilder::m_Instance = NULL;
 

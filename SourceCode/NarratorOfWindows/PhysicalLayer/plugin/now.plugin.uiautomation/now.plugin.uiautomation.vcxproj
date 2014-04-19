@@ -85,7 +85,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <CompileAs>CompileAsCpp</CompileAs>
-      <AdditionalIncludeDirectories>$(SolutionDir)LogicalLayer\now.core\;$(SolutionDir)LogicalLayer\now.core\interface\;$(SolutionDir)LogicalLayer\now.core\define\;$(SolutionDir)PhysicalLayer\lib\now.lib.logger\;$(ProjectDir)controls\;$(SolutionDir)PhysicalLayer\lib\now.lib.device\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)LogicalLayer\now.core\;$(SolutionDir)LogicalLayer\now.core\interface\;$(SolutionDir)LogicalLayer\now.core\define\;$(SolutionDir)PhysicalLayer\lib\now.lib.logger\;$(ProjectDir)controls\;$(SolutionDir)PhysicalLayer\lib\now.lib.device\;$(SolutionDir)LogicalLayer\now.core\utility</AdditionalIncludeDirectories>
       <AdditionalUsingDirectories>$(SolutionDir)bin\$(ConfigurationName)_$(PlatformArchitecture)\</AdditionalUsingDirectories>
       <CallingConvention>Cdecl</CallingConvention>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -116,7 +116,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>$(SolutionDir)LogicalLayer\now.core\;$(SolutionDir)LogicalLayer\now.core\interface\;$(SolutionDir)LogicalLayer\now.core\define\;$(SolutionDir)PhysicalLayer\lib\now.lib.logger\;$(ProjectDir)controls\;$(SolutionDir)PhysicalLayer\lib\now.lib.device\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)LogicalLayer\now.core\;$(SolutionDir)LogicalLayer\now.core\interface\;$(SolutionDir)LogicalLayer\now.core\define\;$(SolutionDir)PhysicalLayer\lib\now.lib.logger\;$(ProjectDir)controls\;$(SolutionDir)PhysicalLayer\lib\now.lib.device\;$(SolutionDir)LogicalLayer\now.core\utility;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalUsingDirectories>$(SolutionDir)bin\$(ConfigurationName)_$(PlatformArchitecture)\</AdditionalUsingDirectories>
       <CallingConvention>Cdecl</CallingConvention>
       <CompileAs>CompileAsCpp</CompileAs>
