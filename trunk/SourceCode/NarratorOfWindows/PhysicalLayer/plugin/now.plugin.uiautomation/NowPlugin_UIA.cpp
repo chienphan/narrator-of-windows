@@ -1,6 +1,6 @@
 #include "NowDefine.h"
 #include "NowPlugin_UIA.h"
-#include "NowStringProcessor.h"
+#include "NowStringProcessor_UIA.h"
 #include "NowLogger.h"
 #include "NowControlBuilder.h"
 #include "NowCommunication.h"

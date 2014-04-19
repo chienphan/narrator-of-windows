@@ -2,8 +2,9 @@
 #include "NowControl_UIA.h"
 #include "NowLogger.h"
 #include "..\NowCommunication.h"
-#include "..\NowStringProcessor.h"
+#include "..\NowStringProcessor_UIA.h"
 #include "..\NowService.h"
+#include "NowStringProcessor.h"
 
 NowTreeItem_UIA::NowTreeItem_UIA(string strSignature, string strControlType)  : NowControl_UIA(strSignature, strControlType)
 {

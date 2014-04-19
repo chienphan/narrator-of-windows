@@ -1,9 +1,10 @@
 #include "NowRadioButton_UIA.h"
 #include "NowControl_UIA.h"
 #include "NowLogger.h"
-#include "..\NowStringProcessor.h"
+#include "..\NowStringProcessor_UIA.h"
 #include "..\NowCommunication.h"
 #include "..\NowService.h"
+#include "NowStringProcessor.h"
 
 NowRadioButton_UIA::NowRadioButton_UIA(string strSignature, string strControlType) : NowControl_UIA(strSignature, strControlType)
 {

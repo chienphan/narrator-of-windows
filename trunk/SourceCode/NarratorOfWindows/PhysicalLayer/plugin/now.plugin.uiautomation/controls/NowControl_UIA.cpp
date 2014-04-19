@@ -1,6 +1,7 @@
 #include "NowControl_UIA.h"
 #include "NowLogger.h"
 #include "..\NowCommunication.h"
+#include "NowStringProcessor.h"
 
 NowControl_UIA::NowControl_UIA(string strSignature, string strControlType) 
 {

@@ -1,13 +1,15 @@
 #include "NowTabItem_UIA.h"
 #include "NowControl_UIA.h"
 #include "NowLogger.h"
-#include "..\NowStringProcessor.h"
+#include "..\NowStringProcessor_UIA.h"
 #include "..\NowCommunication.h"
 #include "..\NowService.h"
+#include "NowStringProcessor.h"
 
 NowTabItem_UIA::NowTabItem_UIA(string strSignature, string strControlType) : NowControl_UIA(strSignature, strControlType)
 {
 }
+
 NowTabItem_UIA::~NowTabItem_UIA(void)
 {
 }

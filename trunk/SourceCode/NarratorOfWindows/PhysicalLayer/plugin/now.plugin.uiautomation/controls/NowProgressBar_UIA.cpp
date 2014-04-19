@@ -1,9 +1,10 @@
 #include "NowProgressBar_UIA.h"
 #include "NowControl_UIA.h"
 #include "NowLogger.h"
-#include "..\NowStringProcessor.h"
+#include "..\NowStringProcessor_UIA.h"
 #include "..\NowCommunication.h"
 #include "..\NowService.h"
+#include "NowStringProcessor.h"
 
 NowProgressBar_UIA::NowProgressBar_UIA(string strSignature, string strControlType) : NowControl_UIA(strSignature, strControlType)
 {
