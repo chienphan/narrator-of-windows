@@ -8,7 +8,7 @@ NowActionData::NowActionData(void)
 	m_mapWindow = new map<string, string>();
 	m_mapControl = new map<string, string>();
 	m_mapControlProps = new map<string, string>();
-	m_vectActions = new vector<vector<string>*>();
+	m_vectActions = new vector<vector<wstring>*>();
 }
 
 
@@ -83,13 +83,13 @@ NOW_RESULT NowActionData::getWindowName( string strControlName, string& strWindo
 	return NOW_FALSE;
 }
 
-NOW_RESULT NowActionData::addActionData( vector<string>* action )
+NOW_RESULT NowActionData::addActionData( vector<wstring>* action )
 {
 	m_vectActions->push_back(action);
 	return NOW_OK;
 }
 
-vector<vector<string>*>* NowActionData::getActionData()
+vector<vector<wstring>*>* NowActionData::getActionData()
 {
 	return m_vectActions;
 }

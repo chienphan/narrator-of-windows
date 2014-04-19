@@ -1,9 +1,10 @@
 ﻿#include "NowActionEnter.h"
 #include "NowStorage.h"
 #include "NowLogger.h"
-#include "NowUtility.h"
+#include "NowStringProcessor.h"
 #include "NowDeviceMouse.h"
 #include "NowDeviceKeyboard.h"
+#include "NowUtility.h"
 
 NowActionEnter::NowActionEnter(void)
 {
@@ -14,11 +15,11 @@ NowActionEnter::~NowActionEnter(void)
 }
 
 //enter=<window_name>|<control_name>|<content>
-NOW_RESULT NowActionEnter::prepareArguments(vector<string>* argumnents)
+NOW_RESULT NowActionEnter::prepareArguments(vector<wstring>* argumnents)
 {
 	NOW_RESULT nResult = NOW_FALSE;
-	m_strWindowName = argumnents->at(1);
-	m_strControlname = argumnents->at(2);
+	m_strWindowName = NowStringProcessor::wstringTostring(argumnents->at(1));
+	m_strControlname = NowStringProcessor::wstringTostring(argumnents->at(2));
 	m_strContent = argumnents->at(3);
 	nResult = NowStorage::getInstance()->getWindow(m_strWindowName.c_str(), m_window);
 	if (NOW_SUCCEED(nResult))
@@ -44,7 +45,7 @@ NOW_RESULT NowActionEnter::doAction()
 
 		if (NOW_SUCCEED(nResult))
 		{
-			vector<string>* vec = NowUtility::split(strValue, NOW_CHAR_COMMA);
+			vector<string>* vec = NowStringProcessor::split(strValue, NOW_CHAR_COMMA);
 			if (vec != NULL)
 			{
 				int left = 0;
@@ -59,7 +60,7 @@ NOW_RESULT NowActionEnter::doAction()
 				//Sleep(50);
 				NowDeviceKeyboard::sendKey(L"{DEL}");
 				//Sleep(50);
-				NowDeviceKeyboard::sendKey(L"Xin chào các bạn!");
+				NowDeviceKeyboard::sendKey(m_strContent);
 				
 			}
 		}

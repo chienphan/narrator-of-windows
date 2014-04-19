@@ -16,7 +16,7 @@ public:
 	NowActionClick(void);
 	~NowActionClick(void);
 
-	virtual NOW_RESULT prepareArguments(vector<string>* argumnents);
+	virtual NOW_RESULT prepareArguments(vector<wstring>* argumnents);
 
 	virtual NOW_RESULT doAction();
 

@@ -137,9 +137,11 @@
     <ClInclude Include="NowActionManager.h" />
     <ClInclude Include="action\common\NowActionEnter.h" />
     <ClInclude Include="action\common\NowActionSleep.h" />
+    <ClInclude Include="action\common\NowActionSendKeys.h" />
     <ClInclude Include="NowMatching.h" />
     <ClInclude Include="NowPluginManager.h" />
     <ClInclude Include="NowStorage.h" />
+    <ClInclude Include="Utility\NowStringProcessor.h" />
     <ClInclude Include="Utility\NowUtility.h" />
   </ItemGroup>
   <ItemGroup>
@@ -148,9 +150,11 @@
     <ClCompile Include="NowActionManager.cpp" />
     <ClCompile Include="action\common\NowActionEnter.cpp" />
     <ClCompile Include="action\common\NowActionSleep.cpp" />
+    <ClCompile Include="action\common\NowActionSendKeys.cpp" />
     <ClCompile Include="NowMatching.cpp" />
     <ClCompile Include="NowPluginManager.cpp" />
     <ClCompile Include="NowStorage.cpp" />
+    <ClCompile Include="Utility\NowStringProcessor.cpp" />
     <ClCompile Include="Utility\NowUtility.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

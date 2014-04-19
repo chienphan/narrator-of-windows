@@ -1,5 +1,5 @@
 #include "NowCommunication.h"
-#include "NowStringProcessor.h"
+#include "NowStringProcessor_UIA.h"
 #include "NowLogger.h"
 #include "NowUIAActionDefine.h"
 #include <stdio.h>
@@ -45,12 +45,12 @@ NOW_RESULT NowCommunication::getElementAtPoint( POINT point, string& strSignatur
 	if (NOW_SUCCEED(nResult))
 	{
 		String^ mstrValue = NowUIAArgumentOut::GetInstance()->GetStringArgument();
-		array<String^>^ arrValue = mstrValue->Split(*(NowStringProcessor::StringToStlWString(gcnew String("|")).c_str()));
+		array<String^>^ arrValue = mstrValue->Split(*(NowStringProcessor_UIA::StringToStlWString(gcnew String("|")).c_str()));
 
 		if (arrValue->Length == 2)
 		{
-			strSignatureControl = NowStringProcessor::StringToStlString(arrValue[0]);
-			strControlType = NowStringProcessor::StringToStlString(arrValue[1]);
+			strSignatureControl = NowStringProcessor_UIA::StringToStlString(arrValue[0]);
+			strControlType = NowStringProcessor_UIA::StringToStlString(arrValue[1]);
 		}
 		else
 		{
@@ -65,8 +65,8 @@ NOW_RESULT NowCommunication::getElementAtPoint( POINT point, string& strSignatur
 NOW_RESULT NowCommunication::getUIProperty(const string& strSignature, const string& strPropName , wstring& wstrValue)
 {
 	NOW_RESULT nResult = NOW_FALSE;
-	String^ mstrSignature = NowStringProcessor::StlStringToString(strSignature);
-	String^ mstrPropName = NowStringProcessor::StlStringToString(strPropName);
+	String^ mstrSignature = NowStringProcessor_UIA::StlStringToString(strSignature);
+	String^ mstrPropName = NowStringProcessor_UIA::StlStringToString(strPropName);
 
 	NowUIAArgumentIn::GetInstance()->ActionName = UIA_ACTION_GETPROPERTY;
 	NowUIAArgumentIn::GetInstance()->AddArgument(UIA_PROP_SIGNATURE, mstrSignature);
@@ -77,7 +77,7 @@ NOW_RESULT NowCommunication::getUIProperty(const string& strSignature, const str
 	if (NOW_SUCCEED(nResult))
 	{
 		String^ mstrValue = NowUIAArgumentOut::GetInstance()->GetStringArgument();
-		wstrValue = NowStringProcessor::StringToStlWString(mstrValue);
+		wstrValue = NowStringProcessor_UIA::StringToStlWString(mstrValue);
 	}
 	//Clear data
 	NowUIAArgumentIn::GetInstance()->ClearArguments();
@@ -87,8 +87,8 @@ NOW_RESULT NowCommunication::getUIProperty(const string& strSignature, const str
 NOW_RESULT NowCommunication::getUIProperty(const string& strSignature, const string& strPropName , string& strValue)
 {
 	NOW_RESULT nResult = NOW_FALSE;
-	String^ mstrSignature = NowStringProcessor::StlStringToString(strSignature);
-	String^ mstrPropName = NowStringProcessor::StlStringToString(strPropName);
+	String^ mstrSignature = NowStringProcessor_UIA::StlStringToString(strSignature);
+	String^ mstrPropName = NowStringProcessor_UIA::StlStringToString(strPropName);
 
 	NowUIAArgumentIn::GetInstance()->ActionName = UIA_ACTION_GETPROPERTY;
 	NowUIAArgumentIn::GetInstance()->AddArgument(UIA_PROP_SIGNATURE, mstrSignature);
@@ -99,7 +99,7 @@ NOW_RESULT NowCommunication::getUIProperty(const string& strSignature, const str
 	if (NOW_SUCCEED(nResult))
 	{
 		String^ mstrValue = NowUIAArgumentOut::GetInstance()->GetStringArgument();
-		strValue = NowStringProcessor::StringToStlString(mstrValue);
+		strValue = NowStringProcessor_UIA::StringToStlString(mstrValue);
 	}
 	//Clear data
 	NowUIAArgumentIn::GetInstance()->ClearArguments();
@@ -109,7 +109,7 @@ NOW_RESULT NowCommunication::getUIProperty(const string& strSignature, const str
 NOW_RESULT NowCommunication::getStatus(const string& strSignature , int& nState)
 {
 	NOW_RESULT nResult = NOW_FALSE;
-	String^ mstrSignature = NowStringProcessor::StlStringToString(strSignature);
+	String^ mstrSignature = NowStringProcessor_UIA::StlStringToString(strSignature);
 
 	NowUIAArgumentIn::GetInstance()->ActionName = UIA_ACTION_GETSTATUS;
 	NowUIAArgumentIn::GetInstance()->AddArgument(UIA_PROP_SIGNATURE, mstrSignature);
@@ -128,7 +128,7 @@ NOW_RESULT NowCommunication::getStatus(const string& strSignature , int& nState)
 NOW_RESULT NowCommunication::getWindowByTitle( const string& strTitleWindow, string& strWindowHandle )
 {
 	NOW_RESULT nResult = NOW_FALSE;
-	String^ mstrTitleWindow = NowStringProcessor::StlStringToString(strTitleWindow);
+	String^ mstrTitleWindow = NowStringProcessor_UIA::StlStringToString(strTitleWindow);
 
 	NowUIAArgumentIn::GetInstance()->ActionName = UIA_ACTION_GET_WINDOW_BY_TITLE;
 	NowUIAArgumentIn::GetInstance()->AddArgument(UIA_PROP_WINDOW_TITLE, mstrTitleWindow);
@@ -138,7 +138,7 @@ NOW_RESULT NowCommunication::getWindowByTitle( const string& strTitleWindow, str
 	if (NOW_SUCCEED(nResult))
 	{
 		String^ mstrHandleWindow = NowUIAArgumentOut::GetInstance()->GetStringArgument();
-		strWindowHandle = NowStringProcessor::StringToStlString(mstrHandleWindow);
+		strWindowHandle = NowStringProcessor_UIA::StringToStlString(mstrHandleWindow);
 	}
 	//Clear data
 	NowUIAArgumentIn::GetInstance()->ClearArguments();
@@ -148,8 +148,8 @@ NOW_RESULT NowCommunication::getWindowByTitle( const string& strTitleWindow, str
 NOW_RESULT NowCommunication::getControlByCondition( const string& strWindowHandle, const string& strPropsData, string& strSignatureControl, string& strControlType )
 {
 	NOW_RESULT nResult = NOW_FALSE;
-	String^ mstrWindowHandle = NowStringProcessor::StlStringToString(strWindowHandle);
-	String^ mstrPropsData = NowStringProcessor::StlStringToString(strPropsData);
+	String^ mstrWindowHandle = NowStringProcessor_UIA::StlStringToString(strWindowHandle);
+	String^ mstrPropsData = NowStringProcessor_UIA::StlStringToString(strPropsData);
 
 	NowUIAArgumentIn::GetInstance()->ActionName = UIA_ACTION_GET_CONTROL_BY_CONDITION;
 	NowUIAArgumentIn::GetInstance()->AddArgument(UIA_PROP_DATA, mstrPropsData);
@@ -160,12 +160,12 @@ NOW_RESULT NowCommunication::getControlByCondition( const string& strWindowHandl
 	if (NOW_SUCCEED(nResult))
 	{
 		String^ mstrValue = NowUIAArgumentOut::GetInstance()->GetStringArgument();
-		array<String^>^ arrValue = mstrValue->Split(*(NowStringProcessor::StringToStlWString(gcnew String("|")).c_str()));
+		array<String^>^ arrValue = mstrValue->Split(*(NowStringProcessor_UIA::StringToStlWString(gcnew String("|")).c_str()));
 
 		if (arrValue->Length == 2)
 		{
-			strSignatureControl = NowStringProcessor::StringToStlString(arrValue[0]);
-			strControlType = NowStringProcessor::StringToStlString(arrValue[1]);
+			strSignatureControl = NowStringProcessor_UIA::StringToStlString(arrValue[0]);
+			strControlType = NowStringProcessor_UIA::StringToStlString(arrValue[1]);
 		}
 		else
 		{
@@ -180,7 +180,7 @@ NOW_RESULT NowCommunication::getControlByCondition( const string& strWindowHandl
 NOW_RESULT NowCommunication::bringWindowToTop( const string& strSignatureWindow )
 {
 	NOW_RESULT nResult = NOW_FALSE;
-	String^ mstrSignatureWindow = NowStringProcessor::StlStringToString(strSignatureWindow);
+	String^ mstrSignatureWindow = NowStringProcessor_UIA::StlStringToString(strSignatureWindow);
 
 	NowUIAArgumentIn::GetInstance()->ActionName = UIA_ACTION_BRING_WINDOW_TO_TOP;
 	NowUIAArgumentIn::GetInstance()->AddArgument(UIA_PROP_SIGNATURE, mstrSignatureWindow);

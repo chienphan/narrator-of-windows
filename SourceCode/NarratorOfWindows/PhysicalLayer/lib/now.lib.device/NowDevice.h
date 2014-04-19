@@ -29,12 +29,13 @@ private:
 	NowDevice(void);
 	~NowDevice(void);
 public:
-	static long getCurrentProcessId();
-	static string getCurrentDateTime();
-	static string getCurrentDirectory();
-	static vector<string>* getAllFilesInDirectory(const string& strDirectory, const string& strExtension);
-	static void sleep(int milisecond);
-	static string getEnvironmentVariable(const string& strVariable);
+	static long					getCurrentProcessId();
+	static string				getCurrentDateTime();
+	static string				getCurrentDirectory();
+	static vector<string>*		getAllFilesInDirectory(const string& strDirectory, const string& strExtension);
+	static void					sleep(int milisecond);
+	static string				getEnvironmentVariable(const string& strVariable);
+	static vector<wstring>*		getFileData(const string& strFullPath);
 };
 
 #endif

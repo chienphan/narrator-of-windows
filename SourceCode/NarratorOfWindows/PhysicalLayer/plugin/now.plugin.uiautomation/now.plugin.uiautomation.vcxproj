@@ -160,7 +160,7 @@
     <ClCompile Include="NowControlBuilder.cpp" />
     <ClCompile Include="NowPlugin_UIA.cpp" />
     <ClCompile Include="NowService.cpp" />
-    <ClCompile Include="NowStringProcessor.cpp" />
+    <ClCompile Include="NowStringProcessor_UIA.cpp" />
     <ClCompile Include="NowWindow_UIA.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -179,7 +179,7 @@
     <ClInclude Include="NowControlBuilder.h" />
     <ClInclude Include="NowPlugin_UIA.h" />
     <ClInclude Include="NowService.h" />
-    <ClInclude Include="NowStringProcessor.h" />
+    <ClInclude Include="NowStringProcessor_UIA.h" />
     <ClInclude Include="NowUIAActionDefine.h" />
     <ClInclude Include="NowWindow_UIA.h" />
   </ItemGroup>

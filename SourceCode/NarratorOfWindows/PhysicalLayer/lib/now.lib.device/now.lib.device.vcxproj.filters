@@ -24,7 +24,7 @@
     <ClInclude Include="NowDeviceKeyboard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\plugin\now.plugin.uiautomation\NowStringProcessor.h">
+    <ClInclude Include="..\..\plugin\now.plugin.uiautomation\NowStringProcessor_UIA.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -38,7 +38,7 @@
     <ClCompile Include="NowDeviceKeyboard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\plugin\now.plugin.uiautomation\NowStringProcessor.cpp">
+    <ClCompile Include="..\..\plugin\now.plugin.uiautomation\NowStringProcessor_UIA.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

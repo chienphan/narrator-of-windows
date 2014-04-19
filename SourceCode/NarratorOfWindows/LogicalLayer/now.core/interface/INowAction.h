@@ -6,7 +6,7 @@
 class INowAction
 {
 public:
-	virtual NOW_RESULT prepareArguments(vector<string>* argumnents) = 0;
+	virtual NOW_RESULT prepareArguments(vector<wstring>* argumnents) = 0;
 	virtual NOW_RESULT doAction() = 0;
 };
 

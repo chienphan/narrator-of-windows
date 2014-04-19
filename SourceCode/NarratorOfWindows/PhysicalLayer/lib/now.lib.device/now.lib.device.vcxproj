@@ -126,13 +126,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\plugin\now.plugin.uiautomation\NowStringProcessor.h" />
+    <ClInclude Include="..\..\plugin\now.plugin.uiautomation\NowStringProcessor_UIA.h" />
     <ClInclude Include="NowDevice.h" />
     <ClInclude Include="NowDeviceKeyboard.h" />
     <ClInclude Include="NowDeviceMouse.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\plugin\now.plugin.uiautomation\NowStringProcessor.cpp" />
+    <ClCompile Include="..\..\plugin\now.plugin.uiautomation\NowStringProcessor_UIA.cpp" />
     <ClCompile Include="NowDevice.cpp" />
     <ClCompile Include="NowDeviceKeyboard.cpp" />
     <ClCompile Include="NowDeviceMouse.cpp" />

@@ -2,9 +2,11 @@
 #include "NowUtility.h"
 #include "NowDevice.h"
 #include "NowConstant.h"
+#include "NowStringProcessor.h"
 
-vector<vector<string>*>* NowUtility::readData(const string& strFileName)
+vector<vector<wstring>*>* NowUtility::readData(const string& strFileName)
 {
+	vector<vector<wstring>*>* result = new vector<vector<wstring>*>();
 	if (strFileName.empty())
 	{
 		return NULL;
@@ -21,34 +23,24 @@ vector<vector<string>*>* NowUtility::readData(const string& strFileName)
 		strFullPath = strDirectory + strFileName;
 	}
 
-	// + strFileName;
-	vector<vector<string>*>* reRsult = new vector<vector<string>*>();
-	string strTemp = "";
-	ifstream infile;
-	infile.open(strFullPath);
-	while (!infile.eof())
+	vector<wstring>* tempData = NowDevice::getFileData(strFullPath);
+	vector<wstring>::iterator it = tempData->begin();
+	for (; it != tempData->end(); it++)
 	{
-		getline(infile, strTemp); // Saves the line in strTemp.
-		vector<string>* vectContentLine = split(strTemp, NOW_CHAR_EQUAL);  
-		if(vectContentLine->size() == 2)
+		vector<wstring>* vectPair = NowStringProcessor::split(*it, L'=');
+		if(vectPair != NULL)
 		{
-			reRsult->push_back(vectContentLine);
+			if (vectPair->size() == 2)
+			{
+				result->push_back(vectPair);
+			}
 		}
 	}
-	infile.close();
-	return reRsult;
+	
+	return result;
 }
 
-vector<string>* NowUtility::split(const std::string& source, char delim)
-{
-	vector<string>* vecResult = new vector<string>();// ectContentLinet;ing>();
-	stringstream ss(source);
-	string item;
-	while (getline(ss, item, delim)) {
-		vecResult->push_back(item);
-	}
-	return vecResult;
-}
+
 
 void NowUtility::getRectData( vector<string>* data, int& left, int& top, int& widht, int& height )
 {
@@ -60,3 +52,4 @@ void NowUtility::getRectData( vector<string>* data, int& left, int& top, int& wi
 		height = atoi(data->at(3).c_str());
 	}
 }
+
