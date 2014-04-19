@@ -31,7 +31,6 @@
 #define NOW_CHAR_OR '|'
 #define NOW_CHAR_COLON ':'
 #define NOW_CHAR_COMMA ','
-
 #define NOW_PLUGIN_NAME_UIA "uiautomation"
 
 #define NOW_CONTROL				"control"
@@ -87,5 +86,6 @@
 #define NOW_ACTION_CLICK				"click"
 #define NOW_ACTION_ENTER				"enter"
 #define NOW_ACTION_SLEEP				"sleep"
+#define NOW_ACTION_SENDKEYS				"send keys"
 
 #endif

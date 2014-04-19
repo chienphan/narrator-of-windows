@@ -3,6 +3,7 @@
 #include "NowLogger.h"
 #include "NowUtility.h"
 #include "NowDeviceMouse.h"
+#include "NowStringProcessor.h"
 
 NowActionClick::NowActionClick(void)
 {
@@ -17,12 +18,12 @@ NowActionClick::~NowActionClick(void)
 }
 
 //click=<window_name>|<control_name>|<click_type>
-NOW_RESULT NowActionClick::prepareArguments(vector<string>* argumnents)
+NOW_RESULT NowActionClick::prepareArguments(vector<wstring>* argumnents)
 {
 	NOW_RESULT nResult = NOW_FALSE;
-	m_strWindowName = argumnents->at(1);
-	m_strControlname = argumnents->at(2);
-	m_clickType = argumnents->at(3);
+	m_strWindowName = NowStringProcessor::wstringTostring(argumnents->at(1));
+	m_strControlname = NowStringProcessor::wstringTostring(argumnents->at(2));
+	m_clickType = NowStringProcessor::wstringTostring(argumnents->at(3));
 	nResult = NowStorage::getInstance()->getWindow(m_strWindowName.c_str(), m_window);
 	if (NOW_SUCCEED(nResult))
 	{
@@ -47,7 +48,7 @@ NOW_RESULT NowActionClick::doAction()
 
 		if (NOW_SUCCEED(nResult))
 		{
-			vector<string>* vec = NowUtility::split(strValue, NOW_CHAR_COMMA);
+			vector<string>* vec = NowStringProcessor::split(strValue, NOW_CHAR_COMMA);
 			if (vec != NULL)
 			{
 				int left = 0;

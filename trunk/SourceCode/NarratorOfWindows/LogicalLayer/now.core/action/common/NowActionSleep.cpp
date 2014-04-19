@@ -1,5 +1,5 @@
 #include "NowActionSleep.h"
-
+#include "NowStringProcessor.h"
 
 NowActionSleep::NowActionSleep(void)
 {
@@ -10,11 +10,11 @@ NowActionSleep::~NowActionSleep(void)
 {
 }
 
-NOW_RESULT NowActionSleep::prepareArguments( vector<string>* argumnents )
+NOW_RESULT NowActionSleep::prepareArguments( vector<wstring>* argumnents )
 {
 	NOW_RESULT nResult = NOW_FALSE;
-	string strWindowName = argumnents->at(1);
-	m_nSleepTime = atoi(strWindowName.c_str());
+	wstring strWindowName = argumnents->at(1);
+	m_nSleepTime = atoi(NowStringProcessor::wstringTostring(strWindowName).c_str());
 	if (m_nSleepTime > 0)
 	{
 		nResult = NOW_OK;

@@ -9,14 +9,14 @@ class NowActionEnter : public INowAction
 private:
 	string m_strWindowName;
 	string m_strControlname;
-	string m_strContent;
+	wstring m_strContent;
 	INowControl* m_control;
 	INowWindow* m_window;
 public:
 	NowActionEnter(void);
 	~NowActionEnter(void);
 
-	virtual NOW_RESULT prepareArguments(vector<string>* argumnents);
+	virtual NOW_RESULT prepareArguments(vector<wstring>* argumnents);
 
 	virtual NOW_RESULT doAction();
 

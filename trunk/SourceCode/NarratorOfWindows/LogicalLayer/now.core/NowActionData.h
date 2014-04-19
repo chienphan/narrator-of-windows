@@ -13,7 +13,7 @@ private:
 	map<string, string>* m_mapWindow;					//<window_name, window_title>
 	map<string, string>* m_mapControl;					//<control_name, window_name>
 	map<string, string>* m_mapControlProps;		//<control_name, properties>
-	vector<vector<string>*>* m_vectActions;				//<action_name><action_prarameters....>
+	vector<vector<wstring>*>* m_vectActions;				//<action_name><action_prarameters....>
 
 public:
 	static NowActionData* getInstance();
@@ -22,12 +22,12 @@ public:
 	NOW_RESULT addLessonData(string name, string data);
 	NOW_RESULT addWindowData(string strWindowName, string strWindowTitle);
 	NOW_RESULT addControlData(string strWindowName, string strControlName, string strPropsData);
-	NOW_RESULT addActionData(vector<string>* action);
+	NOW_RESULT addActionData(vector<wstring>* action);
 
 	NOW_RESULT getWindowTitle(string strWindowName, string& strWindowTitle);
 	NOW_RESULT getWindowName(string strControlName, string& strWindowName);
 	NOW_RESULT getControlData(string strControlName, string& strPropsData);
-	vector<vector<string>*>* getActionData();
+	vector<vector<wstring>*>* getActionData();
 };
 
 #endif

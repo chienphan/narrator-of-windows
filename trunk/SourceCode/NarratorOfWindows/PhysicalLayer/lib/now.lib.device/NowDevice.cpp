@@ -1,4 +1,5 @@
 #include "NowDevice.h"
+#include "NowStringProcessor_UIA.h"
 
 NowDevice::NowDevice(void)
 {
@@ -149,4 +150,16 @@ std::string NowDevice::getEnvironmentVariable( const string& strVariable )
 		return string(pPath);
 	}
 	return "";
+}
+
+vector<wstring>* NowDevice::getFileData( const string& strFullPath )
+{
+	vector<wstring>* result = new vector<wstring>();
+	System::String^ mstrFullPath = NowStringProcessor_UIA::StlStringToString(strFullPath);
+	array<System::String^>^ text = System::IO::File::ReadAllLines(mstrFullPath);
+	for (int i = 0; i < text->Length; i++)
+	{
+		result->push_back(NowStringProcessor_UIA::StringToStlWString(text[i]));
+	}
+	return result;
 }

@@ -5,10 +5,12 @@
 #include "INowAction.h"
 #include "NowActionData.h"
 #include "NowActionManager.h"
+#include "NowUtility.h"
+#include "NowStringProcessor.h"
 
 NOW_RESULT NowExecutor::initialize(const string& dataFileName)
 {
-	vector<vector<string>*>* vectorLessonData = NowUtility::readData(dataFileName);
+	vector<vector<wstring>*>* vectorLessonData = NowUtility::readData(dataFileName);
 	
 	if (vectorLessonData == NULL)
 	{
@@ -20,12 +22,12 @@ NOW_RESULT NowExecutor::initialize(const string& dataFileName)
 		return NOW_FALSE;
 	}
 
-	vector<vector<string>*>::iterator it = vectorLessonData->begin();
+	vector<vector<wstring>*>::iterator it = vectorLessonData->begin();
 	for (; it != vectorLessonData->end(); it++)
 	{
-		vector<string>* line = *it;
-		string actionName = line->at(0);
-
+		vector<wstring>* line = *it;
+		string actionName = NowStringProcessor::wstringTostring(line->at(0));
+		string data = NowStringProcessor::wstringTostring(line->at(1));
 		//<lesson_no>=<content>
 		//<lesson_name>=<content>
 		//<lesson_description>=<content>
@@ -34,16 +36,16 @@ NOW_RESULT NowExecutor::initialize(const string& dataFileName)
 			|| actionName.compare("lesson_description") == 0)
 		{
 			//add to action data
-			NowActionData::getInstance()->addLessonData(actionName, line->at(1));
+			NowActionData::getInstance()->addLessonData(actionName, data);
 		}
 		//<window>=<window_name>|<window_title>
 		else if (actionName.compare("window") == 0)
 		{
-			vector<string>* vectWindow = NowUtility::split(line->at(1), NOW_CHAR_OR);
+			vector<wstring>* vectWindow = NowStringProcessor::split(line->at(1), NOW_CHAR_OR);
 			if (vectWindow->size() == 2)
 			{
-				string strWindowName  = vectWindow->at(0);
-				string strWindowTitle = vectWindow->at(1);
+				string strWindowName = NowStringProcessor::wstringTostring(vectWindow->at(0));
+				string strWindowTitle = NowStringProcessor::wstringTostring(vectWindow->at(1));
 				//add to action data
 				NowActionData::getInstance()->addWindowData(strWindowName, strWindowTitle);
 			}
@@ -51,7 +53,7 @@ NOW_RESULT NowExecutor::initialize(const string& dataFileName)
 		//<control>=<window_name>|<control_name>|<property_1>;<value_1>|...
 		else if (actionName.compare("control") == 0)
 		{
-			vector<string>* vectControl = NowUtility::split(line->at(1), NOW_CHAR_OR);
+			vector<wstring>* vectControl = NowStringProcessor::split(line->at(1), NOW_CHAR_OR);
 			if (vectControl->size() > 2)
 			{
 				int nCounter = 0;
@@ -59,20 +61,20 @@ NOW_RESULT NowExecutor::initialize(const string& dataFileName)
 				string strControlName = "";
 				string strProperties = "";
 
-				vector<string>::iterator it = vectControl->begin();
+				vector<wstring>::iterator it = vectControl->begin();
 				for (; it != vectControl->end(); it++)
 				{
 					if (nCounter == 0)
 					{
-						strWindowName = *it;
+						strWindowName = NowStringProcessor::wstringTostring(*it);
 					}
 					else if (nCounter == 1)
 					{
-						strControlName = *it;
+						strControlName = NowStringProcessor::wstringTostring(*it);
 					}
 					else
 					{
-						vector<string>* vectArgument = NowUtility::split(*it, NOW_CHAR_COLON);
+						vector<string>* vectArgument = NowStringProcessor::split(NowStringProcessor::wstringTostring(*it), NOW_CHAR_COLON);
 						if (vectArgument->size() == 2)
 						{
 							strProperties += vectArgument->at(0) + NOW_CHAR_EQUAL + vectArgument->at(1) + NOW_CHAR_OR ; 
@@ -93,8 +95,8 @@ NOW_RESULT NowExecutor::initialize(const string& dataFileName)
 		//<action_name>=<action_argument_1>|<action_argument_2>>...
 		else 
 		{
-			vector<string>* action = NowUtility::split(line->at(1), NOW_CHAR_OR);
-			action->insert(action->begin(), actionName);
+			vector<wstring>* action = NowStringProcessor::split(line->at(1), L'|');
+			action->insert(action->begin(), NowStringProcessor::Utf8ToStlWString(actionName));
 			NowActionData::getInstance()->addActionData(action);
 		}
 	}
@@ -105,7 +107,7 @@ NOW_RESULT NowExecutor::initialize(const string& dataFileName)
 NOW_RESULT NowExecutor::doActions()
 {
 	NOW_RESULT nResult = NOW_FALSE;
-	vector<vector<string>*>* lstActionData = NowActionData::getInstance()->getActionData();
+	vector<vector<wstring>*>* lstActionData = NowActionData::getInstance()->getActionData();
 	if (lstActionData == NULL)
 	{
 		return NOW_FALSE;
@@ -113,12 +115,12 @@ NOW_RESULT NowExecutor::doActions()
 
 	if (lstActionData->size() > 0)
 	{
-		vector<vector<string>*>::iterator it = lstActionData->begin();
+		vector<vector<wstring>*>::iterator it = lstActionData->begin();
 		INowAction* pAction = NULL;
 		for (; it != lstActionData->end(); it++)
 		{
-			vector<string>* actionData = *it;
-			nResult = NowActionManager::getInstance()->getAction(actionData->at(0), pAction);
+			vector<wstring>* actionData = *it;
+			nResult = NowActionManager::getInstance()->getAction(NowStringProcessor::wstringTostring(actionData->at(0)), pAction);
 			if (NOW_SUCCEED(nResult))
 			{
 				nResult = pAction->prepareArguments(actionData);
@@ -129,4 +131,5 @@ NOW_RESULT NowExecutor::doActions()
 			}
 		}
 	}
+	return nResult;
 }

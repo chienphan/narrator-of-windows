@@ -21,9 +21,6 @@
     <ClCompile Include="NowPlugin_UIA.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="NowStringProcessor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="controls\NowButton_UIA.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -69,12 +66,12 @@
     <ClCompile Include="NowWindow_UIA.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="NowStringProcessor_UIA.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NowPlugin_UIA.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="NowStringProcessor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="controls\NowControl_UIA.h">
@@ -123,6 +120,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="NowUIAActionDefine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NowStringProcessor_UIA.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

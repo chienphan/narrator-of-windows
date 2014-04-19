@@ -6,8 +6,7 @@
 class DllExport NowUtility
 {
 public:
-	static vector<vector<string>*>* readData(const string& strFileName);
-	static vector<string>* split(const string& source, char delim);
+	static vector<vector<wstring>*>* readData(const string& strFileName);
 	static void getRectData(vector<string>* data, int& left, int& top, int& widht, int& height);
 };
 

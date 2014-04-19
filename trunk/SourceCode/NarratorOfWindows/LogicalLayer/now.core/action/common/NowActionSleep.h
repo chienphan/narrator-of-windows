@@ -13,7 +13,7 @@ public:
 	NowActionSleep(void);
 	~NowActionSleep(void);
 
-	virtual NOW_RESULT prepareArguments( vector<string>* argumnents );
+	virtual NOW_RESULT prepareArguments( vector<wstring>* argumnents );
 
 	virtual NOW_RESULT doAction();
 
