@@ -32,23 +32,19 @@ NOW_RESULT NowControl_UIA::getCaption( wstring& wstrCaption )
 NOW_RESULT NowControl_UIA::getUIInformation( wstring& wstrHelpText )
 {
 	NOW_RESULT nResult = NOW_FALSE;
-	wstring wstrTemp = L"";
-	nResult = getCaption(wstrTemp);
-	if (NOW_SUCCEED(nResult))
-	{
-		if (!wstrTemp.empty())
-		{
-			wstrHelpText += wstrTemp + L".";
-		}
-	}
-	nResult = NowCommunication::getInstance()->getUIProperty(m_strSignature, NOW_PROP_HELP_TEXT, wstrTemp);
-	if (NOW_SUCCEED(nResult))
-	{
-		if (!wstrTemp.empty())
-		{
-			wstrHelpText += L" " + wstrTemp;
-		}
-	}
+	nResult = NowCommunication::getInstance()->getUIProperty(m_strSignature, NOW_PROP_NAME, wstrHelpText);
+	//wstring wstrCaption = L"";
+	//wstring strStatus = L"";
+	//int nState = 0;
+	//nResult = NowCommunication::getUIProperty(m_strSignature,NOW_PROP_NAME,wstrCaption);
+	//if (NOW_SUCCEED(nResult))
+	//{
+	//	nResult = NowCommunication::getInstance->getStatus(m_strSignature,nState);
+	//	if (NOW_SUCCEED(nResult))
+	//	{
+	//		wstrHelpText = wstrCaption + L" " + NowStringProcessor::Utf8ToStlWString(NowService::getInstance()->ParseState(nState));
+	//	}
+	//}
 	return nResult;
 }
 
