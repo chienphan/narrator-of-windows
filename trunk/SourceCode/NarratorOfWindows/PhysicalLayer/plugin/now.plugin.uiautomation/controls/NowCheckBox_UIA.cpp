@@ -23,12 +23,9 @@ NOW_RESULT NowCheckBox_UIA::getUIInformation(wstring& wrtrHelpText)
 	{
 		int nState = 0;
 		nResult = NowCommunication::getInstance()->getStatus(m_strSignature , nState);
-		char buffer[512];
-		sprintf_s(buffer, "%d ", nState);
-		NowLogger::getInstance()->LogAString(string(buffer));
 		if (NOW_SUCCEED(nResult))
 		{
-			wrtrHelpText = wstrCaption + L" is " + NowStringProcessor::Utf8ToStlWString(NowService::getInstance()->ParseState(nState));
+			wrtrHelpText = wstrCaption + L" check box is " + NowStringProcessor::Utf8ToStlWString(NowService::getInstance()->ParseState(nState));
 		}
 	}
 	return nResult;

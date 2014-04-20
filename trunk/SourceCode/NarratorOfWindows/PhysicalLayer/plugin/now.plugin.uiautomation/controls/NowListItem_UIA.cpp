@@ -18,6 +18,7 @@ NowListItem_UIA::~NowListItem_UIA(void)
 
 NOW_RESULT NowListItem_UIA::getUIInformation(wstring& wrtrHelpText)
 {
-	return NowCommunication::getInstance()->getUIProperty(m_strSignature, NOW_PROP_NAME,wrtrHelpText);
-
+	int nResult =  NowCommunication::getInstance()->getUIProperty(m_strSignature, NOW_PROP_NAME,wrtrHelpText);
+	wrtrHelpText += L" desktop item";
+	return nResult;
 }

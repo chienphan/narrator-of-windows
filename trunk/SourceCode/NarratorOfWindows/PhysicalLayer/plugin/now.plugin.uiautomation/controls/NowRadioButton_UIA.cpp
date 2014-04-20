@@ -21,16 +21,13 @@ NOW_RESULT NowRadioButton_UIA::getUIInformation(wstring& wrtrHelpText)
 	nResult = NowCommunication::getInstance()->getUIProperty(m_strSignature , NOW_PROP_NAME , wstrCaption);
 	if (NOW_SUCCEED(nResult))
 	{
-		/*int nState = 0;
-		nResult = NowCommunication::getInstance()->getUIState(m_strSignature , nState);
-		char buffer[512];
-		sprintf_s(buffer, "%d ", nState);
-		NowLogger::getInstance()->LogAString(string(buffer));
+		int nState = 0;
+		nResult = NowCommunication::getInstance()->getStatus(m_strSignature , nState);
 		if (NOW_SUCCEED(nResult))
 		{
-			wrtrHelpText = wstrCaption + L" " + NowStringProcessor::Utf8ToStlWString(NowService::getInstance()->ParseState(nState));
-		}*/
-		wrtrHelpText = wstrCaption;
+			wrtrHelpText = wstrCaption + L" radio button " + NowStringProcessor::Utf8ToStlWString(NowService::getInstance()->ParseState(nState));
+		}
+		//wrtrHelpText = wstrCaption;
 	}
 	return nResult;
 }
