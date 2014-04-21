@@ -42,7 +42,7 @@ NOW_RESULT NowButton_UIA::getUIInformation( wstring& wstrHelpText )
 			if (wstrToolTip != L"")
 			{
 				NowLogger::getInstance()->LogWString(wstrToolTip);
-				wstrHelpText = wstrCaption +L".Click to "+ wstrToolTip;
+				wstrHelpText = wstrCaption +L". Click to "+ wstrToolTip;
 			}
 			
 			//return nResult;

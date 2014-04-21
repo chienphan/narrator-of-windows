@@ -5,16 +5,25 @@ lesson_description=This lesson help user ....
 #Define windows
 window=Desktop|Program Manager
 window=MicrosoftWordWindow|{.*Microsoft Word.*}
+window=DesktopBar|{}
 ###########################################################
 #Define controls
 control=Desktop|MSWordIcon|NameProperty:Microsoft Word 2010
 control=MicrosoftWordWindow|btnParagraph|HelpTextProperty:Show the Paragraph dialog box.
 control=MicrosoftWordWindow|edit|NameProperty:Microsoft Word Document
+control=DesktopBar|buttonShowDesktop|NameProperty:Show desktop
 ###########################################################
 #Do actions
+#send keys=(^{Esc})
+#click=DesktopBar|buttonShowDesktop|left
+#click=Desktop|MSWordIcon|double
+#sleep=2000
 click=Desktop|MSWordIcon|double
 #click=MicrosoftWordWindow|btnParagraph|left
-sleep=1000
-enter=MicrosoftWordWindow|edit|How to open and save a Microsoft Word Document
+sleep=3000
+enter=MicrosoftWordWindow|edit|How to open and save a Microsoft Word Document{Tab}Xin chào các bạn!
+#send keys=^a
+#sleep=1000
+#click=DesktopBar|buttonShowDesktop|left
 #enter=NotePad|Editer|How to open and save a Microsoft Word Document
 #click=StartWindow|StartButton|left
