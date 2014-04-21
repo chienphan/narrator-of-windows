@@ -27,6 +27,7 @@ NowMatching* NowMatching::getInstance()
 
 NOW_RESULT NowMatching::matchWindow(const char* szWindowName)
 {
+	NOW_RESULT nRet = NOW_FALSE;
 	INowWindow* pWindow = NULL;
 
 	//Get list of plug-ins 
@@ -43,19 +44,22 @@ NOW_RESULT NowMatching::matchWindow(const char* szWindowName)
 		{
 			string strWindowTitle = "";
 			NowActionData::getInstance()->getWindowTitle(string(szWindowName), strWindowTitle);
-			//Get control element at mouse point and keep to cache if succeed
-			NOW_RESULT nRet = (*it)->matchWindow(strWindowTitle.c_str(), pWindow);
+
+			nRet = (*it)->matchWindow(strWindowTitle.c_str(), pWindow);
 			if (NOW_SUCCEED(nRet))
 			{
 				break;
 			}
 		}
 
-		NowStorage::getInstance()->keepWindow(szWindowName, pWindow);
-		return NOW_OK;
+		if (NOW_SUCCEED(nRet))
+		{
+			NowStorage::getInstance()->keepWindow(szWindowName, pWindow);
+		}
+		
 	}
 
-	return NOW_FALSE;
+	return nRet;
 }
 
 NOW_RESULT NowMatching::matchControl( const char* szControlName)
@@ -91,8 +95,10 @@ NOW_RESULT NowMatching::matchControl( const char* szControlName)
 					}
 				}
 
-				NowStorage::getInstance()->keepControl(szControlName, pControl);
-				nResult = NOW_OK;
+				if (NOW_SUCCEED(nResult))
+				{
+					NowStorage::getInstance()->keepControl(szControlName, pControl);
+				}
 			}
 		}
 	}

@@ -68,7 +68,7 @@ NOW_RESULT NowPlugin_UIA::matchWindow( const char* szTitleWindow, INowWindow*& p
 	NOW_RESULT nResult = NOW_FALSE;
 	string strWindowHandle = "";
 	string strTitleWindow = string(szTitleWindow);
-	//NowLogger::getInstance()->LogAString("[NowPlugin_UIA::matchWindow]" + strTitleWindow);
+	NowLogger::getInstance()->LogAString("[NowPlugin_UIA::matchWindow]" + strTitleWindow);
 	nResult = NowCommunication::getInstance()->getWindowByTitle(strTitleWindow, strWindowHandle);
 	if (NOW_SUCCEED(nResult))
 	{

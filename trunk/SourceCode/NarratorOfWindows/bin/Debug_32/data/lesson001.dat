@@ -4,7 +4,7 @@ lesson_description=This lesson help user ....
 ###########################################################
 #Define windows
 window=Desktop|Program Manager
-window=MicrosoftWordWindow|{.*Microsoft Word.*}
+window=MicrosoftWordWindow|{Document.*Microsoft Word.*}
 window=DesktopBar|{}
 ###########################################################
 #Define controls
@@ -20,7 +20,7 @@ control=DesktopBar|buttonShowDesktop|NameProperty:Show desktop
 #sleep=2000
 click=Desktop|MSWordIcon|double
 #click=MicrosoftWordWindow|btnParagraph|left
-sleep=3000
+#sleep=3000
 enter=MicrosoftWordWindow|edit|How to open and save a Microsoft Word Document{Tab}Xin chào các bạn!
 #send keys=^a
 #sleep=1000

@@ -60,5 +60,5 @@ NOW_RESULT NowActionClick::doAction()
 			}
 		}
 	}
-	return NOW_OK;
+	return nResult;
 }
