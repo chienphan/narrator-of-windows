@@ -65,5 +65,5 @@ NOW_RESULT NowActionEnter::doAction()
 			}
 		}
 	}
-	return NOW_OK;
+	return nResult;
 }

@@ -20,14 +20,14 @@ namespace now.agent.uiautomation.client.action.common
             AutomationElement window = NowUIAStorageAction.GetInstance().GetUIObjectFormCache(strWindowHandle);
             if (window != null)
             {
-                //NowUIALogger.GetInstance().LogInfor("[GetControlByCondition] window: " + window.Current.Name);
+                NowUIALogger.GetInstance().LogInfor("[GetControlByCondition] window: " + window.Current.Name);
                 Condition condControl = NowUIAService.GetInstance().GetCondition(strPropsData);
                 if (condControl != null)
                 {
                     AutomationElement control = window.FindFirst(TreeScope.Descendants, condControl);
                     if (control != null)
                     {
-                        //NowUIALogger.GetInstance().LogInfor("[GetControlByCondition] control: " + control.Current.Name);
+                        NowUIALogger.GetInstance().LogInfor("[GetControlByCondition] control: " + control.Current.Name);
                         String strSignatureControl = NowUIAService.GetInstance().GetSignature(control);
                         String strControlType = control.Current.LocalizedControlType;
                         NowUIAArgumentOut.GetInstance().Data = strSignatureControl + "|" + strControlType;

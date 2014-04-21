@@ -1,6 +1,7 @@
 #include "NowStorage.h"
 #include "NowActionData.h"
 #include "NowMatching.h"
+#include "NowLogger.h"
 
 NowStorage* NowStorage::m_instance = 0;
 
@@ -56,7 +57,13 @@ NOW_RESULT NowStorage::getWindow( const char* szWindowName, INowWindow*& pWindow
 		//window is not match, re-matching window
 		if (nResult == NOW_FALSE)
 		{
-			nResult = NowMatching::getInstance()->matchWindow(strWindowName.c_str());
+			long nDeadline = GetTickCount() + NOW_WAIT_TIME;
+			do
+			{
+				nResult = NowMatching::getInstance()->matchWindow(strWindowName.c_str());
+				Sleep(NOW_DELAY_TIME);
+			}
+			while(nDeadline > GetTickCount() && !NOW_SUCCEED(nResult));
 		}
 
 		//re-get window
@@ -70,7 +77,6 @@ NOW_RESULT NowStorage::getWindow( const char* szWindowName, INowWindow*& pWindow
 			nResult = NOW_FALSE;
 		}
 	}
-
 	return nResult;
 }
 
@@ -126,7 +132,13 @@ NOW_RESULT NowStorage::getControl(const char* szControlName, INowControl*& pCont
 		//window is not match, re-matching window
 		if (nResult == NOW_FALSE)
 		{
-			nResult = NowMatching::getInstance()->matchControl(strControlName.c_str());
+			long nDeadline = GetTickCount() + NOW_WAIT_TIME;
+			do
+			{
+				nResult = NowMatching::getInstance()->matchControl(strControlName.c_str());
+				Sleep(NOW_DELAY_TIME);
+			}
+			while(nDeadline > GetTickCount() && !NOW_SUCCEED(nResult));
 		}
 
 		//re-get window
@@ -140,8 +152,8 @@ NOW_RESULT NowStorage::getControl(const char* szControlName, INowControl*& pCont
 			nResult = NOW_FALSE;
 		}
 	}
-
 	return nResult;
+	
 }
 
 NOW_RESULT NowStorage::getControlFromStogare(const string& strControlName, INowControl*& pControl)

@@ -8,6 +8,9 @@
 #define NOW_SUCCEED(x) (x>=0)
 //#define CREATE_WSTRING(x) L"x"
 
+#define NOW_WAIT_TIME 20000 //20s
+#define NOW_DELAY_TIME 100
+
 #define NOW_DEBUG_DIRECTORY "NOW_DEBUG_DIRECTORY"
 #define NOW_DEBUG_MODE		"NOW_DEBUG_MODE"
 
