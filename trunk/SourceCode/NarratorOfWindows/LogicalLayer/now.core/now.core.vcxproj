@@ -78,11 +78,11 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <CompileAs>CompileAsCpp</CompileAs>
-      <AdditionalIncludeDirectories>$(ProjectDir)interface\;$(ProjectDir)define\;$(SolutionDir)PhysicalLayer\lib\now.lib.device\;$(SolutionDir)PhysicalLayer\lib\now.lib.logger\;$(ProjectDir)action\common\;$(ProjectDir);$(ProjectDir)Utility\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)PhysicalLayer\lib\now.lib.device\;$(SolutionDir)PhysicalLayer\lib\now.lib.logger\;$(SolutionDir)PhysicalLayer\lib\now.lib.tcpip\;$(ProjectDir);$(ProjectDir)define\;$(ProjectDir)interface\;$(ProjectDir)Utility\;$(ProjectDir)action\common\;$(ProjectDir)action\tcp\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.lib.device.lib;$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.lib.logger.lib</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.lib.device.lib;$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.lib.logger.lib;$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.lib.tcpip.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -103,13 +103,13 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>$(ProjectDir)interface\;$(ProjectDir)define\;$(SolutionDir)PhysicalLayer\lib\now.lib.device\;$(SolutionDir)PhysicalLayer\lib\now.lib.logger\;$(ProjectDir)action\common\;$(ProjectDir);$(ProjectDir)Utility\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)PhysicalLayer\lib\now.lib.device\;$(SolutionDir)PhysicalLayer\lib\now.lib.logger\;$(SolutionDir)PhysicalLayer\lib\now.lib.tcpip\;$(ProjectDir);$(ProjectDir)define\;$(ProjectDir)interface\;$(ProjectDir)Utility\;$(ProjectDir)action\common\;$(ProjectDir)action\tcp\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.lib.device.lib;$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.lib.logger.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.lib.device.lib;$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.lib.logger.lib;$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.lib.tcpip.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -138,6 +138,7 @@
     <ClInclude Include="action\common\NowActionEnter.h" />
     <ClInclude Include="action\common\NowActionSleep.h" />
     <ClInclude Include="action\common\NowActionSendKeys.h" />
+    <ClInclude Include="action\tcp\NowActionSendData.h" />
     <ClInclude Include="NowMatching.h" />
     <ClInclude Include="NowPluginManager.h" />
     <ClInclude Include="NowStorage.h" />
@@ -151,6 +152,7 @@
     <ClCompile Include="action\common\NowActionEnter.cpp" />
     <ClCompile Include="action\common\NowActionSleep.cpp" />
     <ClCompile Include="action\common\NowActionSendKeys.cpp" />
+    <ClCompile Include="action\tcp\NowActionSendData.cpp" />
     <ClCompile Include="NowMatching.cpp" />
     <ClCompile Include="NowPluginManager.cpp" />
     <ClCompile Include="NowStorage.cpp" />
