@@ -66,6 +66,9 @@
     <ClInclude Include="Utility\NowStringProcessor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="action\tcp\NowActionSendData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NowPluginManager.cpp">
@@ -99,6 +102,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Utility\NowStringProcessor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="action\tcp\NowActionSendData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

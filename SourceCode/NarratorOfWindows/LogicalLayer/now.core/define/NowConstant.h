@@ -90,5 +90,6 @@
 #define NOW_ACTION_ENTER				"enter"
 #define NOW_ACTION_SLEEP				"sleep"
 #define NOW_ACTION_SENDKEYS				"send keys"
+#define NOW_ACTION_SEND_DATA			"send data"
 
 #endif

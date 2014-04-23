@@ -5,6 +5,7 @@
 #include "NowActionEnter.h"
 #include "NowActionSleep.h"
 #include "NowActionSendKeys.h"
+#include "NowActionSendData.h"
 
 NowActionManager* NowActionManager::m_instance = NULL;
 
@@ -43,5 +44,6 @@ void NowActionManager::initialize()
 	m_mapAction->insert(pair<string, INowAction*>(NOW_ACTION_ENTER, new NowActionEnter()));
 	m_mapAction->insert(pair<string, INowAction*>(NOW_ACTION_SLEEP, new NowActionSleep()));
 	m_mapAction->insert(pair<string, INowAction*>(NOW_ACTION_SENDKEYS, new NowActionSendKeys()));
+	m_mapAction->insert(pair<string, INowAction*>(NOW_ACTION_SEND_DATA, new NowActionSendData()));
 }
 
