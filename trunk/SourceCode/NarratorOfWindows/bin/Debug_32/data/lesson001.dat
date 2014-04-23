@@ -27,3 +27,4 @@ enter=MicrosoftWordWindow|edit|How to open and save a Microsoft Word Document{Ta
 #click=DesktopBar|buttonShowDesktop|left
 #enter=NotePad|Editer|How to open and save a Microsoft Word Document
 #click=StartWindow|StartButton|left
+send data=Xin chào các bạn! How to open and save a Microsoft Word Document

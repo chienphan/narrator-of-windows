@@ -30,6 +30,8 @@
 #define NOW_LOGGER_DEBUGVIEW_MODE	1
 #define NOW_LOGGER_FILE_MODE		2
 
+#define NOW_LOCAL_HOST			"127.0.0.1"
+
 #define NOW_CHAR_EQUAL '='
 #define NOW_CHAR_OR '|'
 #define NOW_CHAR_COLON ':'

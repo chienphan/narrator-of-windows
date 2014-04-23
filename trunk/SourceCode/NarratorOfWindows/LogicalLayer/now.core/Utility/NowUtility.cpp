@@ -12,16 +12,7 @@ vector<vector<wstring>*>* NowUtility::readData(const string& strFileName)
 		return NULL;
 	}
 
-	string strFullPath = "";
-	string strDirectory = NowDevice::getEnvironmentVariable(NOW_DEBUG_DIRECTORY);
-	if (strDirectory.empty())
-	{
-		strFullPath = NowDevice::getCurrentDirectory() + strFileName;
-	}
-	else
-	{
-		strFullPath = strDirectory + strFileName;
-	}
+	string strFullPath = NowDevice::getInstallDirectory() + strFileName;
 
 	vector<wstring>* tempData = NowDevice::getFileData(strFullPath);
 	vector<wstring>::iterator it = tempData->begin();

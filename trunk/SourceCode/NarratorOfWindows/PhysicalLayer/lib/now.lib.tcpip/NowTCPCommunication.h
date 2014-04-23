@@ -6,6 +6,7 @@
 class DllExport NowTCPCommunication
 {
 private:
+	int m_nPort;
 	static NowTCPCommunication* m_instance;
 	NowTCPCommunication(void);
 
