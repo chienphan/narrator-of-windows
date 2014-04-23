@@ -24,6 +24,12 @@
     <ClInclude Include="NowTCPCommunication.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\LogicalLayer\now.core\Utility\NowStringProcessor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\plugin\now.plugin.uiautomation\NowStringProcessor_UIA.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp">
@@ -33,6 +39,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="NowTCPCommunication.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\LogicalLayer\now.core\Utility\NowStringProcessor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\plugin\now.plugin.uiautomation\NowStringProcessor_UIA.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

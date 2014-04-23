@@ -163,3 +163,18 @@ vector<wstring>* NowDevice::getFileData( const string& strFullPath )
 	}
 	return result;
 }
+
+std::string NowDevice::getInstallDirectory()
+{
+	string strFullPath = "";
+	string strDirectory = NowDevice::getEnvironmentVariable(NOW_DEBUG_DIRECTORY);
+	if (strDirectory.empty())
+	{
+		strFullPath = NowDevice::getCurrentDirectory();
+	}
+	else
+	{
+		strFullPath = strDirectory;
+	}
+	return strFullPath;
+}

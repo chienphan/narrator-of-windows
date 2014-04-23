@@ -36,6 +36,7 @@ public:
 	static void					sleep(int milisecond);
 	static string				getEnvironmentVariable(const string& strVariable);
 	static vector<wstring>*		getFileData(const string& strFullPath);
+	static string				getInstallDirectory();
 };
 
 #endif
