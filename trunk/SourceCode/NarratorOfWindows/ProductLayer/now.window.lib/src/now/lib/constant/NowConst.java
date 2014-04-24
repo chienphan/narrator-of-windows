@@ -14,6 +14,7 @@ public class NowConst {
     public static final String NOW_DEBUG_DIRECTORY          = "NOW_DEBUG_DIRECTORY"; 
     public static final String NOW_DEBUG_MODE               = "NOW_DEBUG_MODE"; 
     public static final String NOW_NATIVE_LIB               = "now.lib.jniwrapper.dll";
+    public static final String NOW_TCP_CONFIG_FILE          = "config\\tcp.txt";
     
     public static final String NOW_BACKSLASH                = "\\";
     public static final String NOW_EMPTY_STRING             = "";
@@ -31,4 +32,6 @@ public class NowConst {
     
     public static final int NOW_BUTTON_HEIGHT = 25;
     public static final int NOW_BUTTON_WIDTH  = 75;
+    
+    public static final int NOW_TCP_IP_DEFAULT_PORT = 31261;
 }
