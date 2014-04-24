@@ -6,6 +6,8 @@
 
 package now.widgets.main;
 
+import now.lib.tcp.NowServerSocket;
+
 /**
  *
  * @author Administrator
@@ -16,6 +18,15 @@ public class NowMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Thread notificationThread = new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                NowServerSocket.getInstance().startListening();
+            }
+        });
+        notificationThread.start();
+                
         NowSystemTray.getInstance().showSystemTray();
     }
 }
