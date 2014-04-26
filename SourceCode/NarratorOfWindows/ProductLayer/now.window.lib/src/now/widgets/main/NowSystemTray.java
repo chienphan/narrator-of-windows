@@ -59,6 +59,7 @@ public class NowSystemTray implements NativeKeyListener {
     private MenuItem    m_menuConfigWindow = null;
     private MenuItem    m_separator        = null;
     private MenuItem    m_menuClose        = null;
+    private MenuItem    m_menuMainWindow   = null;
     
     private NowSystemTray(){
         //Create display and init the shell
@@ -74,10 +75,10 @@ public class NowSystemTray implements NativeKeyListener {
             m_image                 = new Image(m_display, m_imageData);
             m_itemTray              = new TrayItem(m_tray, SWT.NONE);
             m_popupMenu             = new Menu(m_systemTrayShell, SWT.POP_UP);
+            m_menuMainWindow        = new MenuItem(m_popupMenu, SWT.PUSH);
             m_menuConfigWindow      = new MenuItem(m_popupMenu, SWT.PUSH);
             m_separator             = new MenuItem(m_popupMenu, SWT.SEPARATOR);
             m_menuClose             = new MenuItem(m_popupMenu, SWT.PUSH);
-
             
             //init listener
             initListener();
@@ -121,6 +122,15 @@ public class NowSystemTray implements NativeKeyListener {
             }
         });
         
+        //Open main window
+        m_menuMainWindow.addListener(SWT.Selection, new Listener() {
+
+            @Override
+            public void handleEvent(Event event) {
+                NowMainWindow.getInstance().showWindow(m_display);
+            }
+        });
+        
         //Close the app
         m_menuClose.addListener(SWT.Selection, new Listener() {
 
@@ -155,13 +165,14 @@ public class NowSystemTray implements NativeKeyListener {
         //Set tooltip for tray icon
         updateContent();
         m_itemTray.setImage(m_image);
-        m_popupMenu.setDefaultItem(m_menuConfigWindow);
+        m_popupMenu.setDefaultItem(m_menuMainWindow);
     }
     
     private void updateContent(){
         m_itemTray.setToolTipText(DisplayText.getInstance().getText(DefineDisplayCode.SYSTEM_TRAY_CLICK_SHOW_MENU));
         m_menuConfigWindow.setText(DisplayText.getInstance().getText(DefineDisplayCode.SYSTEM_TRAY_CONFIGURATION));
         m_menuClose.setText(DisplayText.getInstance().getText(DefineDisplayCode.SYSTEM_TRAY_EXIT));
+        m_menuMainWindow.setText(DisplayText.getInstance().getText(DefineDisplayCode.SYSTEM_TRAY_MAIN_WINDOW));
     }
     
     private void beginKeyboardListener(){
@@ -187,6 +198,7 @@ public class NowSystemTray implements NativeKeyListener {
     }
         
     public void showSystemTray(){
+        NowMainWindow.getInstance().showWindow(m_display);
         beginKeyboardListener();
         while (!m_systemTrayShell.isDisposed()) {
           if (!m_display.readAndDispatch())

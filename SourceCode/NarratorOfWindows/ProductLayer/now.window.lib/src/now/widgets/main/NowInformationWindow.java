@@ -278,7 +278,7 @@ public class NowInformationWindow implements NativeMouseInputListener, NativeKey
     public void initWindow(Display display){
         if(m_shell == null){
             //Create new shell
-            m_shell = new Shell(display, SWT.BORDER_DASH | SWT.ON_TOP);
+            m_shell = new Shell(display, SWT.TOOL | SWT.ON_TOP);
             initializeWindow();
             initializeDistance();
             //m_shell.setVisible(false);
