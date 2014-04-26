@@ -11,6 +11,7 @@ package now.widgets.main;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import now.lib.tcp.NowServerSocket;
 
 
 /**
@@ -24,22 +25,29 @@ public class NowMain {
      */
     public static void main(String[] args) {
         
-            //        Thread notificationThread = new Thread(new Runnable() {
-//
-//            @Override
-//            public void run() {
-//                NowServerSocket.getInstance().startListening();
-//            }
-//        });
-//        notificationThread.start();
+        Thread notificationThread = new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                NowServerSocket.getInstance().startListening();
+            }
+        });
+        notificationThread.start();
+        
+        NowSystemTray.getInstance().showSystemTray();
                 
-//        NowSystemTray.getInstance().showSystemTray();
-        String exePath = "f:\\My_Data\\narrator-of-windows\\SourceCode\\NarratorOfWindows\\bin\\Debug_32\\now.play.exe";
-        String arg = "\\data\\lesson001.dat";
         try {
-            Process process = new ProcessBuilder( exePath, arg ).start();
-        } catch (IOException ex) {
+            Thread.sleep(5000);
+        } catch (InterruptedException ex) {
             Logger.getLogger(NowMain.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+//        String exePath = "f:\\My_Data\\narrator-of-windows\\SourceCode\\NarratorOfWindows\\bin\\Debug_32\\now.play.exe";
+//        String arg = "\\data\\lesson001.dat";
+//        try {
+//            Process process = new ProcessBuilder( exePath, arg ).start();
+//        } catch (IOException ex) {
+//            Logger.getLogger(NowMain.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 }
