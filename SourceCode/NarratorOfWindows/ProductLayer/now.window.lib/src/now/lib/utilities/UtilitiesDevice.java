@@ -51,11 +51,41 @@ public class UtilitiesDevice {
         System.out.println("\n[loadLibrary] ok!!"); 
         return true;
     }
+    
+    public static ArrayList<String> getAllFileName(File directory){
+        ArrayList<String> result = new ArrayList<>();
+        for (final File fileEntry : directory.listFiles()) {
+            if (fileEntry.isFile()) {
+                result.add(fileEntry.getName());
+            }
+        }
+        return result;
+    }
 
     public static ArrayList<String> getAllFile(File directory){
         ArrayList<String> result = new ArrayList<>();
         for (final File fileEntry : directory.listFiles()) {
             if (fileEntry.isFile()) {
+                result.add(fileEntry.getPath());
+            }
+        }
+        return result;
+    }
+    
+    public static ArrayList<String> getAllDirectoryName(File directory){
+        ArrayList<String> result = new ArrayList<>();
+        for (final File fileEntry : directory.listFiles()) {
+            if (fileEntry.isDirectory()) {
+                result.add(fileEntry.getName());
+            }
+        }
+        return result;
+    }
+    
+    public static ArrayList<String> getAllDirectory(File directory){
+        ArrayList<String> result = new ArrayList<>();
+        for (final File fileEntry : directory.listFiles()) {
+            if (fileEntry.isDirectory()) {
                 result.add(fileEntry.getPath());
             }
         }

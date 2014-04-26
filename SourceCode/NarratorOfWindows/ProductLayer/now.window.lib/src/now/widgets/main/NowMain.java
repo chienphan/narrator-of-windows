@@ -8,15 +8,11 @@ package now.widgets.main;
 
 //import now.lib.tcp.NowServerSocket;
 
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import now.lib.tcp.NowServerSocket;
-
 
 /**
  *
- * @author Administrator
+ * @author Chien.Phan
  */
 public class NowMain {
 
@@ -35,19 +31,5 @@ public class NowMain {
         notificationThread.start();
         
         NowSystemTray.getInstance().showSystemTray();
-                
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(NowMain.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-//        String exePath = "f:\\My_Data\\narrator-of-windows\\SourceCode\\NarratorOfWindows\\bin\\Debug_32\\now.play.exe";
-//        String arg = "\\data\\lesson001.dat";
-//        try {
-//            Process process = new ProcessBuilder( exePath, arg ).start();
-//        } catch (IOException ex) {
-//            Logger.getLogger(NowMain.class.getName()).log(Level.SEVERE, null, ex);
-//        }
     }
 }

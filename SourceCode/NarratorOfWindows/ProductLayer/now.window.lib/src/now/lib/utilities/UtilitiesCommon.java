@@ -6,6 +6,8 @@
 
 package now.lib.utilities;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Chien Phan
@@ -26,5 +28,47 @@ public class UtilitiesCommon {
             }
         }
         return index;
+    }
+
+    public static String getLessonName(String path) {
+        UtilitiesFileTXT file = new UtilitiesFileTXT(path);
+        ArrayList<String[]> data = file.readTextFile();
+        
+        for (String[] strings : data) {
+            if(strings.length == 2){
+                if (strings[0].equals("lesson_name")) {
+                    return strings[1];
+                }
+            }
+        }
+        return "";
+    }
+    
+    public static String getLessonNo(String path) {
+        UtilitiesFileTXT file = new UtilitiesFileTXT(path);
+        ArrayList<String[]> data = file.readTextFile();
+        
+        for (String[] strings : data) {
+            if(strings.length == 2){
+                if (strings[0].equals("lesson_no")) {
+                    return strings[1];
+                }
+            }
+        }
+        return "";
+    }
+    
+    public static String getLessonDescription(String path) {
+        UtilitiesFileTXT file = new UtilitiesFileTXT(path);
+        ArrayList<String[]> data = file.readTextFile();
+        
+        for (String[] strings : data) {
+            if(strings.length == 2){
+                if (strings[0].equals("lesson_description")) {
+                    return strings[1];
+                }
+            }
+        }
+        return "";
     }
 }
