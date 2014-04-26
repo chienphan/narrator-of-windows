@@ -136,6 +136,7 @@ public class NowSystemTray implements NativeKeyListener {
 
             @Override
             public void handleEvent(Event event) {
+                GlobalScreen.unregisterNativeHook();
                 m_itemTray.dispose();
                 System.exit(0);
             }
@@ -198,7 +199,9 @@ public class NowSystemTray implements NativeKeyListener {
     }
         
     public void showSystemTray(){
+        //Show main ưindow 
         NowMainWindow.getInstance().showWindow(m_display);
+        
         beginKeyboardListener();
         while (!m_systemTrayShell.isDisposed()) {
           if (!m_display.readAndDispatch())

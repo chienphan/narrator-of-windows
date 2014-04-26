@@ -1,0 +1,19 @@
+lesson_no=1
+lesson_name=Sử dụng Tab
+lesson_description=Bài tập này hướng dẫn bạn thực hành với Tab
+###########################################################
+#Define windows
+window=Desktop|Program Manager
+window=MicrosoftWordWindow|{Document.*Microsoft Word.*}
+window=DesktopBar|{}
+###########################################################
+#Define controls
+control=Desktop|MSWordIcon|NameProperty:Microsoft Word 2010
+control=MicrosoftWordWindow|btnParagraph|HelpTextProperty:Show the Paragraph dialog box.
+control=MicrosoftWordWindow|edit|NameProperty:Microsoft Word Document
+control=DesktopBar|buttonShowDesktop|NameProperty:Show desktop
+###########################################################
+#Do actions
+click=Desktop|MSWordIcon|double
+send data=Trình bày văn bản với Tab
+enter=MicrosoftWordWindow|edit|Xin chào các bạn!{enter}Đây là bài học trình bày văn bản với Tab.

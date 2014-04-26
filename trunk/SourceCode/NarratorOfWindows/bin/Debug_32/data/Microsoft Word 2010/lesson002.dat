@@ -1,0 +1,19 @@
+lesson_no=2
+lesson_name=Thay đổi kiểu chữ
+lesson_description=Bài tập này hướng dẫn bạn cách thay đổi các kiểu chữ.
+###########################################################
+#Define windows
+window=Desktop|Program Manager
+window=MicrosoftWordWindow|{Document.*Microsoft Word.*}
+window=DesktopBar|{}
+###########################################################
+#Define controls
+control=Desktop|MSWordIcon|NameProperty:Microsoft Word 2010
+control=MicrosoftWordWindow|btnParagraph|HelpTextProperty:Show the Paragraph dialog box.
+control=MicrosoftWordWindow|edit|NameProperty:Microsoft Word Document
+control=DesktopBar|buttonShowDesktop|NameProperty:Show desktop
+###########################################################
+#Do actions
+click=Desktop|MSWordIcon|double
+send data=Thay đổi kiểu chữ.
+enter=MicrosoftWordWindow|edit|Xin chào các bạn!{enter}Đây là bài học thay đổi kiểu chữ.
