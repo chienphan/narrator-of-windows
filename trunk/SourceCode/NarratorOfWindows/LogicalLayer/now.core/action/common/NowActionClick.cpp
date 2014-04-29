@@ -9,21 +9,42 @@ NowActionClick::NowActionClick(void)
 {
 	m_control = NULL;
 	m_window = NULL;
+	m_strWindowName = "";
+	m_strControlname = "";
+	m_clickType = "";
+	m_x = 0;
+	m_y = 0;
 }
-
 
 NowActionClick::~NowActionClick(void)
 {
 
 }
 
-//click=<window_name>|<control_name>|<click_type>
+//click=<window_name>|<control_name>|<click_type>|<x(optional)>|<y(optional)>
 NOW_RESULT NowActionClick::prepareArguments(vector<wstring>* argumnents)
 {
 	NOW_RESULT nResult = NOW_FALSE;
 	m_strWindowName = NowStringProcessor::wstringTostring(argumnents->at(1));
 	m_strControlname = NowStringProcessor::wstringTostring(argumnents->at(2));
 	m_clickType = NowStringProcessor::wstringTostring(argumnents->at(3));
+
+	if (argumnents->size() == 6)
+	{
+		string strX = NowStringProcessor::wstringTostring(argumnents->at(4));
+		string strY = NowStringProcessor::wstringTostring(argumnents->at(5));
+
+		if (!strX.empty() && !strY.empty())
+		{
+			m_x = atoi(strX.c_str());
+			m_y = atoi(strY.c_str());
+			NowLogger::getInstance()->LogAString("[NowActionClick::prepareArguments]");
+			NowLogger::getInstance()->LogInt(m_x);
+			NowLogger::getInstance()->LogInt(m_y);
+		}
+	}
+	
+
 	nResult = NowStorage::getInstance()->getWindow(m_strWindowName.c_str(), m_window);
 	if (NOW_SUCCEED(nResult))
 	{
@@ -40,7 +61,7 @@ NOW_RESULT NowActionClick::doAction()
 	{
 		m_window->bringToTop();
 	}
-	Sleep(500);
+	Sleep(100);
 	string strValue;// = "";
 	if (m_control != NULL)
 	{
@@ -56,7 +77,16 @@ NOW_RESULT NowActionClick::doAction()
 				int width = 0;
 				int height = 0;
 				NowUtility::getRectData(vec, left, top, width, height);
-				NowDeviceMouse::clickMouse(left + width / 2, top + height / 2, NowDeviceMouse::getClickType(m_clickType));
+
+				if (m_x > 0 && m_y > 0)
+				{
+					NowDeviceMouse::clickMouse(left + m_x, top + m_y, NowDeviceMouse::getClickType(m_clickType));
+				}
+				else
+				{
+					NowDeviceMouse::clickMouse( left + width / 2, top + height / 2, NowDeviceMouse::getClickType(m_clickType));
+				}
+				
 			}
 		}
 	}

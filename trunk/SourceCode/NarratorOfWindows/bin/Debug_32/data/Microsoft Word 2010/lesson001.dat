@@ -1,6 +1,6 @@
 lesson_no=1
-lesson_name=Sử dụng Tab
-lesson_description=Bài tập này hướng dẫn bạn thực hành với Tab
+lesson_name=1. Thay đổi kiểu chữ
+lesson_description=Bài tập này hướng dẫn bạn cách thay đổi các kiểu chữ.
 ###########################################################
 #Define windows
 window=Desktop|Program Manager
@@ -15,5 +15,5 @@ control=DesktopBar|buttonShowDesktop|NameProperty:Show desktop
 ###########################################################
 #Do actions
 click=Desktop|MSWordIcon|double
-send data=Trình bày văn bản với Tab
-enter=MicrosoftWordWindow|edit|Xin chào các bạn!{enter}Đây là bài học trình bày văn bản với Tab.
+send data=Thay đổi kiểu chữ.
+enter=MicrosoftWordWindow|edit|Xin chào các bạn!{enter}Đây là bài học thay đổi kiểu chữ.

@@ -247,7 +247,7 @@ public class NowMainWindow {
                     TreeItem selectedItem = m_treeData.getSelection()[0];
                     String data = "." + (String)selectedItem.getData();
                     if(!data.equals(".")){
-                        final String content = "<b>Bài tập số "+ UtilitiesCommon.getLessonNo(data) +": "+ UtilitiesCommon.getLessonName(data) +"</b>"
+                        final String content = "<b>Bài tập " + UtilitiesCommon.getLessonName(data) +"</b>"
                                 + "<br/><code>" +  UtilitiesCommon.getLessonDescription(data) + "</code>";
                         
                         Display.getDefault().syncExec(new Runnable() {

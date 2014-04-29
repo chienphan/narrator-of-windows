@@ -6,7 +6,7 @@ public class ConfigDefine {
 	public static final String FILE_CONFIG_LANGUAGE_CODE_MICROSOFT 	= "config\\LanguageCodeMicrosoft.ini";
         public static final String FILE_IMAGE_TRAY_ICON         = "resource\\tray-icon.gif";
 	public static final String DIRECTORY_DATA               = "data";
-        public static final String DIRECTORY_EXECUTABLE = "C:\\narrator-of-windows\\SourceCode\\NarratorOfWindows\\bin\\Debug_32\\now.play.exe";
+        public static final String DIRECTORY_EXECUTABLE = ".\\now.play.exe";
         
         public static final String LANGUAGE_CONFIG_INPUT 	= "inputlanguage";
 	public static final String LANGUAGE_CONFIG_OUTPUT 	= "outputlanguage";

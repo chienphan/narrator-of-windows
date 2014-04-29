@@ -37,7 +37,7 @@ NOW_RESULT NowActionEnter::doAction()
 	{
 		m_window->bringToTop();
 	}
-	Sleep(500);
+	Sleep(100);
 	string strValue;// = "";
 	if (m_control != NULL)
 	{
@@ -54,14 +54,10 @@ NOW_RESULT NowActionEnter::doAction()
 				int height = 0;
 				NowUtility::getRectData(vec, left, top, width, height);
 				NowDeviceMouse::clickMouse(left + width / 2, top + height / 2, NowDeviceMouse::getClickType("left"));
-				//Sleep(100);
-				//enter keys
-				NowDeviceKeyboard::sendKey(L"^a");
-				//Sleep(50);
-				NowDeviceKeyboard::sendKey(L"{DEL}");
-				//Sleep(50);
-				NowDeviceKeyboard::sendKey(m_strContent);
 				
+				//NowDeviceKeyboard::sendKey(L"^a");
+				//NowDeviceKeyboard::sendKey(L"{DEL}");
+				NowDeviceKeyboard::sendKey(m_strContent);
 			}
 		}
 	}
