@@ -9,9 +9,13 @@ class NowActionClick : public INowAction
 private:
 	INowControl* m_control;
 	INowWindow* m_window;
+
 	string m_strWindowName;
 	string m_strControlname;
 	string m_clickType;
+
+	int m_x;
+	int m_y;
 public:
 	NowActionClick(void);
 	~NowActionClick(void);

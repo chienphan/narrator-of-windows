@@ -1,19 +1,84 @@
 lesson_no=2
-lesson_name=Thay đổi kiểu chữ
-lesson_description=Bài tập này hướng dẫn bạn cách thay đổi các kiểu chữ.
+lesson_name=2. Sử dụng Tab
+lesson_description=Bài tập này hướng dẫn bạn thực hành với Tab
 ###########################################################
 #Define windows
 window=Desktop|Program Manager
 window=MicrosoftWordWindow|{Document.*Microsoft Word.*}
-window=DesktopBar|{}
 ###########################################################
 #Define controls
 control=Desktop|MSWordIcon|NameProperty:Microsoft Word 2010
 control=MicrosoftWordWindow|btnParagraph|HelpTextProperty:Show the Paragraph dialog box.
-control=MicrosoftWordWindow|edit|NameProperty:Microsoft Word Document
-control=DesktopBar|buttonShowDesktop|NameProperty:Show desktop
+control=MicrosoftWordWindow|btnShowAll|NameProperty:Show All
+control=MicrosoftWordWindow|btnShowParagraphWindow|NameProperty:Paragraph...
+control=MicrosoftWordWindow|editWord|NameProperty:Microsoft Word Document
+control=MicrosoftWordWindow|btnTab|AutomationIdProperty:79
+control=MicrosoftWordWindow|editDistance|AutomationIdProperty:17
 ###########################################################
 #Do actions
 click=Desktop|MSWordIcon|double
-send data=Thay đổi kiểu chữ.
-enter=MicrosoftWordWindow|edit|Xin chào các bạn!{enter}Đây là bài học thay đổi kiểu chữ.
+send data=Trình bày văn bản với Tab
+#>>>>>>>>>>>>>>>>>>Open Paragraph Window
+click=MicrosoftWordWindow|btnShowAll|left
+sleep=1000
+click=MicrosoftWordWindow|btnShowParagraphWindow|left
+sleep=1000
+#>>>>>>>>>>>>>>>>>>Open Tab Window
+send data=Mở cửa sổ Tab
+sleep=1000
+click=MicrosoftWordWindow|btnTab|left|15|120
+sleep=1000
+send data=Cài đặt Tab canh lề trái với khoảng cách 0.5 inch
+sleep=1000
+enter=MicrosoftWordWindow|editDistance|0.5
+sleep=1000
+click=MicrosoftWordWindow|editDistance|left|30|130
+sleep=1000
+click=MicrosoftWordWindow|editDistance|left|70|240
+sleep=1000
+####################
+send data=Cài đặt Tab canh lề trái với khoảng cách 1 inch
+sleep=1000
+enter=MicrosoftWordWindow|editDistance|1
+sleep=1000
+click=MicrosoftWordWindow|editDistance|left|30|130
+sleep=1000
+click=MicrosoftWordWindow|editDistance|left|70|240
+sleep=1000
+#########################################
+send data=Cài đặt Tab canh lề giữa với khoảng cách 3 inches
+sleep=1000
+enter=MicrosoftWordWindow|editDistance|3
+sleep=1000
+click=MicrosoftWordWindow|editDistance|left|130|130
+sleep=1000
+click=MicrosoftWordWindow|editDistance|left|70|240
+sleep=1000
+#########################################
+send data=Cài đặt Tab canh lề giữa với khoảng cách 4 inches
+sleep=1000
+enter=MicrosoftWordWindow|editDistance|4
+sleep=1000
+click=MicrosoftWordWindow|editDistance|left|130|130
+sleep=1000
+click=MicrosoftWordWindow|editDistance|left|70|240
+sleep=1000
+#########################################
+send data=Cài đặt Tab canh lề phải với khoảng cách 6 inches
+sleep=1000
+enter=MicrosoftWordWindow|editDistance|6
+sleep=1000
+click=MicrosoftWordWindow|editDistance|left|220|130
+sleep=1000
+click=MicrosoftWordWindow|editDistance|left|70|240
+sleep=1000
+#########################################
+send data=Gõ nội dung văn bản vào MS Word
+sleep=1000
+click=MicrosoftWordWindow|editDistance|left|160|275
+sleep=3000
+click=MicrosoftWordWindow|btnShowAll|left
+sleep=2000
+enter=MicrosoftWordWindow|editWord|{tab}STT{tab}Họ và tên{tab}Giới tính{tab}Năm sinh{tab}Địa chỉ{enter}{tab}01{tab}Trần Quý Thịnh{tab}Nam{tab}1980{tab}Quận 10{enter}{tab}02{tab}Trần Tuấn Quy{tab}Nam{tab}1981{tab}An Giang{enter}{tab}03{tab}Trần Xương Phùng{tab}Nữ{tab}1982{tab}Quận T.Bình{enter}{tab}04{tab}Nguyễn Ngọc Hạnh{tab}Nữ{tab}1979{tab}Vũng Tàu
+sleep=2000
+click=MicrosoftWordWindow|btnShowAll|left
