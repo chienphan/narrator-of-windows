@@ -32,7 +32,7 @@ namespace now.agent.uiautomation.client.action.common
                         if (obj != null)
                         {
                             WindowPattern windowPattern = obj as WindowPattern;
-                            windowPattern.SetWindowVisualState(WindowVisualState.Normal);
+                            //windowPattern.SetWindowVisualState(WindowVisualState.Normal);
                             nResult = NowUIADefine.NOW_OK;
                         }
                     }

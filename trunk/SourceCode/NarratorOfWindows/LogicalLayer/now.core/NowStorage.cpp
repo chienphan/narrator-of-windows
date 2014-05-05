@@ -64,11 +64,7 @@ NOW_RESULT NowStorage::getWindow( const char* szWindowName, INowWindow*& pWindow
 				Sleep(NOW_DELAY_TIME);
 			}
 			while(nDeadline > GetTickCount() && !NOW_SUCCEED(nResult));
-		}
-
-		//re-get window
-		if (NOW_SUCCEED(nResult))
-		{
+			//re-get window
 			nResult = getWindowFromStorage(strWindowName, pWindow);
 		}
 
@@ -139,11 +135,8 @@ NOW_RESULT NowStorage::getControl(const char* szControlName, INowControl*& pCont
 				Sleep(NOW_DELAY_TIME);
 			}
 			while(nDeadline > GetTickCount() && !NOW_SUCCEED(nResult));
-		}
 
-		//re-get window
-		if (NOW_SUCCEED(nResult))
-		{
+			//re-get window
 			nResult = getControlFromStogare(strControlName, pControl);
 		}
 

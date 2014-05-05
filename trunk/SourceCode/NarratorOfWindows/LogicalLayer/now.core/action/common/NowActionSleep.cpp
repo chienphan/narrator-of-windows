@@ -13,8 +13,8 @@ NowActionSleep::~NowActionSleep(void)
 NOW_RESULT NowActionSleep::prepareArguments( vector<wstring>* argumnents )
 {
 	NOW_RESULT nResult = NOW_FALSE;
-	wstring strWindowName = argumnents->at(1);
-	m_nSleepTime = atoi(NowStringProcessor::wstringTostring(strWindowName).c_str());
+	wstring strSleepTime = argumnents->at(1);
+	m_nSleepTime = atoi(NowStringProcessor::wstringTostring(strSleepTime).c_str());
 	if (m_nSleepTime > 0)
 	{
 		nResult = NOW_OK;

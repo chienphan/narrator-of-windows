@@ -42,5 +42,13 @@ namespace now.agent.uiautomation.client.storage
             }
             return returnElement;
         }
+
+        public void ClearCache()
+        {
+            if (m_dictionary != null)
+            {
+                m_dictionary.Clear();
+            }
+        }
     }
 }

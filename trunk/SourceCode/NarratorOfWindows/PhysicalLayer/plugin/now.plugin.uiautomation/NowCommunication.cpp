@@ -191,3 +191,16 @@ NOW_RESULT NowCommunication::bringWindowToTop( const string& strSignatureWindow 
 	NowUIAArgumentIn::GetInstance()->ClearArguments();
 	return nResult ;
 }
+
+NOW_RESULT NowCommunication::clearCache()
+{
+	NOW_RESULT nResult = NOW_FALSE;
+
+	NowUIAArgumentIn::GetInstance()->ActionName = UIA_ACTION_CLEAR_CACHE;
+
+	nResult = NowUIAActionManager::GetInstance()->DoAction();
+
+	//Clear data
+	NowUIAArgumentIn::GetInstance()->ClearArguments();
+	return nResult ;
+}

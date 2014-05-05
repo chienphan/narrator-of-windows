@@ -133,6 +133,7 @@
     <ClInclude Include="interface\INowPlugin.h" />
     <ClInclude Include="interface\INowWindow.h" />
     <ClInclude Include="action\common\NowActionClick.h" />
+    <ClInclude Include="action\common\NowActionClearCache.h" />
     <ClInclude Include="NowActionData.h" />
     <ClInclude Include="NowActionManager.h" />
     <ClInclude Include="action\common\NowActionEnter.h" />
@@ -147,6 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="action\common\NowActionClick.cpp" />
+    <ClCompile Include="action\common\NowActionClearCache.cpp" />
     <ClCompile Include="NowActionData.cpp" />
     <ClCompile Include="NowActionManager.cpp" />
     <ClCompile Include="action\common\NowActionEnter.cpp" />

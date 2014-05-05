@@ -58,6 +58,7 @@ NOW_RESULT NowPlugin_UIA::getElementAtPoint( POINT point, INowControl*& pControl
 NOW_RESULT NowPlugin_UIA::clearCache()
 {
 	m_strControlSignature = "";
+	NowCommunication::getInstance()->clearCache();
 	return NOW_OK;
 }
 
