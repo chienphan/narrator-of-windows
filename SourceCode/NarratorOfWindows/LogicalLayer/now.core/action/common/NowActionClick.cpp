@@ -12,8 +12,6 @@ NowActionClick::NowActionClick(void)
 	m_strWindowName = "";
 	m_strControlname = "";
 	m_clickType = "";
-	m_x = 0;
-	m_y = 0;
 }
 
 NowActionClick::~NowActionClick(void)
@@ -25,6 +23,10 @@ NowActionClick::~NowActionClick(void)
 NOW_RESULT NowActionClick::prepareArguments(vector<wstring>* argumnents)
 {
 	NOW_RESULT nResult = NOW_FALSE;
+
+	m_x = 0;
+	m_y = 0;
+
 	m_strWindowName = NowStringProcessor::wstringTostring(argumnents->at(1));
 	m_strControlname = NowStringProcessor::wstringTostring(argumnents->at(2));
 	m_clickType = NowStringProcessor::wstringTostring(argumnents->at(3));
@@ -66,7 +68,6 @@ NOW_RESULT NowActionClick::doAction()
 	if (m_control != NULL)
 	{
 		nResult = m_control->getProperty(NOW_PROP_BOUNDING_RECTANGLE, strValue);
-
 		if (NOW_SUCCEED(nResult))
 		{
 			vector<string>* vec = NowStringProcessor::split(strValue, NOW_CHAR_COMMA);
@@ -88,6 +89,7 @@ NOW_RESULT NowActionClick::doAction()
 				}
 				
 			}
+			delete vec;
 		}
 	}
 	return nResult;

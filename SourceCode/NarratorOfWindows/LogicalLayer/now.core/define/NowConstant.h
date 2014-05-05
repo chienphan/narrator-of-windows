@@ -93,5 +93,6 @@
 #define NOW_ACTION_SLEEP				"sleep"
 #define NOW_ACTION_SENDKEYS				"send keys"
 #define NOW_ACTION_SEND_DATA			"send data"
+#define NOW_ACTION_CLEAR_CACHE			"clear cache"
 
 #endif

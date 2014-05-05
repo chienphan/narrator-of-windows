@@ -15,5 +15,6 @@
 #define UIA_ACTION_GET_WINDOW_BY_TITLE	"getwindowbytitle"
 #define UIA_ACTION_GET_CONTROL_BY_CONDITION	"getcontrolbycondition"
 #define UIA_ACTION_BRING_WINDOW_TO_TOP	"bringwindowtotop"
+#define UIA_ACTION_CLEAR_CACHE			"clearcache"
 
 #endif
