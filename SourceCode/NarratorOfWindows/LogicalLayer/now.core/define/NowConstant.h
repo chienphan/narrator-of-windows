@@ -51,6 +51,7 @@
 #define NOW_CONTROL_TAB_ITEM	"tab item"
 #define NOW_CONTROL_PROGRESS_BAR "progress bar"
 #define NOW_CONTROL_TITLE_BAR	"title bar"
+#define NOW_CONTROL_EDIT		"edit"
 
 
 #define NOW_PROP_ACCELERATOR_KEY		"AcceleratorKeyProperty"

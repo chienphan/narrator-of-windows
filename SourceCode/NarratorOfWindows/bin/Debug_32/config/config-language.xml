@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><LanguageConfig>
 	<inputlanguage>English</inputlanguage>
 	<outputlanguage>Vietnamese</outputlanguage>
-	<displaylanguage>English</displaylanguage>
+	<displaylanguage/>
 	<translatorengine>Google Translator</translatorengine>
 	<automovemouse>false</automovemouse>
 	<autoplaysound>false</autoplaysound>

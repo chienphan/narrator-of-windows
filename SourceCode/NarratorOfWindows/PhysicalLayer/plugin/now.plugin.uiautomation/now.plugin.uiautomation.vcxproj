@@ -158,6 +158,7 @@
     <ClCompile Include="controls\NowControl_UIA.cpp" />
     <ClCompile Include="NowCommunication.cpp" />
     <ClCompile Include="NowControlBuilder.cpp" />
+    <ClCompile Include="controls\NowEdit_UIA.cpp" />
     <ClCompile Include="NowPlugin_UIA.cpp" />
     <ClCompile Include="NowService.cpp" />
     <ClCompile Include="NowStringProcessor_UIA.cpp" />
@@ -177,6 +178,7 @@
     <ClInclude Include="controls\NowTreeItem_UIA.h" />
     <ClInclude Include="NowCommunication.h" />
     <ClInclude Include="NowControlBuilder.h" />
+    <ClInclude Include="controls\NowEdit_UIA.h" />
     <ClInclude Include="NowPlugin_UIA.h" />
     <ClInclude Include="NowService.h" />
     <ClInclude Include="NowStringProcessor_UIA.h" />

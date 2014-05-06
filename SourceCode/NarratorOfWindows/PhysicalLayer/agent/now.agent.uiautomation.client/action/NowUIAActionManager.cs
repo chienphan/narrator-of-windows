@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using now.agent.uiautomation.client.interfaces;
-using now.agent.uiautomation.client.constant;
 using now.agent.uiautomation.client.action.common;
-using now.agent.uiautomation.client.logger;
+using now.agent.uiautomation.client.action.editer;
 using now.agent.uiautomation.client.argument;
+using now.agent.uiautomation.client.constant;
+using now.agent.uiautomation.client.interfaces;
+using now.agent.uiautomation.client.logger;
 
 namespace now.agent.uiautomation.client.action
 {
@@ -27,6 +28,7 @@ namespace now.agent.uiautomation.client.action
             m_mapAction.Add(NowUIAActionConst.UIA_ACTION_GET_CONTROL_BY_CONDITION, new GetControlByCondition());
             m_mapAction.Add(NowUIAActionConst.UIA_ACTION_BRING_WINDOW_TO_TOP, new BringWindowToTop());
             m_mapAction.Add(NowUIAActionConst.UIA_ACTION_CLEAR_CACHE, new ClearCache());
+            m_mapAction.Add(NowUIAActionConst.UIA_ACTION_SET_VALUE, new SetValue());
         }
 
         public static NowUIAActionManager GetInstance()

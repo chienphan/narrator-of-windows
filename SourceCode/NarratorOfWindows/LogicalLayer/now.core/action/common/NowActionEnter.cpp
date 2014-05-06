@@ -55,11 +55,15 @@ NOW_RESULT NowActionEnter::doAction()
 				NowUtility::getRectData(vec, left, top, width, height);
 				NowDeviceMouse::clickMouse(left + width / 2, top + height / 2, NowDeviceMouse::getClickType("left"));
 				
-				NowDeviceKeyboard::sendKey(L"^a");
-				Sleep(100);
-				NowDeviceKeyboard::sendKey(L"{DEL}");
-				Sleep(100);
-				NowDeviceKeyboard::sendKey(m_strContent);
+				nResult = m_control->setValue(m_strContent);
+				if (nResult != NOW_OK)
+				{
+					NowDeviceKeyboard::sendKey(L"^a");
+					Sleep(200);
+					NowDeviceKeyboard::sendKey(L"{DEL}");
+					Sleep(200);
+					NowDeviceKeyboard::sendKey(m_strContent);
+				}
 			}
 		}
 	}

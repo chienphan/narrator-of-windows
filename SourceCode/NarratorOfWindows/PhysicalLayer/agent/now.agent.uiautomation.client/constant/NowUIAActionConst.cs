@@ -14,6 +14,7 @@ namespace now.agent.uiautomation.client.constant
         public static readonly String UIA_ACTION_GET_CONTROL_BY_CONDITION   = "getcontrolbycondition";
         public static readonly String UIA_ACTION_BRING_WINDOW_TO_TOP        = "bringwindowtotop";
         public static readonly String UIA_ACTION_CLEAR_CACHE                = "clearcache";
+        public static readonly String UIA_ACTION_SET_VALUE                  = "setvalue";
     }
 
     sealed class NowUIAPropertyDefine
@@ -25,5 +26,6 @@ namespace now.agent.uiautomation.client.constant
         public static readonly String UIA_PROP_WINDOW_TITLE     = "windowtitle";
         public static readonly String UIA_PROP_WINDOW_HANDLE    = "windowhandle";
         public static readonly String UIA_PROP_DATA             = "propertydata";
+        public static readonly String UIA_PROP_VALUE            = "value";
     }
 }
