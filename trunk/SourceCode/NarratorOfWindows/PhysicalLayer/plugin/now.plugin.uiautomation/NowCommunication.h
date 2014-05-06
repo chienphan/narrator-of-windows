@@ -21,6 +21,7 @@ public:
 	NOW_RESULT getControlByCondition(const string& strWindowHandle, const string& strPropsData, string& strSignatureControl, string& strControlType);
 	NOW_RESULT bringWindowToTop(const string& strSignatureWindow);
 	NOW_RESULT clearCache();
+	NOW_RESULT setValue(const string& strSignature, const wstring& wstrValue);
 };
 
 #endif

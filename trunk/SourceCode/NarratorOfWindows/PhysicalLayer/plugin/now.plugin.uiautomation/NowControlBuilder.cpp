@@ -2,6 +2,8 @@
 #include "INowControl.h"
 #include "INowWindow.h"
 #include "NowStringProcessor_UIA.h"
+#include "NowStringProcessor.h"
+#include "NowLogger.h"
 
 #include "NowWindow_UIA.h"
 #include "NowControl_UIA.h"
@@ -14,9 +16,8 @@
 #include "NowMenuBar_UIA.h"
 #include "NowTabItem_UIA.h"
 #include "NowProgressBar_UIA.h"
-#include "NowLogger.h"
 #include "NowTitleBar_UIA.h"
-#include "NowStringProcessor.h"
+#include "NowEdit_UIA.h"
 
 NowControlBuilder* NowControlBuilder::m_Instance = NULL;
 
@@ -72,11 +73,10 @@ INowControl* NowControlBuilder::createControlWrapper( string strSignatureControl
 	{
 		pControl = new NowMenuBar_UAI(strSignatureControl,strControlType);
 	}
-	//Don't map Menu Item to Menu Bar
-	/*else if (NowStringProcessor::compareIgnoreCase(strControlType,NOW_CONTROL_MENU_ITEM))
+	else if (NowStringProcessor::compareIgnoreCase(strControlType,NOW_CONTROL_EDIT))
 	{
-	pControl = new NowMenuBar_UAI(strSignatureControl,strControlType);
-	}*/
+		pControl = new NowEdit_UIA(strSignatureControl,strControlType);
+	}
 	else if (NowStringProcessor::compareIgnoreCase(strControlType,NOW_CONTROL_TAB_ITEM))
 	{
 		pControl = new NowTabItem_UIA(strSignatureControl,strControlType);

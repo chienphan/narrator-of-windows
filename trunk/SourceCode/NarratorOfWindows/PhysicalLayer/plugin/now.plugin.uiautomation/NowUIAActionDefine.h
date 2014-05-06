@@ -8,6 +8,7 @@
 #define UIA_PROP_WINDOW_TITLE	"windowtitle"
 #define UIA_PROP_DATA			"propertydata"
 #define UIA_PROP_WINDOW_HANDLE	"windowhandle"
+#define UIA_PROP_VALUE			"value"
 
 #define UIA_ACTION_GETPROPERTY			"getproperty"
 #define UIA_ACTION_GET_ELEMENT_AT_POINT "getelementatpoint"
@@ -16,5 +17,6 @@
 #define UIA_ACTION_GET_CONTROL_BY_CONDITION	"getcontrolbycondition"
 #define UIA_ACTION_BRING_WINDOW_TO_TOP	"bringwindowtotop"
 #define UIA_ACTION_CLEAR_CACHE			"clearcache"
+#define UIA_ACTION_SET_VALUE			"setvalue"
 
 #endif

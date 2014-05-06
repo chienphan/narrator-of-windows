@@ -204,3 +204,20 @@ NOW_RESULT NowCommunication::clearCache()
 	NowUIAArgumentIn::GetInstance()->ClearArguments();
 	return nResult ;
 }
+
+NOW_RESULT NowCommunication::setValue( const string& strSignature, const wstring& wstrValue )
+{
+	NOW_RESULT nResult = NOW_FALSE;
+	String^ mstrSignature = NowStringProcessor_UIA::StlStringToString(strSignature);
+	String^ mstrValue = NowStringProcessor_UIA::StlWStringToString(wstrValue);
+
+	NowUIAArgumentIn::GetInstance()->ActionName = UIA_ACTION_SET_VALUE;
+	NowUIAArgumentIn::GetInstance()->AddArgument(UIA_PROP_SIGNATURE, mstrSignature);
+	NowUIAArgumentIn::GetInstance()->AddArgument(UIA_PROP_VALUE, mstrValue);
+
+	nResult = NowUIAActionManager::GetInstance()->DoAction();
+
+	//Clear data
+	NowUIAArgumentIn::GetInstance()->ClearArguments();
+	return nResult ;
+}
