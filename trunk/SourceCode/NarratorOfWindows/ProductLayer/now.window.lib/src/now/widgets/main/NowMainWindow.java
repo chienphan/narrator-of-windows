@@ -23,6 +23,9 @@ import org.eclipse.swt.events.MenuEvent;
 import org.eclipse.swt.events.MenuListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.graphics.Device;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.FillLayout;
@@ -284,6 +287,9 @@ public class NowMainWindow {
             TreeItem iItem = new TreeItem(m_treeData, 0);
             iItem.setText(folder);
             iItem.setData("");
+            ImageData dataFolder = new ImageData("resource\\folder-icon.png");
+            Image imageFolder = new Image(Display.getDefault(), dataFolder);
+            iItem.setImage(imageFolder);
             
             ArrayList<String> arrayTitleLesson = UtilitiesDevice.getAllFileName(new File(".\\" + ConfigDefine.DIRECTORY_DATA + "\\" + folder));
             for (String lesson : arrayTitleLesson) {
@@ -298,8 +304,9 @@ public class NowMainWindow {
                 TreeItem kItem = new TreeItem(iItem, 0);
                 kItem.setText(lessonName);
                 kItem.setData(path);
-                
-                
+                ImageData data = new ImageData("resource\\play-icon.png");
+                Image image = new Image(Display.getDefault(), data);
+                kItem.setImage(image);
             }
         }
     }
