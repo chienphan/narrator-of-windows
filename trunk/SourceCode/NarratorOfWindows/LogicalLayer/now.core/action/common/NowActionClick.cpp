@@ -85,17 +85,13 @@ NOW_RESULT NowActionClick::doAction()
 					if (m_x > 0 && m_y > 0)
 					{
 						NowDeviceMouse::moveAndClickMouse(point->x, point->y, left + m_x, top + m_y, NowDeviceMouse::getClickType(m_clickType));
-						//NowDeviceMouse::moveAndClickMouse(left + m_x, top + m_y, point.x, point.y, NowDeviceMouse::getClickType(m_clickType));
 					}
 					else
 					{
-						//NowDeviceMouse::moveAndClickMouse( left + width / 2, top + height / 2, point.x, point.y, NowDeviceMouse::getClickType(m_clickType));
 						NowDeviceMouse::moveAndClickMouse(point->x, point->y, left + width / 2, top + height / 2, NowDeviceMouse::getClickType(m_clickType));
 					}
 				}
 				delete point;
-				//NowDeviceMouse::moveAndClickMouse(200, 200, 1, 1, 0);
-				
 			}
 			delete vec;
 		}
