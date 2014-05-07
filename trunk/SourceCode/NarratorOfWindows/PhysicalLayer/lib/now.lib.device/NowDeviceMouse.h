@@ -5,6 +5,8 @@
 
 class DllExport NowDeviceMouse
 {
+private:
+	static void lineBresenham(int x1, int y1, int x2, int y2);
 public:
 	enum mouseType{
 		MOUSE_LEFT = 0,
@@ -14,7 +16,7 @@ public:
 
 	static int getClickType(const string& clickType);
 	static void clickMouse(int x, int y, int mouseType);
-
+	static void moveAndClickMouse(int x1, int y1, int x2, int y2, int mouseType);
 };
 
 #endif

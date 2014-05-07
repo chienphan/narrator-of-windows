@@ -83,3 +83,90 @@ void NowDeviceMouse::clickMouse( int x, int y, int mouseType )
 	}
 
 }
+
+void NowDeviceMouse::lineBresenham(int x1, int y1, int x2, int y2){
+	int c2, c, Dx, Dy, x, y;
+	Dx = abs(x2 - x1);
+	Dy = abs(y2 - y1);
+	c = Dx - Dy;
+	c2 = 2*c;
+	x = x1;
+	y = y1;
+
+	int x_unit = 1, y_unit = 1;
+
+	if (x2 - x1 < 0)
+		x_unit = -x_unit;
+	if (y2 - y1 < 0)
+		y_unit = -y_unit;
+
+	MouseMove(x, y);
+	//putpixel(x, y, colorGreen);
+
+	if (x1 == x2)   // duong thang dung
+	{
+		while (y != y2)
+		{
+			Sleep(10);
+			//delay(DELAY);
+			y += y_unit;
+			MouseMove(x, y);
+			//putpixel(x, y, colorGreen);
+		}
+	}
+
+	else if (y1 == y2)  // duong ngang
+	{
+		while (x != x2)
+		{
+			Sleep(10);
+			//delay(DELAY);
+			x += x_unit;
+			MouseMove(x, y);
+			//putpixel(x, y, colorGreen);
+		}
+	}
+
+	else if (x1 != x2 && y1 != y2)  // duong xien
+	{
+		while(x != x2+1)
+		{
+			Sleep(10);
+			//delay(DELAY);
+			c2 =2*c;
+			if (c2 > -Dy)    
+			{
+				c = c - Dy; 
+				x = x + x_unit;
+			}
+			if (c2 < Dx) 
+			{
+				c = c + Dx; 
+				y = y + y_unit; 
+			}
+			MouseMove(x, y);
+			//putpixel(x, y, colorGreen);
+		}
+	}
+	MouseMove(x2, y2);
+}
+
+void NowDeviceMouse::moveAndClickMouse( int x1, int y1, int x2, int y2, int mouseType )
+{
+	lineBresenham(x1, y1, x2, y2);
+	
+	if (mouseType == NowDeviceMouse::MOUSE_LEFT)
+	{
+		LeftClick();
+	}
+	else if (mouseType == NowDeviceMouse::MOUSE_RIGHT)
+	{
+		RightClick();
+	}
+	else if (mouseType == NowDeviceMouse::MOUSE_DOUBLE)
+	{
+		LeftClick();
+		Sleep(50);
+		LeftClick();
+	}
+}

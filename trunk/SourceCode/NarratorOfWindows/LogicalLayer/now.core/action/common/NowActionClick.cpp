@@ -79,14 +79,22 @@ NOW_RESULT NowActionClick::doAction()
 				int height = 0;
 				NowUtility::getRectData(vec, left, top, width, height);
 
-				if (m_x > 0 && m_y > 0)
+				PPOINT point = new POINT();
+				if (GetCursorPos(point) && left != 0 && top != 0)
 				{
-					NowDeviceMouse::clickMouse(left + m_x, top + m_y, NowDeviceMouse::getClickType(m_clickType));
+					if (m_x > 0 && m_y > 0)
+					{
+						NowDeviceMouse::moveAndClickMouse(point->x, point->y, left + m_x, top + m_y, NowDeviceMouse::getClickType(m_clickType));
+						//NowDeviceMouse::moveAndClickMouse(left + m_x, top + m_y, point.x, point.y, NowDeviceMouse::getClickType(m_clickType));
+					}
+					else
+					{
+						//NowDeviceMouse::moveAndClickMouse( left + width / 2, top + height / 2, point.x, point.y, NowDeviceMouse::getClickType(m_clickType));
+						NowDeviceMouse::moveAndClickMouse(point->x, point->y, left + width / 2, top + height / 2, NowDeviceMouse::getClickType(m_clickType));
+					}
 				}
-				else
-				{
-					NowDeviceMouse::clickMouse( left + width / 2, top + height / 2, NowDeviceMouse::getClickType(m_clickType));
-				}
+				delete point;
+				//NowDeviceMouse::moveAndClickMouse(200, 200, 1, 1, 0);
 				
 			}
 			delete vec;
