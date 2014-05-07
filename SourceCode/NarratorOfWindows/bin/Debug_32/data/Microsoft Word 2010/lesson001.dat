@@ -5,15 +5,79 @@ lesson_description=Bài tập này hướng dẫn bạn cách thay đổi các k
 #Define windows
 window=Desktop|Program Manager
 window=MicrosoftWordWindow|{Document.*Microsoft Word.*}
-window=DesktopBar|{}
 ###########################################################
 #Define controls
 control=Desktop|MSWordIcon|NameProperty:Microsoft Word 2010
 control=MicrosoftWordWindow|btnParagraph|HelpTextProperty:Show the Paragraph dialog box.
 control=MicrosoftWordWindow|edit|NameProperty:Microsoft Word Document
-control=DesktopBar|buttonShowDesktop|NameProperty:Show desktop
+control=MicrosoftWordWindow|btnBold|NameProperty:Bold
+control=MicrosoftWordWindow|btnItalic|NameProperty:Italic
+control=MicrosoftWordWindow|btnUnderline|NameProperty:Underline
+control=MicrosoftWordWindow|btnFont|NameProperty:Font...
+control=MicrosoftWordWindow|editBody|NameProperty:+Body
 ###########################################################
 #Do actions
 click=Desktop|MSWordIcon|double
 send data=Thay đổi kiểu chữ.
-enter=MicrosoftWordWindow|edit|Xin chào các bạn!{enter}Đây là bài học thay đổi kiểu chữ.
+enter=MicrosoftWordWindow|edit|{TAB}Winword là một chương trình xử lý văn bản mạnh, ngoài các chức năng giúp người sử dụng gõ nhanh và đúng văn bản, nó còn cho phép chúng ta chèn các ký tự đặc biệt. Chúng ta có thể nhập văn bản bằng chữ thường hoặc chữ in  tùy ý rồi sau đó có thể chuyển đổi sang một kiểu chữ thích hợp. Các lệnh thường dùng trong văn bản có thể trình bày nhanh  bằng biểu tượng lệnh như:{ENTER}
+#sleep=1000
+########################Bold############################
+send keys=Bold để tạo chữ đậm
+#sleep=1000
+send keys=+{HOME}
+click=MicrosoftWordWindow|btnBold|left
+####################Italic#######################
+click=MicrosoftWordWindow|edit|left
+send keys=^{END}{ENTER}
+click=MicrosoftWordWindow|btnBold|left
+send keys=Italic để tạo chữ nghiêng
+#sleep=1000
+send keys=+{HOME}
+#sleep=1000
+click=MicrosoftWordWindow|btnItalic|left
+#################Underline##########################
+click=MicrosoftWordWindow|edit|left
+send keys=^{END}{ENTER}
+click=MicrosoftWordWindow|btnItalic|left
+send keys=Underline để tạo chữ gạch dưới
+#sleep=1000
+send keys=+{HOME}
+#sleep=1000
+click=MicrosoftWordWindow|btnUnderline|left
+###################3########################
+click=MicrosoftWordWindow|edit|left
+send keys=^{END}{ENTER}
+click=MicrosoftWordWindow|btnUnderline|left
+send keys=Kết hợp cả ba biểu tượng trên
+#sleep=1000
+send keys=+{HOME}
+#sleep=1000
+click=MicrosoftWordWindow|btnBold|left
+click=MicrosoftWordWindow|btnItalic|left
+click=MicrosoftWordWindow|btnUnderline|left
+###################New########################
+click=MicrosoftWordWindow|edit|left
+send keys=^{END}{ENTER}
+click=MicrosoftWordWindow|btnBold|left
+click=MicrosoftWordWindow|btnItalic|left
+click=MicrosoftWordWindow|btnUnderline|left
+send keys={TAB}Ngoài ra còn có các lệnh khác cầu kỳ hơn đành phải vào menu lệnh để trình bày như:{ENTER}
+###################Words only########################
+send keys=Words only chỉ gạch dưới cho từng từ một
+send keys=+{HOME}
+click=MicrosoftWordWindow|btnFont|left
+click=MicrosoftWordWindow|editBody|left|175|125
+click=MicrosoftWordWindow|editBody|left|175|160
+click=MicrosoftWordWindow|editBody|left|305|385
+clear cache=all
+#######################################
+click=MicrosoftWordWindow|edit|left
+send keys=^{END}{ENTER}
+send keys=Double Strikethrough để tạo ra chữ gạch giữa với hai nét
+send keys=+{HOME}
+click=MicrosoftWordWindow|btnFont|left
+click=MicrosoftWordWindow|editBody|left|175|125
+click=MicrosoftWordWindow|editBody|left|175|145
+click=MicrosoftWordWindow|editBody|left|45|190
+click=MicrosoftWordWindow|editBody|left|305|385
+click=MicrosoftWordWindow|edit|left

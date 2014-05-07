@@ -107,7 +107,7 @@ void NowDeviceMouse::lineBresenham(int x1, int y1, int x2, int y2){
 	{
 		while (y != y2)
 		{
-			Sleep(10);
+			Sleep(NOW_SLEEP_TIME);
 			//delay(DELAY);
 			y += y_unit;
 			MouseMove(x, y);
@@ -119,7 +119,7 @@ void NowDeviceMouse::lineBresenham(int x1, int y1, int x2, int y2){
 	{
 		while (x != x2)
 		{
-			Sleep(10);
+			Sleep(NOW_SLEEP_TIME);
 			//delay(DELAY);
 			x += x_unit;
 			MouseMove(x, y);
@@ -131,7 +131,7 @@ void NowDeviceMouse::lineBresenham(int x1, int y1, int x2, int y2){
 	{
 		while(x != x2+1)
 		{
-			Sleep(10);
+			Sleep(NOW_SLEEP_TIME);
 			//delay(DELAY);
 			c2 =2*c;
 			if (c2 > -Dy)    
