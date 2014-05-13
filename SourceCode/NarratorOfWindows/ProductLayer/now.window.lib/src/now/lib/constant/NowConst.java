@@ -21,6 +21,8 @@ public class NowConst {
     public static final String NOW_DO_DEBUG                 = "1";
     public static final String NOW_NOT_AVAILABLE            = "N/A";
     
+    public static final String NOW_DELIMITER                = "=@@=";
+    
     public static final String NOW_TRUE                     = "true";
     public static final String NOW_FALSE                    = "false";
     

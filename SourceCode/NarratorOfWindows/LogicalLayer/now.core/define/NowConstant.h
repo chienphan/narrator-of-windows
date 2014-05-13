@@ -37,6 +37,12 @@
 #define NOW_CHAR_OR '|'
 #define NOW_CHAR_COLON ':'
 #define NOW_CHAR_COMMA ','
+
+#define NOW_DELIMITER_ACTION_W L"=@@="
+#define NOW_DELIMITER_ACTION_A "=@@="
+#define NOW_DELIMITER_PARAM_W L"=||="
+#define NOW_DELIMITER_PARAM_A "=||="
+
 #define NOW_PLUGIN_NAME_UIA "uiautomation"
 
 #define NOW_CONTROL				"control"

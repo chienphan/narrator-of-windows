@@ -19,7 +19,7 @@ NowTCPCommunication::NowTCPCommunication(void)
 	{
 		if (data->size() > 0)
 		{
-			vector<wstring>* vectString = NowStringProcessor::split(data->at(0), L'=');
+			vector<wstring>* vectString = NowStringProcessor::split(data->at(0), NOW_DELIMITER_ACTION_W);
 			if (vectString->size() == 2)
 			{
 				string strPort = NowStringProcessor::wstringTostring(vectString->at(1));

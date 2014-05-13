@@ -1,27 +1,27 @@
-﻿LANGUAGE_NAME=English
-LANGUAGE_DISPLAY=English
-SYSTEM_TRAY_CONFIGURATION=Configuration
-SYSTEM_TRAY_EXIT=Exit
-SYSTEM_TRAY_CLICK_SHOW_MENU=Click to show menu
-SYSTEM_TRAY_MAIN_WINDOW=Main window
-WINDOW_INFOR_BUTTON_TRANSLATE=Translate
-WINDOW_INFOR_BUTTON_PLAY=Play
-BUTTON_OK=OK
-BUTTON_CANCEL=Cancel
-BUTTON_APPLY=Apply
-TAB_GENERAL=General
-TAB_TRANSLATE=Translate
-TAB_DISPLAY=Display
-CHECKBOX_AUTO_TRANSLATE=Automatic translate to the output language
-WINDOW_CONFIG_TITLE=Configuration
-RADIO_MODE_DISPLAY=Display information window
-RADIO_MODE_PLAY=Play sound
-RADIO_OPERATION_PRESS=When press Ctrl keyboard
-RADIO_OPERATION_AUTO=Automatic when move mouse
-TEXT_OPERATION=Choose the way that you want to support.
-GROUP_OUTPUT_MODE=Output Mode
-GROUP_OPERATION=Operation
-LABEL_ENGINE_TRANSLATE=Translate Engine:
-LABEL_OUTPUT_LANGUAGE=Output Language:
-LABEL_INPUT_LANGUAGE=Input Language:
-LABEL_DISPLAY=Display Language:
+﻿LANGUAGE_NAME=@@=English
+LANGUAGE_DISPLAY=@@=English
+SYSTEM_TRAY_CONFIGURATION=@@=Configuration
+SYSTEM_TRAY_EXIT=@@=Exit
+SYSTEM_TRAY_CLICK_SHOW_MENU=@@=Click to show menu
+SYSTEM_TRAY_MAIN_WINDOW=@@=Main window
+WINDOW_INFOR_BUTTON_TRANSLATE=@@=Translate
+WINDOW_INFOR_BUTTON_PLAY=@@=Play
+BUTTON_OK=@@=OK
+BUTTON_CANCEL=@@=Cancel
+BUTTON_APPLY=@@=Apply
+TAB_GENERAL=@@=General
+TAB_TRANSLATE=@@=Translate
+TAB_DISPLAY=@@=Display
+CHECKBOX_AUTO_TRANSLATE=@@=Automatic translate to the output language
+WINDOW_CONFIG_TITLE=@@=Configuration
+RADIO_MODE_DISPLAY=@@=Display information window
+RADIO_MODE_PLAY=@@=Play sound
+RADIO_OPERATION_PRESS=@@=When press Ctrl keyboard
+RADIO_OPERATION_AUTO=@@=Automatic when move mouse
+TEXT_OPERATION=@@=Choose the way that you want to support.
+GROUP_OUTPUT_MODE=@@=Output Mode
+GROUP_OPERATION=@@=Operation
+LABEL_ENGINE_TRANSLATE=@@=Translate Engine:
+LABEL_OUTPUT_LANGUAGE=@@=Output Language:
+LABEL_INPUT_LANGUAGE=@@=Input Language:
+LABEL_DISPLAY=@@=Display Language:

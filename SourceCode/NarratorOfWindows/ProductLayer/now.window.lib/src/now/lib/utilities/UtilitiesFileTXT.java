@@ -8,10 +8,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import now.lib.constant.NowConst;
 
 public class UtilitiesFileTXT {
     private String m_fileName = "";
@@ -38,7 +38,7 @@ public class UtilitiesFileTXT {
             //process each line in some way
             temp = scanner.nextLine();
             if(!temp.isEmpty()){
-                arrayTemp = temp.split("=");
+                arrayTemp = temp.split(NowConst.NOW_DELIMITER);
                 if(arrayTemp.length == 2){
                     result.add(arrayTemp);
                 }

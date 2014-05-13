@@ -75,6 +75,38 @@ vector<wstring>* NowStringProcessor::split(const std::wstring& source, wchar_t d
 	return vecResult;
 }
 
+vector<string>* NowStringProcessor::split( const std::string& source, const std::string& delimiter )
+{
+	vector<string>* vecResult = new vector<string>();
+	std::string strSource = source;
+	size_t pos = 0;
+	std::string token;
+	while ((pos = strSource.find(delimiter)) != std::string::npos) {
+		token = strSource.substr(0, pos);
+		vecResult->push_back(token);
+		strSource.erase(0, pos + delimiter.length());
+	}
+	vecResult->push_back(strSource);
+	return vecResult;
+}
+
+vector<wstring>* NowStringProcessor::split( const std::wstring& source, const std::wstring& delimiter )
+{
+	OutputDebugStringA("[NowStringProcessor::split]");
+	vector<wstring>* vecResult = new vector<wstring>();
+	std::wstring strSource = source;
+	size_t pos = 0;
+	std::wstring token;
+	while ((pos = strSource.find(delimiter)) != std::wstring::npos) {
+		token = strSource.substr(0, pos);
+		vecResult->push_back(token);
+		OutputDebugStringW(token.c_str());
+		strSource.erase(0, pos + delimiter.length());
+	}
+	vecResult->push_back(strSource);
+	return vecResult;
+}
+
 
 bool NowStringProcessor::compareIgnoreCase( const string& strFirst, const string& strSecond )
 {
