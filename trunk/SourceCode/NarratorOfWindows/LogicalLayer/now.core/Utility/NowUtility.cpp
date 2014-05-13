@@ -18,7 +18,7 @@ vector<vector<wstring>*>* NowUtility::readData(const string& strFileName)
 	vector<wstring>::iterator it = tempData->begin();
 	for (; it != tempData->end(); it++)
 	{
-		vector<wstring>* vectPair = NowStringProcessor::split(*it, L'=');
+		vector<wstring>* vectPair = NowStringProcessor::split(*it, NOW_DELIMITER_ACTION_W);
 		if(vectPair != NULL)
 		{
 			if (vectPair->size() == 2)

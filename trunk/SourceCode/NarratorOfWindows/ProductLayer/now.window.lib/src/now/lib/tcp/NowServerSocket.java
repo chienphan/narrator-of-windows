@@ -46,7 +46,7 @@ public class NowServerSocket {
             String tcpConfigFilePath = UtilitiesDevice.getCurrentDirectory() + NowConst.NOW_BACKSLASH + NowConst.NOW_TCP_CONFIG_FILE;
             UtilitiesFileTXT tcpConfigFile = new UtilitiesFileTXT(tcpConfigFilePath);
             ArrayList<String> data = new ArrayList<String>();
-            data.add("port=" + String.valueOf(defaultPort));
+            data.add("port" + NowConst.NOW_DELIMITER + String.valueOf(defaultPort));
             tcpConfigFile.writeLargerTextFile(tcpConfigFilePath, data);
         }
     };

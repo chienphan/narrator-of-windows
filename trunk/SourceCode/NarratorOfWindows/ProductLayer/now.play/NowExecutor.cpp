@@ -41,7 +41,7 @@ NOW_RESULT NowExecutor::initialize(const string& dataFileName)
 		//<window>=<window_name>|<window_title>
 		else if (actionName.compare("window") == 0)
 		{
-			vector<wstring>* vectWindow = NowStringProcessor::split(line->at(1), NOW_CHAR_OR);
+			vector<wstring>* vectWindow = NowStringProcessor::split(line->at(1), NOW_DELIMITER_PARAM_W);
 			if (vectWindow->size() == 2)
 			{
 				string strWindowName = NowStringProcessor::wstringTostring(vectWindow->at(0));
@@ -53,7 +53,7 @@ NOW_RESULT NowExecutor::initialize(const string& dataFileName)
 		//<control>=<window_name>|<control_name>|<property_1>;<value_1>|...
 		else if (actionName.compare("control") == 0)
 		{
-			vector<wstring>* vectControl = NowStringProcessor::split(line->at(1), NOW_CHAR_OR);
+			vector<wstring>* vectControl = NowStringProcessor::split(line->at(1), NOW_DELIMITER_PARAM_W);
 			if (vectControl->size() > 2)
 			{
 				int nCounter = 0;
@@ -95,7 +95,7 @@ NOW_RESULT NowExecutor::initialize(const string& dataFileName)
 		//<action_name>=<action_argument_1>|<action_argument_2>>...
 		else 
 		{
-			vector<wstring>* action = NowStringProcessor::split(line->at(1), L'|');
+			vector<wstring>* action = NowStringProcessor::split(line->at(1), NOW_DELIMITER_PARAM_W);
 			action->insert(action->begin(), NowStringProcessor::Utf8ToStlWString(actionName));
 			NowActionData::getInstance()->addActionData(action);
 		}

@@ -19,6 +19,9 @@ public:
 
 	static vector<string>* split(const std::string& source, char delim);
 	static vector<wstring>* split(const std::wstring& source, wchar_t delim);
+
+	static vector<string>* split(const std::string& source, const std::string& delimiter);
+	static vector<wstring>* split(const std::wstring& source, const std::wstring& delimiter);
 };
 
 #endif
