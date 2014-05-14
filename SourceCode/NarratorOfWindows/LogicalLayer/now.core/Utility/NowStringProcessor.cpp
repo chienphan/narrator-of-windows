@@ -40,7 +40,7 @@ std::string NowStringProcessor::wstringTostring( const wstring & inString )
 
 vector<string>* NowStringProcessor::split(const std::string& source, char delim)
 {
-	vector<string>* vecResult = new vector<string>();// ectContentLinet;ing>();
+	vector<string>* vecResult = new vector<string>();
 	stringstream ss(source);
 	string item;
 	while (getline(ss, item, delim)) {
@@ -51,8 +51,7 @@ vector<string>* NowStringProcessor::split(const std::string& source, char delim)
 
 vector<wstring>* NowStringProcessor::split(const std::wstring& source, wchar_t delim)
 {
-	vector<wstring>* vecResult = new vector<wstring>();// ectContentLinet;ing>();
-	//wstringstream ss(source);
+	vector<wstring>* vecResult = new vector<wstring>();
 	wstring item = L"";
 
 	for (int i = 0; i < source.length(); i++)
@@ -92,7 +91,6 @@ vector<string>* NowStringProcessor::split( const std::string& source, const std:
 
 vector<wstring>* NowStringProcessor::split( const std::wstring& source, const std::wstring& delimiter )
 {
-	OutputDebugStringA("[NowStringProcessor::split]");
 	vector<wstring>* vecResult = new vector<wstring>();
 	std::wstring strSource = source;
 	size_t pos = 0;
@@ -100,7 +98,6 @@ vector<wstring>* NowStringProcessor::split( const std::wstring& source, const st
 	while ((pos = strSource.find(delimiter)) != std::wstring::npos) {
 		token = strSource.substr(0, pos);
 		vecResult->push_back(token);
-		OutputDebugStringW(token.c_str());
 		strSource.erase(0, pos + delimiter.length());
 	}
 	vecResult->push_back(strSource);
