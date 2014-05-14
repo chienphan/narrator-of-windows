@@ -60,7 +60,7 @@ NOW_RESULT NowActionEnter::doAction()
 				{
 					NowDeviceKeyboard::sendKey(L"^a");
 					Sleep(200);
-					NowDeviceKeyboard::sendKey(L"{DEL}");
+					NowDeviceKeyboard::sendKey(L"{BACKSPACE}");
 					Sleep(200);
 					NowDeviceKeyboard::sendKey(m_strContent);
 				}
