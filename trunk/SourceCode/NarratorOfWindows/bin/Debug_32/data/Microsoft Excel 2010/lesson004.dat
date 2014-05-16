@@ -1,0 +1,196 @@
+lesson_no=@@=4
+lesson_name=@@=4. Hàm luận lý (Logic)
+lesson_description=@@=Bài tập này hướng dẫn bạn cách sử dụng các hàm luận lý (logic) cơ bản
+###########################################################
+#Define windows
+window=@@=Desktop=||=Program Manager
+window=@@=MicrosoftExcelWindow=||={Microsoft Excel.*Book.*}
+###########################################################
+#Define controls
+control=@@=Desktop=||=MSExcelIcon=||=NameProperty:Microsoft Excel 2010
+control=@@=MicrosoftExcelWindow=||=editCell=||=AutomationIdProperty:1001
+control=@@=MicrosoftExcelWindow=||=editContent=||=ClassNameProperty:EXCEL<
+control=@@=MicrosoftExcelWindow=||=btnMerged=||=HelpTextProperty:Click here to merge across several cells, or to split cells that have been merged back into individual cells.
+###########################################################
+#Do actions
+#>>>>>>Start Excel Window
+click=@@=Desktop=||=MSExcelIcon=||=double
+#>>>>>>Type title of lesson
+enter=@@=MicrosoftExcelWindow=||=editCell=||=A1
+send keys=@@={enter}
+enter=@@=MicrosoftExcelWindow=||=editContent=||=CÁC HÀM LUẬN LÝ - LOGICAL FUNCTIONS							
+
+send keys=@@={enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=A1:H1
+send keys=@@={enter}
+click=@@=MicrosoftExcelWindow=||=btnMerged=||=left
+#>>>>>> Nhap de bai
+enter=@@=MicrosoftExcelWindow=||=editCell=||=A2
+send keys=@@={enter}a{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=B2
+send keys=@@={enter}b{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=C2
+send keys=@@={enter}c{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=D2
+send keys=@@={enter}m = a > b{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=E2
+send keys=@@={enter}n = b > c{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=F2
+send keys=@@={enter}And{(}m,n{)}{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=G2
+send keys=@@={enter}Or{(}m,n{)}{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=H2
+send keys=@@={enter}And{(}m,Or{(}m,n{)}{)}{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=A3
+send keys=@@={enter}4{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=B3
+send keys=@@={enter}5{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=C3
+send keys=@@={enter}14{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=A4
+send keys=@@={enter}2{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=B4
+send keys=@@={enter}12{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=C4
+send keys=@@={enter}32{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=A5
+send keys=@@={enter}24{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=B5
+send keys=@@={enter}14{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=C5
+send keys=@@={enter}16{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=A6
+send keys=@@={enter}24{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=B6
+send keys=@@={enter}24{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=C6
+send keys=@@={enter}16{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=A8
+send keys=@@={enter}Dùng các hàm luận lý (logic) để tính các giá trị cho các ô trống?{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=A8:H8
+send keys=@@={enter}
+click=@@=MicrosoftExcelWindow=||=btnMerged=||=left
+#>>>>>>Lam bai cot 1
+enter=@@=MicrosoftExcelWindow=||=editCell=||=D3
+send keys=@@={enter}
+enter=@@=MicrosoftExcelWindow=||=editContent=||==A3>B3
+sleep=@@=100
+
+send keys=@@={enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=D4
+send keys=@@={enter}
+enter=@@=MicrosoftExcelWindow=||=editContent=||==A4>B4
+sleep=@@=100
+
+send keys=@@={enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=D5
+send keys=@@={enter}
+enter=@@=MicrosoftExcelWindow=||=editContent=||==A5>B5
+sleep=@@=100
+
+send keys=@@={enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=D6
+send keys=@@={enter}
+enter=@@=MicrosoftExcelWindow=||=editContent=||==A6>B6
+sleep=@@=100
+send keys=@@={enter}
+
+#>>>>>>Lam bai cot 2
+enter=@@=MicrosoftExcelWindow=||=editCell=||=E3
+send keys=@@={enter}
+enter=@@=MicrosoftExcelWindow=||=editContent=||==B3>C3
+sleep=@@=100
+send keys=@@={enter}
+ 
+enter=@@=MicrosoftExcelWindow=||=editCell=||=E4
+send keys=@@={enter}
+enter=@@=MicrosoftExcelWindow=||=editContent=||==B4>C4
+sleep=@@=100
+send keys=@@={enter}
+ 
+enter=@@=MicrosoftExcelWindow=||=editCell=||=E5
+send keys=@@={enter}
+enter=@@=MicrosoftExcelWindow=||=editContent=||==B5>C5
+sleep=@@=100
+send keys=@@={enter}
+ 
+enter=@@=MicrosoftExcelWindow=||=editCell=||=E6
+send keys=@@={enter}
+enter=@@=MicrosoftExcelWindow=||=editContent=||==B6>C6
+sleep=@@=100
+send keys=@@={enter}
+ 
+#>>>>>>Lam bai cot 3
+enter=@@=MicrosoftExcelWindow=||=editCell=||=F3
+send keys=@@={enter}
+enter=@@=MicrosoftExcelWindow=||=editContent=||==AND{(}D3,E3{)}
+sleep=@@=100
+send keys=@@={enter}
+ 
+enter=@@=MicrosoftExcelWindow=||=editCell=||=F4
+send keys=@@={enter}
+enter=@@=MicrosoftExcelWindow=||=editContent=||==AND{(}D4,E4{)}
+sleep=@@=100
+send keys=@@={enter}
+ 
+enter=@@=MicrosoftExcelWindow=||=editCell=||=F5
+send keys=@@={enter}
+enter=@@=MicrosoftExcelWindow=||=editContent=||==AND{(}D5,E5{)}
+sleep=@@=100
+send keys=@@={enter}
+ 
+enter=@@=MicrosoftExcelWindow=||=editCell=||=F6
+send keys=@@={enter}
+enter=@@=MicrosoftExcelWindow=||=editContent=||==AND{(}D6,E6{)}
+sleep=@@=100
+send keys=@@={enter}
+ 
+#>>>>>>Lam bai cot 4
+enter=@@=MicrosoftExcelWindow=||=editCell=||=G3
+send keys=@@={enter}
+enter=@@=MicrosoftExcelWindow=||=editContent=||==OR{(}D3,E3{)}
+sleep=@@=100
+send keys=@@={enter}
+ 
+enter=@@=MicrosoftExcelWindow=||=editCell=||=G4
+send keys=@@={enter}
+enter=@@=MicrosoftExcelWindow=||=editContent=||==OR{(}D4,E4{)}
+sleep=@@=100
+send keys=@@={enter}
+ 
+enter=@@=MicrosoftExcelWindow=||=editCell=||=G5
+send keys=@@={enter}
+enter=@@=MicrosoftExcelWindow=||=editContent=||==OR{(}D5,E5{)}
+sleep=@@=100
+send keys=@@={enter}
+ 
+enter=@@=MicrosoftExcelWindow=||=editCell=||=G6
+send keys=@@={enter}
+enter=@@=MicrosoftExcelWindow=||=editContent=||==OR{(}D6,E6{)}
+sleep=@@=100
+send keys=@@={enter}
+ 
+#>>>>>>Lam bai cot 5
+enter=@@=MicrosoftExcelWindow=||=editCell=||=H3
+send keys=@@={enter}
+enter=@@=MicrosoftExcelWindow=||=editContent=||==AND{(}D3,G3{)}
+sleep=@@=100
+send keys=@@={enter}
+ 
+enter=@@=MicrosoftExcelWindow=||=editCell=||=H4
+send keys=@@={enter}
+enter=@@=MicrosoftExcelWindow=||=editContent=||==AND{(}D4,G4{)}
+sleep=@@=100
+send keys=@@={enter}
+ 
+enter=@@=MicrosoftExcelWindow=||=editCell=||=H5
+send keys=@@={enter}
+enter=@@=MicrosoftExcelWindow=||=editContent=||==AND{(}D5,G5{)}
+sleep=@@=100
+send keys=@@={enter}
+ 
+enter=@@=MicrosoftExcelWindow=||=editCell=||=H6
+send keys=@@={enter}
+enter=@@=MicrosoftExcelWindow=||=editContent=||==AND{(}D6,G6{)}
+sleep=@@=100
+send keys=@@={enter}

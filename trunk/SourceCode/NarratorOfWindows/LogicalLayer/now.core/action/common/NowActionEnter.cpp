@@ -53,16 +53,21 @@ NOW_RESULT NowActionEnter::doAction()
 				int width = 0;
 				int height = 0;
 				NowUtility::getRectData(vec, left, top, width, height);
-				NowDeviceMouse::clickMouse(left + width / 2, top + height / 2, NowDeviceMouse::getClickType("left"));
-				
-				nResult = m_control->setValue(m_strContent);
-				if (nResult != NOW_OK)
+
+				PPOINT point = new POINT();
+				if (GetCursorPos(point) && left != 0 && top != 0)
 				{
-					NowDeviceKeyboard::sendKey(L"^a");
-					Sleep(200);
-					NowDeviceKeyboard::sendKey(L"{BACKSPACE}");
-					Sleep(200);
-					NowDeviceKeyboard::sendKey(m_strContent);
+					NowDeviceMouse::moveAndClickMouse(point->x, point->y, left + width / 2, top + height / 2, NowDeviceMouse::getClickType("left"));
+				
+					nResult = m_control->setValue(m_strContent);
+					if (nResult != NOW_OK)
+					{
+						NowDeviceKeyboard::sendKey(L"^a");
+						Sleep(200);
+						NowDeviceKeyboard::sendKey(L"{BACKSPACE}");
+						Sleep(200);
+						NowDeviceKeyboard::sendKey(m_strContent);
+					}
 				}
 			}
 		}

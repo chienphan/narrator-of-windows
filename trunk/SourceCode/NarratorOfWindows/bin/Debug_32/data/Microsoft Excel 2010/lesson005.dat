@@ -1,0 +1,191 @@
+lesson_no=@@=5
+lesson_name=@@=5. Hàm thống kê
+lesson_description=@@=<span style="color:red">Bài tập này hướng dẫn bạn cách sử dụng các hàm thống kê (Statistical functions) cơ bản </span>
+###########################################################
+#Define windows
+window=@@=Desktop=||=Program Manager
+window=@@=MicrosoftExcelWindow=||={Microsoft Excel.*Book.*}
+###########################################################
+#Define controls
+control=@@=Desktop=||=MSExcelIcon=||=NameProperty:Microsoft Excel 2010
+control=@@=MicrosoftExcelWindow=||=editCell=||=AutomationIdProperty:1001
+control=@@=MicrosoftExcelWindow=||=editContent=||=ClassNameProperty:EXCEL<
+control=@@=MicrosoftExcelWindow=||=btnMerged=||=HelpTextProperty:Click here to merge across several cells, or to split cells that have been merged back into individual cells.
+###########################################################
+#Do actions
+#>>>>>>Start Excel Window
+click=@@=Desktop=||=MSExcelIcon=||=double
+#>>>>>>Type title of lesson
+enter=@@=MicrosoftExcelWindow=||=editCell=||=A1
+send keys=@@={enter}
+enter=@@=MicrosoftExcelWindow=||=editContent=||=CÁC HÀM THỐNG KÊ							
+
+send keys=@@={enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=A1:E1
+send keys=@@={enter}
+click=@@=MicrosoftExcelWindow=||=btnMerged=||=left
+
+#>>>>>> Nhap de bai
+enter=@@=MicrosoftExcelWindow=||=editCell=||=A2
+send keys=@@={enter}14{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=B2
+send keys=@@={enter}28{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=C2
+send keys=@@={enter}36{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=D2
+send keys=@@={enter}d{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=E2
+send keys=@@={enter}2{enter}
+
+
+enter=@@=MicrosoftExcelWindow=||=editCell=||=A3
+send keys=@@={enter}b{enter}
+
+enter=@@=MicrosoftExcelWindow=||=editCell=||=C3
+send keys=@@={enter}43{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=D3
+send keys=@@={enter}57{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=E3
+send keys=@@={enter}85{enter}
+
+
+enter=@@=MicrosoftExcelWindow=||=editCell=||=A4
+send keys=@@={enter}19{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=B4
+send keys=@@={enter}35{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=C4
+send keys=@@={enter}study{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=D4
+send keys=@@={enter}compare{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=E4
+send keys=@@={enter}13{enter}
+
+
+enter=@@=MicrosoftExcelWindow=||=editCell=||=A5
+send keys=@@={enter}23{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=B5
+send keys=@@={enter}56{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=C5
+send keys=@@={enter}14{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=D5
+send keys=@@={enter}10{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=E5
+send keys=@@={enter}computer{enter}
+
+enter=@@=MicrosoftExcelWindow=||=editCell=||=A6
+send keys=@@={enter}some{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=B6
+send keys=@@={enter}49{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=C6
+send keys=@@={enter}28{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=D6
+send keys=@@={enter}53{enter}
+
+
+enter=@@=MicrosoftExcelWindow=||=editCell=||=A7
+send keys=@@={enter}65{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=B7
+send keys=@@={enter}8{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=C7
+send keys=@@={enter}command{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=D7
+send keys=@@={enter}52{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=E7
+send keys=@@={enter}24{enter}
+
+
+enter=@@=MicrosoftExcelWindow=||=editCell=||=A8
+send keys=@@={enter}66{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=C8
+send keys=@@={enter}51{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=D8
+send keys=@@={enter}38{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=E8
+send keys=@@={enter}learn{enter}
+
+enter=@@=MicrosoftExcelWindow=||=editCell=||=A10
+send keys=@@={enter}Dùng các hàm thống kê (Statistical functions) để tính các giá trị cho các ô trống?{enter}
+enter=@@=MicrosoftExcelWindow=||=editCell=||=A10:H10
+send keys=@@={enter}
+click=@@=MicrosoftExcelWindow=||=btnMerged=||=left
+
+
+#>>>>>>Lam bai hang 1
+enter=@@=MicrosoftExcelWindow=||=editCell=||=F12
+send keys=@@={enter}Giá trị lớn nhất{enter}
+sleep=@@=100
+enter=@@=MicrosoftExcelWindow=||=editCell=||=G12
+send keys=@@={enter}
+enter=@@=MicrosoftExcelWindow=||=editContent=||==MAX{(}A2:E8{)}
+sleep=@@=100
+send keys=@@={enter}
+
+#>>>>>>Lam bai hang 2
+enter=@@=MicrosoftExcelWindow=||=editCell=||=F13
+send keys=@@={enter}Giá trị nhỏ nhất{enter}
+sleep=@@=100
+enter=@@=MicrosoftExcelWindow=||=editCell=||=G13
+send keys=@@={enter}
+enter=@@=MicrosoftExcelWindow=||=editContent=||==MIN{(}A2:E8{)}
+sleep=@@=100
+send keys=@@={enter}
+
+#>>>>>>Lam bai hang 3
+enter=@@=MicrosoftExcelWindow=||=editCell=||=F14
+send keys=@@={enter}Giá trị trung bình{enter}
+sleep=@@=100
+enter=@@=MicrosoftExcelWindow=||=editCell=||=G14
+send keys=@@={enter}
+enter=@@=MicrosoftExcelWindow=||=editContent=||==AVERAGE{(}A2:E8{)}
+sleep=@@=100
+send keys=@@={enter}
+
+#>>>>>>Lam bai hang 4
+enter=@@=MicrosoftExcelWindow=||=editCell=||=F15
+send keys=@@={enter}Tổng các giá trị{enter}
+sleep=@@=100
+enter=@@=MicrosoftExcelWindow=||=editCell=||=G15
+send keys=@@={enter}
+enter=@@=MicrosoftExcelWindow=||=editContent=||==SUM{(}A2:E8{)}
+sleep=@@=100
+send keys=@@={enter}
+
+#>>>>>>Lam bai hang 5
+enter=@@=MicrosoftExcelWindow=||=editCell=||=F16
+send keys=@@={enter}Số ô chứa giá trị{enter}
+sleep=@@=100
+enter=@@=MicrosoftExcelWindow=||=editCell=||=G16
+send keys=@@={enter}
+enter=@@=MicrosoftExcelWindow=||=editContent=||==COUNT{(}A2:E8{)}
+sleep=@@=100
+send keys=@@={enter}
+
+#>>>>>>Lam bai hang 6
+enter=@@=MicrosoftExcelWindow=||=editCell=||=F17
+send keys=@@={enter}Số ô chứa giá trị chuỗi{enter}
+sleep=@@=100
+enter=@@=MicrosoftExcelWindow=||=editCell=||=G17
+send keys=@@={enter}
+enter=@@=MicrosoftExcelWindow=||=editContent=||==COUNTA{(}A2:E8{)}-COUNT{(}A2:E8{)}
+sleep=@@=100
+send keys=@@={enter}
+
+#>>>>>>Lam bai hang 7
+enter=@@=MicrosoftExcelWindow=||=editCell=||=F18
+send keys=@@={enter}Số ô chứa giá trị >50{enter}
+sleep=@@=100
+enter=@@=MicrosoftExcelWindow=||=editCell=||=G18
+send keys=@@={enter}
+enter=@@=MicrosoftExcelWindow=||=editContent=||==COUNTIF{(}A2:E8,{"}>50{"}{)}
+sleep=@@=100
+send keys=@@={enter}
+
+#>>>>>>Lam bai hang 8
+enter=@@=MicrosoftExcelWindow=||=editCell=||=F19
+send keys=@@={enter}Số ô bắt đầu bằng chữ "com"{enter}
+sleep=@@=100
+enter=@@=MicrosoftExcelWindow=||=editCell=||=G19
+send keys=@@={enter}
+enter=@@=MicrosoftExcelWindow=||=editContent=||==COUNTIF{(}A3:E8,"com*"{)}
+sleep=@@=100
+send keys=@@={enter}
