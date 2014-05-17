@@ -1,0 +1,53 @@
+lesson_no=@@=3
+lesson_name=@@=3. Sử dụng Column
+lesson_description=@@=Bài tập này hướng dẫn bạn thực hành với lệnh Column
+###########################################################
+#Define windows
+window=@@=Desktop=||=Program Manager
+window=@@=MicrosoftWordWindow=||={Document.*Microsoft Word.*}
+###########################################################
+#Define controls
+control=@@=Desktop=||=MSWordIcon=||=NameProperty=::=Microsoft Word 2010
+control=@@=MicrosoftWordWindow=||=editWord=||=NameProperty=::=Microsoft Word Document
+control=@@=MicrosoftWordWindow=||=itemPageLayout=||=NameProperty=::=Page Layout
+control=@@=MicrosoftWordWindow=||=menuColumns=||=NameProperty=::=Columns
+control=@@=MicrosoftWordWindow=||=itemThreeColumns=||=NameProperty=::=Three
+control=@@=MicrosoftWordWindow=||=editFontSize=||=NameProperty=::=Font Size:
+control=@@=MicrosoftWordWindow=||=buttonBold=||=NameProperty=::=Bold
+control=@@=MicrosoftWordWindow=||=buttonCenter=||=NameProperty=::=Center
+###########################################################
+#Do actions
+click=@@=Desktop=||=MSWordIcon=||=double
+send data=@@=Trình bày văn bản với Column
+
+enter=@@=MicrosoftWordWindow=||=editWord=||=Sử dụng lệnh Column để định dạng văn bản bên dưới thành 3 cột:{enter}
+
+send keys=@@=LÊ QUÝ ĐÔN{enter}{(}Bính Ngọ 1726 - Giáp Thìn 1784{)}
+
+send keys=@@=^(+{home})
+send keys=@@=+({down})
+
+enter=@@=MicrosoftWordWindow=||=editFontSize=||=20
+#send keys=@@={enter}
+
+click=@@=MicrosoftWordWindow=||=buttonBold=||=left
+click=@@=MicrosoftWordWindow=||=buttonCenter=||=left
+send keys=@@=^({end})
+
+send keys=@@={enter}Nhà văn hóa lớn Việt Nam tời Hậu Lê, thuở nhỏ có tên là Danh Phương, sau đổi là Quý Đôn, tự Doãn Hậu, hiệu Quế Đường. Quê làng Duyên Hà, phủ Tiên Hưng, trấn Sơn Nam (nay thuộc tỉnh Thái Bình).{enter}Ông xuất thân trong một gia đình khoa bảng lâu đời, thân phụ là Lê Phú Thứ làm quan triều Lê. Thuở nhỏ ông nổi tiếng thông minh, có trí nhớ phi thường được người đương thời xem là thần đồng.{enter}Năm Quý Hợi 1743 đỗ giải nguyên, năm Nhâm Thìn 1752 đỗ nhất giáp nhị danh tiến sĩ (Bảng nhãn). Từ thi Hương đến thi Hội đều đỗ đầu cả.{enter}Lê Quý Đôn là một học giả uyên bác, đa dạng và sung mãn nhất của văn hóa Việt Nam. Giới nghiên cứu thế giới (Pháp) xem ông là nhà bác học về lĩnh vực văn hóa của nước ta. Công trình trước tác và sáng tác của ông gồm một thư tịch đồ sộ về nhiều bộ môn: lịch sử, địa lý, văn học, ngôn ngữ học, triết học...
+
+send keys=@@=^(+{home})
+send keys=@@=+({down 3})
+
+click=@@=MicrosoftWordWindow=||=buttonBold=||=left
+click=@@=MicrosoftWordWindow=||=buttonCenter=||=left
+
+enter=@@=MicrosoftWordWindow=||=editFontSize=||=18
+send keys=@@={enter}
+
+click=@@=MicrosoftWordWindow=||=itemPageLayout=||=left
+
+click=@@=MicrosoftWordWindow=||=menuColumns=||=left
+
+click=@@=MicrosoftWordWindow=||=itemThreeColumns=||=left
+

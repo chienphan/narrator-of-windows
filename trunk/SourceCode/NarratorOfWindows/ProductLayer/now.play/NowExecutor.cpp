@@ -74,7 +74,7 @@ NOW_RESULT NowExecutor::initialize(const string& dataFileName)
 					}
 					else
 					{
-						vector<string>* vectArgument = NowStringProcessor::split(NowStringProcessor::wstringTostring(*it), NOW_CHAR_COLON);
+						vector<string>* vectArgument = NowStringProcessor::split(NowStringProcessor::wstringTostring(*it), NOW_DELIMITER_PROP_A);
 						if (vectArgument->size() == 2)
 						{
 							strProperties += vectArgument->at(0) + NOW_CHAR_EQUAL + vectArgument->at(1) + NOW_CHAR_OR ; 
