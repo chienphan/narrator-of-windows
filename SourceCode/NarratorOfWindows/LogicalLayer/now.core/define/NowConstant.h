@@ -42,6 +42,8 @@
 #define NOW_DELIMITER_ACTION_A "=@@="
 #define NOW_DELIMITER_PARAM_W L"=||="
 #define NOW_DELIMITER_PARAM_A "=||="
+#define NOW_DELIMITER_PROP_W L"=::="
+#define NOW_DELIMITER_PROP_A "=::="
 
 #define NOW_PLUGIN_NAME_UIA "uiautomation"
 

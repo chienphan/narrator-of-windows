@@ -1,83 +1,58 @@
 lesson_no=@@=2
-lesson_name=@@=2. Sử dụng Tab
-lesson_description=@@=Bài tập này hướng dẫn bạn thực hành với Tab
+lesson_name=@@=2. Sử dụng Bullets và Numbering
+lesson_description=@@=Bài tập này hướng dẫn bạn thực hành với Bullets và Numberings
 ###########################################################
 #Define windows
 window=@@=Desktop=||=Program Manager
 window=@@=MicrosoftWordWindow=||={Document.*Microsoft Word.*}
 ###########################################################
 #Define controls
-control=@@=Desktop=||=MSWordIcon=||=NameProperty:Microsoft Word 2010
-control=@@=MicrosoftWordWindow=||=btnParagraph=||=HelpTextProperty:Show the Paragraph dialog box.
-control=@@=MicrosoftWordWindow=||=btnShowAll=||=NameProperty:Show All
-control=@@=MicrosoftWordWindow=||=btnShowParagraphWindow=||=NameProperty:Paragraph...
-control=@@=MicrosoftWordWindow=||=editWord=||=NameProperty:Microsoft Word Document
-control=@@=MicrosoftWordWindow=||=btnTab=||=AutomationIdProperty:79
-control=@@=MicrosoftWordWindow=||=editDistance=||=AutomationIdProperty:17
+control=@@=Desktop=||=MSWordIcon=||=NameProperty=::=Microsoft Word 2010
+control=@@=MicrosoftWordWindow=||=editWord=||=NameProperty=::=Microsoft Word Document
+control=@@=MicrosoftWordWindow=||=buttonBullet=||=NameProperty=::=Bullets
+control=@@=MicrosoftWordWindow=||=buttonNumbering=||=NameProperty=::=Numbering
+control=@@=MicrosoftWordWindow=||=itemWingdings=||=NameProperty=::=Bulleted, 61558 (Wingdings)
 ###########################################################
 #Do actions
 click=@@=Desktop=||=MSWordIcon=||=double
-send data=@@=Trình bày văn bản với Tab
-#>>>>>>>>>>>>>>>>>>Open Paragraph Window
-click=@@=MicrosoftWordWindow=||=btnShowAll=||=left
+send data=@@=Trình bày văn bản với Bullets và Numbering
+
+enter=@@=MicrosoftWordWindow=||=editWord=||=Sử dụng lệnh bullets để đánh dấu "chấm" trước mỗi câu tụ ngữ bên dưới:{enter}
+
+send keys=@@=Ăn quả nhớ kẻ trồng cây{enter}Có công mài sắt có ngày nên kim{enter}Chị ngã em nâng{enter}Gần mực thì đen gần đèn thì sáng
+
+send keys=@@=+({home}{up 3})
+
+click=@@=MicrosoftWordWindow=||=buttonBullet=||=left
+
+send keys=@@={end}
+send keys=@@={enter}
+
+click=@@=MicrosoftWordWindow=||=buttonBullet=||=left
+########################
+
+send keys=@@=Sử dụng lệnh bullets để đánh dấu "4 chấm" trước mỗi câu ca dao bên dưới:{enter}
+
+send keys=@@=Đồng Đăng có phố Kỳ Lừa{enter}Có nàng Tô Thị có chùa Tam Thanh{enter}Ai lên xứ Lạng cùng anh{enter}Tiếc công bác mẹ sinh thành ra em{enter}Tay cầm bầu rượu, nắm nem{enter}Mảng vui, quên hết lời em dặn dò
+
+
+send keys=@@=+({home}{up 5})
+
+click=@@=MicrosoftWordWindow=||=buttonBullet=||=left=||=30=||=10
 sleep=@@=1000
-click=@@=MicrosoftWordWindow=||=btnShowParagraphWindow=||=left
-sleep=@@=1000
-#>>>>>>>>>>>>>>>>>>Open Tab Window
-send data=@@=Mở cửa sổ Tab
-sleep=@@=1000
-click=@@=MicrosoftWordWindow=||=btnTab=||=left=||=15=||=120
-sleep=@@=1000
-send data=@@=Cài đặt Tab canh lề trái với khoảng cách 0.5 inch
-sleep=@@=1000
-enter=@@=MicrosoftWordWindow=||=editDistance=||=0.5
-sleep=@@=1000
-click=@@=MicrosoftWordWindow=||=editDistance=||=left=||=30=||=130
-sleep=@@=1000
-click=@@=MicrosoftWordWindow=||=editDistance=||=left=||=70=||=240
-sleep=@@=1000
-####################
-send data=@@=Cài đặt Tab canh lề trái với khoảng cách 1 inch
-sleep=@@=1000
-enter=@@=MicrosoftWordWindow=||=editDistance=||=1
-sleep=@@=1000
-click=@@=MicrosoftWordWindow=||=editDistance=||=left=||=30=||=130
-sleep=@@=1000
-click=@@=MicrosoftWordWindow=||=editDistance=||=left=||=70=||=240
-sleep=@@=1000
-#########################################
-send data=@@=Cài đặt Tab canh lề giữa với khoảng cách 3 inches
-sleep=@@=1000
-enter=@@=MicrosoftWordWindow=||=editDistance=||=3
-sleep=@@=1000
-click=@@=MicrosoftWordWindow=||=editDistance=||=left=||=130=||=130
-sleep=@@=1000
-click=@@=MicrosoftWordWindow=||=editDistance=||=left=||=70=||=240
-sleep=@@=1000
-#########################################
-send data=@@=Cài đặt Tab canh lề giữa với khoảng cách 4 inches
-sleep=@@=1000
-enter=@@=MicrosoftWordWindow=||=editDistance=||=4
-sleep=@@=1000
-click=@@=MicrosoftWordWindow=||=editDistance=||=left=||=130=||=130
-sleep=@@=1000
-click=@@=MicrosoftWordWindow=||=editDistance=||=left=||=70=||=240
-sleep=@@=1000
-#########################################
-send data=@@=Cài đặt Tab canh lề phải với khoảng cách 6 inches
-sleep=@@=1000
-enter=@@=MicrosoftWordWindow=||=editDistance=||=6
-sleep=@@=1000
-click=@@=MicrosoftWordWindow=||=editDistance=||=left=||=220=||=130
-sleep=@@=1000
-click=@@=MicrosoftWordWindow=||=editDistance=||=left=||=70=||=240
-sleep=@@=1000
-#########################################
-send data=@@=Gõ nội dung văn bản vào MS Word
-sleep=@@=1000
-click=@@=MicrosoftWordWindow=||=editDistance=||=left=||=160=||=275
-sleep=@@=1000
-click=@@=MicrosoftWordWindow=||=editWord=||=left
-send keys=@@={tab}STT{tab}Họ và tên{tab}Giới tính{tab}Năm sinh{tab}Địa chỉ{enter}{tab}01{tab}Trần Quý Thịnh{tab}Nam{tab}1980{tab}Quận 10{enter}{tab}02{tab}Trần Tuấn Quy{tab}Nam{tab}1981{tab}An Giang{enter}{tab}03{tab}Trần Xương Phùng{tab}Nữ{tab}1982{tab}Quận T.Bình{enter}{tab}04{tab}Nguyễn Ngọc Hạnh{tab}Nữ{tab}1979{tab}Vũng Tàu
-sleep=@@=3000
-click=@@=MicrosoftWordWindow=||=btnShowAll=||=left
+click=@@=MicrosoftWordWindow=||=itemWingdings=||=left
+send keys=@@={end}
+send keys=@@={enter}
+click=@@=MicrosoftWordWindow=||=buttonBullet=||=left
+
+#######################
+send keys=@@=Sử dụng lệnh Numbering để đánh số thứ tự trước mỗi thể loại dân ca trong đoạn văn bên dưới:{enter}
+
+send keys=@@=Hát trống quân{enter}Hát xẩm{enter}Hát quan họ Bắc Ninh{enter}Hát ghẹo Phú Thọ{enter}Hát ví Nghệ – Tĩnh{enter}Hát dặm Nghệ Tĩnh{enter}Hát dân chài{enter}Ca Huế{enter}Dân ca miền nam trung bộ{enter}Dân ca nam bộ{enter}Hát ru em{enter}Hát vui chơi
+
+send keys=@@=+({home}{up 11})
+
+click=@@=MicrosoftWordWindow=||=buttonNumbering=||=left
+
+send keys=@@={end}
+send keys=@@=^({home})

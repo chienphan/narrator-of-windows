@@ -7,10 +7,10 @@ window=@@=Desktop=||=Program Manager
 window=@@=MicrosoftExcelWindow=||={Microsoft Excel.*Book.*}
 ###########################################################
 #Define controls
-control=@@=Desktop=||=MSExcelIcon=||=NameProperty:Microsoft Excel 2010
-control=@@=MicrosoftExcelWindow=||=editCell=||=AutomationIdProperty:1001
-control=@@=MicrosoftExcelWindow=||=editContent=||=ClassNameProperty:EXCEL<
-control=@@=MicrosoftExcelWindow=||=btnMerged=||=HelpTextProperty:Click here to merge across several cells, or to split cells that have been merged back into individual cells.
+control=@@=Desktop=||=MSExcelIcon=||=NameProperty=::=Microsoft Excel 2010
+control=@@=MicrosoftExcelWindow=||=editCell=||=AutomationIdProperty=::=1001
+control=@@=MicrosoftExcelWindow=||=editContent=||=ClassNameProperty=::=EXCEL<
+control=@@=MicrosoftExcelWindow=||=btnMerged=||=HelpTextProperty=::=Click here to merge across several cells, or to split cells that have been merged back into individual cells.
 ###########################################################
 #Do actions
 #>>>>>>Start Excel Window
