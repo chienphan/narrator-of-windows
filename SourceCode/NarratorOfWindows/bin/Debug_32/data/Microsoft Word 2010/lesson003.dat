@@ -11,10 +11,13 @@ control=@@=Desktop=||=MSWordIcon=||=NameProperty=::=Microsoft Word 2010
 control=@@=MicrosoftWordWindow=||=editWord=||=NameProperty=::=Microsoft Word Document
 control=@@=MicrosoftWordWindow=||=itemPageLayout=||=NameProperty=::=Page Layout
 control=@@=MicrosoftWordWindow=||=menuColumns=||=NameProperty=::=Columns
-control=@@=MicrosoftWordWindow=||=itemThreeColumns=||=NameProperty=::=Three
 control=@@=MicrosoftWordWindow=||=editFontSize=||=NameProperty=::=Font Size:
 control=@@=MicrosoftWordWindow=||=buttonBold=||=NameProperty=::=Bold
 control=@@=MicrosoftWordWindow=||=buttonCenter=||=NameProperty=::=Center
+control=@@=MicrosoftWordWindow=||=itemMoreColumns=||=NameProperty=::=More Columns...
+control=@@=MicrosoftWordWindow=||=buttonThree=||=NameProperty=::=Three
+control=@@=MicrosoftWordWindow=||=checkBoxLineBetween=||=NameProperty=::=Line between
+control=@@=MicrosoftWordWindow=||=buttonOK=||=NameProperty=::=Presets
 ###########################################################
 #Do actions
 click=@@=Desktop=||=MSWordIcon=||=double
@@ -49,5 +52,10 @@ click=@@=MicrosoftWordWindow=||=itemPageLayout=||=left
 
 click=@@=MicrosoftWordWindow=||=menuColumns=||=left
 
-click=@@=MicrosoftWordWindow=||=itemThreeColumns=||=left
+click=@@=MicrosoftWordWindow=||=itemMoreColumns=||=left
 
+click=@@=MicrosoftWordWindow=||=buttonThree=||=left
+
+click=@@=MicrosoftWordWindow=||=checkBoxLineBetween=||=left
+
+click=@@=MicrosoftWordWindow=||=buttonOK=||=left=||=255=||=295
