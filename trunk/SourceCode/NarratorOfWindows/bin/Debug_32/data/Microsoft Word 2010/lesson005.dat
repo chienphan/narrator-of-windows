@@ -1,0 +1,50 @@
+lesson_no=@@=5
+lesson_name=@@=5. Đối tượng đồ họa Smart Art
+lesson_description=@@=Bài tập này hướng dẫn bạn sử dụng đối tượng đồ họa Smart Art
+###########################################################
+#Define windows
+window=@@=Desktop=||=Program Manager
+window=@@=MicrosoftWordWindow=||={Document.*Microsoft Word.*}
+###########################################################
+#Define controls
+control=@@=Desktop=||=MSWordIcon=||=NameProperty=::=Microsoft Word 2010
+control=@@=MicrosoftWordWindow=||=editWord=||=NameProperty=::=Microsoft Word Document
+control=@@=MicrosoftWordWindow=||=tabItemInsert=||=NameProperty=::=Insert
+control=@@=MicrosoftWordWindow=||=buttonSmartArt=||=NameProperty=::=SmartArt...
+control=@@=MicrosoftWordWindow=||=listItemHierarchy=||=NameProperty=::=Hierarchy
+control=@@=MicrosoftWordWindow=||=listItemOrganizationChart=||=NameProperty=::=Organization Chart
+control=@@=MicrosoftWordWindow=||=buttonOK=||=NameProperty=::=OK
+control=@@=MicrosoftWordWindow=||=buttonTextPane=||=NameProperty=::=Text Pane
+control=@@=MicrosoftWordWindow=||=treeItem=||=NameProperty=::=Type your text here
+###########################################################
+#Do actions
+click=@@=Desktop=||=MSWordIcon=||=double
+send data=@@=Sử dụng đối tượng đồ họa Smart Art
+
+enter=@@=MicrosoftWordWindow=||=editWord=||=Sử dụng đối tượng đồ họa Smart Art{enter}
+
+click=@@=MicrosoftWordWindow=||=tabItemInsert=||=left
+
+click=@@=MicrosoftWordWindow=||=buttonSmartArt=||=left
+
+click=@@=MicrosoftWordWindow=||=listItemHierarchy=||=left
+
+click=@@=MicrosoftWordWindow=||=listItemOrganizationChart=||=left
+
+click=@@=MicrosoftWordWindow=||=buttonOK=||=left
+
+send keys=@@={esc}
+
+click=@@=MicrosoftWordWindow=||=buttonTextPane=||=left
+sleep=@@=1000
+send keys=@@=Tổng giám đốc
+sleep=@@=1000
+send keys=@@={down}Thư ký
+sleep=@@=1000
+send keys=@@={down}Giám đốc kỹ thuật
+sleep=@@=1000
+send keys=@@={down}Giám đốc nhân sự
+sleep=@@=1000
+send keys=@@={down}Giám đốc kinh doanh
+sleep=@@=1000
+click=@@=MicrosoftWordWindow=||=buttonTextPane=||=left

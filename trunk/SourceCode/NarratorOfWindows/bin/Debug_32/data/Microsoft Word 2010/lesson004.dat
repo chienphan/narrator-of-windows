@@ -1,0 +1,68 @@
+lesson_no=@@=4
+lesson_name=@@=4. Các đối tượng đồ họa
+lesson_description=@@=Bài tập này hướng dẫn bạn Sử dụng các đối tượng đồ họa WordArt, TextBox
+###########################################################
+#Define windows
+window=@@=Desktop=||=Program Manager
+window=@@=MicrosoftWordWindow=||={Document.*Microsoft Word.*}
+###########################################################
+#Define controls
+control=@@=Desktop=||=MSWordIcon=||=NameProperty=::=Microsoft Word 2010
+control=@@=MicrosoftWordWindow=||=editWord=||=NameProperty=::=Microsoft Word Document
+control=@@=MicrosoftWordWindow=||=tabItemInsert=||=NameProperty=::=Insert
+control=@@=MicrosoftWordWindow=||=menuWordArt=||=NameProperty=::=WordArt
+control=@@=MicrosoftWordWindow=||=listItemGradient=||=NameProperty=::=Gradient Fill - Orange, Accent 6, Inner Shadow
+control=@@=MicrosoftWordWindow=||=menuWrapText=||=NameProperty=::=Wrap Text
+control=@@=MicrosoftWordWindow=||=listItemInLine=||=NameProperty=::=In Line with Text
+control=@@=MicrosoftWordWindow=||=menuInsertTextBox=||=NameProperty=::=Text Box
+control=@@=MicrosoftWordWindow=||=listItemInsertTextBox=||=NameProperty=::= Simple Text Box
+control=@@=MicrosoftWordWindow=||=menuSize=||=NameProperty=::=Size
+control=@@=MicrosoftWordWindow=||=editShapeWidth=||=NameProperty=::=Shape Width
+###########################################################
+#Do actions
+click=@@=Desktop=||=MSWordIcon=||=double
+send data=@@=Sử dụng đối tượng đồ họa WordArt
+
+enter=@@=MicrosoftWordWindow=||=editWord=||=Sử dụng đối tượng đồ họa WordArt:{enter}
+
+send keys=@@=Lý Thường Kiệt
+sleep=@@=200
+
+send keys=@@=+({home})
+
+click=@@=MicrosoftWordWindow=||=tabItemInsert=||=left
+
+click=@@=MicrosoftWordWindow=||=menuWordArt=||=left
+
+click=@@=MicrosoftWordWindow=||=listItemGradient=||=left
+
+click=@@=MicrosoftWordWindow=||=menuWrapText=||=left
+
+click=@@=MicrosoftWordWindow=||=listItemInLine=||=left
+
+
+
+click=@@=MicrosoftWordWindow=||=editWord=||=left
+
+send keys=@@={esc}
+
+send keys=@@=^({end}){enter}
+
+#########################################
+send data=@@=Sử dụng đối tượng đồ họa TextBox
+
+send keys=@@=Yêu cầu của bài: Sử dụng đối tượng đồ họa TextBox:{enter}
+
+click=@@=MicrosoftWordWindow=||=tabItemInsert=||=left
+
+click=@@=MicrosoftWordWindow=||=menuInsertTextBox=||=left
+
+click=@@=MicrosoftWordWindow=||=listItemInsertTextBox=||=left
+
+send keys=@@=Danh tướng, đại thần nhà Lý. Chính họ tên là Ngô Tuấn, tự Thường Kiệt; sau được ban theo họ vua, nên lấy tự làm tên và mang họ Lý, thành Lý Thường Kiệt. Lúc mất, cũng có tên thụy là Quảng Châu, quê ở phủ Thái Hòa, thành Thăng Long (nay thuộc Hà Nội).
+
+click=@@=MicrosoftWordWindow=||=menuSize=||=left
+
+enter=@@=MicrosoftWordWindow=||=editShapeWidth=||=5
+
+send keys=@@={enter}
