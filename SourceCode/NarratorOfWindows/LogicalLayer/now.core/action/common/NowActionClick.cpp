@@ -57,6 +57,7 @@ NOW_RESULT NowActionClick::prepareArguments(vector<wstring>* argumnents)
 
 NOW_RESULT NowActionClick::doAction()
 {
+	NowLogger::getInstance()->LogAString("[NowActionClick::doAction] IN");
 	NOW_RESULT nResult = NOW_FALSE;
 
 	if (m_window != NULL)
@@ -67,20 +68,22 @@ NOW_RESULT NowActionClick::doAction()
 	string strValue;// = "";
 	if (m_control != NULL)
 	{
+		NowLogger::getInstance()->LogAString("[NowActionClick::doAction] control != null");
 		nResult = m_control->getProperty(NOW_PROP_BOUNDING_RECTANGLE, strValue);
 		if (NOW_SUCCEED(nResult))
 		{
+			NowLogger::getInstance()->LogAString("[NowActionClick::doAction] NOW_PROP_BOUNDING_RECTANGLE = " + strValue);
 			vector<string>* vec = NowStringProcessor::split(strValue, NOW_CHAR_COMMA);
 			if (vec != NULL)
 			{
-				int left = 0;
-				int top = 0;
-				int width = 0;
-				int height = 0;
+				int left = -1;
+				int top = -1;
+				int width = -1;
+				int height = -1;
 				NowUtility::getRectData(vec, left, top, width, height);
 
 				PPOINT point = new POINT();
-				if (GetCursorPos(point) && left != 0 && top != 0)
+				if (GetCursorPos(point) && left >= 0 && top >= 0)
 				{
 					if (m_x > 0 && m_y > 0)
 					{
@@ -96,5 +99,6 @@ NOW_RESULT NowActionClick::doAction()
 			delete vec;
 		}
 	}
+	NowLogger::getInstance()->LogAString("[NowActionClick::doAction] OUT");
 	return nResult;
 }

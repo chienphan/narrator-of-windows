@@ -3,11 +3,15 @@ lesson_name=@@=1. Các thao cơ bản
 lesson_description=@@=Bài tập này hướng dẫn bạn cách thêm mới slide, thay đổi kiểu bố trí cho mỗi silde. 
 ###########################################################
 #Define windows
-window=@@=Desktop=||=Program Manager
+window=@@=TaskBar=||={}
+window=@@=TaskBarMenu=||=Start menu
 window=@@=MicrosoftPowerPointWindow=||={Presentation.*Microsoft PowerPoint.*}
 ###########################################################
 #Define controls
-control=@@=Desktop=||=MicrosoftPowerPointIcon=||=NameProperty=::=Microsoft PowerPoint 2010
+control=@@=TaskBar=||=buttonStart=||=NameProperty=::=Start
+control=@@=TaskBarMenu=||=editSearchBox=||=NameProperty=::=Search Box
+control=@@=TaskBarMenu=||=listItemMSPowerPoint2010=||=NameProperty=::=Microsoft PowerPoint 2010
+
 control=@@=MicrosoftPowerPointWindow=||=editMain=||=NameProperty=::=Slide
 control=@@=MicrosoftPowerPointWindow=||=buttonNewSlide=||=NameProperty=::=New Slide
 control=@@=MicrosoftPowerPointWindow=||=listItemTitleAndContent=||=NameProperty=::=Title and Content
@@ -29,7 +33,11 @@ control=@@=MicrosoftPowerPointWindow=||=tabItemSlideShow=||=NameProperty=::=Slid
 control=@@=MicrosoftPowerPointWindow=||=buttonFromBeginning=||=NameProperty=::=From Beginning
 ###########################################################
 #Do actions
-click=@@=Desktop=||=MicrosoftPowerPointIcon=||=double
+//Open MS PowerPoint 2010
+click=@@=TaskBar=||=buttonStart=||=left
+enter=@@=TaskBarMenu=||=editSearchBox=||=Microsoft PowerPoint 2010
+sleep=@@=2000
+click=@@=TaskBarMenu=||=listItemMSPowerPoint2010=||=left
 send data=@@=Các thao cơ bản với Microsoft PowerPoint 2010.
 
 //Add text to sile 1

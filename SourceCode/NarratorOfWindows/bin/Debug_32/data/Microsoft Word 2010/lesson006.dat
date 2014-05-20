@@ -3,11 +3,15 @@ lesson_name=@@=6. Sử dụng Tab
 lesson_description=@@=Bài tập này hướng dẫn bạn thực hành với Tab
 ###########################################################
 #Define windows
-window=@@=Desktop=||=Program Manager
+window=@@=TaskBar=||={}
+window=@@=TaskBarMenu=||=Start menu
 window=@@=MicrosoftWordWindow=||={Document.*Microsoft Word.*}
 ###########################################################
 #Define controls
-control=@@=Desktop=||=MSWordIcon=||=NameProperty=::=Microsoft Word 2010
+control=@@=TaskBar=||=buttonStart=||=NameProperty=::=Start
+control=@@=TaskBarMenu=||=editSearchBox=||=NameProperty=::=Search Box
+control=@@=TaskBarMenu=||=listItemMSWord2010=||=NameProperty=::=Microsoft Word 2010
+
 control=@@=MicrosoftWordWindow=||=btnParagraph=||=HelpTextProperty=::=Show the Paragraph dialog box.
 control=@@=MicrosoftWordWindow=||=btnShowAll=||=NameProperty=::=Show All
 control=@@=MicrosoftWordWindow=||=btnShowParagraphWindow=||=NameProperty=::=Paragraph...
@@ -16,7 +20,12 @@ control=@@=MicrosoftWordWindow=||=btnTab=||=AutomationIdProperty=::=79
 control=@@=MicrosoftWordWindow=||=editDistance=||=AutomationIdProperty=::=17
 ###########################################################
 #Do actions
-click=@@=Desktop=||=MSWordIcon=||=double
+
+click=@@=TaskBar=||=buttonStart=||=left
+enter=@@=TaskBarMenu=||=editSearchBox=||=Microsoft Word 2010
+sleep=@@=2000
+click=@@=TaskBarMenu=||=listItemMSWord2010=||=left
+
 send data=@@=Trình bày văn bản với Tab
 #>>>>>>>>>>>>>>>>>>Open Paragraph Window
 click=@@=MicrosoftWordWindow=||=btnShowAll=||=left

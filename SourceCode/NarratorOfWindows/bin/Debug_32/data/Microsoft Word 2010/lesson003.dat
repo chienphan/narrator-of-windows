@@ -3,11 +3,15 @@ lesson_name=@@=3. Sử dụng Column
 lesson_description=@@=Bài tập này hướng dẫn bạn thực hành với lệnh Column
 ###########################################################
 #Define windows
-window=@@=Desktop=||=Program Manager
+window=@@=TaskBar=||={}
+window=@@=TaskBarMenu=||=Start menu
 window=@@=MicrosoftWordWindow=||={Document.*Microsoft Word.*}
 ###########################################################
 #Define controls
-control=@@=Desktop=||=MSWordIcon=||=NameProperty=::=Microsoft Word 2010
+control=@@=TaskBar=||=buttonStart=||=NameProperty=::=Start
+control=@@=TaskBarMenu=||=editSearchBox=||=NameProperty=::=Search Box
+control=@@=TaskBarMenu=||=listItemMSWord2010=||=NameProperty=::=Microsoft Word 2010
+
 control=@@=MicrosoftWordWindow=||=editWord=||=NameProperty=::=Microsoft Word Document
 control=@@=MicrosoftWordWindow=||=itemPageLayout=||=NameProperty=::=Page Layout
 control=@@=MicrosoftWordWindow=||=menuColumns=||=NameProperty=::=Columns
@@ -20,7 +24,12 @@ control=@@=MicrosoftWordWindow=||=checkBoxLineBetween=||=NameProperty=::=Line be
 control=@@=MicrosoftWordWindow=||=buttonOK=||=NameProperty=::=Presets
 ###########################################################
 #Do actions
-click=@@=Desktop=||=MSWordIcon=||=double
+
+click=@@=TaskBar=||=buttonStart=||=left
+enter=@@=TaskBarMenu=||=editSearchBox=||=Microsoft Word 2010
+sleep=@@=2000
+click=@@=TaskBarMenu=||=listItemMSWord2010=||=left
+
 send data=@@=Trình bày văn bản với Column
 
 enter=@@=MicrosoftWordWindow=||=editWord=||=Sử dụng lệnh Column để định dạng văn bản bên dưới thành 3 cột:{enter}
