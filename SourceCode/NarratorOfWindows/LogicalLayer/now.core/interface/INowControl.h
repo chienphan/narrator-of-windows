@@ -54,6 +54,8 @@ public:
 	virtual NOW_RESULT getProperty(const string& strPropName, string& strValue) = 0;
 
 	virtual NOW_RESULT setValue(const wstring& wstrValue) = 0;
+
+	virtual NOW_RESULT scrollIntoView() = 0;
 };
 
 #endif

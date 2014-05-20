@@ -1,0 +1,135 @@
+lesson_no=@@=3
+lesson_name=@@=3. Thay đổi hiệu ứng chuyển cảnh
+lesson_description=@@=Bài tập này hướng dẫn bạn cách thay đổi các hiệu ứng chuyển cảnh (Transition) giữa các slide.
+###########################################################
+#Define windows
+window=@@=Desktop=||=Program Manager
+window=@@=MicrosoftPowerPointWindow=||={Presentation.*Microsoft PowerPoint.*}
+###########################################################
+#Define controls
+control=@@=Desktop=||=MicrosoftPowerPointIcon=||=NameProperty=::=Microsoft PowerPoint 2010
+control=@@=MicrosoftPowerPointWindow=||=editMain=||=NameProperty=::=Slide
+control=@@=MicrosoftPowerPointWindow=||=buttonNewSlide=||=NameProperty=::=New Slide
+control=@@=MicrosoftPowerPointWindow=||=listItemTitleAndContent=||=NameProperty=::=Title and Content
+control=@@=MicrosoftPowerPointWindow=||=tabItemInsert=||=NameProperty=::=Insert
+control=@@=MicrosoftPowerPointWindow=||=buttonPicture=||=NameProperty=::=Picture...
+control=@@=MicrosoftPowerPointWindow=||=treeItemPictures=||=NameProperty=::=Pictures
+control=@@=MicrosoftPowerPointWindow=||=listItemSamplePictures=||=NameProperty=::=Sample Pictures
+control=@@=MicrosoftPowerPointWindow=||=listItemChrysanthemum=||=NameProperty=::=Chrysanthemum.jpg
+
+control=@@=MicrosoftPowerPointWindow=||=buttonInsert=||=NameProperty=::=Insert
+control=@@=MicrosoftPowerPointWindow=||=tabItemHome=||=NameProperty=::=Home
+control=@@=MicrosoftPowerPointWindow=||=listItemTulips=||=NameProperty=::=Tulips.jpg
+control=@@=MicrosoftPowerPointWindow=||=listItemTwoContent=||=NameProperty=::=Two Content
+
+control=@@=MicrosoftPowerPointWindow=||=listItemContentWithCaption=||=NameProperty=::=Content with Caption
+control=@@=MicrosoftPowerPointWindow=||=listItemHydrangeas=||=NameProperty=::=Hydrangeas.jpg
+
+control=@@=MicrosoftPowerPointWindow=||=tabItemSlideShow=||=NameProperty=::=Slide Show
+control=@@=MicrosoftPowerPointWindow=||=buttonFromBeginning=||=NameProperty=::=From Beginning
+
+control=@@=MicrosoftPowerPointWindow=||=tabItemDesign=||=NameProperty=::=Design
+control=@@=MicrosoftPowerPointWindow=||=listItemWaveform=||=NameProperty=::=Waveform
+control=@@=MicrosoftPowerPointWindow=||=listItemWaveformLoading=||=NameProperty=::=Waveform Loading Preview...
+control=@@=MicrosoftPowerPointWindow=||=menuBackgroundStyles=||=NameProperty=::=Background Styles
+control=@@=MicrosoftPowerPointWindow=||=listItemStyles9=||=NameProperty=::=Style 9
+
+control=@@=MicrosoftPowerPointWindow=||=tabItemTransitions=||=NameProperty=::=Transitions
+control=@@=MicrosoftPowerPointWindow=||=buttonApplyToAll=||=NameProperty=::=Apply To All
+control=@@=MicrosoftPowerPointWindow=||=listItemRotate=||=NameProperty=::=Rotate
+###########################################################
+#Do actions
+click=@@=Desktop=||=MicrosoftPowerPointIcon=||=double
+send data=@@=Các thao cơ bản với Microsoft PowerPoint 2010.
+
+//Add text to sile 1
+click=@@=MicrosoftPowerPointWindow=||=editMain=||=left=||=10=||=10
+send keys=@@={tab}GIỚI THIỆU VỀ CÁC LOÀI HOA
+send keys=@@={esc}{tab}Phan Đức Chiến
+
+//Tao moi Slide 2
+click=@@=MicrosoftPowerPointWindow=||=buttonNewSlide=||=left=||=20=||=50
+click=@@=MicrosoftPowerPointWindow=||=listItemTitleAndContent=||=left
+
+click=@@=MicrosoftPowerPointWindow=||=tabItemInsert=||=left
+//Open dialog
+click=@@=MicrosoftPowerPointWindow=||=buttonPicture=||=left
+
+click=@@=MicrosoftPowerPointWindow=||=treeItemPictures=||=left
+click=@@=MicrosoftPowerPointWindow=||=listItemSamplePictures=||=double
+click=@@=MicrosoftPowerPointWindow=||=listItemChrysanthemum=||=left
+click=@@=MicrosoftPowerPointWindow=||=buttonInsert=||=left
+sleep=@@=200
+send keys=@@={esc}{tab}HOA CÚC
+
+clear cache=@@=all
+
+//Tao moi Slide 3
+click=@@=MicrosoftPowerPointWindow=||=tabItemHome=||=left
+click=@@=MicrosoftPowerPointWindow=||=buttonNewSlide=||=left=||=20=||=50
+click=@@=MicrosoftPowerPointWindow=||=listItemTwoContent=||=left
+
+click=@@=MicrosoftPowerPointWindow=||=tabItemInsert=||=left
+//clear cache=@@=all
+//Open dialog
+click=@@=MicrosoftPowerPointWindow=||=buttonPicture=||=left
+sleep=@@=500
+//clear cache=@@=all
+//click=@@=MicrosoftPowerPointWindow=||=treeItemPictures=||=left
+//click=@@=MicrosoftPowerPointWindow=||=listItemSamplePictures=||=double
+//sleep=@@=500
+clear cache=@@=all
+click=@@=MicrosoftPowerPointWindow=||=listItemTulips=||=left
+click=@@=MicrosoftPowerPointWindow=||=buttonInsert=||=left
+sleep=@@=500
+send keys=@@={esc}{tab}HOA TULIP
+send keys=@@={esc}{tab}{tab}Hoa Tulip, danh pháp khoa học Tulipa, còn có tên gọi khác là uất kim hương, uất kim cương.{enter}Là một chi thực vật có hoa trong họ Liliaceae.
+
+//Tao moi Slide 4
+click=@@=MicrosoftPowerPointWindow=||=tabItemHome=||=left
+click=@@=MicrosoftPowerPointWindow=||=buttonNewSlide=||=left=||=20=||=50
+click=@@=MicrosoftPowerPointWindow=||=listItemContentWithCaption=||=left
+
+click=@@=MicrosoftPowerPointWindow=||=tabItemInsert=||=left
+//clear cache=@@=all
+//Open dialog
+click=@@=MicrosoftPowerPointWindow=||=buttonPicture=||=left
+sleep=@@=500
+//clear cache=@@=all
+//click=@@=MicrosoftPowerPointWindow=||=treeItemPictures=||=left
+//click=@@=MicrosoftPowerPointWindow=||=listItemSamplePictures=||=double
+//sleep=@@=500
+clear cache=@@=all
+click=@@=MicrosoftPowerPointWindow=||=listItemHydrangeas=||=left
+click=@@=MicrosoftPowerPointWindow=||=buttonInsert=||=left
+sleep=@@=500
+send keys=@@={esc}{tab}HOA CẨM TÚ CẦU
+send keys=@@={esc}{tab}{tab}Hoa Cẩm Tú cầu (danh pháp khoa học: Hydrangea) là một chi thực vật có hoa trong họ Tú cầu (Hydrangeaceae) bản địa Đông Á (từ Nhật Bản đến Trung Quốc), Nam Á, Đông Nam Á (Hymalaya, Indonesia) và châu Mỹ.{enter}Chúng là loài cây thân mộc, hoa vô tính. Hầu hết các loài tú cầu có hoa màu trắng, tuy nhiên vài loài (điển hình là H. macrophylla) có màu hoa thay đổi phụ thuộc vào độ pH của đất, lúc đầu hoa màu trắng sau biến dần thành màu lam hay màu hồng, màu hoa phụ thuộc vào độ pH của thổ nhưỡng, ưa bóng râm ẩm thấp.{enter}Tất cả bộ phận của cây chứa độc tố có thể gây ngộ độc ở người khi ăn phải.
+
+//Thay doi theme
+click=@@=MicrosoftPowerPointWindow=||=tabItemDesign=||=left
+scroll into view=@@=MicrosoftPowerPointWindow=||=listItemWaveformLoading
+click=@@=MicrosoftPowerPointWindow=||=listItemWaveform=||=left
+click=@@=MicrosoftPowerPointWindow=||=menuBackgroundStyles=||=left
+click=@@=MicrosoftPowerPointWindow=||=listItemStyles9=||=left
+
+//Thay doi transitions
+click=@@=MicrosoftPowerPointWindow=||=tabItemTransitions=||=left
+scroll into view=@@=MicrosoftPowerPointWindow=||=listItemRotate
+sleep=@@=500
+click=@@=MicrosoftPowerPointWindow=||=listItemRotate=||=left
+click=@@=MicrosoftPowerPointWindow=||=buttonApplyToAll=||=left
+
+//Trinh chieu slide
+click=@@=MicrosoftPowerPointWindow=||=tabItemSlideShow=||=left
+click=@@=MicrosoftPowerPointWindow=||=buttonFromBeginning=||=left
+sleep=@@=3000
+send keys=@@={RIGHT}
+sleep=@@=3000
+send keys=@@={RIGHT}
+sleep=@@=3000
+send keys=@@={RIGHT}
+sleep=@@=3000
+send keys=@@={RIGHT}
+sleep=@@=200
+send keys=@@={RIGHT}

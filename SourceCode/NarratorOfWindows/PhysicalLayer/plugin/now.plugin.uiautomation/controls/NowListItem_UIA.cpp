@@ -22,3 +22,8 @@ NOW_RESULT NowListItem_UIA::getUIInformation(wstring& wrtrHelpText)
 	wrtrHelpText += L" desktop item";
 	return nResult;
 }
+
+NOW_RESULT NowListItem_UIA::scrollIntoView()
+{
+	return NowCommunication::getInstance()->scrollIntoView(m_strSignature);
+}

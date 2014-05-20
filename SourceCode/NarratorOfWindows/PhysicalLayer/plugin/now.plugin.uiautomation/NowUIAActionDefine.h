@@ -18,5 +18,6 @@
 #define UIA_ACTION_BRING_WINDOW_TO_TOP	"bringwindowtotop"
 #define UIA_ACTION_CLEAR_CACHE			"clearcache"
 #define UIA_ACTION_SET_VALUE			"setvalue"
+#define UIA_ACTION_SCROLL_INTO_VIEW		"scrollintoview"
 
 #endif

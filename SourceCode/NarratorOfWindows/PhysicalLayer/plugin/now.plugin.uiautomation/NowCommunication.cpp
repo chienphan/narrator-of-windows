@@ -221,3 +221,20 @@ NOW_RESULT NowCommunication::setValue( const string& strSignature, const wstring
 	NowUIAArgumentIn::GetInstance()->ClearArguments();
 	return nResult ;
 }
+
+NOW_RESULT NowCommunication::scrollIntoView( const string& strSignature )
+{
+	NowLogger::getInstance()->LogAString("[NowCommunication::scrollIntoView] IN");
+	NOW_RESULT nResult = NOW_FALSE;
+	String^ mstrSignature = NowStringProcessor_UIA::StlStringToString(strSignature);
+
+	NowUIAArgumentIn::GetInstance()->ActionName = UIA_ACTION_SCROLL_INTO_VIEW;
+	NowUIAArgumentIn::GetInstance()->AddArgument(UIA_PROP_SIGNATURE, mstrSignature);
+
+	nResult = NowUIAActionManager::GetInstance()->DoAction();
+
+	//Clear data
+	NowUIAArgumentIn::GetInstance()->ClearArguments();
+	NowLogger::getInstance()->LogAString("[NowCommunication::scrollIntoView] OUT");
+	return nResult ;
+}

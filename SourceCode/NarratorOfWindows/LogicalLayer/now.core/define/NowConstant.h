@@ -104,5 +104,6 @@
 #define NOW_ACTION_SENDKEYS				"send keys"
 #define NOW_ACTION_SEND_DATA			"send data"
 #define NOW_ACTION_CLEAR_CACHE			"clear cache"
+#define NOW_ACTION_SCROLL_INTO_VIEW		"scroll into view"
 
 #endif

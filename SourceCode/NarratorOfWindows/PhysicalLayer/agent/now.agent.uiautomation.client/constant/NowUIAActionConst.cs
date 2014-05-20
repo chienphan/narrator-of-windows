@@ -15,6 +15,7 @@ namespace now.agent.uiautomation.client.constant
         public static readonly String UIA_ACTION_BRING_WINDOW_TO_TOP        = "bringwindowtotop";
         public static readonly String UIA_ACTION_CLEAR_CACHE                = "clearcache";
         public static readonly String UIA_ACTION_SET_VALUE                  = "setvalue";
+        public static readonly String UIA_ACTION_SCROLL_INTO_VIEW           = "scrollintoview";
     }
 
     sealed class NowUIAPropertyDefine

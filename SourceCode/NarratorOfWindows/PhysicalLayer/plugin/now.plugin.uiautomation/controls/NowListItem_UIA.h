@@ -18,6 +18,8 @@ public:
 
 	virtual NOW_RESULT getUIInformation( wstring& wstrHelpText );
 
+	virtual NOW_RESULT scrollIntoView();
+
 	//virtual NOW_RESULT getParent( INowControl*& ctrParent );
 
 	//virtual NOW_RESULT getChildren( list<INowControl*>& lstChildren );

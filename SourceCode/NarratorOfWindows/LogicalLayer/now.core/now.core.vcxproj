@@ -78,7 +78,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <CompileAs>CompileAsCpp</CompileAs>
-      <AdditionalIncludeDirectories>$(SolutionDir)PhysicalLayer\lib\now.lib.device\;$(SolutionDir)PhysicalLayer\lib\now.lib.logger\;$(SolutionDir)PhysicalLayer\lib\now.lib.tcpip\;$(ProjectDir);$(ProjectDir)define\;$(ProjectDir)interface\;$(ProjectDir)Utility\;$(ProjectDir)action\common\;$(ProjectDir)action\tcp\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)PhysicalLayer\lib\now.lib.device\;$(SolutionDir)PhysicalLayer\lib\now.lib.logger\;$(SolutionDir)PhysicalLayer\lib\now.lib.tcpip\;$(ProjectDir);$(ProjectDir)define\;$(ProjectDir)interface\;$(ProjectDir)Utility\;$(ProjectDir)action\common\;$(ProjectDir)action\tcp\;$(ProjectDir)action\item\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -103,7 +103,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>$(SolutionDir)PhysicalLayer\lib\now.lib.device\;$(SolutionDir)PhysicalLayer\lib\now.lib.logger\;$(SolutionDir)PhysicalLayer\lib\now.lib.tcpip\;$(ProjectDir);$(ProjectDir)define\;$(ProjectDir)interface\;$(ProjectDir)Utility\;$(ProjectDir)action\common\;$(ProjectDir)action\tcp\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)PhysicalLayer\lib\now.lib.device\;$(SolutionDir)PhysicalLayer\lib\now.lib.logger\;$(SolutionDir)PhysicalLayer\lib\now.lib.tcpip\;$(ProjectDir);$(ProjectDir)define\;$(ProjectDir)interface\;$(ProjectDir)Utility\;$(ProjectDir)action\common\;$(ProjectDir)action\tcp\;$(ProjectDir)action\item\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -140,6 +140,7 @@
     <ClInclude Include="action\common\NowActionSleep.h" />
     <ClInclude Include="action\common\NowActionSendKeys.h" />
     <ClInclude Include="action\tcp\NowActionSendData.h" />
+    <ClInclude Include="action\item\NowActionScrollIntoView.h" />
     <ClInclude Include="NowMatching.h" />
     <ClInclude Include="NowPluginManager.h" />
     <ClInclude Include="NowStorage.h" />
@@ -155,6 +156,7 @@
     <ClCompile Include="action\common\NowActionSleep.cpp" />
     <ClCompile Include="action\common\NowActionSendKeys.cpp" />
     <ClCompile Include="action\tcp\NowActionSendData.cpp" />
+    <ClCompile Include="action\item\NowActionScrollIntoView.cpp" />
     <ClCompile Include="NowMatching.cpp" />
     <ClCompile Include="NowPluginManager.cpp" />
     <ClCompile Include="NowStorage.cpp" />
