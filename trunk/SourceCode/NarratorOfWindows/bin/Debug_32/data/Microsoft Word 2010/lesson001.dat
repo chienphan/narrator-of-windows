@@ -3,11 +3,15 @@ lesson_name=@@=1. Thay đổi kiểu chữ
 lesson_description=@@=Bài tập này hướng dẫn bạn cách thay đổi các kiểu chữ.
 ###########################################################
 #Define windows
-window=@@=Desktop=||=Program Manager
+window=@@=TaskBar=||={}
+window=@@=TaskBarMenu=||=Start menu
 window=@@=MicrosoftWordWindow=||={Document.*Microsoft Word.*}
 ###########################################################
 #Define controls
-control=@@=Desktop=||=MSWordIcon=||=NameProperty=::=Microsoft Word 2010
+control=@@=TaskBar=||=buttonStart=||=NameProperty=::=Start
+control=@@=TaskBarMenu=||=editSearchBox=||=NameProperty=::=Search Box
+control=@@=TaskBarMenu=||=listItemMSWord2010=||=NameProperty=::=Microsoft Word 2010
+
 control=@@=MicrosoftWordWindow=||=btnParagraph=||=HelpTextProperty=::=Show the Paragraph dialog box.
 control=@@=MicrosoftWordWindow=||=edit=||=NameProperty=::=Microsoft Word Document
 control=@@=MicrosoftWordWindow=||=btnBold=||=NameProperty=::=Bold
@@ -17,7 +21,11 @@ control=@@=MicrosoftWordWindow=||=btnFont=||=NameProperty=::=Font...
 control=@@=MicrosoftWordWindow=||=editBody=||=NameProperty=::=+Body
 ###########################################################
 #Do actions
-click=@@=Desktop=||=MSWordIcon=||=double
+click=@@=TaskBar=||=buttonStart=||=left
+enter=@@=TaskBarMenu=||=editSearchBox=||=Microsoft Word 2010
+sleep=@@=2000
+click=@@=TaskBarMenu=||=listItemMSWord2010=||=left
+
 send data=@@=Thay đổi kiểu chữ.
 enter=@@=MicrosoftWordWindow=||=edit=||={TAB}Winword là một chương trình xử lý văn bản mạnh, ngoài các chức năng giúp người sử dụng gõ nhanh và đúng văn bản, nó còn cho phép chúng ta chèn các ký tự đặc biệt. Chúng ta có thể nhập văn bản bằng chữ thường hoặc chữ in  tùy ý rồi sau đó có thể chuyển đổi sang một kiểu chữ thích hợp. Các lệnh thường dùng trong văn bản có thể trình bày nhanh  bằng biểu tượng lệnh như:{ENTER}
 sleep=@@=1000

@@ -3,18 +3,27 @@ lesson_name=@@=2. Sử dụng Bullets và Numbering
 lesson_description=@@=Bài tập này hướng dẫn bạn thực hành với Bullets và Numberings
 ###########################################################
 #Define windows
-window=@@=Desktop=||=Program Manager
+window=@@=TaskBar=||={}
+window=@@=TaskBarMenu=||=Start menu
 window=@@=MicrosoftWordWindow=||={Document.*Microsoft Word.*}
 ###########################################################
 #Define controls
-control=@@=Desktop=||=MSWordIcon=||=NameProperty=::=Microsoft Word 2010
+control=@@=TaskBar=||=buttonStart=||=NameProperty=::=Start
+control=@@=TaskBarMenu=||=editSearchBox=||=NameProperty=::=Search Box
+control=@@=TaskBarMenu=||=listItemMSWord2010=||=NameProperty=::=Microsoft Word 2010
+
 control=@@=MicrosoftWordWindow=||=editWord=||=NameProperty=::=Microsoft Word Document
 control=@@=MicrosoftWordWindow=||=buttonBullet=||=NameProperty=::=Bullets
 control=@@=MicrosoftWordWindow=||=buttonNumbering=||=NameProperty=::=Numbering
 control=@@=MicrosoftWordWindow=||=itemWingdings=||=NameProperty=::=Bulleted, 61558 (Wingdings)
 ###########################################################
 #Do actions
-click=@@=Desktop=||=MSWordIcon=||=double
+
+click=@@=TaskBar=||=buttonStart=||=left
+enter=@@=TaskBarMenu=||=editSearchBox=||=Microsoft Word 2010
+sleep=@@=2000
+click=@@=TaskBarMenu=||=listItemMSWord2010=||=left
+
 send data=@@=Trình bày văn bản với Bullets và Numbering
 
 enter=@@=MicrosoftWordWindow=||=editWord=||=Sử dụng lệnh bullets để đánh dấu "chấm" trước mỗi câu tụ ngữ bên dưới:{enter}

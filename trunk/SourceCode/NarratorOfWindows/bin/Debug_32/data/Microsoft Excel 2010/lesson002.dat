@@ -3,18 +3,26 @@ lesson_name=@@=2. Các phép toán luận lý
 lesson_description=@@=Bài tập này hướng dẫn bạn cách sử dụng các phép toán luận lý.
 ###########################################################
 #Define windows
-window=@@=Desktop=||=Program Manager
+window=@@=TaskBar=||={}
+window=@@=TaskBarMenu=||=Start menu
 window=@@=MicrosoftExcelWindow=||={Microsoft Excel.*Book.*}
 ###########################################################
 #Define controls
-control=@@=Desktop=||=MSExcelIcon=||=NameProperty=::=Microsoft Excel 2010
+control=@@=TaskBar=||=buttonStart=||=NameProperty=::=Start
+control=@@=TaskBarMenu=||=editSearchBox=||=NameProperty=::=Search Box
+control=@@=TaskBarMenu=||=listItemMSExcel2010=||=NameProperty=::=Microsoft Excel 2010
+
 control=@@=MicrosoftExcelWindow=||=editCell=||=AutomationIdProperty=::=1001
 control=@@=MicrosoftExcelWindow=||=editContent=||=ClassNameProperty=::=EXCEL<
 control=@@=MicrosoftExcelWindow=||=btnMerged=||=HelpTextProperty=::=Click here to merge across several cells, or to split cells that have been merged back into individual cells.
 ###########################################################
 #Do actions
 #>>>>>>Start Excel Window
-click=@@=Desktop=||=MSExcelIcon=||=double
+click=@@=TaskBar=||=buttonStart=||=left
+enter=@@=TaskBarMenu=||=editSearchBox=||=Microsoft Excel 2010
+sleep=@@=2000
+click=@@=TaskBarMenu=||=listItemMSExcel2010=||=left
+
 #>>>>>>Type title of lesson
 enter=@@=MicrosoftExcelWindow=||=editCell=||=A1
 send keys=@@={enter}
