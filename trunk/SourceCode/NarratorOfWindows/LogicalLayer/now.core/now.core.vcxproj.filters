@@ -72,6 +72,9 @@
     <ClInclude Include="action\common\NowActionClearCache.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="action\item\NowActionScrollIntoView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NowPluginManager.cpp">
@@ -111,6 +114,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="action\common\NowActionClearCache.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="action\item\NowActionScrollIntoView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

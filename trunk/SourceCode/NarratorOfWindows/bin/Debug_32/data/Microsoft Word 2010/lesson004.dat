@@ -49,10 +49,13 @@ send keys=@@={esc}
 send keys=@@=^({end}){enter}
 
 #########################################
-send data=@@=Sử dụng đối tượng đồ họa TextBox
+#send data=@@=Sử dụng đối tượng đồ họa TextBox
 
-send keys=@@=Yêu cầu của bài: Sử dụng đối tượng đồ họa TextBox:{enter}
+send keys=@@=Yêu cầu của bài: Sử dụng đối tượng đồ họa TextBox:
 
+sleep=@@=200
+send keys=@@={enter}
+sleep=@@=200
 click=@@=MicrosoftWordWindow=||=tabItemInsert=||=left
 
 click=@@=MicrosoftWordWindow=||=menuInsertTextBox=||=left

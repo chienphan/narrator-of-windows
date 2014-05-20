@@ -97,3 +97,8 @@ NOW_RESULT NowControl_UIA::setValue( const wstring& wstrValue )
 {
 	return NOW_FALSE;
 }
+
+NOW_RESULT NowControl_UIA::scrollIntoView()
+{
+	return NOW_FALSE;
+}

@@ -39,6 +39,8 @@ public:
 
 	virtual NOW_RESULT setValue( const wstring& wstrValue );
 
+	virtual NOW_RESULT scrollIntoView();
+
 };
 
 #endif//_NOW_CONTROL_UIA_H_

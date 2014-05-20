@@ -84,6 +84,7 @@
     <Compile Include="action\common\GetStatus.cs" />
     <Compile Include="action\common\GetWindowByTitle.cs" />
     <Compile Include="action\editer\SetValue.cs" />
+    <Compile Include="action\item\ScrollIntoView.cs" />
     <Compile Include="argument\NowUIAArgumentIn.cs" />
     <Compile Include="argument\NowUIAArgumentOut.cs" />
     <Compile Include="constant\NowUIAActionConst.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="interfaces\INowUIAAction.cs" />
     <Compile Include="logger\NowUIALogger.cs" />
     <Compile Include="NowUIAService.cs" />
+    <Compile Include="pattern\NowScrollItemPattern.cs" />
     <Compile Include="pattern\NowValuePattern.cs" />
     <Compile Include="storage\NowUIAStorage.cs" />
     <Compile Include="constant\NowUIADefine.cs" />

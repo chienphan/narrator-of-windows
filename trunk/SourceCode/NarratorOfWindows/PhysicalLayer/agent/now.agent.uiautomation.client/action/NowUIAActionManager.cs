@@ -6,6 +6,7 @@ using now.agent.uiautomation.client.argument;
 using now.agent.uiautomation.client.constant;
 using now.agent.uiautomation.client.interfaces;
 using now.agent.uiautomation.client.logger;
+using now.agent.uiautomation.client.action.item;
 
 namespace now.agent.uiautomation.client.action
 {
@@ -29,6 +30,7 @@ namespace now.agent.uiautomation.client.action
             m_mapAction.Add(NowUIAActionConst.UIA_ACTION_BRING_WINDOW_TO_TOP, new BringWindowToTop());
             m_mapAction.Add(NowUIAActionConst.UIA_ACTION_CLEAR_CACHE, new ClearCache());
             m_mapAction.Add(NowUIAActionConst.UIA_ACTION_SET_VALUE, new SetValue());
+            m_mapAction.Add(NowUIAActionConst.UIA_ACTION_SCROLL_INTO_VIEW, new ScrollIntoView());
         }
 
         public static NowUIAActionManager GetInstance()
