@@ -34,9 +34,14 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.layout.RowData;
 import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.CoolBar;
+import org.eclipse.swt.widgets.CoolItem;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
@@ -54,23 +59,40 @@ public class NowMainWindow {
     private static NowMainWindow m_instance = null;
     private Shell m_shell = null;
     
-    private ToolBar m_toolBar = null;
-    private ToolItem m_itemFile = null;
-    private ToolItem m_itemHelp = null;
+//    private ToolBar m_toolBar = null;
+//    private ToolItem m_itemFile = null;
+//    private ToolItem m_itemHelp = null;
     
+    //Menu bar
+    private Menu m_menuBar = null;
+    private MenuItem m_menuButtonFile = null;
+    private MenuItem m_menuButtonTools = null;
+    private MenuItem m_menuButtonRun = null;
+    private MenuItem m_menuButtonHelp = null;
+    
+    private Menu m_menuPopupFile = null;
+    private MenuItem m_menuItemClose = null;
+    private MenuItem m_menuItemExit = null;
+    
+    private Menu m_menuPopupTools = null;
+    private MenuItem m_menuItemConfig = null;
+    
+    private Menu m_menuPopupRun = null;
+    private MenuItem m_menuItemRun = null;
+    
+    private Menu m_menuPopupHelp = null;
+    private MenuItem m_menuItemAbout = null;
+    
+    //Tool bar
+    private CoolBar m_toolBar = null;
+    
+    /////////////////////////////////////////
     private Composite m_compositeCenter = null;
     private Composite m_compositeContent = null;
     private Tree m_treeData = null;
     private Button m_buttonPlay = null;
     private Browser m_browser = null;
-    
-    private Menu m_menuFile = null;
-    private MenuItem m_menuItemClose = null;
-    
-    private Menu m_menuHelp = null;
-    private MenuItem m_menuItemHelp = null;
-    private MenuItem m_menuItemAbout = null;
-    
+        
     private RowLayout m_rowlayoutMain = null;
     private RowData m_rowdataMain = null;
     
@@ -92,24 +114,103 @@ public class NowMainWindow {
         
         m_shell.setLayout(m_rowlayoutMain);
         
-        //Init toolBar
-        m_toolBar = new ToolBar (m_shell,SWT.BORDER | SWT.FLAT | SWT.WRAP);
-	Rectangle clientArea = m_shell.getClientArea();
-	m_toolBar.setLocation(clientArea.x, clientArea.y);
-        m_toolBar.setLayoutData(m_rowdataMain);
+        //Create menu bar
+        m_menuBar = new Menu (m_shell, SWT.BAR);
+	m_shell.setMenuBar (m_menuBar);
         
-        //Init ToolBar Item
-        m_itemFile = new ToolItem (m_toolBar, SWT.CHECK);
-        m_itemHelp = new ToolItem (m_toolBar, SWT.CHECK);
+        //Create menu button File
+        m_menuButtonFile = new MenuItem (m_menuBar, SWT.CASCADE);
+	m_menuButtonTools = new MenuItem (m_menuBar, SWT.CASCADE);
+        m_menuButtonRun = new MenuItem (m_menuBar, SWT.CASCADE);
+        m_menuButtonHelp = new MenuItem (m_menuBar, SWT.CASCADE);
+                
+        //Create popup menu FILE
+        m_menuPopupFile = new Menu (m_shell, SWT.DROP_DOWN);
+	m_menuButtonFile.setMenu (m_menuPopupFile);
         
-        //Menu File
-        m_menuFile = new Menu (m_shell, SWT.POP_UP);
-	m_menuItemClose = new MenuItem(m_menuFile, SWT.PUSH);
+        m_menuItemClose = new MenuItem(m_menuPopupFile, SWT.PUSH);
+        m_menuItemClose.setAccelerator (SWT.MOD1 + 'X');
+        m_menuItemExit = new MenuItem(m_menuPopupFile, SWT.PUSH);
+        m_menuItemExit.setAccelerator (SWT.MOD1 + 'Q');
         
-        //Menu Help
-        m_menuHelp = new Menu(m_shell, SWT.POP_UP);
-        m_menuItemHelp = new MenuItem(m_menuHelp, SWT.PUSH);
-        m_menuItemAbout = new MenuItem(m_menuHelp, SWT.PUSH);
+        //Create popup menu TOOLS
+        m_menuPopupTools = new Menu(m_shell, SWT.DROP_DOWN);
+        m_menuButtonTools.setMenu (m_menuPopupTools);
+        
+        m_menuItemConfig = new MenuItem(m_menuPopupTools, SWT.PUSH);
+        m_menuItemConfig.setAccelerator (SWT.MOD1 + 'G');
+        
+        //Create popup menu TOOLS
+        m_menuPopupRun = new Menu(m_shell, SWT.DROP_DOWN);
+        m_menuButtonRun.setMenu (m_menuPopupRun);
+        
+        m_menuItemRun = new MenuItem(m_menuPopupRun, SWT.PUSH);
+        m_menuItemRun.setAccelerator (SWT.F5);
+        
+        //Create popup menu HELP
+        m_menuPopupHelp = new Menu(m_shell, SWT.DROP_DOWN);
+        m_menuButtonHelp.setMenu (m_menuPopupHelp);
+        
+        m_menuItemAbout = new MenuItem(m_menuPopupHelp, SWT.PUSH);
+        
+        //Tool Bar
+        m_toolBar = new CoolBar (m_shell, SWT.NONE);
+        
+        final CoolItem item = new CoolItem(m_toolBar, SWT.DROP_DOWN);
+
+        Composite c = new Composite(m_toolBar, SWT.NONE);
+        RowLayout rowlayout = new RowLayout();
+        RowData rowData = new RowData();
+        c.setLayout(rowlayout);
+        c.setLayoutData(rowData);
+        
+        Combo combo = new Combo(c, SWT.DROP_DOWN | SWT.READ_ONLY | SWT.FLAT | SWT.BORDER);
+        combo.setItems (new String [] {"Chậm", "Vừa phải", "Nhanh"});
+        combo.select(2);
+             
+        Button buton = new Button(c, SWT.PUSH | SWT.NONE | SWT.FILL);
+        buton.setImage(new Image(Display.getDefault(), new ImageData("resource\\play-icon.png")));
+        buton.addListener(SWT.Selection, new Listener() {
+
+            @Override
+            public void handleEvent(Event event) {
+                String path = "";
+                TreeItem[] items = m_treeData.getSelection();
+                if (items.length == 1) {
+                    path = (String)items[0].getData();
+                    //System.out.println(path);
+                }
+                
+                if(!path.isEmpty()){
+                    m_shell.setMinimized(true);
+                
+                    try {
+                        Process process = new ProcessBuilder( ConfigDefine.DIRECTORY_EXECUTABLE, path ).start();
+                    } catch (IOException ex) {
+                        Logger.getLogger(NowMain.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        });
+        
+        Button buton2 = new Button(c, SWT.PUSH | SWT.NONE);
+        buton2.setImage(new Image(Display.getDefault(), new ImageData("resource\\setting-icon.png")));
+        buton2.addListener(SWT.Selection, new Listener() {
+
+            @Override
+            public void handleEvent(Event event) {
+                NowConfigurationWindow.getInstance().showWindow(Display.getDefault());
+            }
+        });
+                
+        item.setControl(c);
+        
+        Control control = item.getControl();
+        Point pt = control.computeSize(SWT.DEFAULT, SWT.DEFAULT);
+        pt = item.computeSize(650, pt.y);
+        item.setSize(pt);
+        
+        m_toolBar.pack();
         
         //Itit center area
         m_gridlayoutCenter = new GridLayout();
@@ -136,7 +237,7 @@ public class NowMainWindow {
         
         m_rowdataContent = new RowData();
         m_rowdataContent.width = 414;
-        m_rowdataContent.height = 250;
+        m_rowdataContent.height = 350;
         
         
         try {
@@ -149,99 +250,98 @@ public class NowMainWindow {
         m_browser.setLayoutData(m_rowdataContent);
         m_browser.setText(ConfigDefine.DEFAULT_STRING);
         
-        m_buttonPlay = new Button(m_compositeContent, SWT.PUSH);
+        //m_buttonPlay = new Button(m_compositeContent, SWT.PUSH);
         //m_buttonPlay.setLayoutData(m_rowdataContent);
     }
     
     private void updateWidgetsContent(){
         m_shell.setText(DisplayText.getInstance().getText(DefineDisplayCode.SYSTEM_TRAY_MAIN_WINDOW));
-        m_itemFile.setText("File");
-        m_itemHelp.setText("Help");
-        m_buttonPlay.setText("Play");
+        //m_buttonPlay.setText("Play");
         
-        m_menuItemClose.setText("Close");
-        m_menuItemHelp.setText("Help");
-        m_menuItemAbout.setText("About");
+        m_menuButtonFile.setText ("&File");
+        m_menuItemClose.setText ("&Close\tCtrl+X");
+	m_menuItemExit.setText("&Exit\tCtrl+Q");
+        
+        m_menuButtonTools.setText("&Tools");
+        m_menuItemConfig.setText("&Configuration\tCtrl+G");
+        
+        m_menuButtonRun.setText("&Run");
+        m_menuItemRun.setText("&Run Lesson\tF5");
+        
+        m_menuButtonHelp.setText("&Help");
+        m_menuItemAbout.setText("&About");
     }
     
     private void initListener(){
-        m_buttonPlay.addListener(SWT.Selection, new Listener() {
+        
+//        m_buttonPlay.addListener(SWT.Selection, new Listener() {
+//
+//            @Override
+//            public void handleEvent(Event event) {
+//                String path = "";
+//                TreeItem[] items = m_treeData.getSelection();
+//                if (items.length == 1) {
+//                    path = (String)items[0].getData();
+//                    //System.out.println(path);
+//                }
+//                
+//                if(!path.isEmpty()){
+//                    m_shell.setMinimized(true);
+//                
+//                    try {
+//                        Process process = new ProcessBuilder( ConfigDefine.DIRECTORY_EXECUTABLE, path ).start();
+//                    } catch (IOException ex) {
+//                        Logger.getLogger(NowMain.class.getName()).log(Level.SEVERE, null, ex);
+//                    }
+//                }
+//            }
+//        });
+    
+        m_menuItemClose.addListener (SWT.Selection, new Listener () {
+            @Override
+            public void handleEvent (Event e) {
+                System.out.println ("Close");
+                m_shell.dispose();
+            }
+	});
+        
+        m_menuItemExit.addListener(SWT.Selection, new Listener() {
 
             @Override
             public void handleEvent(Event event) {
-                String path = "";
-                TreeItem[] items = m_treeData.getSelection();
-                if (items.length == 1) {
-                    path = (String)items[0].getData();
-                    //System.out.println(path);
-                }
-                
-                if(!path.isEmpty()){
-                    m_shell.setMinimized(true);
-                
-                    try {
-                        Process process = new ProcessBuilder( ConfigDefine.DIRECTORY_EXECUTABLE, path ).start();
-                    } catch (IOException ex) {
-                        Logger.getLogger(NowMain.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            }
-        });
-    
-        m_itemFile.addListener (SWT.Selection, new Listener () {
-            @Override
-            public void handleEvent (Event event) {
-                System.out.println("Selection item1");
-                Rectangle rect = m_itemFile.getBounds ();
-                Point pt = new Point (rect.x, rect.y + rect.height);
-                pt = m_toolBar.toDisplay (pt);
-                m_menuFile.setLocation (pt.x, pt.y);
-                m_menuFile.setVisible (true);
-            }
-	});
-        
-        m_itemHelp.addListener (SWT.Selection, new Listener () {
-            @Override
-            public void handleEvent (Event event) {
-                System.out.println("Selection item2");
-                Rectangle rect = m_itemHelp.getBounds ();
-                Point pt = new Point (rect.x, rect.y + rect.height);
-                pt = m_toolBar.toDisplay (pt);
-                m_menuHelp.setLocation (pt.x, pt.y);
-                m_menuHelp.setVisible (true);
-            }
-	});
-        
-        m_menuFile.addMenuListener(new MenuListener() {
-
-            @Override
-            public void menuHidden(MenuEvent me) {
-                if (m_itemFile.getSelection()) {
-                    m_itemFile.setSelection(false);
-                }
-            }
-
-            @Override
-            public void menuShown(MenuEvent me) {
-                
+                System.out.println ("Exit");
+                System.exit(0);
             }
         });
         
-        m_menuHelp.addMenuListener(new MenuListener() {
+        m_menuItemConfig.addListener(SWT.Selection, new Listener() {
 
             @Override
-            public void menuHidden(MenuEvent me) {
-                if (m_itemHelp.getSelection()) {
-                    m_itemHelp.setSelection(false);
-                }
-            }
-
-            @Override
-            public void menuShown(MenuEvent me) {
-                
+            public void handleEvent(Event event) {
+                System.out.println ("Config");
+                //Display currentDisplay = 
+                NowConfigurationWindow.getInstance().showWindow(Display.getDefault());
             }
         });
-    
+        
+        m_menuItemRun.addListener(SWT.Selection, new Listener() {
+
+            @Override
+            public void handleEvent(Event event) {
+                System.out.println ("Run");
+                //TODO: Run test here!!!!!!!!
+            }
+        });
+        
+        m_menuItemAbout.addListener(SWT.Selection, new Listener() {
+
+            @Override
+            public void handleEvent(Event event) {
+                System.out.println ("About");
+                //TODO: About window show here!!!!!!!!
+            }
+        });
+        
         m_treeData.addSelectionListener(new SelectionListener() {
 
             @Override
@@ -322,7 +422,7 @@ public class NowMainWindow {
         if(m_shell == null || m_shell.isDisposed()){
             m_shell = new Shell(display, SWT.CLOSE | SWT.TITLE | SWT.MIN );
             m_shell.setLayout(new FillLayout());
-            m_shell.setSize(650, 400);
+            m_shell.setSize(650, 430);
             initWidgets();
             updateWidgetsContent();
             initListener();
