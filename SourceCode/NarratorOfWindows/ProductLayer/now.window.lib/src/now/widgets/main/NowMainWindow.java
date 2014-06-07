@@ -127,8 +127,10 @@ public class NowMainWindow {
         
         m_menuItemClose = new MenuItem(m_menuPopupFile, SWT.PUSH);
         m_menuItemClose.setAccelerator (SWT.MOD1 + 'X');
+        m_menuItemClose.setImage(new Image(Display.getDefault(), new ImageData(NowConst.FILE_IMAGE_CLOSE_ICON)));
         m_menuItemExit = new MenuItem(m_menuPopupFile, SWT.PUSH);
         m_menuItemExit.setAccelerator (SWT.MOD1 + 'Q');
+        m_menuItemExit.setImage(new Image(Display.getDefault(), new ImageData(NowConst.FILE_IMAGE_SHUTDOWN_ICON)));
         
         //Create popup menu TOOLS
         m_menuPopupTools = new Menu(m_shell, SWT.DROP_DOWN);
@@ -136,6 +138,7 @@ public class NowMainWindow {
         
         m_menuItemConfig = new MenuItem(m_menuPopupTools, SWT.PUSH);
         m_menuItemConfig.setAccelerator (SWT.MOD1 + 'G');
+        m_menuItemConfig.setImage(new Image(Display.getDefault(), new ImageData(NowConst.FILE_IMAGE_SETTING_ICON)));
         
         //Create popup menu TOOLS
         m_menuPopupRun = new Menu(m_shell, SWT.DROP_DOWN);
@@ -143,6 +146,7 @@ public class NowMainWindow {
         
         m_menuItemRun = new MenuItem(m_menuPopupRun, SWT.PUSH);
         m_menuItemRun.setAccelerator (SWT.F5);
+        m_menuItemRun.setImage(new Image(Display.getDefault(), new ImageData(NowConst.FILE_IMAGE_PLAY_ICON)));
         
         //Create popup menu HELP
         m_menuPopupHelp = new Menu(m_shell, SWT.DROP_DOWN);
@@ -166,7 +170,7 @@ public class NowMainWindow {
         //m_comboSpeed.select(Integer.parseInt(ConfigCommon.getInstance().getSpeed()) - 1);
              
         m_buttonPlay = new Button(m_compositeToolbar, SWT.PUSH | SWT.NONE | SWT.FILL);
-        m_buttonPlay.setImage(new Image(Display.getDefault(), new ImageData("resource\\play-icon.png")));
+        m_buttonPlay.setImage(new Image(Display.getDefault(), new ImageData(NowConst.FILE_IMAGE_PLAY_ICON)));
         m_buttonPlay.addListener(SWT.Selection, new Listener() {
 
             @Override
@@ -191,7 +195,7 @@ public class NowMainWindow {
         });
         
         m_buttonConfig = new Button(m_compositeToolbar, SWT.PUSH | SWT.NONE);
-        m_buttonConfig.setImage(new Image(Display.getDefault(), new ImageData("resource\\setting-icon.png")));
+        m_buttonConfig.setImage(new Image(Display.getDefault(), new ImageData(NowConst.FILE_IMAGE_SETTING_ICON)));
         m_buttonConfig.addListener(SWT.Selection, new Listener() {
 
             @Override
@@ -372,9 +376,9 @@ public class NowMainWindow {
             TreeItem iItem = new TreeItem(m_treeData, 0);
             iItem.setText(folder);
             iItem.setData("");
-            ImageData dataFolder = new ImageData("resource\\folder-icon.png");
-            Image imageFolder = new Image(Display.getDefault(), dataFolder);
-            iItem.setImage(imageFolder);
+            //ImageData dataFolder = new ImageData(NowConst.FILE_IMAGE_FOLDER_ICON);
+            //Image imageFolder = new Image(Display.getDefault(), dataFolder);
+            iItem.setImage(new Image(Display.getDefault(), new ImageData(NowConst.FILE_IMAGE_FOLDER_ICON)));
             
             ArrayList<String> arrayTitleLesson = UtilitiesDevice.getAllFileName(new File(".\\" + NowConst.DIRECTORY_DATA + "\\" + folder));
             for (String lesson : arrayTitleLesson) {
@@ -389,9 +393,9 @@ public class NowMainWindow {
                 TreeItem kItem = new TreeItem(iItem, 0);
                 kItem.setText(lessonName);
                 kItem.setData(path);
-                ImageData data = new ImageData("resource\\play-icon.png");
-                Image image = new Image(Display.getDefault(), data);
-                kItem.setImage(image);
+                //ImageData data = new ImageData(NowConst.FILE_IMAGE_PLAY_ICON);
+                //Image image = new Image(Display.getDefault(), data);
+                kItem.setImage(new Image(Display.getDefault(), new ImageData(NowConst.FILE_IMAGE_PLAY_ICON)));
             }
         }
     }
@@ -408,6 +412,9 @@ public class NowMainWindow {
             m_shell = new Shell(display, SWT.CLOSE | SWT.TITLE | SWT.MIN );
             m_shell.setLayout(new FillLayout());
             m_shell.setSize(650, 430);
+            //ImageData data = new ImageData(NowConst.FILE_IMAGE_TRAY_ICON);
+            //Image image = new Image(Display.getDefault(), data);
+            m_shell.setImage(new Image(Display.getDefault(), new ImageData(NowConst.FILE_IMAGE_TRAY_ICON)));
             initWidgets();
             updateWidgetsContent();
             initListener();

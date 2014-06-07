@@ -77,8 +77,10 @@ public class NowSystemTray implements NativeKeyListener {
             m_popupMenu             = new Menu(m_systemTrayShell, SWT.POP_UP);
             m_menuMainWindow        = new MenuItem(m_popupMenu, SWT.PUSH);
             m_menuConfigWindow      = new MenuItem(m_popupMenu, SWT.PUSH);
+            m_menuConfigWindow.setImage(new Image(Display.getDefault(), new ImageData(NowConst.FILE_IMAGE_SETTING_ICON)));
             m_separator             = new MenuItem(m_popupMenu, SWT.SEPARATOR);
             m_menuClose             = new MenuItem(m_popupMenu, SWT.PUSH);
+            m_menuClose.setImage(new Image(Display.getDefault(), new ImageData(NowConst.FILE_IMAGE_CLOSE_ICON)));
             
             //init listener
             initListener();
