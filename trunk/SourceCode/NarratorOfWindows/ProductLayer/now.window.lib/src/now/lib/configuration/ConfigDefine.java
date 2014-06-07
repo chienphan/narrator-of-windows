@@ -16,6 +16,7 @@ public class ConfigDefine {
         public static final String AUTO_MOVE_MOUSE		= "automovemouse";
         public static final String AUTO_PLAY_SOUND		= "autoplaysound";
         public static final String AUTO_TRANSLATE		= "autotranslate";
+        public static final String AUTO_SPEED                   = "speed";
         
         public static final String DEFAULT_STRING = "<strong>Chọn bài tập bạn muốn thực hành.</strong>";
 }

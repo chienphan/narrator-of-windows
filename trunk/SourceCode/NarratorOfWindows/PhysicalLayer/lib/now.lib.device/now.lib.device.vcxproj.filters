@@ -27,6 +27,9 @@
     <ClInclude Include="..\..\plugin\now.plugin.uiautomation\NowStringProcessor_UIA.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="NowSetting.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="NowDevice.cpp">
@@ -39,6 +42,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\plugin\now.plugin.uiautomation\NowStringProcessor_UIA.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NowSetting.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

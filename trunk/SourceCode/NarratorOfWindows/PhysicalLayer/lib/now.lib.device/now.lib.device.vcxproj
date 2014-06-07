@@ -76,7 +76,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(SolutionDir)LogicalLayer\now.core\define\;$(SolutionDir)PhysicalLayer\plugin\now.plugin.uiautomation\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)LogicalLayer\now.core\define\;$(SolutionDir)PhysicalLayer\plugin\now.plugin.uiautomation\</AdditionalIncludeDirectories>
       <CallingConvention>Cdecl</CallingConvention>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
@@ -130,12 +130,14 @@
     <ClInclude Include="NowDevice.h" />
     <ClInclude Include="NowDeviceKeyboard.h" />
     <ClInclude Include="NowDeviceMouse.h" />
+    <ClInclude Include="NowSetting.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\plugin\now.plugin.uiautomation\NowStringProcessor_UIA.cpp" />
     <ClCompile Include="NowDevice.cpp" />
     <ClCompile Include="NowDeviceKeyboard.cpp" />
     <ClCompile Include="NowDeviceMouse.cpp" />
+    <ClCompile Include="NowSetting.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

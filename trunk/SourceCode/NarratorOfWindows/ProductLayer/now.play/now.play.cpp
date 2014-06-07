@@ -5,19 +5,31 @@
 #include "NowExecutor.h"
 #include "NowActionManager.h"
 #include "NowStringProcessor.h"
+#include "NowSetting.h"
+#include "NowLogger.h"
 
 int _tmain(int argc, _TCHAR* argv[])
 {
 	NOW_RESULT nResult = NOW_FALSE;
 	string strArg = "";
-	if (argc == 2)
+	string strSpeed = "";
+	if (argc == 3)
 	{
 		strArg = NowStringProcessor::wstringTostring(wstring(argv[1]));
+		strSpeed = NowStringProcessor::wstringTostring(wstring(argv[2]));
+	}
+	else
+	{
+		return -1;
 	}
 	if (strArg.empty())
 	{
-		return 1;
+		return -1;
 	}
+
+	NowLogger::getInstance()->LogAString("[NOW-PLAY][main]speed=" + strSpeed);
+	NowSetting::getInstance()->setSleepTime(strSpeed);
+
 	//Hide the console window
 	//ShowWindow(GetConsoleWindow(), SW_HIDE);
 	NowActionManager::getInstance()->initialize();
