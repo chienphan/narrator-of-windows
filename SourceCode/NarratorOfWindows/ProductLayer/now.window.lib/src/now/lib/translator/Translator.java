@@ -1,5 +1,8 @@
 package now.lib.translator;
 
+import java.io.UnsupportedEncodingException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import now.lib.configuration.ConfigLanguage;
 import now.lib.configuration.ConfigTranslateEngine;
 import now.lib.define.DefineEngineName;
@@ -47,17 +50,18 @@ public class Translator {
 	 * @return sentence after translate
 	 */
 	public String translateAutoDetectInput(String sentence, String languageOutput){
-		String result = "";
-		if(ConfigTranslateEngine.getInstance().getTranslatorEngine().equalsIgnoreCase(DefineEngineName.TRANSLATOR_ENGINE_GOOGLE)){
-			result = TranslatorGoogleEngine.getInstance().translate(
-					sentence, 
-					TranslatorLanguageManager.getInstance().getLanguageCode(ConfigLanguage.getInstance().getInputLanguage()), 
-					TranslatorLanguageManager.getInstance().getLanguageCode(languageOutput));
-		}
-		if(ConfigTranslateEngine.getInstance().getTranslatorEngine().equalsIgnoreCase(DefineEngineName.TRANSLATOR_ENGINE_MICROSOFT)){
-			//http://msdn.microsoft.com/en-us/library/ff512437.aspx
-			result = "This method is not implemented yet";
-		}
-		return result;
+            String result = "";
+            if(ConfigTranslateEngine.getInstance().getTranslatorEngine().equalsIgnoreCase(DefineEngineName.TRANSLATOR_ENGINE_GOOGLE)){
+                    result = TranslatorGoogleEngine.getInstance().translate(
+                                    sentence, 
+                                    TranslatorLanguageManager.getInstance().getLanguageCode(ConfigLanguage.getInstance().getInputLanguage()), 
+                                    TranslatorLanguageManager.getInstance().getLanguageCode(languageOutput));
+            }
+            if(ConfigTranslateEngine.getInstance().getTranslatorEngine().equalsIgnoreCase(DefineEngineName.TRANSLATOR_ENGINE_MICROSOFT)){
+                    //http://msdn.microsoft.com/en-us/library/ff512437.aspx
+                    result = "This method is not implemented yet";
+            }
+            //System.out.println(result);
+            return result;
 	}
 }

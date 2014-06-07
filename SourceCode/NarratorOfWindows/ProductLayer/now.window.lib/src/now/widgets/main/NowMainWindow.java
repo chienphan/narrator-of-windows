@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import now.lib.configuration.ConfigCommon;
 import now.lib.configuration.ConfigDefine;
 import now.lib.define.DefineDisplayCode;
 import now.lib.display.DisplayText;
@@ -19,15 +20,11 @@ import now.lib.utilities.UtilitiesDevice;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWTError;
 import org.eclipse.swt.browser.Browser;
-import org.eclipse.swt.events.MenuEvent;
-import org.eclipse.swt.events.MenuListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
-import org.eclipse.swt.graphics.Device;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.Point;
-import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -41,13 +38,10 @@ import org.eclipse.swt.widgets.CoolBar;
 import org.eclipse.swt.widgets.CoolItem;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
-import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.ToolBar;
-import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 
@@ -58,10 +52,6 @@ import org.eclipse.swt.widgets.TreeItem;
 public class NowMainWindow {
     private static NowMainWindow m_instance = null;
     private Shell m_shell = null;
-    
-//    private ToolBar m_toolBar = null;
-//    private ToolItem m_itemFile = null;
-//    private ToolItem m_itemHelp = null;
     
     //Menu bar
     private Menu m_menuBar = null;
@@ -90,7 +80,7 @@ public class NowMainWindow {
     private Composite m_compositeCenter = null;
     private Composite m_compositeContent = null;
     private Tree m_treeData = null;
-    private Button m_buttonPlay = null;
+    
     private Browser m_browser = null;
         
     private RowLayout m_rowlayoutMain = null;
@@ -101,6 +91,13 @@ public class NowMainWindow {
     private GridData m_griddataContent = null;
     
     private RowData m_rowdataContent = null;
+    ///////////////////////////////////
+    private CoolItem m_toolbarItem = null;
+    private Composite m_compositeToolbar = null;
+    private Combo m_comboSpeed = null;
+    
+    private Button m_buttonPlay = null;
+    private Button m_buttonConfig = null;
     
     private NowMainWindow(){
         
@@ -156,21 +153,21 @@ public class NowMainWindow {
         //Tool Bar
         m_toolBar = new CoolBar (m_shell, SWT.NONE);
         
-        final CoolItem item = new CoolItem(m_toolBar, SWT.DROP_DOWN);
+        m_toolbarItem = new CoolItem(m_toolBar, SWT.DROP_DOWN);
 
-        Composite c = new Composite(m_toolBar, SWT.NONE);
-        RowLayout rowlayout = new RowLayout();
-        RowData rowData = new RowData();
-        c.setLayout(rowlayout);
-        c.setLayoutData(rowData);
+        m_compositeToolbar = new Composite(m_toolBar, SWT.NONE);
+        //RowLayout rowlayout = new RowLayout();
+        //RowData rowData = new RowData();
+        m_compositeToolbar.setLayout(new RowLayout());
+        m_compositeToolbar.setLayoutData(new RowData());
         
-        Combo combo = new Combo(c, SWT.DROP_DOWN | SWT.READ_ONLY | SWT.FLAT | SWT.BORDER);
-        combo.setItems (new String [] {"Chậm", "Vừa phải", "Nhanh"});
-        combo.select(2);
+        m_comboSpeed = new Combo(m_compositeToolbar, SWT.DROP_DOWN | SWT.READ_ONLY | SWT.FLAT | SWT.BORDER);
+        //m_comboSpeed.setItems (new String [] {"Nhanh", "Vừa phải", "Chậm"});
+        //m_comboSpeed.select(Integer.parseInt(ConfigCommon.getInstance().getSpeed()) - 1);
              
-        Button buton = new Button(c, SWT.PUSH | SWT.NONE | SWT.FILL);
-        buton.setImage(new Image(Display.getDefault(), new ImageData("resource\\play-icon.png")));
-        buton.addListener(SWT.Selection, new Listener() {
+        m_buttonPlay = new Button(m_compositeToolbar, SWT.PUSH | SWT.NONE | SWT.FILL);
+        m_buttonPlay.setImage(new Image(Display.getDefault(), new ImageData("resource\\play-icon.png")));
+        m_buttonPlay.addListener(SWT.Selection, new Listener() {
 
             @Override
             public void handleEvent(Event event) {
@@ -185,7 +182,7 @@ public class NowMainWindow {
                     m_shell.setMinimized(true);
                 
                     try {
-                        Process process = new ProcessBuilder( ConfigDefine.DIRECTORY_EXECUTABLE, path ).start();
+                        new ProcessBuilder( ConfigDefine.DIRECTORY_EXECUTABLE, path , ConfigCommon.getInstance().getSpeed()).start();
                     } catch (IOException ex) {
                         Logger.getLogger(NowMain.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -193,9 +190,9 @@ public class NowMainWindow {
             }
         });
         
-        Button buton2 = new Button(c, SWT.PUSH | SWT.NONE);
-        buton2.setImage(new Image(Display.getDefault(), new ImageData("resource\\setting-icon.png")));
-        buton2.addListener(SWT.Selection, new Listener() {
+        m_buttonConfig = new Button(m_compositeToolbar, SWT.PUSH | SWT.NONE);
+        m_buttonConfig.setImage(new Image(Display.getDefault(), new ImageData("resource\\setting-icon.png")));
+        m_buttonConfig.addListener(SWT.Selection, new Listener() {
 
             @Override
             public void handleEvent(Event event) {
@@ -203,12 +200,12 @@ public class NowMainWindow {
             }
         });
                 
-        item.setControl(c);
+        m_toolbarItem.setControl(m_compositeToolbar);
         
-        Control control = item.getControl();
+        Control control = m_toolbarItem.getControl();
         Point pt = control.computeSize(SWT.DEFAULT, SWT.DEFAULT);
-        pt = item.computeSize(650, pt.y);
-        item.setSize(pt);
+        pt = m_toolbarItem.computeSize(650, pt.y);
+        m_toolbarItem.setSize(pt);
         
         m_toolBar.pack();
         
@@ -270,33 +267,21 @@ public class NowMainWindow {
         
         m_menuButtonHelp.setText("&Help");
         m_menuItemAbout.setText("&About");
+        
+        m_comboSpeed.removeAll();
+        m_comboSpeed.setItems (new String [] {"Fast", "Normal", "Slow"});
+        m_comboSpeed.select(Integer.parseInt(ConfigCommon.getInstance().getSpeed()) - 1);
     }
     
     private void initListener(){
+        m_comboSpeed.addListener(SWT.Selection, new Listener() {
+
+            @Override
+            public void handleEvent(Event event) {
+                ConfigCommon.getInstance().setSpeed(String.valueOf(m_comboSpeed.getSelectionIndex() + 1));
+            }
+        });
         
-//        m_buttonPlay.addListener(SWT.Selection, new Listener() {
-//
-//            @Override
-//            public void handleEvent(Event event) {
-//                String path = "";
-//                TreeItem[] items = m_treeData.getSelection();
-//                if (items.length == 1) {
-//                    path = (String)items[0].getData();
-//                    //System.out.println(path);
-//                }
-//                
-//                if(!path.isEmpty()){
-//                    m_shell.setMinimized(true);
-//                
-//                    try {
-//                        Process process = new ProcessBuilder( ConfigDefine.DIRECTORY_EXECUTABLE, path ).start();
-//                    } catch (IOException ex) {
-//                        Logger.getLogger(NowMain.class.getName()).log(Level.SEVERE, null, ex);
-//                    }
-//                }
-//            }
-//        });
-    
         m_menuItemClose.addListener (SWT.Selection, new Listener () {
             @Override
             public void handleEvent (Event e) {

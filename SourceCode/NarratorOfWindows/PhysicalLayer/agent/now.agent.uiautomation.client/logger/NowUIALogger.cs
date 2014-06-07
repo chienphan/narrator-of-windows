@@ -27,15 +27,15 @@ namespace now.agent.uiautomation.client.logger
         private void InitLogConfig()
         {
             String strLogMode = NowUIAUtilities.GetInstance().GetEnvironmentVariableValue(NowUIAEnvironmentVariable.NOW_DEBUG_MODE);
-            if (strLogMode == String.Empty && strLogMode.Equals(NowEnvVariable.ENV_VARIABLE_LOG_DISABLE))
-            {
-                m_logMode = NowLogMode.LOG_NONE;
-            }
-            if (strLogMode.Equals(NowEnvVariable.ENV_VARIABLE_LOG_ENABLE))
+            if (NowEnvVariable.ENV_VARIABLE_LOG_ENABLE.Equals(strLogMode))
             {
                 InitLogFile();
                 InitTraceInstance();
-            }        
+            }
+            else
+            {
+                m_logMode = NowLogMode.LOG_NONE;
+            }
         }
 
         /// <summary>
