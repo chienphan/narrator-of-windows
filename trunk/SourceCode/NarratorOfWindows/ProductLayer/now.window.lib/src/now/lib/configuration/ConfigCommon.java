@@ -26,34 +26,34 @@ public class ConfigCommon {
     }
     
     public boolean getAutoMoveMouse(){
-        return ConfigCore.getInstance().getConfig(ConfigDefine.AUTO_MOVE_MOUSE).equals(NowConst.NOW_TRUE);
+        return ConfigCore.getInstance().getConfig(NowConst.AUTO_MOVE_MOUSE).equals(NowConst.NOW_TRUE);
     }
     
     public boolean getAutoPlaySound(){
-        return ConfigCore.getInstance().getConfig(ConfigDefine.AUTO_PLAY_SOUND).equals(NowConst.NOW_TRUE);
+        return ConfigCore.getInstance().getConfig(NowConst.AUTO_PLAY_SOUND).equals(NowConst.NOW_TRUE);
     }
     
     public boolean getAutoTranslate(){
-        return ConfigCore.getInstance().getConfig(ConfigDefine.AUTO_TRANSLATE).equals(NowConst.NOW_TRUE);
+        return ConfigCore.getInstance().getConfig(NowConst.AUTO_TRANSLATE).equals(NowConst.NOW_TRUE);
     }
     
     public String getSpeed(){
-        return ConfigCore.getInstance().getConfig(ConfigDefine.AUTO_SPEED);
+        return ConfigCore.getInstance().getConfig(NowConst.AUTO_SPEED);
     }
     
     public void setAutoMoveMouse(boolean isAuto){
-        ConfigCore.getInstance().setConfig(ConfigDefine.AUTO_MOVE_MOUSE, isAuto ? NowConst.NOW_TRUE : NowConst.NOW_FALSE);
+        ConfigCore.getInstance().setConfig(NowConst.AUTO_MOVE_MOUSE, isAuto ? NowConst.NOW_TRUE : NowConst.NOW_FALSE);
     }
     
     public void setAutoPlaySound(boolean isAuto){
-        ConfigCore.getInstance().setConfig(ConfigDefine.AUTO_PLAY_SOUND, isAuto ? NowConst.NOW_TRUE : NowConst.NOW_FALSE);
+        ConfigCore.getInstance().setConfig(NowConst.AUTO_PLAY_SOUND, isAuto ? NowConst.NOW_TRUE : NowConst.NOW_FALSE);
     }
     
     public void setAutoTranslate(boolean isAuto){
-        ConfigCore.getInstance().setConfig(ConfigDefine.AUTO_TRANSLATE, isAuto ? NowConst.NOW_TRUE : NowConst.NOW_FALSE);
+        ConfigCore.getInstance().setConfig(NowConst.AUTO_TRANSLATE, isAuto ? NowConst.NOW_TRUE : NowConst.NOW_FALSE);
     }
     
     public void setSpeed(String speedLevel){
-        ConfigCore.getInstance().setConfig(ConfigDefine.AUTO_SPEED, speedLevel);
+        ConfigCore.getInstance().setConfig(NowConst.AUTO_SPEED, speedLevel);
     }
 }
