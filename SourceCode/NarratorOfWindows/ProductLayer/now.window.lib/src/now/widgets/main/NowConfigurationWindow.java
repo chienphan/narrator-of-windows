@@ -156,6 +156,7 @@ public class NowConfigurationWindow {
                             ConfigCommon.getInstance().setAutoTranslate(false);
                         }
                         updateContent();
+                        NowMainWindow.getInstance().updateWidgetsContent();
                         m_btnApply.setEnabled(false);
                     }
                 });

@@ -25,3 +25,15 @@ LABEL_ENGINE_TRANSLATE=@@=Translate Engine:
 LABEL_OUTPUT_LANGUAGE=@@=Output Language:
 LABEL_INPUT_LANGUAGE=@@=Input Language:
 LABEL_DISPLAY=@@=Display Language:
+SPEED_FAST=@@=Fast
+SPEED_NORMAL=@@=Normal
+SPEED_SLOW=@@=Slow
+MENU_FILE=@@=&File
+MENU_CLOSE=@@=&Close	Ctrl+X
+MENU_EXIT=@@=&Exit	Ctrl+Q
+MENU_TOOL=@@=&Tools
+MENU_CONFIG=@@=&Configuration	Ctrl+G
+MENU_RUN=@@=&Run
+MENU_RUN_LESSON=@@=&Run Lesson	F5
+MENU_HELP=@@=&Help
+MENU_ABOUT=@@=&About

@@ -163,7 +163,9 @@ public class NowMainWindow {
         //RowLayout rowlayout = new RowLayout();
         //RowData rowData = new RowData();
         m_compositeToolbar.setLayout(new RowLayout());
-        m_compositeToolbar.setLayoutData(new RowData());
+        RowData rowdata = new RowData();
+        rowdata.width = 100;
+        m_compositeToolbar.setLayoutData(rowdata);
         
         m_comboSpeed = new Combo(m_compositeToolbar, SWT.DROP_DOWN | SWT.READ_ONLY | SWT.FLAT | SWT.BORDER);
         //m_comboSpeed.setItems (new String [] {"Nhanh", "Vừa phải", "Chậm"});
@@ -171,39 +173,10 @@ public class NowMainWindow {
              
         m_buttonPlay = new Button(m_compositeToolbar, SWT.PUSH | SWT.NONE | SWT.FILL);
         m_buttonPlay.setImage(new Image(Display.getDefault(), new ImageData(NowConst.FILE_IMAGE_PLAY_ICON)));
-        m_buttonPlay.addListener(SWT.Selection, new Listener() {
-
-            @Override
-            public void handleEvent(Event event) {
-                String path = "";
-                TreeItem[] items = m_treeData.getSelection();
-                if (items.length == 1) {
-                    path = (String)items[0].getData();
-                    //System.out.println(path);
-                }
                 
-                if(!path.isEmpty()){
-                    m_shell.setMinimized(true);
-                
-                    try {
-                        new ProcessBuilder( NowConst.DIRECTORY_EXECUTABLE, path , ConfigCommon.getInstance().getSpeed()).start();
-                    } catch (IOException ex) {
-                        Logger.getLogger(NowMain.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            }
-        });
-        
         m_buttonConfig = new Button(m_compositeToolbar, SWT.PUSH | SWT.NONE);
         m_buttonConfig.setImage(new Image(Display.getDefault(), new ImageData(NowConst.FILE_IMAGE_SETTING_ICON)));
-        m_buttonConfig.addListener(SWT.Selection, new Listener() {
-
-            @Override
-            public void handleEvent(Event event) {
-                NowConfigurationWindow.getInstance().showWindow(Display.getDefault());
-            }
-        });
-                
+                        
         m_toolbarItem.setControl(m_compositeToolbar);
         
         Control control = m_toolbarItem.getControl();
@@ -255,29 +228,48 @@ public class NowMainWindow {
         //m_buttonPlay.setLayoutData(m_rowdataContent);
     }
     
-    private void updateWidgetsContent(){
+    public void updateWidgetsContent(){
         m_shell.setText(DisplayText.getInstance().getText(DefineDisplayCode.SYSTEM_TRAY_MAIN_WINDOW));
         //m_buttonPlay.setText("Play");
         
-        m_menuButtonFile.setText ("&File");
-        m_menuItemClose.setText ("&Close\tCtrl+X");
-	m_menuItemExit.setText("&Exit\tCtrl+Q");
+        m_menuButtonFile.setText (DisplayText.getInstance().getText(DefineDisplayCode.MENU_FILE));
+        m_menuItemClose.setText (DisplayText.getInstance().getText(DefineDisplayCode.MENU_CLOSE));
+	m_menuItemExit.setText(DisplayText.getInstance().getText(DefineDisplayCode.MENU_EXIT));
         
-        m_menuButtonTools.setText("&Tools");
-        m_menuItemConfig.setText("&Configuration\tCtrl+G");
+        m_menuButtonTools.setText(DisplayText.getInstance().getText(DefineDisplayCode.MENU_TOOL));
+        m_menuItemConfig.setText(DisplayText.getInstance().getText(DefineDisplayCode.MENU_CONFIG));
         
-        m_menuButtonRun.setText("&Run");
-        m_menuItemRun.setText("&Run Lesson\tF5");
+        m_menuButtonRun.setText(DisplayText.getInstance().getText(DefineDisplayCode.MENU_RUN));
+        m_menuItemRun.setText(DisplayText.getInstance().getText(DefineDisplayCode.MENU_RUN_LESSON));
         
-        m_menuButtonHelp.setText("&Help");
-        m_menuItemAbout.setText("&About");
+        m_menuButtonHelp.setText(DisplayText.getInstance().getText(DefineDisplayCode.MENU_HELP));
+        m_menuItemAbout.setText(DisplayText.getInstance().getText(DefineDisplayCode.MENU_ABOUT));
         
         m_comboSpeed.removeAll();
-        m_comboSpeed.setItems (new String [] {"Fast", "Normal", "Slow"});
+        m_comboSpeed.setItems (new String [] {
+            DisplayText.getInstance().getText(DefineDisplayCode.SPEED_FAST), 
+            DisplayText.getInstance().getText(DefineDisplayCode.SPEED_NORMAL), 
+            DisplayText.getInstance().getText(DefineDisplayCode.SPEED_SLOW)});
         m_comboSpeed.select(Integer.parseInt(ConfigCommon.getInstance().getSpeed()) - 1);
     }
     
     private void initListener(){
+        m_buttonPlay.addListener(SWT.Selection, new Listener() {
+
+            @Override
+            public void handleEvent(Event event) {
+                runTest();
+            }
+        });
+        
+        m_buttonConfig.addListener(SWT.Selection, new Listener() {
+
+            @Override
+            public void handleEvent(Event event) {
+                NowConfigurationWindow.getInstance().showWindow(Display.getDefault());
+            }
+        });
+        
         m_comboSpeed.addListener(SWT.Selection, new Listener() {
 
             @Override
@@ -318,7 +310,7 @@ public class NowMainWindow {
             @Override
             public void handleEvent(Event event) {
                 System.out.println ("Run");
-                //TODO: Run test here!!!!!!!!
+                runTest();
             }
         });
         
@@ -396,6 +388,25 @@ public class NowMainWindow {
                 //ImageData data = new ImageData(NowConst.FILE_IMAGE_PLAY_ICON);
                 //Image image = new Image(Display.getDefault(), data);
                 kItem.setImage(new Image(Display.getDefault(), new ImageData(NowConst.FILE_IMAGE_PLAY_ICON)));
+            }
+        }
+    }
+    
+    private void runTest(){
+        String path = "";
+        TreeItem[] items = m_treeData.getSelection();
+        if (items.length == 1) {
+            path = (String)items[0].getData();
+            //System.out.println(path);
+        }
+
+        if(!path.isEmpty()){
+            m_shell.setMinimized(true);
+
+            try {
+                new ProcessBuilder( NowConst.DIRECTORY_EXECUTABLE, path , ConfigCommon.getInstance().getSpeed()).start();
+            } catch (IOException ex) {
+                Logger.getLogger(NowMain.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }

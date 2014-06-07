@@ -25,3 +25,15 @@ LABEL_ENGINE_TRANSLATE=@@=Động cơ dịch thuật:
 LABEL_OUTPUT_LANGUAGE=@@=Ngôn ngữ đầu ra:
 LABEL_INPUT_LANGUAGE=@@=Ngôn ngữ đầu vào:
 LABEL_DISPLAY=@@=Ngôn ngữ hiển thị:
+SPEED_FAST=@@=Nhanh
+SPEED_NORMAL=@@=Bình thường
+SPEED_SLOW=@@=Chậm
+MENU_FILE=@@=&File
+MENU_CLOSE=@@=Đón&g	Ctrl+X
+MENU_EXIT=@@=&Thoát	Ctrl+Q
+MENU_TOOL=@@=&Công cụ
+MENU_CONFIG=@@=Cấu &hình	Ctrl+G
+MENU_RUN=@@=Chạ&y
+MENU_RUN_LESSON=@@=Chạy &bài học	F5
+MENU_HELP=@@=T&rợ giúp
+MENU_ABOUT=@@=Thô&ng tin
