@@ -6,6 +6,7 @@
 
 package now.lib.configuration;
 
+import now.lib.constant.NowConst;
 import now.lib.utilities.UtilitiesFileXML;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -16,7 +17,7 @@ import org.w3c.dom.Element;
  */
 public class ConfigCore {
     private static ConfigCore m_instance = null;
-    private final String m_fileConfig = ConfigDefine.FILE_CONFIG_LANGUAGE;
+    private final String m_fileConfig = NowConst.FILE_CONFIG_LANGUAGE;
     private final UtilitiesFileXML m_xmlFile;
     private final Document m_xmlDocument;
     

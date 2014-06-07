@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import now.lib.configuration.ConfigCommon;
-import now.lib.configuration.ConfigDefine;
+import now.lib.constant.NowConst;
 import now.lib.define.DefineDisplayCode;
 import now.lib.display.DisplayText;
 import now.lib.utilities.UtilitiesCommon;
@@ -182,7 +182,7 @@ public class NowMainWindow {
                     m_shell.setMinimized(true);
                 
                     try {
-                        new ProcessBuilder( ConfigDefine.DIRECTORY_EXECUTABLE, path , ConfigCommon.getInstance().getSpeed()).start();
+                        new ProcessBuilder( NowConst.DIRECTORY_EXECUTABLE, path , ConfigCommon.getInstance().getSpeed()).start();
                     } catch (IOException ex) {
                         Logger.getLogger(NowMain.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -245,7 +245,7 @@ public class NowMainWindow {
             return;
         }
         m_browser.setLayoutData(m_rowdataContent);
-        m_browser.setText(ConfigDefine.DEFAULT_STRING);
+        m_browser.setText(NowConst.DEFAULT_STRING);
         
         //m_buttonPlay = new Button(m_compositeContent, SWT.PUSH);
         //m_buttonPlay.setLayoutData(m_rowdataContent);
@@ -352,7 +352,7 @@ public class NowMainWindow {
 
                             @Override
                             public void run() {
-                                m_browser.setText(ConfigDefine.DEFAULT_STRING);
+                                m_browser.setText(NowConst.DEFAULT_STRING);
                             }
                         });
                     }
@@ -367,7 +367,7 @@ public class NowMainWindow {
     }
     
     private void initTreeData(){
-        ArrayList<String> arrayTitleFolder = UtilitiesDevice.getAllDirectoryName(new File(".\\" + ConfigDefine.DIRECTORY_DATA));
+        ArrayList<String> arrayTitleFolder = UtilitiesDevice.getAllDirectoryName(new File(".\\" + NowConst.DIRECTORY_DATA));
         for (String folder : arrayTitleFolder) {
             TreeItem iItem = new TreeItem(m_treeData, 0);
             iItem.setText(folder);
@@ -376,9 +376,9 @@ public class NowMainWindow {
             Image imageFolder = new Image(Display.getDefault(), dataFolder);
             iItem.setImage(imageFolder);
             
-            ArrayList<String> arrayTitleLesson = UtilitiesDevice.getAllFileName(new File(".\\" + ConfigDefine.DIRECTORY_DATA + "\\" + folder));
+            ArrayList<String> arrayTitleLesson = UtilitiesDevice.getAllFileName(new File(".\\" + NowConst.DIRECTORY_DATA + "\\" + folder));
             for (String lesson : arrayTitleLesson) {
-                String path = "\\" + ConfigDefine.DIRECTORY_DATA + "\\" + folder + "\\" + lesson;
+                String path = "\\" + NowConst.DIRECTORY_DATA + "\\" + folder + "\\" + lesson;
                 if (path.isEmpty()) {
                     break;
                 }

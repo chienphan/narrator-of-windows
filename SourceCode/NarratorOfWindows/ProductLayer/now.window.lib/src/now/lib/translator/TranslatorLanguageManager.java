@@ -6,8 +6,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import now.lib.configuration.ConfigDefine;
 import now.lib.configuration.ConfigTranslateEngine;
+import now.lib.constant.NowConst;
 import now.lib.define.DefineEngineName;
 import now.lib.utilities.UtilitiesFileTXT;
 
@@ -23,7 +23,7 @@ public class TranslatorLanguageManager {
 	
     private void initMapLangGoogleEngine(){
         m_mapLangGoogleEngine = new HashMap<>();
-        UtilitiesFileTXT configFile = new UtilitiesFileTXT(ConfigDefine.FILE_CONFIG_LANGUAGE_CODE_GOOGLE);
+        UtilitiesFileTXT configFile = new UtilitiesFileTXT(NowConst.FILE_CONFIG_LANGUAGE_CODE_GOOGLE);
         ArrayList<String[]> configData = configFile.readTextFile();
         for (String[] items : configData) {
             if(items.length == 2){
@@ -34,7 +34,7 @@ public class TranslatorLanguageManager {
 
     private void initMapLangMicrosoftEngine(){
         m_mapLangMicrosoftEngine = new HashMap<>();
-        UtilitiesFileTXT configFile = new UtilitiesFileTXT(ConfigDefine.FILE_CONFIG_LANGUAGE_CODE_MICROSOFT);
+        UtilitiesFileTXT configFile = new UtilitiesFileTXT(NowConst.FILE_CONFIG_LANGUAGE_CODE_MICROSOFT);
         ArrayList<String[]> configData = configFile.readTextFile();
         for (String[] items : configData) {
             if(items.length == 2){

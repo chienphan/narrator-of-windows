@@ -1,5 +1,7 @@
 package now.lib.configuration;
 
+import now.lib.constant.NowConst;
+
 public class ConfigTranslateEngine {
     private static ConfigTranslateEngine m_instance = null;
 
@@ -23,7 +25,7 @@ public class ConfigTranslateEngine {
      * @return translator engine
      */
     public String getTranslatorEngine() {
-        return ConfigCore.getInstance().getConfig(ConfigDefine.TRANSLATOR_ENGINE);
+        return ConfigCore.getInstance().getConfig(NowConst.TRANSLATOR_ENGINE);
     }
 
     /**
@@ -31,6 +33,6 @@ public class ConfigTranslateEngine {
      * @param engineName Translator Engine name
      */
     public void setTranslatorEngine(String engineName) {
-        ConfigCore.getInstance().setConfig(ConfigDefine.TRANSLATOR_ENGINE, engineName);
+        ConfigCore.getInstance().setConfig(NowConst.TRANSLATOR_ENGINE, engineName);
     }
 }

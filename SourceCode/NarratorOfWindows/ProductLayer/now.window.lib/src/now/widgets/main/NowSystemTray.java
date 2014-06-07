@@ -9,8 +9,8 @@ package now.widgets.main;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import now.lib.configuration.ConfigCommon;
-import now.lib.configuration.ConfigDefine;
 import now.lib.configuration.ConfigLanguage;
+import now.lib.constant.NowConst;
 import now.lib.define.DefineDisplayCode;
 import now.lib.display.DisplayText;
 import now.lib.jni.JNIHelper;
@@ -71,7 +71,7 @@ public class NowSystemTray implements NativeKeyListener {
             System.out.println("The system tray is not available");
         } 
         else {
-            m_imageData             = new ImageData(ConfigDefine.FILE_IMAGE_TRAY_ICON);
+            m_imageData             = new ImageData(NowConst.FILE_IMAGE_TRAY_ICON);
             m_image                 = new Image(m_display, m_imageData);
             m_itemTray              = new TrayItem(m_tray, SWT.NONE);
             m_popupMenu             = new Menu(m_systemTrayShell, SWT.POP_UP);
