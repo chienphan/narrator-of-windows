@@ -37,7 +37,7 @@ namespace now.agent.uiautomation.client.storage
         {
             if (m_dictionary.Count > 0)
             {
-                //m_dictionary.Clear();
+                m_dictionary.Clear();
             }
 
             m_dictionary.Add(strSignature, currentElement);

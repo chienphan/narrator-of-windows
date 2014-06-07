@@ -17,6 +17,10 @@ namespace now.agent.uiautomation.client.action.common
             String strWindowSignature = NowUIAArgumentIn.GetInstance().GetStringArgument(NowUIAPropertyDefine.UIA_PROP_SIGNATURE);
 
             AutomationElement window = NowUIAStorageAction.GetInstance().GetUIObjectFormCache(strWindowSignature.Trim());
+            if (window == null)
+            {
+                window = NowUIAStorage.GetInstance().GetUIObjectFormCache(strWindowSignature.Trim());
+            }
             //NowUIALogger.GetInstance().LogInfor("[BringWindowToTop] GetUIObjectFormCache");
             if (window != null)
             {
