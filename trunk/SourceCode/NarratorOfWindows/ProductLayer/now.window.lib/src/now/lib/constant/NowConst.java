@@ -41,6 +41,12 @@ public class NowConst {
     public static final String FILE_CONFIG_LANGUAGE_CODE_GOOGLE 	= "config\\LanguageCodeGoogle.ini";
     public static final String FILE_CONFIG_LANGUAGE_CODE_MICROSOFT 	= "config\\LanguageCodeMicrosoft.ini";
     public static final String FILE_IMAGE_TRAY_ICON         = "resource\\tray-icon.gif";
+    public static final String FILE_IMAGE_PLAY_ICON = "resource\\play-icon.png";
+    public static final String FILE_IMAGE_SETTING_ICON = "resource\\setting-icon.png";
+    public static final String FILE_IMAGE_FOLDER_ICON = "resource\\folder-icon.png";
+    public static final String FILE_IMAGE_CLOSE_ICON = "resource\\close-icon.png";
+    public static final String FILE_IMAGE_SHUTDOWN_ICON = "resource\\shutdown-icon.png";
+    
     public static final String DIRECTORY_DATA               = "data";
     public static final String DIRECTORY_EXECUTABLE = ".\\now.play.exe";
 

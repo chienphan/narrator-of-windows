@@ -16,6 +16,8 @@ import now.lib.define.DefineLanguageName;
 import now.lib.display.DisplayText;
 import now.lib.utilities.UtilitiesCommon;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -495,6 +497,9 @@ public class NowConfigurationWindow {
         if(m_shell == null || m_shell.isDisposed()){
             m_shell = new Shell(display, SWT.DIALOG_TRIM);
             initializeWindow();
+            //ImageData data = new ImageData(NowConst.FILE_IMAGE_SETTING_ICON);
+            //Image image = new Image(Display.getDefault(), data);
+            m_shell.setImage(new Image(Display.getDefault(), new ImageData(NowConst.FILE_IMAGE_SETTING_ICON)));
             setDisplayPointAtCenterScreen(display);
             //m_shell.pack();
             m_shell.open();
