@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{978F395A-22AE-44DB-B240-27627E19BDC3}</ProjectGuid>
+    <RootNamespace>nowpluginuiautomation</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <CLRSupport>true</CLRSupport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <CLRSupport>true</CLRSupport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <CLRSupport>true</CLRSupport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\plugin\</OutDir>
+    <LinkIncremental>
+    </LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\plugin\</OutDir>
+    <LinkIncremental>
+    </LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\plugin\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\plugin\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <AdditionalIncludeDirectories>$(SolutionDir)LogicalLayer\now.core\;$(SolutionDir)LogicalLayer\now.core\interface\;$(SolutionDir)LogicalLayer\now.core\define\;$(SolutionDir)PhysicalLayer\lib\now.lib.logger\;$(ProjectDir)controls\;$(SolutionDir)PhysicalLayer\lib\now.lib.device\;$(SolutionDir)LogicalLayer\now.core\utility</AdditionalIncludeDirectories>
+      <AdditionalUsingDirectories>$(SolutionDir)bin\$(ConfigurationName)_$(PlatformArchitecture)\</AdditionalUsingDirectories>
+      <CallingConvention>Cdecl</CallingConvention>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.lib.logger.lib;$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.core.lib;$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.agent.uiautomation.client.dll</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <AdditionalIncludeDirectories>$(SolutionDir)LogicalLayer\now.core\;$(SolutionDir)LogicalLayer\now.core\interface\;$(SolutionDir)LogicalLayer\now.core\define\;$(SolutionDir)PhysicalLayer\lib\now.lib.logger\;$(ProjectDir)controls\;$(SolutionDir)PhysicalLayer\lib\now.lib.device\</AdditionalIncludeDirectories>
+      <AdditionalUsingDirectories>$(SolutionDir)bin\$(ConfigurationName)_$(PlatformArchitecture)\</AdditionalUsingDirectories>
+      <CallingConvention>
+      </CallingConvention>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.lib.logger.lib;$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.core.lib;$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.agent.uiautomation.client.dll</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>$(SolutionDir)LogicalLayer\now.core\;$(SolutionDir)LogicalLayer\now.core\interface\;$(SolutionDir)LogicalLayer\now.core\define\;$(SolutionDir)PhysicalLayer\lib\now.lib.logger\;$(ProjectDir)controls\;$(SolutionDir)PhysicalLayer\lib\now.lib.device\;$(SolutionDir)LogicalLayer\now.core\utility;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalUsingDirectories>$(SolutionDir)bin\$(ConfigurationName)_$(PlatformArchitecture)\</AdditionalUsingDirectories>
+      <CallingConvention>Cdecl</CallingConvention>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.lib.logger.lib;$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.core.lib;$(SolutionDir)bin\$(Configuration)_$(PlatformArchitecture)\now.agent.uiautomation.client.dll;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>$(SolutionDir)LogicalLayer\now.core\interface\;$(ProjectDir)define;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalUsingDirectories>$(SolutionDir)bin\$(ConfigurationName)_$(PlatformArchitecture)\</AdditionalUsingDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="controls\NowCheckBox_UIA.cpp" />
+    <ClCompile Include="controls\NowHyperlink_UIA.cpp" />
+    <ClCompile Include="controls\NowListItem_UIA.cpp" />
+    <ClCompile Include="controls\NowMenuBar_UIA.cpp" />
+    <ClCompile Include="controls\NowProgressBar_UIA.cpp" />
+    <ClCompile Include="controls\NowRadioButton_UIA.cpp" />
+    <ClCompile Include="controls\NowTabItem_UIA.cpp" />
+    <ClCompile Include="controls\NowTitleBar_UIA.cpp" />
+    <ClCompile Include="controls\NowTreeItem_UIA.cpp" />
+    <ClCompile Include="main_UIA.cpp" />
+    <ClCompile Include="controls\NowButton_UIA.cpp" />
+    <ClCompile Include="controls\NowControl_UIA.cpp" />
+    <ClCompile Include="NowCommunication.cpp" />
+    <ClCompile Include="NowControlBuilder.cpp" />
+    <ClCompile Include="NowPlugin_UIA.cpp" />
+    <ClCompile Include="NowService.cpp" />
+    <ClCompile Include="NowStringProcessor_UIA.cpp" />
+    <ClCompile Include="NowWindow_UIA.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="controls\NowButton_UIA.h" />
+    <ClInclude Include="controls\NowCheckBox_UIA.h" />
+    <ClInclude Include="controls\NowControl_UIA.h" />
+    <ClInclude Include="controls\NowHyperlink_UIA.h" />
+    <ClInclude Include="controls\NowListItem_UIA.h" />
+    <ClInclude Include="controls\NowMenuBar_UIA.h" />
+    <ClInclude Include="controls\NowProgressBar_UIA.h" />
+    <ClInclude Include="controls\NowRadioButton_UIA.h" />
+    <ClInclude Include="controls\NowTabItem_UIA.h" />
+    <ClInclude Include="controls\NowTitleBar_UIA.h" />
+    <ClInclude Include="controls\NowTreeItem_UIA.h" />
+    <ClInclude Include="NowCommunication.h" />
+    <ClInclude Include="NowControlBuilder.h" />
+    <ClInclude Include="NowPlugin_UIA.h" />
+    <ClInclude Include="NowService.h" />
+    <ClInclude Include="NowStringProcessor_UIA.h" />
+    <ClInclude Include="NowUIAActionDefine.h" />
+    <ClInclude Include="NowWindow_UIA.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="UIAutomationClient" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
