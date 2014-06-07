@@ -28,6 +28,7 @@ public class JNIHelper {
     }
     
     public String getUIInformation(){
+        System.out.println("[getUIInformation]IN");
         String newSignature = "";
         try{
             newSignature = JNICaller.getInstance().getControlSignatureUnderMouse();
@@ -49,10 +50,12 @@ public class JNIHelper {
         }else{
             m_information = NowConst.NOW_EMPTY_STRING;
         }
+        System.out.println("[getUIInformation]OUT");
         return m_information;
     }
     
     public String getUIInformationForPressKey(){
+        System.out.println("[getUIInformationForPressKey]IN");
         String signature = "";
         String information = "";
         try{
@@ -60,10 +63,12 @@ public class JNIHelper {
         }catch(Exception e){
             System.out.println("getUIInformation" + e.getMessage());
         }
-        
-        if(!signature.isEmpty())
+        System.out.println("[getUIInformationForPressKey]signature=[" + signature + "]");
+        if(!"".equals(signature))
         {
+            
             information = JNICaller.getInstance().getUIInformation(signature);
+            System.out.println("[getUIInformationForPressKey]information=" + information);
         }else{
             information = NowConst.NOW_EMPTY_STRING;
         }

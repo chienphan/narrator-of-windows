@@ -35,11 +35,13 @@ namespace now.agent.uiautomation.client.storage
 
         public AutomationElement GetUIObjectFormCache(String strSignature)
         {
-            AutomationElement returnElement = NowUIAStorage.GetInstance().GetUIObjectFormCache(strSignature);
-            if (returnElement == null)
-            {
-                m_dictionary.TryGetValue(strSignature, out returnElement);
-            }
+            //AutomationElement returnElement = NowUIAStorage.GetInstance().GetUIObjectFormCache(strSignature);
+            //if (returnElement == null)
+            //{
+            //    m_dictionary.TryGetValue(strSignature, out returnElement);
+            //}
+            AutomationElement returnElement = null;
+            m_dictionary.TryGetValue(strSignature, out returnElement);
             return returnElement;
         }
 

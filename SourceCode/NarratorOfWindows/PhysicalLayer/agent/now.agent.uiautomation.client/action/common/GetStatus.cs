@@ -20,6 +20,10 @@ namespace now.agent.uiautomation.client.action.common
             String strSignatureControl = NowUIAArgumentIn.GetInstance().GetStringArgument(NowUIAPropertyDefine.UIA_PROP_SIGNATURE);
 
             AutomationElement runtimeElement = NowUIAStorageAction.GetInstance().GetUIObjectFormCache(strSignatureControl);
+            if (runtimeElement == null)
+            {
+                runtimeElement = NowUIAStorage.GetInstance().GetUIObjectFormCache(strSignatureControl);
+            }
             if (runtimeElement != null)
             {
                 int nState = 0;

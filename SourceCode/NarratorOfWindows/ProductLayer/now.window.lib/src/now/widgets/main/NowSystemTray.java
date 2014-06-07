@@ -80,7 +80,7 @@ public class NowSystemTray implements NativeKeyListener {
             m_menuConfigWindow.setImage(new Image(Display.getDefault(), new ImageData(NowConst.FILE_IMAGE_SETTING_ICON)));
             m_separator             = new MenuItem(m_popupMenu, SWT.SEPARATOR);
             m_menuClose             = new MenuItem(m_popupMenu, SWT.PUSH);
-            m_menuClose.setImage(new Image(Display.getDefault(), new ImageData(NowConst.FILE_IMAGE_CLOSE_ICON)));
+            m_menuClose.setImage(new Image(Display.getDefault(), new ImageData(NowConst.FILE_IMAGE_SHUTDOWN_ICON)));
             
             //init listener
             initListener();
@@ -94,24 +94,24 @@ public class NowSystemTray implements NativeKeyListener {
     }
     
     private void listenMouseMoveEvent(){
-        Thread thread = new Thread(new Runnable() {
-
-            @Override
-            public void run() {
-                while(!m_systemTrayShell.isDisposed()){
-                    if(ConfigCommon.getInstance().getAutoMoveMouse() == true){
-                        getSupportedInformation();
-                    }
-                    try {   
-                        Thread.sleep(100);
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(NowSystemTray.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            }
-        });
-        
-        thread.start();
+//        Thread thread = new Thread(new Runnable() {
+//
+//            @Override
+//            public void run() {
+//                while(!m_systemTrayShell.isDisposed()){
+//                    if(ConfigCommon.getInstance().getAutoMoveMouse() == true){
+//                        getSupportedInformation(false);
+//                    }
+//                    try {   
+//                        Thread.sleep(500);
+//                    } catch (InterruptedException ex) {
+//                        Logger.getLogger(NowSystemTray.class.getName()).log(Level.SEVERE, null, ex);
+//                    }
+//                }
+//            }
+//        });
+//        
+//        thread.start();
     }
     
     private void initListener(){
@@ -214,32 +214,46 @@ public class NowSystemTray implements NativeKeyListener {
         m_display.dispose();
     }
     
-    private void getSupportedInformation(){
-        Display.getDefault().syncExec(new Runnable() {
+    private void getSupportedInformation(boolean isKeyPressed){
+        System.out.println("[getSupportedInformation]IN");
+        String infor = "";
+        if(isKeyPressed == true){
+            infor = JNIHelper.getInstance().getUIInformationForPressKey();
+        }
+        else{
+            infor = JNIHelper.getInstance().getUIInformation();
+        }
+        
+        if(infor != ""){
+            final String strInfo = infor;
+            System.out.println(">>>>" + strInfo );
+            Display.getDefault().syncExec(new Runnable() {
 
-            @Override
-            public void run() {
-                if (ConfigCommon.getInstance().getAutoPlaySound() == true) {
-                    String infor = JNIHelper.getInstance().getUIInformation();
-                    if(!infor.isEmpty()){
-                        //Check config auto play sound
-                        String outString = "";
-                        //Check config auto translate
-                        if(ConfigCommon.getInstance().getAutoTranslate() == true){
-                            outString = Translator.getInstance().translateAutoDetectInput(infor);
-                            Audio.getInstance().play(outString);
-                            System.out.println("Speak AutoTranslate: " + outString);
-                        }else{
-                            Audio.getInstance().play(infor, ConfigLanguage.getInstance().getInputLanguage());
-                            System.out.println("Speak : " + infor);
+                @Override
+                public void run() {
+                    if (ConfigCommon.getInstance().getAutoPlaySound() == true) {
+
+                        if(!strInfo.isEmpty()){
+                            //Check config auto play sound
+                            String outString = "";
+                            //Check config auto translate
+                            if(ConfigCommon.getInstance().getAutoTranslate() == true){
+                                outString = Translator.getInstance().translateAutoDetectInput(strInfo);
+                                Audio.getInstance().play(outString);
+                                System.out.println("Speak AutoTranslate: " + outString);
+                            }else{
+                                Audio.getInstance().play(strInfo, ConfigLanguage.getInstance().getInputLanguage());
+                                System.out.println("Speak : " + strInfo);
+                            }
                         }
                     }
+                    //else{
+                        //NowInformationWindow.getInstance().showWindow(m_display);
+                    //}
                 }
-                //else{
-                    //NowInformationWindow.getInstance().showWindow(m_display);
-                //}
-            }
-        });
+            });
+        }
+        System.out.println("[getSupportedInformation]OUT");
     }
 
     @Override
@@ -247,7 +261,8 @@ public class NowSystemTray implements NativeKeyListener {
         //Check for the pressed key
         if(ConfigCommon.getInstance().getAutoMoveMouse() == false){
             if (e.getKeyCode() == NativeKeyEvent.VK_CONTROL){
-                getSupportedInformation();
+                System.out.println("Pressed Ctrl!!!");
+                getSupportedInformation(true);
             }
         }
     }

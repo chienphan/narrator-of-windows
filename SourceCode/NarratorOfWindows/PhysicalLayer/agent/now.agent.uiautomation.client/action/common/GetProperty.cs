@@ -17,6 +17,11 @@ namespace now.agent.uiautomation.client.action.common
             String propertyName = NowUIAArgumentIn.GetInstance().GetStringArgument(NowUIAPropertyDefine.UIA_PROP_PROPERTY_NAME);
 
             AutomationElement runtimeElement = NowUIAStorageAction.GetInstance().GetUIObjectFormCache(strSignatureControl);
+            if (runtimeElement == null)
+            {
+                runtimeElement = NowUIAStorage.GetInstance().GetUIObjectFormCache(strSignatureControl);
+            }
+
             if (runtimeElement != null)
             {
                 String value = NowUIAService.GetInstance().GetUIProperty(runtimeElement, propertyName);
