@@ -74,11 +74,16 @@ NOW_RESULT NowExecutor::initialize(const string& dataFileName)
 					}
 					else
 					{
-						vector<string>* vectArgument = NowStringProcessor::split(NowStringProcessor::wstringTostring(*it), NOW_DELIMITER_PROP_A);
-						if (vectArgument->size() == 2)
+						vector<string>* vecArg = NowStringProcessor::split(NowStringProcessor::wstringTostring(*it), "=&&=");
+						for (vector<string>::iterator itArg = vecArg->begin(); itArg != vecArg->end(); itArg++)
 						{
-							strProperties += vectArgument->at(0) + NOW_CHAR_EQUAL + vectArgument->at(1) + NOW_CHAR_OR ; 
+							vector<string>* vectArgument = NowStringProcessor::split(*itArg, NOW_DELIMITER_PROP_A);
+							if (vectArgument->size() == 2)
+							{
+								strProperties += vectArgument->at(0) + NOW_CHAR_EQUAL + vectArgument->at(1) + NOW_CHAR_OR ; 
+							}
 						}
+						
 					}
 					nCounter++;
 				}
