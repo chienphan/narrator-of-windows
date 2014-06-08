@@ -116,7 +116,7 @@ public class NowConfigurationWindow {
                         }else{
                             ConfigCommon.getInstance().setAutoTranslate(false);
                         }
-                        
+                        NowMainWindow.getInstance().updateWidgetsContent();
                         //Close window
                         m_shell.dispose();
                     }

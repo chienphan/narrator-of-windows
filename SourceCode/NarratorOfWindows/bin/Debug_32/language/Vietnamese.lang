@@ -37,3 +37,5 @@ MENU_RUN=@@=Chạ&y
 MENU_RUN_LESSON=@@=Chạy &bài học	F5
 MENU_HELP=@@=T&rợ giúp
 MENU_ABOUT=@@=Thô&ng tin
+DIALOG_ABOUT=@@=Thông tin
+WINDOW_MAIN_TITLE=@@=Cửa sổ chính - Thực Hành Tin Học
