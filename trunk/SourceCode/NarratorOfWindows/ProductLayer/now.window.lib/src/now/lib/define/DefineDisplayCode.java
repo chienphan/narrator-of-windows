@@ -33,6 +33,7 @@ public class DefineDisplayCode {
     public static final String CHECKBOX_AUTO_TRANSLATE = "CHECKBOX_AUTO_TRANSLATE";
     
     public static final String WINDOW_CONFIG_TITLE = "WINDOW_CONFIG_TITLE";
+    public static final String WINDOW_MAIN_TITLE = "WINDOW_MAIN_TITLE";
     
     public static final String RADIO_MODE_DISPLAY       = "RADIO_MODE_DISPLAY";
     public static final String RADIO_MODE_PLAY          = "RADIO_MODE_PLAY";
@@ -62,4 +63,5 @@ public class DefineDisplayCode {
     public static final String MENU_RUN_LESSON = "MENU_RUN_LESSON";
     public static final String MENU_HELP = "MENU_HELP";
     public static final String MENU_ABOUT = "MENU_ABOUT";
+    public static final String DIALOG_ABOUT = "DIALOG_ABOUT";
 }

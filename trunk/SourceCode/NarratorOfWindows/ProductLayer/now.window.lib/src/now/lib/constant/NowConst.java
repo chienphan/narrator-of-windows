@@ -40,6 +40,7 @@ public class NowConst {
     public static final String FILE_CONFIG_LANGUAGE 		= "config\\config-language.xml";
     public static final String FILE_CONFIG_LANGUAGE_CODE_GOOGLE 	= "config\\LanguageCodeGoogle.ini";
     public static final String FILE_CONFIG_LANGUAGE_CODE_MICROSOFT 	= "config\\LanguageCodeMicrosoft.ini";
+    public static final String FILE_ABOUT 	= "config\\about.txt";
     public static final String FILE_IMAGE_TRAY_ICON         = "resource\\tray-icon.gif";
     public static final String FILE_IMAGE_PLAY_ICON         = "resource\\play-icon.png";
     public static final String FILE_IMAGE_SETTING_ICON      = "resource\\setting-icon.png";

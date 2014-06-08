@@ -69,4 +69,26 @@ public class UtilitiesFileTXT {
             }
         }
     }
+    
+    public String getContent(){
+        String temp = "";
+        String result = "";
+        Path path = Paths.get(m_fileName);
+
+        Scanner scanner;
+        try {
+            scanner = new Scanner(path, ENCODING.name());
+            while (scanner.hasNextLine()){
+                //process each line in some way
+                temp = scanner.nextLine();
+                if(!temp.isEmpty()){
+                    result += temp + "\n";
+                }
+            }  
+            scanner.close();
+        } catch (IOException e) {
+        }
+        
+        return result;
+    }
 }

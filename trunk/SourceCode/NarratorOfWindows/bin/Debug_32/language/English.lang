@@ -37,3 +37,5 @@ MENU_RUN=@@=&Run
 MENU_RUN_LESSON=@@=&Run Lesson	F5
 MENU_HELP=@@=&Help
 MENU_ABOUT=@@=&About
+DIALOG_ABOUT=@@=Information
+WINDOW_MAIN_TITLE=@@=Main window - Thuc Hanh Tin Hoc

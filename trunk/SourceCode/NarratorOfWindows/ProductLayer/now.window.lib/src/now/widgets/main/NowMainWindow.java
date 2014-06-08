@@ -17,6 +17,7 @@ import now.lib.define.DefineDisplayCode;
 import now.lib.display.DisplayText;
 import now.lib.utilities.UtilitiesCommon;
 import now.lib.utilities.UtilitiesDevice;
+import now.lib.utilities.UtilitiesFileTXT;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWTError;
 import org.eclipse.swt.browser.Browser;
@@ -41,6 +42,7 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
+import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
@@ -229,7 +231,7 @@ public class NowMainWindow {
     }
     
     public void updateWidgetsContent(){
-        m_shell.setText(DisplayText.getInstance().getText(DefineDisplayCode.SYSTEM_TRAY_MAIN_WINDOW));
+        m_shell.setText(DisplayText.getInstance().getText(DefineDisplayCode.WINDOW_MAIN_TITLE));
         //m_buttonPlay.setText("Play");
         
         m_menuButtonFile.setText (DisplayText.getInstance().getText(DefineDisplayCode.MENU_FILE));
@@ -320,6 +322,14 @@ public class NowMainWindow {
             public void handleEvent(Event event) {
                 System.out.println ("About");
                 //TODO: About window show here!!!!!!!!
+                MessageBox messageBox = new MessageBox(m_shell, SWT.ICON_INFORMATION | SWT.OK );
+        
+                messageBox.setText(DisplayText.getInstance().getText(DefineDisplayCode.DIALOG_ABOUT));
+                UtilitiesFileTXT aboutFile = new UtilitiesFileTXT(NowConst.FILE_ABOUT);
+                String info = aboutFile.getContent();
+                
+                messageBox.setMessage(info);
+                messageBox.open();
             }
         });
         
