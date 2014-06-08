@@ -97,7 +97,7 @@ namespace now.agent.uiautomation.client
             m_nameStateMap.Add(NowUIAProperty.NOW_PROP_IS_CHECKED, "on");
             m_nameStateMap.Add(NowUIAProperty.NOW_PROP_IS_UNCHECKED, "off");
         }
-
+        
         /// <summary>
         /// Get signature of UI Automation element
         /// </summary>
@@ -176,23 +176,37 @@ namespace now.agent.uiautomation.client
             return nResult;
         }
 
-        public PropertyCondition GetCondition(String strPropValue)
+        public Condition GetCondition(String strPropValue)
         {
-            PropertyCondition condResult = null;
+            Condition condResult = null;
 
-            String propName = "";
-            String propValue = "";
-            String[] arrTemp = null;
             String[] arrPropValue = strPropValue.Split(new char[] { '|' });
-            foreach (String prop in arrPropValue)
+            NowUIALogger.GetInstance().LogInfor("[GetCondition]" + strPropValue);
+            if (arrPropValue.Length == 1)
             {
-                arrTemp = prop.Split(new char[] { '=' });
+                String[] arrTemp = arrPropValue[0].Split(new char[] { '=' });
                 if (arrTemp.Length == 2)
                 {
-                    propName = arrTemp[0];
-                    propValue = arrTemp[1];
+                    condResult = new PropertyCondition(m_propMap[arrTemp[0]] as AutomationProperty, arrTemp[1]);
+                }
+            }
+            else if (arrPropValue.Length == 2)
+            {
+                PropertyCondition con1 = null, con2 = null;
+                String[] arrTemp1 = arrPropValue[0].Split(new char[] { '=' });
+                if (arrTemp1.Length == 2)
+                {
+                    con1 = new PropertyCondition(m_propMap[arrTemp1[0]] as AutomationProperty, arrTemp1[1]);
+                }
+                String[] arrTemp2 = arrPropValue[1].Split(new char[] { '=' });
+                if (arrTemp2.Length == 2)
+                {
+                    con2 = new PropertyCondition(m_propMap[arrTemp2[0]] as AutomationProperty, arrTemp2[1]);
+                }
 
-                    condResult = new PropertyCondition(m_propMap[propName] as AutomationProperty, propValue);
+                if (con1 != null && con2 != null)
+                {
+                    condResult = new AndCondition(con1, con2);
                 }
             }
 
