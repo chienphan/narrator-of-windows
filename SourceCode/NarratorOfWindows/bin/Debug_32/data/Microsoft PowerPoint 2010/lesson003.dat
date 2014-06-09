@@ -21,7 +21,7 @@ control=@@=MicrosoftPowerPointWindow=||=treeItemPictures=||=NameProperty=::=Pict
 control=@@=MicrosoftPowerPointWindow=||=listItemSamplePictures=||=NameProperty=::=Sample Pictures
 control=@@=MicrosoftPowerPointWindow=||=listItemChrysanthemum=||=NameProperty=::=Chrysanthemum.jpg
 
-control=@@=MicrosoftPowerPointWindow=||=buttonInsert=||=NameProperty=::=Insert
+control=@@=MicrosoftPowerPointWindow=||=buttonInsert=||=NameProperty=::=Insert=&&=ClassNameProperty=::=Button
 control=@@=MicrosoftPowerPointWindow=||=tabItemHome=||=NameProperty=::=Home
 control=@@=MicrosoftPowerPointWindow=||=listItemTulips=||=NameProperty=::=Tulips.jpg
 control=@@=MicrosoftPowerPointWindow=||=listItemTwoContent=||=NameProperty=::=Two Content
@@ -66,6 +66,7 @@ click=@@=MicrosoftPowerPointWindow=||=buttonPicture=||=left
 click=@@=MicrosoftPowerPointWindow=||=treeItemPictures=||=left
 click=@@=MicrosoftPowerPointWindow=||=listItemSamplePictures=||=double
 click=@@=MicrosoftPowerPointWindow=||=listItemChrysanthemum=||=left
+sleep=@@=200
 click=@@=MicrosoftPowerPointWindow=||=buttonInsert=||=left
 sleep=@@=200
 send keys=@@={esc}{tab}HOA CÚC
