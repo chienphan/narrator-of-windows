@@ -75,7 +75,7 @@ public class NowServerSocket {
 
                     @Override
                     public void run() {
-                        Notifier.notify("Data message!!!", outPrint);
+                        Notifier.notify("Thông báo!!!", outPrint);
                     }
                 });
                 insocket.close();
