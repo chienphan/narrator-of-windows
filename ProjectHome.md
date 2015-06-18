@@ -1,0 +1,1 @@
+Using UI Automation and other technologies to get information of apps to help user using Windows better.
